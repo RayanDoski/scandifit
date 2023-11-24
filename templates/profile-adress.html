@@ -1,0 +1,24 @@
+{% extends 'profile-base.html' %}
+{% block css %} {{ super() }} <link rel="stylesheet" href="{{ url_for('static', filename='css/profile-adress.css') }}">{% endblock %}
+{% block title %}<title>Din Information</title>{% endblock %}
+{% block content %}
+{{ super() }}
+<section class="profile-information">
+    <main>
+        <form action="/update-profile-adress" method="post">
+            <h1>Min adress</h1>
+
+            <label for="gatuadres">Gatuadres</label>
+            <input type="text" name="gatuadres" id="gatuadres" value="{{ gatuadres }}">
+
+            <label for="postnummer">Postnummer</label>
+            <input type="text" name="postnummer" id="postnummer" value="{{ postnummer }}">
+
+            <label for="stad">Stad</label>
+            <input type="text" name="stad" id="stad" value="{{ stad }}">
+
+            <button type="submit">Updatera Information</button>
+        </form>
+    </main>
+</section>
+{% endblock %}

@@ -1,0 +1,552 @@
+.review {
+    display: flex;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 100px auto;
+    box-sizing: border-box;
+}
+
+.review > div {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.review > div > h2 {
+    font-family: var(--primary-font);
+    font-size: 45px;
+    letter-spacing: 1.5px;
+}
+
+.review > div > div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.review > div > div > img {
+    max-width: 25px;
+}
+
+.review > div > div > p {
+    font-size: 22px;
+    font-weight: lighter;
+}
+
+.review > div > main {
+    margin: 20px 0px;
+    padding: 0px 0px 5px 0px;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.review > div > main > article {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0px 0px 20px 0px;
+}
+
+.review > div > main > article > p {
+    font-weight: lighter;
+}
+
+.review > div > main > article > div {
+    width: 75%;
+    height: 20px;
+    border: .5px solid var(--secondary-color);
+    border-radius: 5px;
+}
+
+.review > div > main > article > div > div {
+    height: 20px;
+    border-radius: 5px;
+    background-color: var(--company-color);
+}
+
+.review > div > button {
+    width: 100%;
+    background-color: var(--company-color);
+    padding: 7px 20px;
+    box-sizing: border-box;
+    border: 0;
+    font-family: var(--primary-font);
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    transition: .5s all;
+}
+
+.review > div > button:hover {
+    background-color: #2da455;
+}
+
+.review > aside {
+    flex: 2;
+    padding: 20px;
+    border-left: 1px solid var(--secondary-color);
+}
+
+.review > aside > form > select {
+    letter-spacing: .5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: 0;
+    background-color: var(--primary-color);
+    border: .5px solid var(--secondary-color);
+    margin: 0px 0px 20px 0px;
+}
+
+.review > aside > form > select:hover {
+    border: .5px solid var(--company-color);
+}
+
+.review > aside > form > button {
+    border: .5px solid var(--secondary-color);
+    background-color: var(--primary-color);
+    letter-spacing: .5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.review > aside > form > button:hover {
+    border: .5px solid var(--company-color);
+}
+
+.review > aside > article {
+    padding: 20px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 20px 0px;
+}
+
+.review > aside > article > aside {
+    display: flex;
+    align-items: center;
+    gap: 2.5px;
+    margin: 0px 0px 5px 0px;
+}
+
+.review > aside > article > aside > img {
+    max-width: 22px;
+}
+
+.review > aside > article > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 0px 20px 0px;
+}
+
+.review > aside > article > div > h3 {
+    font-size: 25px;
+    font-family: var(--primary-font);
+    letter-spacing: 1.5px;
+}
+
+.review > aside > article > div > p {
+    color: var(--company-color);
+}
+
+.review > aside > article > p {
+    margin: 0px 0px 20px 0px;
+    font-weight: lighter;
+    letter-spacing: 1px;
+}
+
+.review > aside > article > img {
+    max-width: 40%;
+    margin: 0px 0px 20px 0px;
+}
+
+.review > aside > article > h3 > strong {
+    font-weight: bold;
+}
+
+.review > aside > article > h4 {
+    margin: 20px 0px 10px 0px;
+}
+
+.review > aside > article > a {
+    padding: 10px 20px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    width: 100px;
+    text-align: center;
+    transition: .5s all;
+}
+
+.review > aside > article > a:hover {
+    background-color: #e0e0e0;
+}
+
+@media screen and (max-width: 1380px) {
+
+    .review > div {
+        padding: 10px;
+    }
+
+    .review > aside {
+        padding: 10px;
+    }
+
+    .review > aside > article {
+        padding: 10px;
+    }
+
+    .review > div > main > article {
+        margin: 10px auto;
+        gap: 2.5px;
+        justify-content: space-between;
+    }
+
+    .review > div > main > article > div {
+        width: 75%;
+    }
+
+    .review > div > main > article > p {
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+
+    .review {
+        flex-direction: column;
+    }
+
+    .review > div {
+        width: 75%;
+        padding: 20px;
+        margin: auto;
+    }
+
+    .review > aside {
+        border: 0;
+        border-top: 1px solid var(--secondary-color);
+        padding: 20px 0px 0px 0px;
+        width: 85%;
+        margin: auto;
+    }
+
+    .review > aside > article {
+        width: 75%;
+        margin: auto auto 20px auto;
+    }
+
+    .review > aside > article > div {
+        display: block;
+        margin: 0px 0px 20px 0px;
+    }
+
+    .review > aside > article > img {
+        max-width: 55%;
+    }
+
+}
+
+@media screen and (max-width: 550px) {
+
+    .review > div {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .review > aside {
+        border: 0;
+        padding: 20px 0px 0px 0px;
+        width: 95%;
+    }
+
+    .review > aside > article {
+        width: 90%;
+        margin: auto auto 20px auto;
+    }
+
+    .review > aside > article > img {
+        max-width: 75%;
+    }
+
+    .review > aside > article > div {
+        display: block;
+        margin: 0px 0px 20px 0px;
+    }
+
+    .review > div > div > img {
+        max-width: 20px;
+    }
+
+    .review > div > div > p {
+        font-size: 18px;
+    }
+
+    .review > div > main > article > div {
+        height: 15px;
+    }
+    
+    .review > div > main > article > div > div {
+        height: 15px;
+    }
+
+    .review > div > main {
+        margin: 20px 0px 10px 0px;
+        padding: 0px 0px 5px 0px;
+        border-bottom: 1px solid var(--secondary-color);
+    }
+
+    .review > div > button {
+        width: 100%;
+        padding: 5px 10px;
+        font-size: 16px;
+        letter-spacing: .5px;
+        color: var(--primary-color);
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        transition: .5s all;
+    }
+    
+    .review > div > button:hover {
+        background-color: #2da455;
+    }
+
+    .review > aside > article > div > h3 {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    .review > aside > article > aside > img {
+        max-width: 18px;
+    }
+
+    .review > aside > article > div > p {
+        font-size: 12px;
+    }
+
+    .review > aside > article > p {
+        font-size: 14px;
+    }
+
+    .review > aside > article > h3 {
+        font-size: 14px;
+    }
+
+    .review > aside > article > h4 {
+        font-size: 14px;
+    }
+
+    .review > aside > article > a {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+    
+}
+
+/* popup */
+
+.popup-review-background {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    z-index: 3;
+    background-color: #333333a3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+}
+
+.popup-review-background.show {
+    display: block;
+}
+
+.section-review-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    width: 350px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    box-shadow: rgba(238, 238, 238, 0.56) 0px 5px 15px;
+    padding: 20px;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: .5s all;
+}
+
+.section-review-background.show {
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+    width: 500px;
+    padding: 40px;
+}
+
+.section-review-background > h2 {
+    font-family: var(--primary-font);
+    font-size: 45px;
+    letter-spacing: 1.5px;
+    margin: 0px 0px 15px 0px;
+}
+
+.section-review-background > form > p {
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin: 0px 0px 15px 5px;
+}
+
+.section-review-background > form > article {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 25px;
+    margin: 0px 0px 25px 5px;
+}
+
+.section-review-background > form > article > input {
+    display: none;
+}
+
+.section-review-background > form > article > label {
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
+.section-review-background > form > label {
+    font-size: 20px;
+    margin: 0px 0px 0px 5px;
+}
+
+.section-review-background > form > input {
+    display: block;
+    outline: 0;
+    border: 0;
+    background-color: var(--primary-color);
+    border-bottom: 5px solid var(--company-color);
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+    margin: 0px 0px 20px 0px;
+    box-sizing: border-box;
+}
+
+.section-review-background > form > textarea {
+    width: 100%;
+    background-color: var(--primary-color);
+    border: .5px solid var(--company-color);
+    outline: 0;
+    border-bottom: 5px solid var(--company-color);
+    margin: 10px 0px 20px 0px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+.section-review-background > form > #picture {
+    display: none;
+}
+
+.section-review-background > form > #picture-lable {
+    display: block;
+    margin: 0px 0px 20px 0px;
+    background-color: var(--company-color);
+    width: 150px;
+    text-align: center;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: var(--primary-color);
+    font-family: var(--primary-font);
+    letter-spacing: 1.5px;
+    font-size: 18px;
+}
+
+.section-review-background > form > button {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: var(--company-color);
+    font-family: var(--primary-font);
+    color: var(--primary-color);
+    font-size: 20px;
+    border-radius: 5px;
+    letter-spacing: 1.2px;
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    transition: .5s all;
+}
+
+.section-review-background > form > button:hover {
+    background-color: #2da455;
+}
+
+@media screen and (max-width: 650px) {
+
+    .section-review-background {
+        width: 300px;
+        padding: 10px;
+    }
+    
+    .section-review-background.show {
+        width: 400px;
+        padding: 30px 20px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
+    .section-review-background {
+        width: 80%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    
+    .section-review-background.show {
+        width: 90%;
+        padding: 30px 20px;
+        box-sizing: border-box;
+    }
+
+    .section-review-background > h2 {
+        font-size: 35px;
+        letter-spacing: 1px;
+    }
+    
+    .section-review-background > form > p {
+        font-size: 18px;
+        letter-spacing: .5px;
+        margin: 0px 0px 10px 5px;
+    }
+
+    .section-review-background > form > article {
+        gap: 5px;
+        font-size: 20px;
+    }
+
+    .section-review-background > form > label {
+        font-size: 18px;
+    }
+
+    .section-review-background > form > input {
+        font-size: 15px;
+        margin: 0px 0px 10px 0px;
+    }
+
+    .section-review-background > form > textarea {
+        font-size: 15px;
+    }
+
+}

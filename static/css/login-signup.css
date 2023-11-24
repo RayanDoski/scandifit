@@ -1,0 +1,261 @@
+header {
+    display: none;
+}
+
+footer {
+    display: none;
+}
+
+.login-signup {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-signup > aside {
+    background-color: var(--secondary-color);
+    flex: 1;
+    width: 50%;
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    place-items: center;
+}
+
+.login-signup > aside > img {
+    max-width: 65%;
+}
+
+.login-signup > div {
+    background-color: var(--primary-color);
+    flex: 1;
+    width: 50%;
+    height: 100vh;
+    box-shadow: 0 0px 50px #f5f5f5, 0 35px 20px rgba(0, 0, 0, 0.09);
+}
+
+.login-signup > div > nav {
+    display: flex;
+    justify-content: space-between;
+    width: 65%;
+    margin: 40px auto 20px auto;
+}
+
+.login-signup > div > nav > h2 {
+    font-family: var(--primary-font);
+    font-size: 25px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .25s all;
+}
+
+.login-signup > div > nav > #login-btn.show {
+    border-bottom: 1px solid var(--company-color);
+}
+
+.login-signup > div > nav > #register-btn.show {
+    border-bottom: 1px solid var(--company-color);
+}
+
+.login-signup > div > nav > h2:hover {
+    padding: 4px 0px;
+    border-bottom: 1px solid var(--company-color);
+}
+
+.login-signup > div > .line {
+    margin: auto;
+    width: 90%;
+    height: 1px;
+    background-color: var(--secondary-color);
+}
+
+.login-signup > div > main {
+    margin: 50px auto 0px auto;
+    width: 500px;
+}
+
+.login-signup > div > #login-form {
+    display: none;
+}
+
+.login-signup > div > #login-form.show {
+    display: block;
+}
+
+.login-signup > div > #register-form {
+    display: none;
+}
+
+.login-signup > div > #register-form.show {
+    display: block;
+}
+
+.login-signup > div > main > form > h1 {
+    font-size: 65px;
+    font-family: var(--primary-font);
+    text-align: center;
+    margin: 0px 0px 25px 0px;
+}
+
+.login-signup > div > main > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-signup > div > main > form > div {
+    border: .5px solid rgb(255, 0, 0);
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin: 0px auto 25px auto;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 90%;
+}
+
+.login-signup > div > main > form > div > img {
+    max-width: 35px;
+}
+
+.login-signup > div > main > form > div > aside > h2 {
+    font-family: var(--primary-font);
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    color: red;
+    margin: 0px 0px 3px 0px;
+}
+
+.login-signup > div > main > form > div > aside > p {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    font-weight: lighter;
+    color: red;
+}
+
+.login-signup > div > main > form > input {
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    border-bottom: 5px solid var(--company-color);
+    background-color: #f5f5f5;
+    outline: none;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0px 0px 50px 0px;
+}
+
+.login-signup > div > main > form > label {
+    font-size: 20px;
+    margin: 0px 0px 5px 0px;
+}
+
+.login-signup > div > main > form > button {
+    font-family: var(--primary-font);
+    font-size: 26px;
+    letter-spacing: 2px;
+    background-color: var(--company-color);
+    color: var(--primary-color);
+    padding: 15px 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    transition: .5s all;
+}
+
+.login-signup > div > main > form > button:hover {
+    background-color: #2da455;
+}
+
+.login-signup > div > main > form > p {
+    margin: 15px 0px 0px 0px;
+    font-size: 18px;
+}
+
+.login-signup > div > main > form > p > a {
+    color: var(--company-color);
+}
+
+@media screen and (max-width: 1100px) {
+
+    .login-signup > div > main {
+        margin: 100px auto 0px auto;
+        width: 350px;
+    }
+
+    .login-signup > div > main > form > h1 {
+        font-size: 45px;
+        margin: 0px 0px 45px 0px;
+    }
+
+    .login-signup > div > main > form > label {
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .login-signup > div > main > form > input {
+        margin: 0px 0px 45px 0px;
+        font-size: 16px;
+    }
+
+    .login-signup > div > main > form > button {
+        font-size: 20px;
+        letter-spacing: 1.1px;
+        padding: 10px 15px;
+    }
+
+    .login-signup > div > main > form > p {
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+
+    .login-signup > aside {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
+    .login-signup > div > nav > h2 {
+        font-size: 22px;
+        letter-spacing: 1.1px;
+    }
+
+    .login-signup > div > nav {
+        width: 80%;
+    }
+
+    .login-signup > div > .line {
+        width: 95%;
+    }
+
+    .login-signup > div > main {
+        margin: 75px auto 0px auto;
+        width: 90%;
+    }
+
+    .login-signup > div > main > form > div {
+        padding: 20px 10px;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .login-signup > div > main > form > div > img {
+        max-width: 35px;
+    }
+    
+    .login-signup > div > main > form > div > aside > h2 {
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+    
+    .login-signup > div > main > form > div > aside > p {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+}

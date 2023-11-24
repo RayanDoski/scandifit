@@ -1,0 +1,38 @@
+{% extends 'profile-base.html' %}
+{% block css %} {{ super() }} <link rel="stylesheet" href="{{ url_for('static', filename='css/profile-schema.css') }}">{% endblock %}
+{% block title %}<title>Din Information</title>{% endblock %}
+{% block content %}
+{{ super() }}
+<!-- din Information POPUP -->
+<div class="din-information-background"></div>
+<section class="din-information-popup">
+    <h2>Din Infrormation</h2>
+    <h3>Ditt Träningsschema Är Baseras På Följande Information</h3>
+    <h4>Din Ålder: <span>{{ quiz_info[2] }}</span></h4>
+    <h4>Ditt Mål: <span>{{ quiz_info[3] }}</span></h4>
+    <h4>Din Kroppstyp: <span>{{ quiz_info[4] }}</span></h4>
+    <h4>Ditt Problemområde: <span>{{ quiz_info[5] }}</span></h4>
+    <h4>Din Längd: <span>{{ quiz_info[6] }} Cm</span></h4>
+    <h4>Din Vikt: <span>{{ quiz_info[7] }} Kg</span></h4>
+    <h4>Din Målvikt: <span>{{ quiz_info[8] }} Kg</span></h4>
+    <h4>Antal Pass Per Vecka: <span>{{ quiz_info[9] }} Stycken</span></h4>
+    <h4>Dina Sjukdommar: <span>{{ quiz_info[10] }}</span></h4>
+    <h4>Din Träningsplats: <span>{{ quiz_info[11] }}</span></h4>
+    <h4>Dina Utrustningstillgångar: <span>{{ quiz_info[12] }}</span></h4>
+</section>
+<!-- main  -->
+<section class="schedual-information">
+    <main>
+        <article>
+            <h1>Ditt Tränings Schema</h1>
+            <a href="">Ladda Ned Som PDF</a>
+        </article>
+
+        <!-- Makes the schedual text into html code -->
+        {{ schedual | safe }}
+
+        <h6 id="din-information-btn">Visa Min Information</h6>
+    </main>
+</section>
+{% endblock %}
+{% block js %} {{ super() }} <script src="{{ url_for('static', filename='js/profile-schema.js') }}"></script> {% endblock %}

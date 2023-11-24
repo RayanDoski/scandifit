@@ -1,0 +1,36 @@
+{% extends 'profile-base.html' %}
+{% block css %} {{ super() }} <link rel="stylesheet" href="{{ url_for('static', filename='css/workouts.css') }}">{% endblock %}
+{% block title %}<title>Workouts</title>{% endblock %}
+{% block content %}
+{{ super() }}
+<section class="workouts">
+    <article>
+        <h1>Alla våra övningar</h1>
+        <form action="" method="post">
+            <select name="order-workouts" id="">
+                <option value="alla" {{ all }}>Alla</option>
+                <option value="five" {{ cardio }}>Cardio</option>
+                <option value="four" {{ chest }}>Bröst</option>
+                <option value="three" {{ triceps }}>Triceps</option>
+                <option value="two" {{ biceps }}>Biceps</option>
+                <option value="one" {{ back }}>Rygg</option>
+                <option value="one" {{ shoulders }}>Axlar</option>
+                <option value="one" {{ stomach }}>Mage</option>
+                <option value="one" {{ legs }}>Ben</option>
+            </select>
+            <button type="submit">Updatera</button>
+        </form>
+    </article>
+        
+    <main>
+        
+        {% for workout in workouts %}
+            <a href="/workout?id={{ workout[0] }}">
+                <img src="{{ url_for('static', filename='pictures/workouts/' + workout[3] ) }}" alt="Training Picture">
+                <h2>{{ workout[1] }}</h2>
+            </a>
+        {% endfor %}
+
+    </main>
+</section>
+{% endblock %}

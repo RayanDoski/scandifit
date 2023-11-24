@@ -1,0 +1,27 @@
+{% extends 'profile-base.html' %}
+{% block css %} {{ super() }} <link rel="stylesheet" href="{{ url_for('static', filename='css/profile-information.css') }}">{% endblock %}
+{% block title %}<title>Din Information</title>{% endblock %}
+{% block content %}
+{{ super() }}
+<section class="profile-information">
+    <main>
+        <form action="/update-profile-information" method="post">
+            <h1>Personliga information</h1>
+
+            <label for="namn">Namn</label>
+            <input type="text" name="namn" id="namn" value="{{ namn }}">
+
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" value="{{ email }}">
+
+            <label for="telefonnummer">Telefonnummer</label>
+            <input type="text" name="telefonnummer" id="telefonnummer" value="{{ telefonnummer }}">
+
+            <label for="password">Lösenord</label>
+            <input type="password" name="password" id="password" value="{{ password }}">
+
+            <button type="submit">Updatera Information</button>
+        </form>
+    </main>
+</section>
+{% endblock %}

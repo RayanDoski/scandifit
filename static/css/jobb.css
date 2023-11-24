@@ -1,0 +1,134 @@
+.jobb {
+    padding: 150px 100px;
+    max-width: 1600px;
+    margin: auto;
+}
+
+.jobb > h1 {
+    font-size: 60px;
+    font-family: var(--primary-font);
+}
+
+.jobb > p {
+    margin: 0px 0px 50px 0px;
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.jobb > h4 {
+    margin: 0px 0px 10px 0px;
+}
+
+.jobb > article {
+    background-color: var(--secondary-color);
+    padding: 10px 100px 10px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.jobb > article > h6 {
+    color: var(--primary-color);
+    font-family: var(--primary-font);
+    letter-spacing: 1.5px;
+}
+
+.jobb > article > aside {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+}
+
+.jobb > article > aside > h6 {
+    color: var(--primary-color);
+    font-family: var(--primary-font);
+    letter-spacing: 1.5px;
+}
+
+.jobb > h2 {
+    margin: 50px 0px 0px 20px;
+    font-family: var(--primary-font);
+    font-size: 30px;
+}
+
+@media screen and (max-width: 900px) {
+
+    .jobb {
+        padding: 50px 25px;
+        margin: 200px 0px;
+    }
+    
+    .jobb > h1 {
+        font-size: 45px;
+    }
+    
+    .jobb > p {
+        font-size: 14px;
+        margin: 0px 0px 25px 0px;
+    }
+    
+    .jobb > article {
+        padding: 10px 35px 10px 15px;
+    }
+    
+    .jobb > article > h6 {
+        letter-spacing: .5px;
+    }
+    
+    .jobb > article > aside {
+        gap: 50px;
+    }
+    
+    .jobb > article > aside > h6 {
+        letter-spacing: .5px;
+    }
+    
+    .jobb > h2 {
+        margin: 25px 0px 0px 10px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+    .jobb {
+        padding: 25px 10px;
+        margin: 175px 0px;
+    }
+    
+    .jobb > h1 {
+        font-size: 35px;
+    }
+    
+    .jobb > p {
+        font-size: 11px;
+        margin: 0px 0px 25px 0px;
+    }
+
+    .jobb > h4 {
+        font-size: 12px;
+    }
+    
+    .jobb > article {
+        padding: 10px 35px 10px 15px;
+    }
+    
+    .jobb > article > h6 {
+        letter-spacing: .5px;
+    }
+    
+    .jobb > article > aside {
+        gap: 15px;
+    }
+    
+    .jobb > article > aside > h6 {
+        letter-spacing: .5px;
+    }
+    
+    .jobb > h2 {
+        margin: 25px 0px 0px 10px;
+        font-size: 20px;
+    }
+}
