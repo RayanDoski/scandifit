@@ -10,7 +10,7 @@ from checkout import checkout
 
 app = Flask(__name__)
 
-app.secret_key = "scandifit0412175416"
+app.secret_key = "scandifit04121754161"
 
 app.register_blueprint(views)
 app.register_blueprint(profil)
