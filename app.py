@@ -7,6 +7,8 @@ from login_register import login_register
 from recentioner import recensioner
 from quiz import quiz
 from checkout import checkout
+from schema import schema
+from exercises import exercises
 
 app = Flask(__name__)
 
@@ -18,6 +20,8 @@ app.register_blueprint(login_register)
 app.register_blueprint(recensioner)
 app.register_blueprint(quiz)
 app.register_blueprint(checkout)
+app.register_blueprint(schema)
+app.register_blueprint(exercises)
 
 # Configure the sender address
 app.config['MAIL_DEFAULT_SENDER'] = 'kontakta@scandifit.se'
