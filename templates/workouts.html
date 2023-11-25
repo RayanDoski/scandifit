@@ -5,18 +5,41 @@
 {{ super() }}
 <section class="workouts">
     <article>
-        <h1>Alla våra övningar</h1>
+        <h1>
+            {% if all == 'selected' %}
+                Alla
+            {% elif cardio == 'selected' %}
+                Cardio
+            {% elif chest == 'selected' %}
+                Bröst
+            {% elif triceps == 'selected' %}
+                Triceps
+            {% elif biceps == 'selected' %}
+                Biceps
+            {% elif back == 'selected' %}
+                Rygg
+            {% elif shoulders == 'selected' %}
+                Axlar
+            {% elif stomach == 'selected' %}
+                Mage
+            {% elif legs == 'selected' %}
+                Ben
+            {% else %}
+                Alla
+            {% endif %}
+            Övningar
+        </h1>
         <form action="" method="post">
             <select name="order-workouts" id="">
                 <option value="alla" {{ all }}>Alla</option>
-                <option value="five" {{ cardio }}>Cardio</option>
-                <option value="four" {{ chest }}>Bröst</option>
-                <option value="three" {{ triceps }}>Triceps</option>
-                <option value="two" {{ biceps }}>Biceps</option>
-                <option value="one" {{ back }}>Rygg</option>
-                <option value="one" {{ shoulders }}>Axlar</option>
-                <option value="one" {{ stomach }}>Mage</option>
-                <option value="one" {{ legs }}>Ben</option>
+                <option value="cardio" {{ cardio }}>Cardio</option>
+                <option value="chest" {{ chest }}>Bröst</option>
+                <option value="triceps" {{ triceps }}>Triceps</option>
+                <option value="biceps" {{ biceps }}>Biceps</option>
+                <option value="rygg" {{ back }}>Rygg</option>
+                <option value="axlar" {{ shoulders }}>Axlar</option>
+                <option value="mage" {{ stomach }}>Mage</option>
+                <option value="ben" {{ legs }}>Ben</option>
             </select>
             <button type="submit">Updatera</button>
         </form>

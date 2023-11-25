@@ -128,121 +128,122 @@ def schedual():
 
         #what do they want to priotitise
         if more_of_what == 'chest':
-            added_exercise = create_exercise(chest_exercise[0][0], chest_exercise_list[0][1], sets, reps)
-            added_exercise_two = create_exercise(chest_exercise[1][0], chest_exercise_list[1][1], sets, reps)
-            added_exercise_three = create_exercise(chest_exercise[2][0], chest_exercise_list[2][1], sets, reps)
+            added_exercise = create_exercise(chest_exercise[0][0], chest_exercise_list[0][1], chest_exercise_list[0][2], sets, reps)
+            added_exercise_two = create_exercise(chest_exercise[1][0], chest_exercise_list[1][1], chest_exercise_list[1][2], sets, reps)
+            added_exercise_three = create_exercise(chest_exercise[2][0], chest_exercise_list[2][1], chest_exercise_list[2][2], sets, reps)
         elif more_of_what == 'arms':
-            added_exercise = create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], sets, reps)
-            added_exercise_two = create_exercise(chest_exercise[1][0], chest_exercise[1][1], sets, reps)
-            added_exercise_three = create_exercise(biceps_exercise[2][0], biceps_exercise[2][1], sets, reps)
+            added_exercise = create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps)
+            added_exercise_two = create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)
+            added_exercise_three = create_exercise(biceps_exercise[2][0], biceps_exercise[2][1], biceps_exercise[2][2], sets, reps)
         elif more_of_what == 'stomach':
-            added_exercise = create_exercise(mage_exercise[0][0], mage_exercise[0][1], sets, reps)
-            added_exercise_two = create_exercise(mage_exercise[1][0], mage_exercise[1][1], sets, reps)
+            added_exercise = create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)
+            added_exercise_two = create_exercise(mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], sets, reps)
             added_exercise_three = ''
         else:
             # more_of_what == 'legs'
-            added_exercise = create_exercise(legs_exercise[0][0], legs_exercise[0][1], sets, reps)
-            added_exercise_two = create_exercise(legs_exercise[1][0], legs_exercise[1][1], sets, reps)
+            added_exercise = create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)
+            added_exercise_two = create_exercise(legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps)
             added_exercise_three = ''
 
         #How Manny Training sessions per Week
         if training_sessions_per_week == 1:
             schedual = f'''
                 <h2>Första TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
-                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], sets, reps)}
-                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], sets, reps)}
-                {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], sets, reps)}
-                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], sets, reps)}
-                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], sets, reps)}
-                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], sets, reps)}
-                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], sets, reps)}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
+ 
+                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
+                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}
+                {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps)}
+                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}
+                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}
+                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}
+                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}
                         '''
         elif training_sessions_per_week == 2:
             schedual = f'''
                 <h2>Första TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')} 
 
-                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], sets, reps)}
-                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], sets, reps)}
-                {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], sets, reps)}
+                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
+                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}
+                {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps)}
 
                 <h2>Andra TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], sets, reps)}
-                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], sets, reps)}
-                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], sets, reps)}
-                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], sets, reps)}
+                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}
+                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}
+                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}
+                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}
                 '''
         elif training_sessions_per_week == 3:
             schedual = f'''
                 <h2>Första TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}  
 
-                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], sets, reps)}
+                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
                 {added_exercise}
-                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], sets, reps)}
+                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}
 
                 <h2>Andra TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}  
 
-                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], sets, reps)}
-                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], sets, reps)}
-                {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], sets, reps)}
+                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}
+                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}
+                {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps)}
 
                 <h2>Tredje TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], sets, reps)}
-                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], sets, reps)}
-                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], sets, reps)}
+                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}
+                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}
+                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
                 '''
         elif training_sessions_per_week == 4:
             schedual = f'''
                 <h2>Första TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
                 
-                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], sets, reps)}
-                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], sets, reps)}
+                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
+                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}
                 {create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], sets, reps)}
 
                 <h2>Andra TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')} 
 
-                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], sets, reps)}
-                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], sets, reps)}
+                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}
+                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}
                 {create_exercise(axlar_exercise[0][0], axlar_exercise[0][1], sets, reps)}
 
                 <h2>Tredje TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')} 
 
-                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], sets, reps)}
-                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], sets, reps)}
+                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}
+                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}
                 {create_exercise(legs_exercise[1][0], legs_exercise[1][1], sets, reps)}
 
                 <h2>Fjärde TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
                 
                 {added_exercise}
                 {added_exercise_two}
@@ -251,43 +252,43 @@ def schedual():
         elif training_sessions_per_week == 5:
             schedual = f'''
                 <h2>Första TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], sets, reps)}
-                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], sets, reps)}
+                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
+                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}
                 {create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], sets, reps)}
 
                 <h2>Andra TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], sets, reps)}
-                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], sets, reps)}
+                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}
+                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}
                 {create_exercise(axlar_exercise[0][0], axlar_exercise[0][1], sets, reps)}
 
                 <h2>Tredje TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], sets, reps)}
+                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}
                 {create_exercise(legs_exercise[1][0], legs_exercise[1][1], sets, reps)}
 
                 <h2>Fjärde TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')} 
 
-                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], sets, reps)}
+                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}
                 {create_exercise(mage_exercise[1][0], mage_exercise[1][1], sets, reps)}
 
                 <h2>Femte TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
                 {added_exercise}
                 {added_exercise_two}
@@ -296,109 +297,109 @@ def schedual():
         elif training_sessions_per_week == 6:
             schedual = f'''
                 <h2>Första TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(chest_exercise[0][0], chest_exercise[0][1], sets, reps)}
-                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], sets, reps)}
-                {create_exercise(chest_exercise[2][0], chest_exercise[2][1], sets, reps)}
+                {create_exercise(chest_exercise[0][0], chest_exercise[0][1], chest_exercise[0][2], sets, reps)}
+                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
+                {create_exercise(chest_exercise[2][0], chest_exercise[2][1], chest_exercise[2][2], sets, reps)}
 
                 <h2>Andra TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], sets, reps)}
-                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], sets, reps)}
+                {create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps)}
+                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}
 
                 <h2>Tredje TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(axlar_exercise[0][0], axlar_exercise[0][1], sets, reps)}
-                {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], sets, reps)}
+                {create_exercise(axlar_exercise[0][0], axlar_exercise[0][1], axlar_exercise[0][2], sets, reps)}
+                {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps)}
                 
                 <h2>Fjärde TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], sets, reps)}
-                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], sets, reps)}
+                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}
+                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}
 
                 <h2>Femte TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], sets, reps)}
-                {create_exercise(mage_exercise[1][0], mage_exercise[1][1], sets, reps)}
+                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}
+                {create_exercise(mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], sets, reps)}
 
                 <h2>Sjätte TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], sets, reps)}
-                {create_exercise(legs_exercise[1][0], legs_exercise[1][1], sets, reps)}
+                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}
+                {create_exercise(legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps)}
                 '''
         else:
             schedual = f'''
                 <h2>Chest - TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], sets, reps)}
-                {create_exercise(chest_exercise[0][0], chest_exercise[0][1], sets, reps)}
-                {create_exercise(chest_exercise[2][0], chest_exercise[2][1], sets, reps)}
+                {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
+                {create_exercise(chest_exercise[0][0], chest_exercise[0][1], chest_exercise[0][2], sets, reps)}
+                {create_exercise(chest_exercise[2][0], chest_exercise[2][1], chest_exercise[2][2], sets, reps)}
                 
                 <h2>Triceps - TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')} 
 
-                {create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], sets, reps)}
-                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], sets, reps)}                        
+                {create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps)}
+                {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}                        
 
                 <h2>Axlar - TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(axlar_exercise[0][0], axlar_exercise[0][1], sets, reps)}                        
-                {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], sets, reps)}                        
+                {create_exercise(axlar_exercise[0][0], axlar_exercise[0][1], axlar_exercise[0][2], sets, reps)}                        
+                {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps)}                        
                 
                 <h2>Rygg - TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], sets, reps)}                        
-                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], sets, reps)}                        
+                {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}                        
+                {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}                        
 
                 <h2>Mage - TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}
 
-                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], sets, reps)}                        
-                {create_exercise(mage_exercise[1][0], mage_exercise[1][1], sets, reps)}                        
+                {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}                        
+                {create_exercise(mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], sets, reps)}                        
 
                 <h2>Ben - TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')}                        
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')}                       
 
-                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], sets, reps)}                        
-                {create_exercise(legs_exercise[1][0], legs_exercise[1][1], sets, reps)}                        
+                {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}                        
+                {create_exercise(legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps)}                        
 
                 <h2>Extra - TräningsPass:</h2>
-                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio, '')}                        
-                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio, '')} 
+                {create_exercise(cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], cardio, '')}                        
+                {create_exercise(cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], cardio, '')} 
 
                 {added_exercise}                        
                 {added_exercise_two}                        
@@ -417,11 +418,11 @@ def get_exercise_from_database(exercise):
     return exercise_data
 
 #generating html code for exercise
-def create_exercise(link, exercise, sets, reps):
+def create_exercise(link, exercise, muscle_group, sets, reps):
     training_exercise = f'''
         <aside>
             <h3><a href="workout?id={ link }">{ exercise }</a>{ sets }{ reps }</h3>
-            <a href="">Visa Alternativ Övningar</a>
+            <a href="/workouts?muskelgrupp={ muscle_group }">Visa Alternativ Övningar</a>
         </aside>
     '''
     return training_exercise
