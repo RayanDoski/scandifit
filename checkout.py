@@ -1,6 +1,8 @@
 import stripe
 from flask import redirect, Blueprint, render_template, session, request
 from db import db, cursor
+#to get the cart values 
+from cart import show_products_in_cart
 
 checkout = Blueprint('checkout', __name__)
 
@@ -97,13 +99,7 @@ def delete_item():
 
 @checkout.route("/product")
 def product():
-    if 'product-id' in session:
-        ids = session['product-id']
-        cursor.execute('SELECT * FROM products WHERE id IN %s', (ids,))
-        product_info = cursor.fetchall()
-        return render_template('product-page.html', product_info = product_info)
-    
-    return render_template('product-page.html')
+    return render_template('product-page.html', product_info=show_products_in_cart())
 
 @checkout.route('/add-product', methods=['post', 'get'])
 def add_product():

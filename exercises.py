@@ -1,18 +1,13 @@
 from flask import Blueprint, render_template, request, session, redirect
 from db import cursor, db
+#to get the cart values 
+from cart import show_products_in_cart
 
 exercises = Blueprint('exercises', __name__)
 
 #workouts
 @exercises.route("/workouts", methods=['GET', 'POST'])
 def workouts():
-    #to show add to card info
-    product_info = None
-    if 'product-id' in session:
-        ids = session['product-id']
-        cursor.execute('SELECT * FROM products WHERE id IN %s', (ids,))
-        product_info = cursor.fetchall()
-
     if 'user_id' in session:
         namn = session['namn']
         #getting specific selected workout
@@ -30,25 +25,19 @@ def workouts():
             workouts = selectation(None)
             values = which_muscle_group(None)
             
-        return render_template('workouts.html', workouts=workouts, product_info=product_info, all=values[8], cardio=values[1], chest=values[2], triceps=values[3], biceps=values[4], back=values[5], shoulders=values[6], stomach=values[7], legs=values[0], namn=namn)
+        return render_template('workouts.html', workouts=workouts, product_info=show_products_in_cart(), all=values[8], cardio=values[1], chest=values[2], triceps=values[3], biceps=values[4], back=values[5], shoulders=values[6], stomach=values[7], legs=values[0], namn=namn)
     else:
         return redirect('/login')
 
 @exercises.route("/workout")
 def workout():
-    #to show add to card info
-    product_info = None
-    if 'product-id' in session:
-        ids = session['product-id']
-        cursor.execute('SELECT * FROM products WHERE id IN %s', (ids,))
-        product_info = cursor.fetchall()
     #om användare är inloggad
     if 'user_id' in session:
         namn = session['namn']
         id = request.args.get('id')
         cursor.execute('select * from workouts where id = %s', (id))
         workout = cursor.fetchone()
-        return render_template('workout.html', workout=workout, product_info=product_info, namn=namn)
+        return render_template('workout.html', workout=workout, product_info=show_products_in_cart(), namn=namn)
     else:
         return redirect('/login')
 

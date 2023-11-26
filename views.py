@@ -4,18 +4,14 @@ from flask import Blueprint, render_template, request, session, redirect
 from db import cursor, db
 from flask_mail import Mail, Message
 from db import mail
+#to get the cart values 
+from cart import show_products_in_cart
 
 views = Blueprint('views', __name__)
 
 @views.route("/")
 def home():
-    #to show add to card info
-    product_info = None
-    if 'product-id' in session:
-        ids = session['product-id']
-        cursor.execute('SELECT * FROM products WHERE id IN %s', (ids,))
-        product_info = cursor.fetchall()
-    return render_template('index.html', product_info=product_info)
+    return render_template('index.html', product_info=show_products_in_cart())
 
 @views.route("/send-message", methods=['GET', 'POST'])
 def send_message():
@@ -32,14 +28,7 @@ def send_message():
 
 @views.route("/jobb")
 def jobb():
-    #to show add to card info
-    product_info = None
-    if 'product-id' in session:
-        ids = session['product-id']
-        cursor.execute('SELECT * FROM products WHERE id IN %s', (ids,))
-        product_info = cursor.fetchall()
-
-    return render_template('jobb.html', product_info=product_info)
+    return render_template('jobb.html', product_info=show_products_in_cart())
 
 @views.route("/signup")
 def signup():
@@ -51,40 +40,16 @@ def login():
 
 @views.route("/order-complete")
 def order_complete():
-    #to show add to card info
-    product_info = None
-    if 'product-id' in session:
-        ids = session['product-id']
-        cursor.execute('SELECT * FROM products WHERE id IN %s', (ids,))
-        product_info = cursor.fetchall()
-    return render_template('order-complete.html', product_info=product_info)
+    return render_template('order-complete.html', product_info=show_products_in_cart())
 
 @views.route("/blog")
 def blog():
-    #to show add to card info
-    product_info = None
-    if 'product-id' in session:
-        ids = session['product-id']
-        cursor.execute('SELECT * FROM products WHERE id IN %s', (ids,))
-        product_info = cursor.fetchall()
-    return render_template('blog.html', product_info=product_info)
+    return render_template('blog.html', product_info=show_products_in_cart())
 
 @views.route("/secretespolicy")
 def secretespolicy():
-    #to show add to card info
-    product_info = None
-    if 'product-id' in session:
-        ids = session['product-id']
-        cursor.execute('SELECT * FROM products WHERE id IN %s', (ids,))
-        product_info = cursor.fetchall()
-    return render_template('secretespolicy.html', product_info=product_info)
+    return render_template('secretespolicy.html', product_info=show_products_in_cart())
 
 @views.route("/terms_of_use")
 def terms_of_use():
-    #to show add to card info
-    product_info = None
-    if 'product-id' in session:
-        ids = session['product-id']
-        cursor.execute('SELECT * FROM products WHERE id IN %s', (ids,))
-        product_info = cursor.fetchall()
-    return render_template('terms-of-use.html', product_info=product_info)
+    return render_template('terms-of-use.html', product_info=show_products_in_cart())

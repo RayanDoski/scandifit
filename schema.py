@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, session, redirect
 from db import cursor, db
+#to get the cart values 
+from cart import show_products_in_cart
 
 schema = Blueprint('schema', __name__)
 
@@ -7,13 +9,6 @@ schema = Blueprint('schema', __name__)
 @schema.route("/schedual", methods=["GET","POST"])
 def schedual():
     
-    #to show add to card info
-    product_info = None
-    if 'product-id' in session:
-        ids = session['product-id']
-        cursor.execute('SELECT * FROM products WHERE id IN %s', (ids,))
-        product_info = cursor.fetchall()
-
     #om användare är inloggad
     if 'user_id' in session:
         namn = session['namn']
@@ -406,7 +401,7 @@ def schedual():
                 {added_exercise_three}
                 '''
             
-        return render_template('profile-schema.html', product_info=product_info, quiz_info=quiz_info, schedual=schedual, namn=namn)
+        return render_template('profile-schema.html', product_info=show_products_in_cart(), quiz_info=quiz_info, schedual=schedual, namn=namn)
     else:
         return redirect('/login')
     

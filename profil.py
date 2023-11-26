@@ -1,17 +1,12 @@
 from flask import Blueprint, render_template, request, session, redirect
 from db import cursor, db
+#to get the cart values 
+from cart import show_products_in_cart
 
 profil = Blueprint('profil', __name__)
         
 @profil.route("/profile-information")
 def profile_information():
-    #to show add to card info
-    product_info = None
-    if 'product-id' in session:
-        ids = session['product-id']
-        cursor.execute('SELECT * FROM products WHERE id IN %s', (ids,))
-        product_info = cursor.fetchall()
-
     if 'user_id' in session:
         namn = session['namn']
         email = session['email']
@@ -21,19 +16,13 @@ def profile_information():
         if telefonnummer == None:
             telefonnummer = 'Information Saknas'
 
-        return render_template('profile-information.html', namn=namn, email=email, telefonnummer=telefonnummer, password=password, product_info=product_info)
+        return render_template('profile-information.html', namn=namn, email=email, telefonnummer=telefonnummer, password=password, product_info=show_products_in_cart())
     else:
         return redirect('/login')
 
 
 @profil.route("/profile-adress")
 def profile_adress():
-    #to show add to card info
-    product_info = None
-    if 'product-id' in session:
-        ids = session['product-id']
-        cursor.execute('SELECT * FROM products WHERE id IN %s', (ids,))
-        product_info = cursor.fetchall()
     if 'user_id' in session:
         namn = session['namn']
         gatuadres = session['gatuadres']
@@ -49,7 +38,7 @@ def profile_adress():
         if stad == None:
             stad = 'Information Saknas'
         
-        return render_template('profile-adress.html', gatuadres=gatuadres, postnummer=postnummer, stad=stad, namn=namn, product_info=product_info)
+        return render_template('profile-adress.html', gatuadres=gatuadres, postnummer=postnummer, stad=stad, namn=namn, product_info=show_products_in_cart())
     else:
         return redirect('/login')
     
