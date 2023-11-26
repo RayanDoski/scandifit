@@ -29,22 +29,12 @@ def registreringar():
         email = request.form.get('email')
         telefonnummer = request.form.get('telefonnummer')
         password = request.form.get('password')
-        
-        # Does the informaiton already exist?
-        cursor.execute("SELECT * FROM users WHERE email=%s", (email))
-        does_mail_exist = cursor.fetchall()
 
-        if does_mail_exist:
-            mail_exists = True
+        mail_exists = does_mail_already_exist(email, namn, telefonnummer, password)
+        if mail_exists == True:
             return render_template('login-signup.html', mail_exists=mail_exists, email=email)
-        else:
-            cursor.execute('insert into users (namn, email, telephonenumber, password) values (%s, %s, %s, %s)', (namn, email, telefonnummer, password))
-            db.commit()
-            # for mail sending 
-            msg = Message('Vi Har Tagit Emot Ditt Medelande', recipients=[email])
-            msg.html = render_template('mail_welcome.html', namn=namn)
-            mail.send(msg)  # Use 'mail', not 'Mail'
-            return redirect('/login')
+
+        return redirect('/login')
 
 
 #checking if user is logged in and passing values
@@ -55,3 +45,20 @@ def is_logged_in():
         return session['user_id'], data[1], data[2], data[3], data[4], data[5], data[6], data[7]
     else:
         return None
+    
+def does_mail_already_exist(email, namn, telefonnummer, password):
+    # Does the informaiton already exist?
+    cursor.execute("SELECT * FROM users WHERE email=%s", (email))
+    does_mail_exist = cursor.fetchall()
+
+    if does_mail_exist:
+        mail_exists = True
+        return mail_exists
+    else:
+        cursor.execute('insert into users (namn, email, telephonenumber, password) values (%s, %s, %s, %s)', (namn, email, telefonnummer, password))
+        db.commit()
+        
+        # for mail sending 
+        msg = Message('Vi Har Tagit Emot Ditt Medelande', recipients=[email])
+        msg.html = render_template('mail_welcome.html', namn=namn)
+        mail.send(msg)

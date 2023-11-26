@@ -8,6 +8,8 @@ quiz = Blueprint('quiz', __name__)
 @quiz.route("/quiz", methods=['GET', 'POST'])
 def quizing():
     if request.method == "POST":
+
+        #getting all the values
         age = request.form.get('age')
         goal = request.form.get('goal')
         body_type = request.form.get('body-type')
@@ -41,15 +43,8 @@ def quizing():
 
         if user:
             session['user_id'] = user[0]
-            session['namn'] = user[1]
-            session['email'] = user[2]
-            session['telefonnummer'] = user[3]
-            session['password'] = user[4]
-            session['gatuadres'] = user[5]
-            session['postnummer'] = user[6]
-            session['stad'] = user[7]
             # for mail sending 
-            msg = Message('Vi Har Tagit Emot Ditt Medelande', recipients=[email])
+            msg = Message('Välkommen Till Scandifit', recipients=[email])
             msg.html = render_template('mail_welcome.html', namn=name)
             mail.send(msg)  # Use 'mail', not 'Mail'
             return redirect('/profile-information')
