@@ -2,44 +2,53 @@ from flask import Blueprint, render_template, request, session, redirect
 from db import cursor, db
 #to get the cart values 
 from cart import show_products_in_cart
+#checking if user is logged in
+from login_register import is_logged_in
 
 exercises = Blueprint('exercises', __name__)
 
 #workouts
 @exercises.route("/workouts", methods=['GET', 'POST'])
 def workouts():
-    if 'user_id' in session:
-        namn = session['namn']
-        #getting specific selected workout
-        if request.method == 'POST':
-            selected_target = request.form.get('order-workouts')
-            values = which_muscle_group(selected_target)
-            workouts = selectation(selected_target)
-
-        elif request.args.get('muskelgrupp') != None:
-            selected_target = request.args.get('muskelgrupp')
-            values = which_muscle_group(selected_target)
-            workouts = selectation(selected_target)
-            
-        else:
-            workouts = selectation(None)
-            values = which_muscle_group(None)
-            
-        return render_template('workouts.html', workouts=workouts, product_info=show_products_in_cart(), all=values[8], cardio=values[1], chest=values[2], triceps=values[3], biceps=values[4], back=values[5], shoulders=values[6], stomach=values[7], legs=values[0], namn=namn)
-    else:
+    
+    #are they logged in?
+    user_data = is_logged_in()
+    if user_data is None:
         return redirect('/login')
+
+    namn = user_data[1]
+    #getting specific selected workout
+    if request.method == 'POST':
+        selected_target = request.form.get('order-workouts')
+        values = which_muscle_group(selected_target)
+        workouts = selectation(selected_target)
+
+    elif request.args.get('muskelgrupp') != None:
+        selected_target = request.args.get('muskelgrupp')
+        values = which_muscle_group(selected_target)
+        workouts = selectation(selected_target)
+        
+    else:
+        workouts = selectation(None)
+        values = which_muscle_group(None)
+        
+    return render_template('workouts.html', workouts=workouts, product_info=show_products_in_cart(), all=values[8], cardio=values[1], chest=values[2], triceps=values[3], biceps=values[4], back=values[5], shoulders=values[6], stomach=values[7], legs=values[0], namn=namn)
+    
 
 @exercises.route("/workout")
 def workout():
-    #om användare är inloggad
-    if 'user_id' in session:
-        namn = session['namn']
-        id = request.args.get('id')
-        cursor.execute('select * from workouts where id = %s', (id))
-        workout = cursor.fetchone()
-        return render_template('workout.html', workout=workout, product_info=show_products_in_cart(), namn=namn)
-    else:
+
+    #are they logged in?
+    user_data = is_logged_in()
+    if user_data is None:
         return redirect('/login')
+    
+    namn = user_data[1]
+    id = request.args.get('id')
+    cursor.execute('select * from workouts where id = %s', (id))
+    workout = cursor.fetchone()
+    return render_template('workout.html', workout=workout, product_info=show_products_in_cart(), namn=namn)
+    
 
 #show exercises for specific muscle group
 def selectation(selected_value):

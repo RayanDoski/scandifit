@@ -16,14 +16,6 @@ def login_processing():
 
         if user:
             session['user_id'] = user[0]
-            session['namn'] = user[1]
-            session['email'] = user[2]
-            session['telefonnummer'] = user[3]
-            session['password'] = user[4]
-            session['gatuadres'] = user[5]
-            session['postnummer'] = user[6]
-            session['stad'] = user[7]
-
             return redirect('/profile-information')
         else:
             wrong_information = True
@@ -53,4 +45,13 @@ def registreringar():
             msg.html = render_template('mail_welcome.html', namn=namn)
             mail.send(msg)  # Use 'mail', not 'Mail'
             return redirect('/login')
-        
+
+
+#checking if user is logged in and passing values
+def is_logged_in():
+    if 'user_id' in session:
+        cursor.execute('select * from users where id = %s', (session['user_id']))
+        data = cursor.fetchone()
+        return session['user_id'], data[1], data[2], data[3], data[4], data[5], data[6], data[7]
+    else:
+        return None
