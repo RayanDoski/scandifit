@@ -15,250 +15,76 @@ let progress_bar = document.querySelector('#progress-bar')
 let progress_count = document.querySelector('#progress-count')
 
 function slide_nr() {
+    const slides = [
+        one, two, three, four, five, six, seven, eight, nine, ten, eleven
+    ];
+
     if (slide_count < 0) {
-        slide_count = 0
-    } else if (slide_count == 0) {
-        one.classList.add('show')
-        two.classList.remove('show')
-        three.classList.remove('show')
-        four.classList.remove('show')
-        five.classList.remove('show')
-        six.classList.remove('show')
-        seven.classList.remove('show')
-        eight.classList.remove('show')
-        nine.classList.remove('show')
-        ten.classList.remove('show')
-        eleven.classList.remove('show')
-        progress_bar.style.width = '0%'
-        progress_count.innerText = '0/10'
-    } else if (slide_count == 1) {
-        one.classList.remove('show')
-        two.classList.add('show')
-        three.classList.remove('show')
-        four.classList.remove('show')
-        five.classList.remove('show')
-        six.classList.remove('show')
-        seven.classList.remove('show')
-        eight.classList.remove('show')
-        nine.classList.remove('show')
-        ten.classList.remove('show')
-        eleven.classList.remove('show')
-        progress_bar.style.width = '10%'
-        progress_count.innerText = '1/10'
-    } else if (slide_count == 2) {
-        one.classList.remove('show')
-        two.classList.remove('show')
-        three.classList.add('show')
-        four.classList.remove('show')
-        five.classList.remove('show')
-        six.classList.remove('show')
-        seven.classList.remove('show')
-        eight.classList.remove('show')
-        nine.classList.remove('show')
-        ten.classList.remove('show')
-        eleven.classList.remove('show')
-        progress_bar.style.width = '20%'
-        progress_count.innerText = '2/10'
-    } else if (slide_count == 3) {
-        one.classList.remove('show')
-        two.classList.remove('show')
-        three.classList.remove('show')
-        four.classList.add('show')
-        five.classList.remove('show')
-        six.classList.remove('show')
-        seven.classList.remove('show')
-        eight.classList.remove('show')
-        nine.classList.remove('show')
-        ten.classList.remove('show')
-        eleven.classList.remove('show')
-        progress_bar.style.width = '30%'
-        progress_count.innerText = '3/10'
-    } else if (slide_count == 4) {
-        one.classList.remove('show')
-        two.classList.remove('show')
-        three.classList.remove('show')
-        four.classList.remove('show')
-        five.classList.add('show')
-        six.classList.remove('show')
-        seven.classList.remove('show')
-        eight.classList.remove('show')
-        nine.classList.remove('show')
-        ten.classList.remove('show')
-        eleven.classList.remove('show')
-        progress_bar.style.width = '40%'
-        progress_count.innerText = '4/10'
-    } else if (slide_count == 5) {
-        one.classList.remove('show')
-        two.classList.remove('show')
-        three.classList.remove('show')
-        four.classList.remove('show')
-        five.classList.remove('show')
-        six.classList.add('show')
-        seven.classList.remove('show')
-        eight.classList.remove('show')
-        nine.classList.remove('show')
-        ten.classList.remove('show')
-        eleven.classList.remove('show')
-        progress_bar.style.width = '50%'
-        progress_count.innerText = '5/10'
-    } else if (slide_count == 7) {
-        one.classList.remove('show')
-        two.classList.remove('show')
-        three.classList.remove('show')
-        four.classList.remove('show')
-        five.classList.remove('show')
-        six.classList.remove('show')
-        seven.classList.add('show')
-        eight.classList.remove('show')
-        nine.classList.remove('show')
-        ten.classList.remove('show')
-        eleven.classList.remove('show')
-        progress_bar.style.width = '60%'
-        progress_count.innerText = '6/10'
-    } else if (slide_count == 8) {
-        one.classList.remove('show')
-        two.classList.remove('show')
-        three.classList.remove('show')
-        four.classList.remove('show')
-        five.classList.remove('show')
-        six.classList.remove('show')
-        seven.classList.remove('show')
-        eight.classList.add('show')
-        nine.classList.remove('show')
-        ten.classList.remove('show')
-        eleven.classList.remove('show')
-        progress_bar.style.width = '70%'
-        progress_count.innerText = '7/10'
-    } else if (slide_count == 9) {
-        one.classList.remove('show')
-        two.classList.remove('show')
-        three.classList.remove('show')
-        four.classList.remove('show')
-        five.classList.remove('show')
-        six.classList.remove('show')
-        seven.classList.remove('show')
-        eight.classList.remove('show')
-        nine.classList.add('show')
-        ten.classList.remove('show')
-        eleven.classList.remove('show')
-        progress_bar.style.width = '80%'
-        progress_count.innerText = '8/10'
-    } else if (slide_count == 10) {
-        one.classList.remove('show')
-        two.classList.remove('show')
-        three.classList.remove('show')
-        four.classList.remove('show')
-        five.classList.remove('show')
-        six.classList.remove('show')
-        seven.classList.remove('show')
-        eight.classList.remove('show')
-        nine.classList.remove('show')
-        ten.classList.add('show')
-        eleven.classList.remove('show')
-        progress_bar.style.width = '90%'
-        progress_count.innerText = '9/10'
-    } else if (slide_count == 11) {
-        one.classList.remove('show')
-        two.classList.remove('show')
-        three.classList.remove('show')
-        four.classList.remove('show')
-        five.classList.remove('show')
-        six.classList.remove('show')
-        seven.classList.remove('show')
-        eight.classList.remove('show')
-        nine.classList.remove('show')
-        ten.classList.remove('show')
-        eleven.classList.add('show')
-        progress_bar.style.width = '100%'
-        progress_count.innerText = '10/10'
-    } else if (slide_count > 11) {
-        slide_count = 11
+        slide_count = 0;
+    } else if (slide_count >= slides.length) {
+        slide_count = slides.length - 1;
     }
+
+    for (let i = 0; i < slides.length; i++) {
+        if (i === slide_count) {
+            slides[i].classList.add('show');
+        } else {
+            slides[i].classList.remove('show');
+        }
+    }
+
+    const progressPercentage = (slide_count / (slides.length - 1)) * 100;
+    progress_bar.style.width = `${progressPercentage}%`;
+    progress_count.innerText = `${slide_count + 1}/${slides.length}`;
 }
 
-slide_nr()
+slide_nr();
+
 
 //forward, backwards btns
-let forward = document.querySelector('#go-forward')
-let backwards = document.querySelector('#go-backwards')
-
-forward.addEventListener('click', function() {
+document.querySelector('#go-forward').addEventListener('click', function() {
     slide_count++
     slide_nr()
 })
 
-backwards.addEventListener('click', function() {
+document.querySelector('#go-backwards').addEventListener('click', function() {
     slide_count--
     slide_nr()
 })
 
+function box_clicks(selection, count) {
+    selection.forEach((select, select_index) => {
+        select.addEventListener('click', function (event) {
+    
+            selection.forEach((box) => {
+                box.style.border = 'none';
+            });
+    
+            slide_count = count
+            select.style.border = '5px solid #50C878'
+            slide_nr()
+        })
+    });
+}
+
 //first
 let age = document.querySelectorAll('#ages')
-
-age.forEach((ages, ages_index) => {
-    ages.addEventListener('click', function (event) {
-
-        age.forEach((box) => {
-            box.style.border = 'none';
-        });
-
-        slide_count = 1
-        ages.style.border = '5px solid #50C878'
-        slide_nr()
-    })
-});
+box_clicks(age, 1);
 
 //second
 let goal = document.querySelectorAll('#goal')
-
-goal.forEach(goals => {
-    goals.addEventListener('click', function (event) {
-
-        goal.forEach((box) => {
-            box.style.border = 'none';
-        });
-        
-        goals.style.border = '5px solid #50C878'
-        slide_count = 2
-        slide_nr()
-    })
-});
+box_clicks(goal, 2);
 
 //third
 let din_kroppstyp = document.querySelectorAll('#din-kroppstyp')
-
-din_kroppstyp.forEach(era_kroppstyper => {
-    era_kroppstyper.addEventListener('click', function (event) {
-
-        din_kroppstyp.forEach((box) => {
-            box.style.border = 'none';
-        });
-        
-        era_kroppstyper.style.border = '5px solid #50C878'
-        slide_count = 3
-        slide_nr()
-    })
-});
+box_clicks(din_kroppstyp, 3);
 
 //four
 let problem_area = document.querySelectorAll('#problem-area')
-
-problem_area.forEach(problem_areas => {
-    problem_areas.addEventListener('click', function (event) {
-
-        problem_area.forEach((box) => {
-            box.style.border = 'none';
-        });
-        
-        problem_areas.style.border = '5px solid #50C878'
-        slide_count = 4
-        slide_nr()
-    })
-});
+box_clicks(problem_area, 4);
 
 //five
 let height = document.querySelector('#height-vidare')
-
 height.addEventListener('click', function (event) {
     slide_count = 5
     slide_nr()
@@ -266,75 +92,26 @@ height.addEventListener('click', function (event) {
 
 //six
 let weight = document.querySelector('#weight-vidare')
-
 weight.addEventListener('click', function (event) {
-    slide_count = 7
+    slide_count = 6
     slide_nr()
 })
 
 //seven
 let antal_gng_per_vecka = document.querySelectorAll('#antal-gng-per-vecka')
-
-antal_gng_per_vecka.forEach(a_g_p_v => {
-    a_g_p_v.addEventListener('click', function (event) {
-
-        antal_gng_per_vecka.forEach((box) => {
-            box.style.border = '1px solid #50C878';
-        });
-        
-        a_g_p_v.style.border = '5px solid #50C878'
-        slide_count = 8
-        slide_nr()
-    })
-});
+box_clicks(antal_gng_per_vecka, 7)
 
 //eight
 let foljande_tillstand = document.querySelectorAll('#foljande-tillstand')
-
-foljande_tillstand.forEach(f_t => {
-    f_t.addEventListener('click', function (event) {
-
-        foljande_tillstand.forEach((box) => {
-            box.style.border = 'none';
-        });
-        
-        f_t.style.border = '5px solid #50C878'
-        slide_count = 9
-        slide_nr()
-    })
-});
+box_clicks(foljande_tillstand, 8)
 
 //nine
 let training_place = document.querySelectorAll('#training-place')
-
-training_place.forEach(training_places => {
-    training_places.addEventListener('click', function (event) {
-
-        training_place.forEach((box) => {
-            box.style.border = 'none';
-        });
-        
-        training_places.style.border = '5px solid #50C878'
-        slide_count = 10
-        slide_nr()
-    })
-});
+box_clicks(training_place, 9)
 
 //ten
 let utrustning = document.querySelectorAll('#utrustning')
-
-utrustning.forEach(utrustningar => {
-    utrustningar.addEventListener('click', function (event) {
-
-        utrustning.forEach((box) => {
-            box.style.border = 'none';
-        });
-        
-        utrustningar.style.border = '5px solid #50C878'
-        slide_count = 11
-        slide_nr()
-    })
-});
+box_clicks(utrustning, 10)
 
 // form validation
 document.getElementById('form-quiz').addEventListener('submit', function(event) {

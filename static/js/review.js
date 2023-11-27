@@ -14,55 +14,31 @@ review_popup_background.addEventListener('click', function() {
 
 // stars review
 
-let stars = document.querySelectorAll('#stars')
-let stars_rating = document.querySelector('#stars-rating')
+// stars review
 
-stars[0].style.color = '#50C878'
-stars[1].style.color = '#333'
-stars[2].style.color = '#333'
-stars[3].style.color = '#333'
-stars[4].style.color = '#333'
+let stars = document.querySelectorAll('#stars');
+let stars_rating = document.querySelector('#stars-rating');
 
-stars[0].addEventListener('click', function() {
-    stars[0].style.color = '#50C878'
-    stars[1].style.color = '#333'
-    stars[2].style.color = '#333'
-    stars[3].style.color = '#333'
-    stars[4].style.color = '#333'
-    stars_rating.innerText = 'Betyg: 1/5'
-})
-stars[1].addEventListener('click', function() {
-    stars[0].style.color = '#50C878'
-    stars[1].style.color = '#50C878'
-    stars[2].style.color = '#333'
-    stars[3].style.color = '#333'
-    stars[4].style.color = '#333'
-    stars_rating.innerText = 'Betyg: 2/5'
-})
-stars[2].addEventListener('click', function() {
-    stars[0].style.color = '#50C878'
-    stars[1].style.color = '#50C878'
-    stars[2].style.color = '#50C878'
-    stars[3].style.color = '#333'
-    stars[4].style.color = '#333'
-    stars_rating.innerText = 'Betyg: 3/5'
-})
-stars[3].addEventListener('click', function() {
-    stars[0].style.color = '#50C878'
-    stars[1].style.color = '#50C878'
-    stars[2].style.color = '#50C878'
-    stars[3].style.color = '#50C878'
-    stars[4].style.color = '#333'
-    stars_rating.innerText = 'Betyg: 4/5'
-})
-stars[4].addEventListener('click', function() {
-    stars[0].style.color = '#50C878'
-    stars[1].style.color = '#50C878'
-    stars[2].style.color = '#50C878'
-    stars[3].style.color = '#50C878'
-    stars[4].style.color = '#50C878'
-    stars_rating.innerText = 'Betyg: 5/5'
-})
+stars.forEach((star, index) => {
+    star.addEventListener('click', function() {
+        resetStarsColor();
+        setStarsColor(index);
+        stars_rating.innerText = `Betyg: ${index + 1}/5`;
+    });
+});
+
+function resetStarsColor() {
+    stars.forEach(star => {
+        star.style.color = '#333';
+    });
+}
+
+function setStarsColor(index) {
+    for (let i = 0; i <= index; i++) {
+        stars[i].style.color = '#50C878';
+    }
+}
+
 
 // form validation
 document.getElementById('form-review').addEventListener('submit', function(event) {

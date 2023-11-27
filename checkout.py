@@ -60,7 +60,7 @@ def create_checkout_session():
 
             #phonenr reqired
             phone_number_collection={"enabled": True},
-
+            
             #add collection
             billing_address_collection='required',
 
