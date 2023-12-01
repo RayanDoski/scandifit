@@ -23,7 +23,7 @@
             <li><a href="/blog">Blog</a></li>
             <li><a href="/">Vitamin Pro</a></li>
             <li><a href="https://www.postnord.se/vara-verktyg/spara-brev-paket-och-pall">Spåra Order</a></li>
-            <a href="{% if 'user_id' in session %} /profile-information {% else %} /quiz {% endif %}" class="button-link">{% if 'user_id' in session %} profil {% else %} Individuell träningsplan {% endif %}</a>
+            <a href="{% if 'user_id' in session %} /schedual {% else %} /quiz {% endif %}" class="button-link">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
         </ul>
     </section>
     <!--menu End-->
@@ -125,7 +125,7 @@
                 </div>
 
                 <aside>
-                    <a href="{% if 'user_id' in session %} /profile-information {% else %} /login {% endif %}">
+                    <a href="{% if 'user_id' in session %} /schedual {% else %} /login {% endif %}">
                         <img src="{{ url_for('static', filename='pictures/icons/user.png') }}" alt="Logga In">
                         <h3>{% if 'user_id' in session %} profil {% else %} Logga In {% endif %}</h3>
                     </a>
@@ -138,7 +138,7 @@
                         <img src="{{ url_for('static', filename='pictures/icons/cart.png') }}" alt="Kundvagn">
                         <h3>Kundvagn</h3>
                     </a>
-                    <a class="button-link" href="{% if 'user_id' in session %} /profile-information {% else %} /quiz {% endif %}">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
+                    <a class="button-link" href="{% if 'user_id' in session %} /schedual {% else %} /quiz {% endif %}">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
                     <img src="{{ url_for('static', filename='pictures/icons/hamburger-menu.png') }}" alt="Hamburger Menu" id="hamburger-menu">
                 </aside>
             </main>
@@ -151,7 +151,7 @@
     <footer>
         <aside>
             <img src="{{ url_for('static', filename='pictures/logo-footer.png') }}" alt="Logo">
-            <a href="{% if 'user_id' in session %} /profile-information {% else %} /quiz {% endif %}">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
+            <a href="{% if 'user_id' in session %} /schedual {% else %} /quiz {% endif %}">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
         </aside>
         <div class="line"></div>
         <main>
