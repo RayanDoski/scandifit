@@ -9,8 +9,8 @@ login_register = Blueprint('login_register', __name__)
 @login_register.route('/login-processing', methods=['GET', 'POST'])
 def login_processing():
     if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
+        email = request.form.get('email').lower()
+        password = request.form.get('password').lower()
         cursor.execute('select * from users where password = %s and email = %s', (password, email))
         user = cursor.fetchone()
 
@@ -26,9 +26,9 @@ def login_processing():
 def registreringar():
     if request.method == 'POST':
         namn = request.form.get('namn')
-        email = request.form.get('email')
+        email = request.form.get('email').lower()
         telefonnummer = request.form.get('telefonnummer')
-        password = request.form.get('password')
+        password = request.form.get('password').lower()
 
         mail_exists = does_mail_already_exist(email, namn, telefonnummer, password)
         if mail_exists == True:
