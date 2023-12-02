@@ -23,10 +23,11 @@ def quizing():
         utrustning = request.form.get('utrustning').lower()
         name = request.form.get('name').lower()
         email = request.form.get('email').lower()
+        phone = request.form.get('telefonnummer')
         password = request.form.get('pass').lower()
 
         #insert into users table
-        cursor.execute('insert into users (namn, email, password) values (%s, %s, %s)', (name, email, password))
+        cursor.execute('insert into users (namn, email, telephonenumber, password) values (%s, %s, %s, %s)', (name, email, phone, password))
         db.commit()
 
         # Retrieve the last inserted user_id
@@ -47,7 +48,7 @@ def quizing():
             msg = Message('Välkommen Till Scandifit', recipients=[email])
             msg.html = render_template('mail_welcome.html', namn=name)
             mail.send(msg)  # Use 'mail', not 'Mail'
-            return redirect('/profile-information')
+            return redirect('/schedual')
         
     else:
         return render_template('quiz.html')
