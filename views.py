@@ -30,14 +30,6 @@ def send_message():
 def jobb():
     return render_template('jobb.html', product_info=show_products_in_cart())
 
-@views.route("/signup")
-def signup():
-    return render_template('login-signup.html')
-
-@views.route("/login")
-def login():
-    return render_template('login-signup.html')
-
 @views.route("/order-complete")
 def order_complete():
     return render_template('order-complete.html', product_info=show_products_in_cart())

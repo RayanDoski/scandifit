@@ -377,7 +377,7 @@ def added_exercises(thier_situation):
         biceps_exercise_list = [27]
         mage_exercise_list = [28, 32]
         legs_exercise_list = [40, 41]
-    elif thier_situation == 'grundläggande utrustning':
+    elif thier_situation == 'Home, Little Equiptment':
         #exercises that fit them (DATABASE ID:S)
         cardio_exercise_list = [43, 42, 44, 45]
         chest_exercise_list = [3, 2, 4]
@@ -390,7 +390,7 @@ def added_exercises(thier_situation):
     else:
         #They have either choosen full equptment or gym
         cardio_exercise_list = [47]
-        chest_exercise_list = [8, 5, 3, 2, 4]
+        chest_exercise_list = [8, 5, 3]
         triceps_exercise_list = [6, 9, 1, 10, 7, 11]
         axlar_exercise_list = [12, 13, 14, 15, 16, 17]
         rygg_exercise_list = [18, 19, 21, 22, 20]

@@ -5,6 +5,14 @@ from db import mail
 
 login_register = Blueprint('login_register', __name__)
 
+@login_register.route("/signup")
+def signup():
+    return render_template('login-signup.html')
+
+@login_register.route("/login")
+def login():
+    return render_template('login-signup.html')
+
 # Logga In 
 @login_register.route('/login-processing', methods=['GET', 'POST'])
 def login_processing():
@@ -16,7 +24,7 @@ def login_processing():
 
         if user:
             session['user_id'] = user[0]
-            return redirect('/profile-information')
+            return redirect('/schedual')
         else:
             wrong_information = True
             return render_template('login-signup.html', wrong_information=wrong_information)
