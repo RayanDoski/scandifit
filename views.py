@@ -38,6 +38,26 @@ def order_complete():
 def blog():
     return render_template('blog.html', product_info=show_products_in_cart())
 
+@views.route("/blog/bygg_muskelmassa_snabbt_med_våra_magiska_tips")
+def blog_post():
+    return render_template('blog-post.html', product_info=show_products_in_cart())
+
+@views.route("/blog/upptäck_hemligheterna_bakom_effektiv_hemmaträning")
+def blog_post_two():
+    return render_template('blog-post-two.html', product_info=show_products_in_cart())
+
+@views.route("/blog/effektiv_viktnedgång_din_väg_till_drömkroppen")
+def blog_post_three():
+    return render_template('blog-post-three.html', product_info=show_products_in_cart())
+
+@views.route("/blog/så_skapar_du_det_perfekta_träningsprogrammet")
+def blog_post_four():
+    return render_template('blog-post-four.html', product_info=show_products_in_cart())
+
+@views.route("/blog/gå_ner_i_vikt_och_bygg_muskler_med_dessa_magiska_strategier")
+def blog_post_five():
+    return render_template('blog-post-five.html', product_info=show_products_in_cart())
+
 @views.route("/secretespolicy")
 def secretespolicy():
     return render_template('secretespolicy.html', product_info=show_products_in_cart())

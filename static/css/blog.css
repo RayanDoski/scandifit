@@ -55,10 +55,9 @@
     margin: 50px 0px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px;
-    row-gap: 50px;
+    gap: 40px;
+    /* row-gap: 50px; */
 }
 
 .blog > main > a {

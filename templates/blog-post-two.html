@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/blog-post.css') }}">{% endblock %}
+{% block title %}<title>Blog</title>{% endblock %}
+{% block content %}
+<section class="blog-post">
+    <article>
+        <img src="{{ url_for('static', filename='pictures/blog/blog-picture-two.webp') }}" alt="Blog Post Img">
+        <main>
+            <h2>2023 - 12 - 01</h2>
+            <h1>Upptäck Hemligheterna bakom Effektiv Hemmaträning</h1>
+
+            <h3>Ta Kontroll över Din Träning med Hemmaträning</h3>
+            <p>Välkommen till min blogg där vi kommer att utforska fördelarna med att träna hemma och hur du kan uppnå dina träningsmål utan att behöva gå till gymmet. Oavsett om du är nybörjare eller erfaren, finns det massor av möjligheter för dig att få en effektiv träning i bekvämligheten av ditt eget hem. <strong>PSST! längre ner i detta inlägg har vi en spännande överraskning för dig!</strong></p>
+
+            <h3>Fördelar med Träning Hemma</h3>
+            <p>Del 1: Fördelar med Träning Hemma Träning hemma har otroliga fördelar som inte bara hjälper dig att spara tid och pengar, utan också ger dig flexibilitet och komfort. Du kan träna när som helst, utan att oroa dig för trängsel eller begränsade öppettider. Dessutom kan du anpassa träningen efter dina personliga preferenser och behov.</p>
+
+            <h3>Effektiva Träningsmetoder för Hemmaträning</h3>
+            <p>Del 2: Effektiva Träningsmetoder för Hemmaträning Det finns en mängd olika träningsmetoder som passar perfekt för träning hemma. Utforska kroppsövningar som squats, utfall och plankan, som inte kräver någon utrustning alls. Om du vill utmana dig själv lite extra, kan du använda hantlar eller kettlebells för att öka intensiteten. Yoga- och pilatespass är också utmärkta alternativ för att bygga styrka och flexibilitet i hemmamiljön.</p>
+
+            <h3>Din överraskning</h3>
+            <p>Nu när du vet grundläggande om hur man bygger muskler, låt oss tala om hur vi på ScandiFit kan hjälpa dig att uppnå dina mål snabbare och mer effektivt.</p>
+            <p>Vi förstår att bygga muskler kan kännas som en utmaning. Det är därför ScandiFit har tagit fram en lösning för dig, <strong>En helt GRATIS, personlig träningsplan som är skräddarsydd för just dina mål.</strong> Allt du behöver göra är att svara på några enkla frågor, vilket bara tar 60 sekunder! Därefter får du en träningsplan som är helt anpassad efter dina behov och mål, vare sig det är att gå ner i vikt, bygga muskler, förbättra konditionen eller bara känna dig hälsosammare.</p>
+            <h3>Varför välja Erbjudande?</h3>
+            <ol>
+                <li>Snabbt och Enkelt: Vi vet att din tid är värdefull. Därför tar det <strong>bara 60 sekunder</strong> att få ditt personliga träningsprogram genom att svara på några enkla frågor!</li>
+                <li>Personlig Anpassning: Vi förstår att varje individ är unik. Genom att ta hänsyn till <strong>dina specifika mål och önskemål</strong> kan vi skapa ett träningsprogram som är skräddarsytt just för DIG!</li>
+                <li>Expertvägledning: Vårt team av erfarna tränare finns tillgängliga för att ge dig professionell rådgivning och stöd längs hela din träningsresa. Vi finns här för att <strong>hjälpa dig att nå dina mål!</strong></li>
+                <li>Uppnå Resultat: Med vårt personliga träningsprogram och expertrådgivning kommer du att <strong>se verkliga resultat på nolltid!</strong> Vi är dedikerade till din framgång och att hjälpa dig att nå din fulla potential!</li>
+                <li>Helt GRATIS: Vi tror på att göra hälsa och träning tillgängligt för alla. Därför är vårt personliga träningsprogram <strong>helt GRATIS!</strong> Inga dolda avgifter eller prenumerationer. Det är vår gåva till dig! </li>
+                <li>Missa inte den här fantastiska möjligheten! Klicka på länken nedan för att komma igång och få ditt GRATIS personliga träningsprogram på bara 60 sekunder!</li>
+            </ol>
+
+            <a href="/quiz">Få Ditt Personliga Träningsschema</a>
+        </main>
+    </article>
+    <aside>
+
+        <a href="/blog/bygg_muskelmassa_snabbt_med_våra_magiska_tips">
+            <img src="{{ url_for('static', filename='pictures/blog/blog-picture.jpg') }}" alt="Blog Post Img">
+            <h3>Bygg Muskelmassa Snabbt med Våra Magiska Tips</h3>
+            <!-- <h4>249 KR</h4> -->
+            <p>Skapa en Regelbunden Träningsrutin: Regelbundenhet är nyckeln när det gäller att bygga muskler. Försök att träna minst...</p>
+        </a>
+
+        <a href="/blog/effektiv_viktnedgång_din_väg_till_drömkroppen">
+            <img src="{{ url_for('static', filename='pictures/blog/blog-picture-three.webp') }}" alt="Blog Post Img">
+            <h3>Effektiv Viktnedgång: Din Väg till Drömkroppen</h3>
+            <p>Att gå ner i vikt kan kännas som en utmaning, men med rätt inställning och verktyg kan du uppnå dina mål och njuta av resan. Här är...</p>
+        </a>
+
+        <a href="/blog/så_skapar_du_det_perfekta_träningsprogrammet">
+            <img src="{{ url_for('static', filename='pictures/blog/blog-picture-four.png') }}" alt="Blog Post Img">
+            <h3>Så Skapar Du Det Perfekta Träningsprogrammet!</h3>
+            <p>Vill du bygga muskler, tappa vikt, förbättra din kondition, eller kanske en kombination av dessa? Ditt program ska vara utformat för att effektivt hjälpa dig...</p>
+        </a>
+
+    </aside>
+</section>
+{% endblock %}
