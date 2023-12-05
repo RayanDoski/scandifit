@@ -8,6 +8,10 @@
     --secondary-font: 'raleway', sans-serif;
   }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0px;
     font-family: var(--secondary-font);
@@ -640,6 +644,7 @@ footer > main > div > #klarna-logo {
 
 #kundvagn-background {
     display: none;
+    top: 0;
     position: fixed;
     height: 100%;
     width: 100%;
@@ -920,6 +925,7 @@ footer > main > div > #klarna-logo {
 
     #menu-background.show {
         display: block;
+        top: 0;
         position: fixed;
         height: 100%;
         width: 100%;
@@ -930,6 +936,7 @@ footer > main > div > #klarna-logo {
     #menu.show {
         visibility: visible;
         pointer-events: all;
+        top: 0;
         height: 100%;
         padding: 20px;
         width: 33%;
