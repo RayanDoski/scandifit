@@ -17,7 +17,7 @@
 
         <div class="one">
             <h2>Prioritera din hälsa och kondition</h2>
-            <p>Baserat på din personliga information</p>
+            <p>Hur Gammal Är Du?</p>
             <main>
                 <label for="age-18-29" id="ages">
                     <img src="{{ url_for('static', filename='pictures/quiz/18-29.webp') }}" alt="age 18-29">
@@ -51,7 +51,7 @@
         </div>
 
         <div class="two">
-            <h2>Prioritera din hälsa och kondition</h2>
+            <h2>Vad Är Ditt Mål?</h2>
             <main>
                 <label for="goal-one" id="goal">
                     <img src="{{ url_for('static', filename='pictures/quiz/slim_body.webp') }}" alt="goal">
@@ -93,7 +93,7 @@
                 <label for="kroppstyp-two" id="din-kroppstyp">
                     <aside>
                         <h3>Mesomorph</h3>
-                        <p>Loses body fat easily and gains muscle quickly.</p>
+                        <p>Tappar lätt kroppsfett och får snabbt muskler.</p>
                     </aside>
                     <img src="{{ url_for('static', filename='pictures/quiz/slim_body.webp') }}" alt="Din Kroppstyp">
                 </label>
@@ -103,7 +103,7 @@
                 <label for="kroppstyp-three" id="din-kroppstyp">
                     <aside>
                         <h3>Endomorph</h3>
-                        <p>Gains weight easily compared to other body types.</p>
+                        <p>Går lätt upp i vikt jämfört med andra kroppstyper.</p>
                     </aside>
                     <img src="{{ url_for('static', filename='pictures/quiz/slim_body.webp') }}" alt="Din Kroppstyp">
                 </label>
@@ -111,11 +111,11 @@
                 <input type="radio" name="body-type" value="Endomorph" class="radio-din-kroppstyp" id="kroppstyp-three">
 
                 <div>
-                    <h2>Test to determine your body type</h2>
-                    <p>Grip your opposite wrist using your thumb and index finger. If you're right-handed, use your right hand to grab your left wrist.</p>
-                    <h6><span>Ectomorph —</span> wrapping around with ease.</h6>
-                    <h6><span>Mesomorph —</span> touching each other.</h6>
-                    <h6><span>Endomorph —</span> doesn’t come into contact.</h6>
+                    <h2>Testa för att bestämma din kroppstyp</h2>
+                    <p>Ta tag i din motsatta handled med tummen och pekfingret. Om du är högerhänt, använd din högra hand för att ta tag i din vänstra handled.</p>
+                    <h6><span>Ectomorph —</span> vira runt med lätthet.</h6>
+                    <h6><span>Mesomorph —</span> röra vid varandra.</h6>
+                    <h6><span>Endomorph —</span> kommer inte i kontakt.</h6>
                     <img src="{{ url_for('static', filename='pictures/quiz/determine-body-type.png') }}" alt="holding werist">
                 </div>
 
@@ -230,7 +230,7 @@
                         <label for="sjukdom-Hypertoni" id="foljande-tillstand">Hypertoni</label>
                         <input type="radio" name="sjukdom" value="hypertoni" class="foljande-tillstand" id="sjukdom-Hypertoni">
 
-                        <label for="sjukdom-Inget" id="foljande-tillstand">Inget</label>
+                        <label for="sjukdom-Inget" id="foljande-tillstand" class="inget">Inget</label>
                         <input type="radio" name="sjukdom" value="inget" class="foljande-tillstand" id="sjukdom-Inget">
 
                     </aside>
