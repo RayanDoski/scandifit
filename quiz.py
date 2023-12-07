@@ -3,6 +3,9 @@ from db import cursor, db
 from flask_mail import Mail, Message
 from db import mail
 
+#checking if user is logged in
+from login_register import is_logged_in
+
 quiz = Blueprint('quiz', __name__)
 
 @quiz.route("/quiz", methods=['GET', 'POST'])
@@ -51,4 +54,8 @@ def quizing():
             return redirect('/schedual')
         
     else:
-        return render_template('quiz.html')
+        # Om De Är Inloggade Så Skickar Vi De Till Schemat Annars Så Får De Göra En Quiz
+        if is_logged_in():
+            return redirect('/schedual')
+        else:
+            return render_template('quiz.html')

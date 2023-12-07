@@ -7,11 +7,19 @@ login_register = Blueprint('login_register', __name__)
 
 @login_register.route("/signup")
 def signup():
-    return render_template('login-signup.html')
+    # If They Are Logged In They can't access logged in or signup
+    if is_logged_in():
+        return redirect('/schedual')
+    else:
+        return render_template('login-signup.html')
 
 @login_register.route("/login")
 def login():
-    return render_template('login-signup.html')
+    # If They Are Logged In They can't access logged in or signup
+    if is_logged_in():
+        return redirect('/schedual')
+    else:
+        return render_template('login-signup.html')
 
 # Logga In 
 @login_register.route('/login-processing', methods=['GET', 'POST'])

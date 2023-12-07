@@ -9,7 +9,6 @@ schema = Blueprint('schema', __name__)
         
 @schema.route("/schedual", methods=["GET","POST"])
 def schedual():
-
     #are they logged in?
     user_data = is_logged_in()
     if user_data is None:
@@ -18,6 +17,12 @@ def schedual():
     #getting their quiz values
     cursor.execute('select * from quiz where user_id = %s', (user_data[0]))
     quiz_info = cursor.fetchone()
+
+    #checking if Their account is linked to a Schedual
+    if quiz_info is None:
+        schedual = ''
+        return render_template('profile-schema.html', product_info=show_products_in_cart(), quiz_info=quiz_info, schedual=schedual, namn=user_data[1])
+
 
     # Antalet Tränings Pass Per Vecka
     amount_of_exercises_per_week = amount_per_week(quiz_info[9])
