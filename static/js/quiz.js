@@ -14,6 +14,13 @@ let slide_count = 0;
 let progress_bar = document.querySelector('#progress-bar')
 let progress_count = document.querySelector('#progress-count')
 
+// Prevent them from submiting without clicking the submit btn
+function preventEnterSubmit(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+    }
+}
+
 function slide_nr() {
     const slides = [
         one, two, three, four, five, six, seven, eight, nine, ten, eleven

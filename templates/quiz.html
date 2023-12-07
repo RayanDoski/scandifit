@@ -162,7 +162,7 @@
             <main>
                 <h2>Hur lång är du?</h2>
                 <label for="height">längd (cm)</label>
-                <input type="text" name="height" id="height">
+                <input type="text" name="height" id="height" onkeydown="preventEnterSubmit(event)">
                 <h3 id="height-vidare">Vidare</h3>
             </main>
         </div>
@@ -171,9 +171,9 @@
             <main>
                 <h2>Vad är din nuvarande vikt och målvikt?</h2>
                 <label for="vikt">Nuvarande (Kg)</label>
-                <input type="text" name="vikt" id="vikt">
+                <input type="text" name="vikt" id="vikt" onkeydown="preventEnterSubmit(event)">
                 <label for="målvikt">Målvikt (Kg)</label>
-                <input type="text" name="malvikt" id="malvikt">
+                <input type="text" name="malvikt" id="malvikt" onkeydown="preventEnterSubmit(event)">
                 <h3 id="weight-vidare">Vidare</h3>
             </main>
         </div>
@@ -278,16 +278,16 @@
                 <h2>Skapa ett <span>Gratis Konto</span> för att få tillgång till <span>ditt personliga schema!</span></h2>
 
                 <label for="name">Namn</label>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="name" onkeydown="preventEnterSubmit(event)">
 
                 <label for="email">E-mail</label>
-                <input type="email" name="email" id="email">
+                <input type="email" name="email" id="email" onkeydown="preventEnterSubmit(event)">
 
                 <label for="telefonnummer">Telefonnummer -<span> Frivilligt, men rekommenderat</span></label>
-                <input type="text" name="telefonnummer" id="telefonnummer" placeholder="SV +46">
+                <input type="text" name="telefonnummer" id="telefonnummer" placeholder="SV +46" onkeydown="preventEnterSubmit(event)">
 
                 <label for="pass">Lösenord</label>
-                <input type="password" name="pass" id="pass">
+                <input type="password" name="pass" id="pass" onkeydown="preventEnterSubmit(event)">
 
                 <button type="submit" id="sumbit_btn">Tillverka konto</button>
                 <p>Genom att fortsätta godkänner du Nordic Nutritions <a href="">användarvillkor</a> och <a href="">sekretessmeddelande</a>.</p>
