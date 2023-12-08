@@ -422,34 +422,43 @@ def fitness_goals(their_goal):
 
 # Problem Område (Vilken Kroppsdel Vill De Utvekcla Mer?)
 def problem_area(more_of_what, chest_exercise, triceps_exercise, biceps_exercise, mage_exercise, legs_exercise, sets, reps):
-    if more_of_what == 'chest':
-        added_exercise = [
-            [create_exercise(chest_exercise[0][0], chest_exercise[0][1], chest_exercise[0][2], sets, reps)],
-            [create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)],
-            [create_exercise(chest_exercise[2][0], chest_exercise[2][1], chest_exercise[2][2], sets, reps)],
-        ]
-    elif more_of_what == 'arms':
-        added_exercise = [
-            [create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps)],
-            [create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)],
-            [create_exercise(biceps_exercise[2][0], biceps_exercise[2][1], biceps_exercise[2][2], sets, reps)],
-        ]
-    elif more_of_what == 'stomach':
-        added_exercise = [
-            [create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)],
-            [create_exercise(mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], sets, reps)],
-            [''],
-        ]
-    else:
-        # more_of_what == 'legs'
-        added_exercise = [
-            [create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)],
-            [create_exercise(legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps)],
-            [''],
-        ]
-    
-    return added_exercise
+    try:
+        if more_of_what == 'chest':
+            added_exercise = [
+                [create_exercise(chest_exercise[0][0], chest_exercise[0][1], chest_exercise[0][2], sets, reps)],
+                [create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)],
+                [create_exercise(chest_exercise[2][0], chest_exercise[2][1], chest_exercise[2][2], sets, reps)],
+            ]
+        elif more_of_what == 'arms':
+            added_exercise = [
+                [create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps)],
+                [create_exercise(chest_exercise[0][0], chest_exercise[0][1], chest_exercise[0][2], sets, reps)],
+                [create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)],
+            ]
+        elif more_of_what == 'stomach':
+            added_exercise = [
+                [create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)],
+                [create_exercise(mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], sets, reps)],
+                [''],
+            ]
+        else:
+            # more_of_what == 'legs'
+            added_exercise = [
+                [create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)],
+                [create_exercise(legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps)],
+                [''],
+            ]
 
+        return added_exercise
+    except:
+        #For Worst Case Cenerios, If it doens't work
+        added_exercise = [
+                [''],
+                [''],
+                [''],
+            ]
+        return added_exercise
+    
 # Anpassar Cardio Till Användaren
 def cardio_exercises(home_or_gym, equipment_assets, their_goal, cardio_exercise):
     # Users Situation (Gym Or Home | Equiptment Access)
