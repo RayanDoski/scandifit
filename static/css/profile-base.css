@@ -12,6 +12,7 @@
 }
 
 .profile-slide-container > nav > button {
+    color: var(--secondary-color);
     display: flex;
     align-items: center;
     gap: 20px;
@@ -113,6 +114,7 @@
 }
 
 .profile-slide-container > main > aside > button {
+    color: var(--secondary-color);
     position: absolute;
     font-weight: bold;
     border: 0;
