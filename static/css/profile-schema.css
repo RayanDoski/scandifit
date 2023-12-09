@@ -160,6 +160,7 @@
     width: 100%;
     top: 0;
     position: fixed;
+    z-index: 2;
     display: none;
 }
 
@@ -179,6 +180,7 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    z-index: 3;
     transition: .5s all;
 }
 
