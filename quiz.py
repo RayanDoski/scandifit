@@ -26,8 +26,12 @@ def quizing():
         utrustning = request.form.get('utrustning').lower()
         name = request.form.get('name').lower()
         email = request.form.get('email').lower()
-        phone = request.form.get('telefonnummer')
         password = request.form.get('pass').lower()
+        #checkin if they entered phone nr
+        if request.form.get('telefonnummer'):
+            phone = request.form.get('telefonnummer')
+        else:
+            phone = "Information Saknas"
 
         #insert into users table
         cursor.execute('insert into users (namn, email, telephonenumber, password) values (%s, %s, %s, %s)', (name, email, phone, password))
