@@ -178,7 +178,7 @@ def schedual():
 
             {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}
             {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}
-            {create_exercise(axlar_exercise[0][0], axlar_exercise[0][1], sets, reps)}
+            {create_exercise(axlar_exercise[0][0], axlar_exercise[0][1], axlar_exercise[0][2], sets, reps)}
 
             <h2>Tredje TräningsPass:</h2>
             {cardio_training_list[0][0]}                        
@@ -186,7 +186,7 @@ def schedual():
             {cardio_training_list[2][0]}
 
             {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}
-            {create_exercise(legs_exercise[1][0], legs_exercise[1][1], sets, reps)}
+            {create_exercise(legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps)}
 
             <h2>Fjärde TräningsPass:</h2>
             {cardio_training_list[0][0]}                        
@@ -194,7 +194,7 @@ def schedual():
             {cardio_training_list[2][0]} 
 
             {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}
-            {create_exercise(mage_exercise[1][0], mage_exercise[1][1], sets, reps)}
+            {create_exercise(mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], sets, reps)}
 
             <h2>Femte TräningsPass:</h2>
             {cardio_training_list[0][0]}                        
