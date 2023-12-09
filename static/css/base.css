@@ -20,6 +20,10 @@ body {
     background-color: var(--primary-color);
 }
 
+a {
+    color: var(--secondary-color);
+}
+
 /* Header Start*/
 
 /* Animation for the fixed header */
