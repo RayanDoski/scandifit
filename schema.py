@@ -169,7 +169,7 @@ def schedual():
 
             {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
             {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}
-            {create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], sets, reps)}
+            {create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps)}
 
             <h2>Andra TräningsPass:</h2>
             {cardio_training_list[0][0]}                        
