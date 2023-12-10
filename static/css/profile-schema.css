@@ -141,8 +141,13 @@
     }
 
     .schedual-information > main > aside > h3 {
+        font-size: 14px;
+        letter-spacing: 0px;
+    }
+
+    .schedual-information > main > aside > h3 > a {
         font-size: 18px;
-        letter-spacing: .5px;
+        letter-spacing: 0px;
     }
 
     .schedual-information > main > aside > a {
