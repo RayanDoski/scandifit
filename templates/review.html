@@ -1,171 +1,179 @@
-{% extends 'base.html' %}
-{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/review.css') }}">{% endblock %}
-{% block title %}<title>Review</title>{% endblock %}
-{% block content %}
-<!-- write review popup Start -->
-<div class="popup-review-background"></div>
-<div class="section-review-background">
-    <h2>Skriv En Recention</h2>
-    <form action="/insert-review" method="post" enctype="multipart/form-data" id="form-review">
-        
-        <p id="stars-rating">Betyg: 1/5</p>
-        <article>
-            <label for="star-one" id="stars">★</label>
-            <input type="radio" name="star" value="1" id="star" checked>
-
-            <label for="star-two" id="stars">★</label>
-            <input type="radio" name="star" value="2" id="star">
-
-            <label for="star-three" id="stars">★</label>
-            <input type="radio" name="star" value="3" id="star">
-
-            <label for="star-four" id="stars">★</label>
-            <input type="radio" name="star" value="4" id="star">
-
-            <label for="star-five" id="stars">★</label>
-            <input type="radio" name="star" value="5" id="star">
-
-        </article>
-        
-
-        <label for="rubrik">Rubrik</label>
-        <input type="text" name="rubrik" id="rubrik">
-
-        <label for="recention">Recention</label>
-        <textarea name="recention" id="recention" cols="30" rows="5"></textarea>
-
-        <label for="picture" id="picture-lable">Lägg Till Bild</label>
-        <input type="file" name="picture" id="picture">
-
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name">
-
-        <button type="submit">Publicera</button>
-
-    </form>
-</div>
-<!-- write review popup End -->
-<section class="review">
-    <div>
-        <h2>recentioner</h2>
-
-        <div>
-            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-            <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
-            <p>{{ average_rating }} / 5</p>
-        </div>
-
-        <main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/review.css') }}">
+    <title>reviews</title>
+</head>
+<body>
+    <!-- write review popup Start -->
+    <div class="popup-review-background"></div>
+    <div class="section-review-background">
+        <h2>Skriv En Recention</h2>
+        <form action="{{ url_for('recensioner.insert_review', product_id=product_id, ) }}#review" method="post" enctype="multipart/form-data" id="form-review">
+            
+            <p id="stars-rating">Betyg: 1/5</p>
             <article>
-                <p>5 star</p>
-                <div><div style="width: {{ percentage_five_star }}%;"></div></div>
-                <p>{{ percentage_five_star }}%</p>
+                <label for="star-one" id="stars">★</label>
+                <input type="radio" name="star" value="1" id="star-one" checked>
+
+                <label for="star-two" id="stars">★</label>
+                <input type="radio" name="star" value="2" id="star-two">
+
+                <label for="star-three" id="stars">★</label>
+                <input type="radio" name="star" value="3" id="star-three">
+
+                <label for="star-four" id="stars">★</label>
+                <input type="radio" name="star" value="4" id="star-four">
+
+                <label for="star-five" id="stars">★</label>
+                <input type="radio" name="star" value="5" id="star-five">
+
             </article>
+            
 
-            <article>
-                <p>4 star</p>
-                <div><div style="width: {{ percentage_four_star }}%;"></div></div>
-                <p>{{ percentage_four_star }}%</p>
-            </article>
+            <label for="rubrik">Rubrik</label>
+            <input type="text" name="rubrik" id="rubrik">
 
-            <article>
-                <p>3 star</p>
-                <div><div style="width: {{ percentage_three_star }}%;"></div></div>
-                <p>{{ percentage_three_star }}%</p>
-            </article>
+            <label for="recention">Recention</label>
+            <textarea name="recention" id="recention" cols="30" rows="5"></textarea>
 
-            <article>
-                <p>2 star</p>
-                <div><div style="width: {{ percentage_two_star }}%;"></div></div>
-                <p>{{ percentage_two_star }}%</p>
-            </article>
+            <label for="picture" id="picture-lable">Lägg Till Bild</label>
+            <input type="file" name="picture" id="picture">
 
-            <article>
-                <p>1 star</p>
-                <div><div style="width: {{ percentage_one_star }}%;"></div></div>
-                <p>{{ percentage_one_star }}%</p>
-            </article>
-        </main>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name">
 
-        <button id="write-review-btn">Skriv Recention</button>
-        
-    </div>
-    <aside>
+            <button type="submit">Publicera</button>
 
-        <form action="/recension" method="post">
-            <select name="order-reviews" id="">
-                <option value="top" {{ top_review }}>Top Recentioner</option>
-                <option value="five" {{ five_review }}>5 Star</option>
-                <option value="four" {{ four_review }}>4 Star</option>
-                <option value="three" {{ three_review }}>3 Star</option>
-                <option value="two" {{ two_review }}>2 Star</option>
-                <option value="one" {{ one_review }}>1 Star</option>
-            </select>
-            <button type="submit">Updatera</button>
         </form>
+    </div>
+    <!-- write review popup End -->
+    <section class="review" id="review">
+        <div>
+            <h2>recentioner</h2>
 
-        {% for review in reviews %}
-            <article>
+            <div>
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                <p>{{ average_rating }} / 5</p>
+            </div>
 
-                <aside>
-                    {% if review[2] == 1 %}
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
-                    {% elif review[2] == 2 %}
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
-                    {% elif review[2] == 3 %}
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
-                    {% elif review[2] == 4 %}
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
-                    {% elif review[2] == 5 %}
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
-                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+            <main>
+                <article>
+                    <p>5 star</p>
+                    <div><div style="width: {{ percentage_five_star }}%;"></div></div>
+                    <p>{{ percentage_five_star }}%</p>
+                </article>
+
+                <article>
+                    <p>4 star</p>
+                    <div><div style="width: {{ percentage_four_star }}%;"></div></div>
+                    <p>{{ percentage_four_star }}%</p>
+                </article>
+
+                <article>
+                    <p>3 star</p>
+                    <div><div style="width: {{ percentage_three_star }}%;"></div></div>
+                    <p>{{ percentage_three_star }}%</p>
+                </article>
+
+                <article>
+                    <p>2 star</p>
+                    <div><div style="width: {{ percentage_two_star }}%;"></div></div>
+                    <p>{{ percentage_two_star }}%</p>
+                </article>
+
+                <article>
+                    <p>1 star</p>
+                    <div><div style="width: {{ percentage_one_star }}%;"></div></div>
+                    <p>{{ percentage_one_star }}%</p>
+                </article>
+            </main>
+
+            <button id="write-review-btn">Skriv Recention</button>
+            
+        </div>
+        <aside>
+
+            <form action="{{ url_for('recensioner.recension', product_html=product_html, product_id=product_id, ) }}#review" method="post">
+                <select name="order-reviews" id="">
+                    <option value="top" {{ top_review }}>Top Recentioner</option>
+                    <option value="five" {{ five_review }}>5 Star</option>
+                    <option value="four" {{ four_review }}>4 Star</option>
+                    <option value="three" {{ three_review }}>3 Star</option>
+                    <option value="two" {{ two_review }}>2 Star</option>
+                    <option value="one" {{ one_review }}>1 Star</option>
+                </select>
+                <button type="submit">Updatera</button>
+            </form>
+
+            {% for review in reviews %}
+                <article>
+
+                    <aside>
+                        {% if review[2] == 1 %}
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                        {% elif review[2] == 2 %}
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                        {% elif review[2] == 3 %}
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                        {% elif review[2] == 4 %}
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                        {% elif review[2] == 5 %}
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                            <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                        {% endif %}
+                    </aside>
+
+                    <div>
+                        <h3>{{ review[3] }}</h3>
+                        <p>{{ review[8] }}</p>
+                    </div>
+
+                    <p>{{ review[4] }}</p>
+
+                    {% if review[9] %}
+                        <img src="{{ url_for('static', filename='pictures/review-pictures/' + review[9]) }}" alt="">
                     {% endif %}
-                </aside>
-
-                <div>
-                    <h3>{{ review[3] }}</h3>
-                    <p>{{ review[8] }}</p>
-                </div>
-
-                <p>{{ review[4] }}</p>
-
-                {% if review[9] %}
-                    <img src="{{ url_for('static', filename='pictures/review-pictures/' + review[9]) }}" alt="">
-                {% endif %}
 
 
-                <h3><strong>Skriven:</strong> {{ review[5] }}</h3>
-                <h3><strong>Namn:</strong> {{ review[1] }}</h3>
+                    <h3><strong>Skriven:</strong> {{ review[5] }}</h3>
+                    <h3><strong>Namn:</strong> {{ review[1] }}</h3>
 
-                <h4>{{ review[7] }} personer tyckte att detta var hjälpsamt</h4>
+                    <h4>{{ review[7] }} personer tyckte att detta var hjälpsamt</h4>
 
-                <a href="/helpful?id={{ review[0] }}">Hjälpsam?</a>
+                    <a href="/helpful?id={{ review[0] }}#review">Hjälpsam?</a>
 
-            </article>
-        {% endfor %}
-    </aside>
-</section>
-{% endblock %}
-{% block js %}<script src="{{ url_for('static', filename='js/review.js') }}"></script>{% endblock %}
+                </article>
+            {% endfor %}
+        </aside>
+    </section>
+    <script src="{{ url_for('static', filename='js/review.js') }}"></script>
+</body>
+</html>
+
+

@@ -95,11 +95,11 @@ def delete_item():
             return redirect(request.referrer)
         
         return redirect(request.referrer)
-        
 
+from recentioner import recension
 @checkout.route("/product")
 def product():
-    return render_template('product-page.html', product_info=show_products_in_cart())
+    return recension('product-page.html', 1)
 
 @checkout.route('/add-product', methods=['post', 'get'])
 def add_product():

@@ -1,7 +1,301 @@
 {% extends 'base.html' %}
-<!-- {% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/order-complete.css') }}">{% endblock %} -->
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/product-page.css') }}">{% endblock %}
 {% block title %}<title>Product Page</title>{% endblock %}
 {% block content %}
-    <a href="/add-product?id=1" style="font-size: 30px; display: block; font-weight: bold;">En Gång Köp</a>
-    <a href="/add-product?id=2" style="font-size: 30px; display: block; font-weight: bold;">Premnuminera</a>
+    <section class="product">
+        <aside>
+            <img src="{{ url_for('static', filename='pictures/product-picture/opti-men-multivitamin.png') }}" alt="Product Picture">
+        </aside>
+        <div>
+            <article>
+
+                <h1>Vitamin Pro</h1>
+                <aside>
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    <h4>103 Recensioner</h4>
+                </aside>
+                <!-- <p>Multivitaminer är kosttillskott som innehåller en kombination av essentiella vitaminer och mineraler.</p> -->
+
+                <form action="" method="post">
+
+                    <label for="sub" id="sub-lable">
+                        <aside>
+                            <h3>Månadsvis Prenumeration</h3>
+                            <p>Avsluta När Du Vill - INGEN BINDNINGSTID</p>
+                        </aside>
+                        <h4>199 Kr</h4>
+                    </label>
+                    <input type="radio" name="buy" value="sub" id="sub" checked>
+
+                    <label for="once" id="once-lable">
+                        <h3>Engångsköp</h3>
+                        <h4>299 Kr</h4>
+                    </label>
+                    <input type="radio" name="buy" value="once" id="once">
+
+                    <button type="submit">Lägg till i kundvagn</button>
+                </form>
+
+                <div>
+
+                    <article>
+                        <aside>
+                            <img src="{{ url_for('static', filename='pictures/postnord.png') }}" alt="Postnord Logo">
+                            <h4>1-3 Dagars Frakt - Hemleverans</h4>
+                            <p>Snabb Leverans</p>
+                        </aside>
+                        <h4>Gratis</h4>
+                    </article>
+
+                    <article>
+                        <div>
+                            <img src="{{ url_for('static', filename='pictures/icons/return-one.png') }}" alt="Postnord Logo">
+                            <h4>90 Dagar Öppet Köp</h4>
+                        </div>
+                    </article>
+
+                    <article>
+                        <aside>
+                            <h4>Betalnings Alternativ</h4>
+                            <div>
+                                <img src="{{ url_for('static', filename='pictures/payment-alternativ/klarna.png') }}" alt="Postnord Logo">
+                                <img src="{{ url_for('static', filename='pictures/payment-alternativ/apple-pay-black.png') }}" alt="Postnord Logo">
+                                <img src="{{ url_for('static', filename='pictures/payment-alternativ/visa-black.png') }}" alt="Postnord Logo">
+                                <img src="{{ url_for('static', filename='pictures/payment-alternativ/amex-black.png') }}" alt="Postnord Logo">
+                                <img src="{{ url_for('static', filename='pictures/payment-alternativ/card-black.png') }}" alt="Postnord Logo">
+                            </div>
+                        </aside>
+                    </article>
+
+                </div>
+
+            </article>
+        </div>
+    </section>
+
+    <section class="why-subscribe">
+        <h2>Varför Vitamin pro?</h2>
+
+        <div>
+            <article>
+                <img src="{{ url_for('static', filename='pictures/icons/open-lock.png') }}" alt="Lock">
+                <h3>Ingen bindningstid</h3>
+                <p>Det är ingen bindningstid eller uppsägningstid, avsluta när du vill.</p>
+            </article>
+
+            <article>
+                <img src="{{ url_for('static', filename='pictures/icons/customer-management.png') }}" alt="Lock">
+                <h3>15 000+ Kunder</h3>
+                <p>Vi är stolta över att kunna meddela att vi har haft över 15 000 kunder.</p>
+            </article>
+
+            <article>
+                <img src="{{ url_for('static', filename='pictures/icons/mail.png') }}" alt="Lock">
+                <h3>TREVLIG KUNDSERVICE</h3>
+                <p>Undersökning från 2023 (695 svar). Mycket nöjd= 5 (skala 1-5). 95.9% var nöjda!</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="line"></section>
+
+    <section class="benifits">
+        <article>
+            <h2>Fördelar med daglig användning</h2>
+
+            <div>
+                <article>
+                    <img src="{{ url_for('static', filename='pictures/icons/immune-system.png') }}" alt="Lock">
+                    <h3>Grundläggande Hälsa</h3>
+                    <p>AG1 supports key health areas every day: mental fitness4, bones5, heart6, skin, hair, nails7 & hormones9.</p>
+                </article>
+                <article>
+                    <img src="{{ url_for('static', filename='pictures/icons/wellbeing.png') }}" alt="Lock">
+                    <h3>Immune System</h3>
+                    <p>Copper, folate, selenium, zinc and vitamins A, B12, B6, and C contribute to normal function of the immune system.</p>
+                </article>
+                <article>
+                    <img src="{{ url_for('static', filename='pictures/icons/wellbeing.png') }}" alt="Lock">
+                    <h3>Energy Metabolism</h3>
+                    <p>Copper, biotin, niacin, pantothenic acid, thiamine and vitamins B2 (riboflavin), B12, B6 and C contribute to normal energy-yielding metabolism.</p>
+                </article>
+                <article>
+                    <img src="{{ url_for('static', filename='pictures/icons/wellbeing.png') }}" alt="Lock">
+                    <h3>Muscle Recovery</h3>
+                    <p>Copper, selenium and zinc and vitamins B2 (riboflavin) and C contribute to the protection of cells from oxidative stress.</p>
+                </article>
+            </div>
+
+        </article>
+        <aside>
+        </aside>
+    </section>
+
+    <section class="line"></section>
+
+    <section class="ingredients">
+        <h2>Ingredienser och deras fördelar</h2>
+        <div>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>A-vitamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>D-vitamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">D-vitamin, D-vitamin, D-vitamin, D-vitamin, D-vitamin</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>E-vitamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">E-vitamin, E-vitamin, E-vitamin, E-vitamin, E-vitamin</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>C-vitamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">C-vitamin, C-vitamin, C-vitamin, C-vitamin, C-vitamin</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>A-vitamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>D-vitamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">D-vitamin, D-vitamin, D-vitamin, D-vitamin, D-vitamin</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>E-vitamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">E-vitamin, E-vitamin, E-vitamin, E-vitamin, E-vitamin</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>C-vitamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">C-vitamin, C-vitamin, C-vitamin, C-vitamin, C-vitamin</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>A-vitamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin, A-vitamin</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>D-vitamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">D-vitamin, D-vitamin, D-vitamin, D-vitamin, D-vitamin</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>E-vitamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">E-vitamin, E-vitamin, E-vitamin, E-vitamin, E-vitamin</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>C-vitamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">C-vitamin, C-vitamin, C-vitamin, C-vitamin, C-vitamin</p>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="line"></section>
+
+    <section class="faq">
+        <aside>
+            <h2>Vanliga frågor</h2>
+        </aside>
+        <article>
+
+            <div id="open-article">
+                <div id="open-dropdown">
+                    <h3>Hur Avlutar Jag Min Prenumeration?</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn</p>
+            </div>
+
+            <div id="open-article">
+                <div id="open-dropdown">
+                    <h3>Hur Avlutar Jag Min Prenumeration?</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn</p>
+            </div>
+
+            <div id="open-article">
+                <div id="open-dropdown">
+                    <h3>Hur Avlutar Jag Min Prenumeration?</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn</p>
+            </div>
+
+            <div id="open-article">
+                <div id="open-dropdown">
+                    <h3>Hur Avlutar Jag Min Prenumeration?</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn</p>
+            </div>
+
+            <div id="open-article">
+                <div id="open-dropdown">
+                    <h3>Hur Avlutar Jag Min Prenumeration?</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn, Sälj Och Vinn</p>
+            </div>
+
+        </article>
+    </section>
+
+    <section class="line"></section>
+
+    {% include 'review.html' %}
+
+    <!-- <a href="/add-product?id=1" style="font-size: 30px; display: block; font-weight: bold;">En Gång Köp</a>
+    <a href="/add-product?id=2" style="font-size: 30px; display: block; font-weight: bold;">Premnuminera</a> -->
 {% endblock %}
+{% block js %}<script src="{{ url_for('static', filename='js/product-page.js') }}"></script>{% endblock %}
