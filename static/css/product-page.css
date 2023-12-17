@@ -212,6 +212,11 @@
 
 @media screen and (max-width: 450px) {
 
+    .product {
+        margin: 50px auto;
+        gap: 15px;
+    }
+
     .product > div > article {
         padding: 20px 10px;
     }
