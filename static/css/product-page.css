@@ -604,7 +604,9 @@
 .ingredients > div > article > div > button {
     background-color: var(--secondary-color);
     border: 0;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 25px;
     height: 25px;
     width: 25px;
@@ -715,7 +717,9 @@
     background-color: var(--company-color);
     border: 0;
     border-radius: 25px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 30px;
     width: 30px;
     font-size: 21px;
