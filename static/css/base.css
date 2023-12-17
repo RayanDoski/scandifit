@@ -761,6 +761,7 @@ footer > main > div > #klarna-logo {
     border-bottom: 1px solid var(--secondary-color);
     width: 25px;
     height: 25px;
+    border-radius: 0;
     background-color: var(--primary-color);
     text-align: center;
     box-sizing: border-box;
@@ -777,6 +778,9 @@ footer > main > div > #klarna-logo {
     width: 25px;
     height: 25px;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 }
 
