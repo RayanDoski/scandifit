@@ -1,7 +1,7 @@
 .product {
     max-width: 1600px;
     width: 90%;
-    margin: 100px auto;
+    margin: 50px auto 100px auto;
     display: flex;
     align-items: center;
 }

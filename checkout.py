@@ -97,7 +97,7 @@ def delete_item():
         return redirect(request.referrer)
 
 from recentioner import recension
-@checkout.route("/product")
+@checkout.route("/multivitamin")
 def product():
     return recension('product-page.html', 1)
 

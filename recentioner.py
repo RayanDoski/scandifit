@@ -2,6 +2,8 @@ import os
 from urllib.parse import urlparse, urlunparse, parse_qsl, urlencode
 from flask import Blueprint, render_template, request, session, redirect
 from db import cursor, db
+#to get the cart values 
+from cart import show_products_in_cart
 
 recensioner = Blueprint('recensioner', __name__)
 
@@ -83,7 +85,7 @@ def recension(product_html, product_id):
             one_review = ''
             cursor.execute("select * from reviews where product_id = %s ORDER BY helpful DESC", (product_id))
             reviews = cursor.fetchall()
-            return render_template(product_html, product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
+            return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
         elif order_by == 'five':
             top_review = ''
             five_review = 'selected'
@@ -93,7 +95,7 @@ def recension(product_html, product_id):
             one_review = ''
             cursor.execute("select * from reviews where product_id = %s AND stars = 5", (product_id))
             reviews = cursor.fetchall()
-            return render_template(product_html, product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
+            return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
         elif order_by == 'four':
             top_review = ''
             five_review = ''
@@ -103,7 +105,7 @@ def recension(product_html, product_id):
             one_review = ''
             cursor.execute("select * from reviews where product_id = %s AND stars = 4", (product_id))
             reviews = cursor.fetchall()
-            return render_template(product_html, product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
+            return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
         elif order_by == 'three':
             top_review = ''
             five_review = ''
@@ -113,7 +115,7 @@ def recension(product_html, product_id):
             one_review = ''
             cursor.execute("select * from reviews where product_id = %s AND stars = 3", (product_id))
             reviews = cursor.fetchall()
-            return render_template(product_html, product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
+            return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
         elif order_by == 'two':
             top_review = ''
             five_review = ''
@@ -123,7 +125,7 @@ def recension(product_html, product_id):
             one_review = ''
             cursor.execute("select * from reviews where product_id = %s AND stars = 2", (product_id))
             reviews = cursor.fetchall()
-            return render_template(product_html, product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
+            return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
         elif order_by == 'one':
             top_review = ''
             five_review = ''
@@ -133,7 +135,7 @@ def recension(product_html, product_id):
             one_review = 'selected'
             cursor.execute("select * from reviews where product_id = %s AND stars = 1", (product_id))
             reviews = cursor.fetchall()
-            return render_template(product_html, product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
+            return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
     
     added_review = request.args.get('addreview')
     helpful_clicked_id = request.args.get('helpfulid')
@@ -146,7 +148,7 @@ def recension(product_html, product_id):
         one_review = ''
         cursor.execute("select * from reviews where product_id = %s ORDER BY id DESC", (product_id))
         reviews = cursor.fetchall()
-        return render_template(product_html, product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
+        return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
     elif helpful_clicked_id:
         top_review = 'selected'
         five_review = ''
@@ -156,7 +158,7 @@ def recension(product_html, product_id):
         one_review = ''
         cursor.execute("(SELECT * FROM reviews WHERE product_id = %s AND id = %s) UNION ALL (SELECT * FROM reviews WHERE product_id = %s AND id != %s ORDER BY id DESC)", (product_id, helpful_clicked_id, product_id, helpful_clicked_id))
         reviews = cursor.fetchall()
-        return render_template(product_html, product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
+        return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
     else:
         top_review = 'selected'
         five_review = ''
@@ -166,7 +168,7 @@ def recension(product_html, product_id):
         one_review = ''
         cursor.execute("select * from reviews where product_id = %s ORDER BY helpful DESC", (product_id))
         reviews = cursor.fetchall()
-        return render_template(product_html, product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
+        return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
     
 
 #inserting reviews
