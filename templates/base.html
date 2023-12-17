@@ -28,8 +28,8 @@
     </section>
     <!--menu End-->
     <!--Kundvagn Start-->
-    <div id="kundvagn-background"></div>
-    <section id="kundvagn">
+    <div id="kundvagn-background" class="{% if product_info %} del_show {% endif %}"></div>
+    <section id="kundvagn" class="{% if product_info %} del_show {% endif %}">
         <nav>
             {% if product_info %}
                     <h4>Din Kundvagn

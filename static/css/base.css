@@ -760,8 +760,10 @@ footer > main > div > #klarna-logo {
     border: 0px;
     border-bottom: 1px solid var(--secondary-color);
     width: 25px;
+    height: 25px;
     background-color: var(--primary-color);
     text-align: center;
+    box-sizing: border-box;
 }
 
 #kundvagn > form > article > aside > div > input:focus {
@@ -771,6 +773,10 @@ footer > main > div > #klarna-logo {
 #kundvagn > form > article > aside > div > button {
     background-color: var(--primary-color);
     border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    width: 25px;
+    height: 25px;
+    box-sizing: border-box;
     cursor: pointer;
 }
 

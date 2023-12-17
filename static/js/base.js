@@ -124,4 +124,13 @@ quantity_less.forEach((quantity_less_btn, quantity_less_btn_index) => {
     });
 });
 
+// If Delayed-Show Exists
+del_show = document.querySelectorAll('.del_show')
+function del_to_show() {
+    del_show.forEach(delay => {
+        delay.classList.add('show')
+    });
+}
+
+setInterval(1000, del_to_show())
 
