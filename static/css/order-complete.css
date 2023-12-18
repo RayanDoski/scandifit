@@ -7,6 +7,13 @@
 .order-complete > h1 {
     font-family: var(--primary-font);
     font-size: 65px;
+    margin: 0px;
+}
+
+.order-complete > h2 {
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    line-height: 25px;
     margin: 0px 0px 20px 0px;
 }
 
@@ -157,7 +164,12 @@
 @media screen and (max-width: 500px) {
 
     .order-complete > h1 {
-        text-align: center;
+        margin: 0px 0px 0px 5px;
+    }
+
+    .order-complete > h2 {
+        margin: 0px 0px 20px 5px;
+        font-size: 14px;
     }
 
     .order-complete {

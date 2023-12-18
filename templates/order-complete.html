@@ -4,31 +4,32 @@
 {% block content %}
 <section class="order-complete">
     <h1>Tack för din beställning</h1>
+    <h2>Ett kvitto har skickats till din e-post som en bekräftelse på ditt köp. Vi uppskattar att du valde att handla hos oss!</h2>
     <main>
         <aside>
             <div>
                 <h6>Beställningsnummer</h6>
-                <p>V401321</p>
+                <p>{{ session.created }}</p>
             </div>
             <div>
                 <h6>Beställnings Datum</h6>
-                <p>Tue Jul 27 2021</p>
+                <p>{{ session.metadata.purchase_time }}</p>
             </div>
             <div>
                 <h6>Kund</h6>
-                <p>Reyan Doski</p>
+                <p>{{ session.customer_details.name }}</p>
             </div>
 
             <h2>Leveransadress</h2>
-            <p>Reyan Doski</p>
-            <p>Albinsrogatan 41</p>
-            <p>21467</p>
-            <p>Malmö</p>
+            <p>{{ session.customer_details.name }}</p>
+            <p>{{ session.customer_details.address.line1 }} {{ session.customer_details.address.line2 }}</p>
+            <p>{{ session.customer_details.address.postal_code }}</p>
+            <p>{{ session.customer_details.address.city }}</p>
 
             <h2>Kontaktinformation</h2>
-            <p>Reyan Doski</p>
-            <p>Rayan.d15@outlook.com</p>
-            <p>0700252258</p>
+            <p>{{ session.customer_details.name }}</p>
+            <p>{{ session.customer_details.email }}</p>
+            <p>{{ session.customer_details.phone }}</p>
 
             <h2>Kontaktinformation</h2>
             <h6>Summa: <span>0 SEK</span></h6>
@@ -39,25 +40,27 @@
             <h2>Ordersammanfattning</h2>
             <aside>
                 <h6>Delsumma:</h6>
-                <p>249 SEK</p>
+                {% set subtotal_krona = session.amount_subtotal / 100 %}
+                <p>{{ "{:,.2f} SEK".format(subtotal_krona) }}</p>
             </aside>
             <aside>
                 <h6>Frakt:</h6>
-                <p>0 SEK</p>
+                <p>{{ session.total_details.amount_shipping }} SEK</p>
             </aside>
             <aside>
                 <h6>Ordersumma:</h6>
-                <p>249 SEK</p>
+                {% set amount_total_krona = session.amount_total / 100 %}
+                <p>{{ "{:,.2f} SEK".format(amount_total_krona) }}</p>
             </aside>
             <p>kommer inom 5-6 arbetsdagar</p>
-            <main>
+            <!-- <main>
                 <img src="{{ url_for('static', filename='pictures/product-picture/multivitamin.png') }}" alt="Multivitamin">
                 <aside>
                     <h6>Multivitamin Pro</h6>
                     <h6>Antal: <span>3</span></h6>
                     <h6>beställningsID: <span>1231</span></h6>
                 </aside>
-            </main>
+            </main> -->
         </div>
     </main>
 </section>

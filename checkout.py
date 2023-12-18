@@ -3,12 +3,18 @@ from flask import redirect, Blueprint, render_template, session, request
 from db import db, cursor
 #to get the cart values 
 from cart import show_products_in_cart
+from datetime import datetime
+
 
 checkout = Blueprint('checkout', __name__)
 
 stripe.api_key = 'sk_test_51O2qX1KgpFWeoEQVkbkv7tG1dSNCsq7JOfBa84AJAbWHJg2blyhO8y5ljQT8rsi2AAILHnXKBt47IdLYesxho6hG00yYZVnFw4'
 
 your_domain = 'http://127.0.0.1:8000'
+
+# Generate a unique customer identifier (you can use your own logic)
+import uuid
+customer_identifier = str(uuid.uuid4())
 
 @checkout.route('/create-checkout-session', methods=['post', 'get'])
 def create_checkout_session():
@@ -41,11 +47,14 @@ def create_checkout_session():
             
     try:
 
+        # Get the current time
+        purchase_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
         checkout_session = stripe.checkout.Session.create(
             line_items = [
                 line_item_variable
             ],
-            
+
             #in sweden
             locale='sv',
 
@@ -53,7 +62,7 @@ def create_checkout_session():
             payment_method_types=card,
 
             #Already inserted mail
-            customer_email='Rayan.d15@outlook.com',
+            # customer_email='Rayan.d15@outlook.com',
 
             #allow promotions
             allow_promotion_codes=True,
@@ -67,9 +76,17 @@ def create_checkout_session():
             #billing mode
             mode=mode,
 
+            #Giving customer a value, (For retrival Purposes)
+            customer=stripe.Customer.create(id=customer_identifier),
+
+            # Create Date When Purchases
+            metadata={
+                'purchase_time': purchase_time
+            },
+
             #success and cancel url:s
-            success_url = your_domain + '/login',
-            cancel_url = your_domain + '/login',
+            success_url = your_domain + '/order-complete?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url = your_domain + '/',
 
         )
     
@@ -99,6 +116,7 @@ def delete_item():
 from recentioner import recension
 @checkout.route("/multivitamin")
 def product():
+    # Visar recention Samtidigt Som Du Visar Sidan
     return recension('product-page.html', 1)
 
 @checkout.route('/add-product', methods=['post', 'get'])
