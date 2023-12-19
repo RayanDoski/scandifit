@@ -43,7 +43,7 @@ def order_complete():
     if 'product-id' in session:
         session.pop('product-id')
 
-    return render_template('order-complete.html', product_info=show_products_in_cart(), customer=customer, stripe_session=session)
+    return render_template('order-complete.html', product_info=show_products_in_cart(), customer=customer, stripe_session=stripe_session)
 
 @views.route("/blog")
 def blog():

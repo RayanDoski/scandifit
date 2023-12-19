@@ -9,27 +9,27 @@
         <aside>
             <div>
                 <h6>Beställningsnummer</h6>
-                <p>{{ session.created }}</p>
+                <p>{{ stripe_session.created }}</p>
             </div>
             <div>
                 <h6>Beställnings Datum</h6>
-                <p>{{ session.metadata.purchase_time }}</p>
+                <p>{{ stripe_session.metadata.purchase_time }}</p>
             </div>
             <div>
                 <h6>Kund</h6>
-                <p>{{ session.customer_details.name }}</p>
+                <p>{{ stripe_session.customer_details.name }}</p>
             </div>
 
             <h2>Leveransadress</h2>
-            <p>{{ session.customer_details.name }}</p>
-            <p>{{ session.customer_details.address.line1 }} {{ session.customer_details.address.line2 }}</p>
-            <p>{{ session.customer_details.address.postal_code }}</p>
-            <p>{{ session.customer_details.address.city }}</p>
+            <p>{{ stripe_session.customer_details.name }}</p>
+            <p>{{ stripe_session.customer_details.address.line1 }} {{ stripe_session.customer_details.address.line2 }}</p>
+            <p>{{ stripe_session.customer_details.address.postal_code }}</p>
+            <p>{{ stripe_session.customer_details.address.city }}</p>
 
             <h2>Kontaktinformation</h2>
-            <p>{{ session.customer_details.name }}</p>
-            <p>{{ session.customer_details.email }}</p>
-            <p>{{ session.customer_details.phone }}</p>
+            <p>{{ stripe_session.customer_details.name }}</p>
+            <p>{{ stripe_session.customer_details.email }}</p>
+            <p>{{ stripe_session.customer_details.phone }}</p>
 
             <h2>Kontaktinformation</h2>
             <h6>Summa: <span>0 SEK</span></h6>
@@ -40,16 +40,16 @@
             <h2>Ordersammanfattning</h2>
             <aside>
                 <h6>Delsumma:</h6>
-                {% set subtotal_krona = session.amount_subtotal / 100 %}
+                {% set subtotal_krona = stripe_session.amount_subtotal / 100 %}
                 <p>{{ "{:,.2f} SEK".format(subtotal_krona) }}</p>
             </aside>
             <aside>
                 <h6>Frakt:</h6>
-                <p>{{ session.total_details.amount_shipping }} SEK</p>
+                <p>{{ stripe_session.total_details.amount_shipping }} SEK</p>
             </aside>
             <aside>
                 <h6>Ordersumma:</h6>
-                {% set amount_total_krona = session.amount_total / 100 %}
+                {% set amount_total_krona = stripe_session.amount_total / 100 %}
                 <p>{{ "{:,.2f} SEK".format(amount_total_krona) }}</p>
             </aside>
             <p>kommer inom 5-6 arbetsdagar</p>
