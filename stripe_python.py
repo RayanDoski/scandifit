@@ -28,7 +28,7 @@ def create_checkout_session():
                     quanity = request.form.get('quanity1')
 
                 line_item_variable = {
-                    'price': 'price_1OAZRrKgpFWeoEQVvgaTuAC2',
+                    'price': 'price_1OPAFZKgpFWeoEQVlTl26PyM',
                     'quantity': quanity
                 }
 
@@ -38,7 +38,7 @@ def create_checkout_session():
             elif ids == 2:
 
                 line_item_variable = {
-                    'price': 'price_1OC2sCKgpFWeoEQVt8v8nDVm',
+                    'price': 'price_1OPAGDKgpFWeoEQVRiucrGxx',
                     'quantity': 1
                 }
                 
