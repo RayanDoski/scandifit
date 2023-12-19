@@ -1,8 +1,7 @@
 # from flask import Blueprint, render_template
 
-from flask import Blueprint, render_template, request, session, redirect
-from db import cursor, db
-from flask_mail import Mail, Message
+from flask import Blueprint, render_template, request, redirect
+from flask_mail import Message
 from db import mail
 #to get the cart values 
 from cart import show_products_in_cart
@@ -29,21 +28,6 @@ def send_message():
 @views.route("/jobb")
 def jobb():
     return render_template('jobb.html', product_info=show_products_in_cart())
-
-import stripe
-
-stripe.api_key = 'sk_test_51O2qX1KgpFWeoEQVkbkv7tG1dSNCsq7JOfBa84AJAbWHJg2blyhO8y5ljQT8rsi2AAILHnXKBt47IdLYesxho6hG00yYZVnFw4'
-
-@views.route("/order-complete", methods=['GET'])
-def order_complete():
-    stripe_session = stripe.checkout.Session.retrieve(request.args.get(('session_id')))
-    customer = stripe.Customer.retrieve(stripe_session.customer)
-    
-    #Radera deras Kundvagn
-    if 'product-id' in session:
-        session.pop('product-id')
-
-    return render_template('order-complete.html', product_info=show_products_in_cart(), customer=customer, stripe_session=stripe_session)
 
 @views.route("/blog")
 def blog():

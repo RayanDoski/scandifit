@@ -9,6 +9,8 @@ from quiz import quiz
 from checkout import checkout
 from schema import schema
 from exercises import exercises
+from stripe_python import stripe_py
+from product import product
 
 app = Flask(__name__)
 
@@ -22,6 +24,8 @@ app.register_blueprint(quiz)
 app.register_blueprint(checkout)
 app.register_blueprint(schema)
 app.register_blueprint(exercises)
+app.register_blueprint(stripe_py)
+app.register_blueprint(product)
 
 # Configure the sender address
 app.config['MAIL_DEFAULT_SENDER'] = 'kontakta@scandifit.se'
