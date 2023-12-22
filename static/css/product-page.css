@@ -32,9 +32,9 @@
 }
 
 .product > div > article > h1 {
-    font-size: 55px;
+    font-size: 50px;
     font-family: var(--primary-font);
-    letter-spacing: 3px;
+    letter-spacing: 1px;
 }
 
 .product > div > article > aside {
@@ -49,8 +49,9 @@
 }
 
 .product > div > article > aside > h4 {
-    letter-spacing: 1.5px;
-    font-size: 18px;
+    letter-spacing: 0px;
+    margin: 0px 0px 0px 5px;
+    font-size: 20px;
 }
 
 .product > div > article > p {
@@ -421,28 +422,34 @@
 
 .benifits > article {
     flex: 5;
-}
-
-.benifits > article > h2 {
-    font-size: 55px;
-    font-family: var(--primary-font);
-    letter-spacing: 1.5px;
-}
-
-.benifits > article > div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    row-gap: 60px;
-    margin: 60px 0px 0px 0px;
     transform: translateY(-30px);
     opacity: 0;
     transition: 2s all;
 }
 
-.benifits > article > div.show {
+.benifits > article.show {
     transform: translateY(0px);
     opacity: 1;
+}
+
+.benifits > article > h2 {
+    font-size: 35px;
+    font-family: var(--primary-font);
+    letter-spacing: 1px;
+}
+
+.benifits > article > h3 {
+    font-size: 35px;
+    font-family: var(--primary-font);
+    letter-spacing: 1px;
+    margin: 50px 0px 0px 0px;
+}
+
+.benifits > article > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px 0px 0px;
 }
 
 .benifits > article > div > article {
@@ -454,16 +461,18 @@
 }
 
 .benifits > article > div > article > h3 {
-    font-family: var(--primary-font);
-    font-size: 27px;
-    letter-spacing: 1.25px;
-    margin: 15px 0px 3px 0px;
+    /* font-family: var(--primary-font); */
+    font-size: 20px;
+    letter-spacing: .25px;
+    font-weight: bold;
+    margin: 15px 0px 8px 0px;
 }
 
 .benifits > article > div > article > p {
     font-weight: lighter;
     letter-spacing: .5px;
     font-size: 18px;
+    line-height: 25px;
 }
 
 .benifits > aside {
@@ -493,6 +502,23 @@
 
 }
 
+@media screen and (max-width: 600px) {
+
+    .benifits > article > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: baseline;
+        align-items: baseline;
+        gap: 30px;
+        margin: 30px 0px 90px 0px;
+    }
+
+    .benifits > article > div > article {
+        width: 100%;
+    }
+
+}
+
 @media screen and (max-width: 450px) {
 
     .benifits {
@@ -504,19 +530,7 @@
     }
 
     .benifits > article > h2 {
-        font-size: 45px;
         letter-spacing: .5px;
-    }
-
-    .benifits > article > div {
-        margin: 40px 0px 0px 0px;
-        gap: 20px;
-        column-gap: 30px;
-        justify-content: center;
-    }
-
-    .benifits > article > div > article {
-        width: auto;
     }
 
     .benifits > article > div > article > img {
@@ -765,6 +779,15 @@
 
     .faq > article > div > div {
         gap: 20px;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+
+    .faq > aside > h2 {
+        font-size: 45px;
+        letter-spacing: .5px;
     }
 
 }

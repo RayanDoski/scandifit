@@ -55,11 +55,44 @@
             <h2>recentioner</h2>
 
             <div>
+                <!-- getting the stars for the rating -->
+                {% if 1.5 > average_rating|float > 0.5 %}
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                {% elif 2.5 > average_rating|float > 1.5 %}
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                {% elif 3.5 > average_rating|float > 2.5 %}
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                {% elif 4.5 > average_rating|float > 3.5 %}
                 <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
                 <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
                 <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
                 <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
                 <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                {% elif average_rating|float > 4.5 %}
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                {% else %}
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                {% endif %}
                 <p>{{ average_rating }} / 5</p>
             </div>
 

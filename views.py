@@ -53,9 +53,9 @@ def blog_post_four():
 def blog_post_five():
     return render_template('blog-post-five.html', product_info=show_products_in_cart())
 
-@views.route("/secretespolicy")
+@views.route("/returpolicy")
 def secretespolicy():
-    return render_template('secretespolicy.html', product_info=show_products_in_cart())
+    return render_template('retur-policy.html', product_info=show_products_in_cart())
 
 @views.route("/terms_of_use")
 def terms_of_use():
