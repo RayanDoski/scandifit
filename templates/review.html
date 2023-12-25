@@ -10,7 +10,7 @@
     <!-- write review popup Start -->
     <div class="popup-review-background"></div>
     <div class="section-review-background">
-        <h2>Skriv En Recention</h2>
+        <h2>Skriv En Recensioner</h2>
         <form action="{{ url_for('recensioner.insert_review', product_id=product_id, ) }}#review" method="post" enctype="multipart/form-data" id="form-review">
             
             <p id="stars-rating">Betyg: 1/5</p>
@@ -36,13 +36,13 @@
             <label for="rubrik">Rubrik</label>
             <input type="text" name="rubrik" id="rubrik">
 
-            <label for="recention">Recention</label>
+            <label for="recention">Recension</label>
             <textarea name="recention" id="recention" cols="30" rows="5"></textarea>
 
             <label for="picture" id="picture-lable">Lägg Till Bild</label>
             <input type="file" name="picture" id="picture">
 
-            <label for="name">Name</label>
+            <label for="name">Namn</label>
             <input type="text" name="name" id="name">
 
             <button type="submit">Publicera</button>
@@ -52,7 +52,7 @@
     <!-- write review popup End -->
     <section class="review" id="review">
         <div>
-            <h2>recentioner</h2>
+            <h2>Recensioner</h2>
 
             <div>
                 <!-- getting the stars for the rating -->
@@ -98,44 +98,44 @@
 
             <main>
                 <article>
-                    <p>5 star</p>
+                    <p>5 Star</p>
                     <div><div style="width: {{ percentage_five_star }}%;"></div></div>
                     <p>{{ percentage_five_star }}%</p>
                 </article>
 
                 <article>
-                    <p>4 star</p>
+                    <p>4 Star</p>
                     <div><div style="width: {{ percentage_four_star }}%;"></div></div>
                     <p>{{ percentage_four_star }}%</p>
                 </article>
 
                 <article>
-                    <p>3 star</p>
+                    <p>3 Star</p>
                     <div><div style="width: {{ percentage_three_star }}%;"></div></div>
                     <p>{{ percentage_three_star }}%</p>
                 </article>
 
                 <article>
-                    <p>2 star</p>
+                    <p>2 Star</p>
                     <div><div style="width: {{ percentage_two_star }}%;"></div></div>
                     <p>{{ percentage_two_star }}%</p>
                 </article>
 
                 <article>
-                    <p>1 star</p>
+                    <p>1 Star</p>
                     <div><div style="width: {{ percentage_one_star }}%;"></div></div>
                     <p>{{ percentage_one_star }}%</p>
                 </article>
             </main>
 
-            <button id="write-review-btn">Skriv Recention</button>
+            <button id="write-review-btn">Skriv Recension</button>
             
         </div>
         <aside>
 
             <form action="{{ url_for('recensioner.recension', product_html=product_html, product_id=product_id, ) }}#review" method="post">
                 <select name="order-reviews" id="">
-                    <option value="top" {{ top_review }}>Top Recentioner</option>
+                    <option value="top" {{ top_review }}>Top Recensioner</option>
                     <option value="five" {{ five_review }}>5 Star</option>
                     <option value="four" {{ four_review }}>4 Star</option>
                     <option value="three" {{ three_review }}>3 Star</option>
