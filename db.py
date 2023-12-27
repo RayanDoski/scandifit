@@ -1,19 +1,19 @@
-import pymysql
 import mysql.connector
-def start_db_connection():
-    db = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd="Rayan12345",
-        database="scandifit",
-    )
-    cursor = db.cursor()
+def establish_database_connection():
+    while True:
+        try:
+            db = mysql.connector.connect(
+                host="localhost",
+                user="root",
+                passwd="Rayan12345",
+                database="scandifit",
+            )
+            return db
+        except:
+            print("CONNECTION FAILED")
 
-    return cursor, db
-
-# def close_db_connection():
-#     cursor.close()
-#     db.close()
+db = establish_database_connection()
+cursor = db.cursor()
 
 from flask_mail import Mail
 

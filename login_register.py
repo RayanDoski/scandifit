@@ -1,12 +1,9 @@
 from flask import Blueprint, render_template, request, session, redirect
-from db import start_db_connection
+from db import db, cursor
 from flask_mail import Mail, Message
 from db import mail
 
 login_register = Blueprint('login_register', __name__)
-
-# Making The connection To Database
-database = start_db_connection()
 
 @login_register.route("/signup")
 def signup():
@@ -31,8 +28,8 @@ def login_processing():
         email = request.form.get('email').lower()
         password = request.form.get('password').lower()
 
-        database[0].execute('select * from users where password = %s and email = %s', (password, email))
-        user = database[0].fetchone()
+        cursor.execute('select * from users where password = %s and email = %s', (password, email))
+        user = cursor.fetchone()
 
         if user:
             session['user_id'] = user[0]
@@ -59,23 +56,23 @@ def registreringar():
 #checking if user is logged in and passing values
 def is_logged_in():
     if 'user_id' in session:
-        database[0].execute('select * from users where id = %s', (session['user_id'],))
-        data = database[0].fetchone()
+        cursor.execute('select * from users where id = %s', (session['user_id'],))
+        data = cursor.fetchone()
         return session['user_id'], data[1], data[2], data[3], data[4], data[5], data[6], data[7]
     else:
         return None
     
 def does_mail_already_exist(email, namn, telefonnummer, password):
     # Does the informaiton already exist?
-    database[0].execute("SELECT * FROM users WHERE email=%s", (email,))
-    does_mail_exist = database[0].fetchall()
+    cursor.execute("SELECT * FROM users WHERE email=%s", (email,))
+    does_mail_exist = cursor.fetchall()
 
     if does_mail_exist:
         mail_exists = True
         return mail_exists
     else:
-        database[0].execute('insert into users (namn, email, telephonenumber, password) values (%s, %s, %s, %s)', (namn, email, telefonnummer, password))
-        database[1].commit()
+        cursor.execute('insert into users (namn, email, telephonenumber, password) values (%s, %s, %s, %s)', (namn, email, telefonnummer, password))
+        db.commit()
         
         # for mail sending 
         msg = Message('Vi Har Tagit Emot Ditt Medelande', recipients=[email])

@@ -1,5 +1,4 @@
 # from flask import Blueprint, render_template
-
 from flask import Blueprint, render_template, request, redirect
 from flask_mail import Message
 from db import mail
