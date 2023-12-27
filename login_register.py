@@ -55,7 +55,7 @@ def registreringar():
 #checking if user is logged in and passing values
 def is_logged_in():
     if 'user_id' in session:
-        cursor.execute('select * from users where id = %s', (session['user_id']))
+        cursor.execute('select * from users where id = %s', (session['user_id'],))
         data = cursor.fetchone()
         return session['user_id'], data[1], data[2], data[3], data[4], data[5], data[6], data[7]
     else:
@@ -63,7 +63,7 @@ def is_logged_in():
     
 def does_mail_already_exist(email, namn, telefonnummer, password):
     # Does the informaiton already exist?
-    cursor.execute("SELECT * FROM users WHERE email=%s", (email))
+    cursor.execute("SELECT * FROM users WHERE email=%s", (email,))
     does_mail_exist = cursor.fetchall()
 
     if does_mail_exist:

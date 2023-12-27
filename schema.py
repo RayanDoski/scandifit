@@ -15,7 +15,7 @@ def schedual():
         return redirect('/login')
     
     #getting their quiz values
-    cursor.execute('select * from quiz where user_id = %s', (user_data[0]))
+    cursor.execute('select * from quiz where user_id = %s', (user_data[0],))
     quiz_info = cursor.fetchone()
 
     #checking if Their account is linked to a Schedual
@@ -322,7 +322,7 @@ def schedual():
 
 #to get exercises from database
 def get_exercise_from_database(exercise):
-    cursor.execute('SELECT * FROM workouts WHERE id IN %s', (exercise,))
+    cursor.execute('SELECT * FROM workouts WHERE id IN (%s)' % ', '.join(map(str, exercise)))
     exercise_data = cursor.fetchall()
     return exercise_data
 

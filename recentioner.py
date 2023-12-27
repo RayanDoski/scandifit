@@ -10,10 +10,10 @@ recensioner = Blueprint('recensioner', __name__)
 @recensioner.route("/recension/<product_html>/<product_id>", methods=['GET', 'POST'])
 def recension(product_html, product_id):
 
-    cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s', (product_id))
+    cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s', (product_id,))
     amount_of_rows = cursor.fetchone()[0]  # Access the first element of the tuple
 
-    cursor.execute('SELECT SUM(stars) FROM reviews WHERE product_id = %s', (product_id))
+    cursor.execute('SELECT SUM(stars) FROM reviews WHERE product_id = %s', (product_id,))
     amount_of_stars = cursor.fetchone()[0]  # Access the first element of the tuple
 
     if amount_of_rows > 0:
@@ -23,7 +23,7 @@ def recension(product_html, product_id):
         average_rating = 0
 
     # five star
-    cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 5', (product_id))
+    cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 5', (product_id,))
     five_star_reviews = cursor.fetchone()[0]
 
     if amount_of_rows > 0:
@@ -33,7 +33,7 @@ def recension(product_html, product_id):
         percentage_five_star = 0
     
     # four star
-    cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 4', (product_id))
+    cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 4', (product_id,))
     four_star_reviews = cursor.fetchone()[0]
 
     if amount_of_rows > 0:
@@ -43,7 +43,7 @@ def recension(product_html, product_id):
         percentage_five_star = 0
 
     # three star
-    cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 3', (product_id))
+    cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 3', (product_id,))
     three_star_reviews = cursor.fetchone()[0]
 
     if amount_of_rows > 0:
@@ -53,7 +53,7 @@ def recension(product_html, product_id):
         percentage_five_star = 0
 
     # two star
-    cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 2', (product_id))
+    cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 2', (product_id,))
     two_star_reviews = cursor.fetchone()[0]
 
     if amount_of_rows > 0:
@@ -63,7 +63,7 @@ def recension(product_html, product_id):
         percentage_five_star = 0
 
     # one star
-    cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 1', (product_id))
+    cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 1', (product_id,))
     one_star_reviews = cursor.fetchone()[0]
 
     if amount_of_rows > 0:
@@ -166,7 +166,7 @@ def recension(product_html, product_id):
         three_review = ''
         two_review = ''
         one_review = ''
-        cursor.execute("select * from reviews where product_id = %s ORDER BY helpful DESC", (product_id))
+        cursor.execute("select * from reviews where product_id = %s ORDER BY helpful DESC", (product_id,))
         reviews = cursor.fetchall()
         return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
     

@@ -45,7 +45,7 @@ def workout():
     
     namn = user_data[1]
     id = request.args.get('id')
-    cursor.execute('select * from workouts where id = %s', (id))
+    cursor.execute('select * from workouts where id = %s', (id,))
     workout = cursor.fetchone()
     return render_template('workout.html', workout=workout, product_info=show_products_in_cart(), namn=namn)
     
@@ -57,7 +57,7 @@ def selectation(selected_value):
         cursor.execute('select * from workouts')
         specific_workouts = cursor.fetchall()
     else:
-        cursor.execute('select * from workouts where target_muscle = %s', (selected_value))
+        cursor.execute('select * from workouts where target_muscle = %s', (selected_value,))
         specific_workouts = cursor.fetchall()
     return specific_workouts
 
