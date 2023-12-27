@@ -1,14 +1,19 @@
 import pymysql
 import mysql.connector
+def start_db_connection():
+    db = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        passwd="Rayan12345",
+        database="scandifit",
+    )
+    cursor = db.cursor()
 
-db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    passwd="Rayan12345",
-    database="scandifit"
-)
+    return cursor, db
 
-cursor = db.cursor()
+# def close_db_connection():
+#     cursor.close()
+#     db.close()
 
 from flask_mail import Mail
 
