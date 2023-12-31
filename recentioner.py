@@ -247,7 +247,7 @@ def helpful():
             return redirect(url_with_query)
 
     session['helpful-once'] = id
-    cursor.execute("UPDATE reviews SET helpful = helpful + 1 WHERE id = %s;", (id))
+    cursor.execute("UPDATE reviews SET helpful = helpful + 1 WHERE id = %s;", (id,))
     db.commit()
 
     # Close Database Connection
