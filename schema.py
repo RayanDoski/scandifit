@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, session, redirect
-from db import cursor, db
+from db import make_db_connection
 #to get the cart values 
 from cart import show_products_in_cart
 #checking if user is logged in
@@ -9,6 +9,11 @@ schema = Blueprint('schema', __name__)
         
 @schema.route("/schedual", methods=["GET","POST"])
 def schedual():
+
+    #Make Database Connection
+    db = make_db_connection()
+    cursor = db.cursor()
+
     #are they logged in?
     user_data = is_logged_in()
     if user_data is None:
@@ -17,6 +22,10 @@ def schedual():
     #getting their quiz values
     cursor.execute('select * from quiz where user_id = %s', (user_data[0],))
     quiz_info = cursor.fetchone()
+
+    # Close Database Connection
+    db.close()
+    cursor.close()
 
     #checking if Their account is linked to a Schedual
     if quiz_info is None:
@@ -322,8 +331,18 @@ def schedual():
 
 #to get exercises from database
 def get_exercise_from_database(exercise):
+
+    #Make Database Connection
+    db = make_db_connection()
+    cursor = db.cursor()
+
     cursor.execute('SELECT * FROM workouts WHERE id IN (%s)' % ', '.join(map(str, exercise)))
     exercise_data = cursor.fetchall()
+
+    # Close Database Connection
+    db.close()
+    cursor.close()
+
     return exercise_data
 
 #generating html code for exercise

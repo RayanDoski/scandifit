@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, session, redirect
-from db import cursor, db
+from db import make_db_connection
+db = make_db_connection()
+cursor = db.cursor()
 #to get the cart values 
 from cart import show_products_in_cart
 #checking if user is logged in

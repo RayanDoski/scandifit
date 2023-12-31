@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, session, redirect
-from db import cursor, db
+from db import make_db_connection
 #to get the cart values 
 from cart import show_products_in_cart
 #checking if user is logged in
@@ -10,7 +10,7 @@ exercises = Blueprint('exercises', __name__)
 #workouts
 @exercises.route("/workouts", methods=['GET', 'POST'])
 def workouts():
-    
+
     #are they logged in?
     user_data = is_logged_in()
     if user_data is None:
@@ -38,6 +38,10 @@ def workouts():
 @exercises.route("/workout")
 def workout():
 
+    #Make Database Connection
+    db = make_db_connection()
+    cursor = db.cursor()
+
     #are they logged in?
     user_data = is_logged_in()
     if user_data is None:
@@ -47,11 +51,21 @@ def workout():
     id = request.args.get('id')
     cursor.execute('select * from workouts where id = %s', (id,))
     workout = cursor.fetchone()
+
+    # Close Database Connection
+    db.close()
+    cursor.close()
+    
     return render_template('workout.html', workout=workout, product_info=show_products_in_cart(), namn=namn)
     
 
 #show exercises for specific muscle group
 def selectation(selected_value):
+
+    #Make Database Connection
+    db = make_db_connection()
+    cursor = db.cursor()
+
     #om vi anropar funktion utan ett parameter värde
     if selected_value == None:
         cursor.execute('select * from workouts')
@@ -59,6 +73,11 @@ def selectation(selected_value):
     else:
         cursor.execute('select * from workouts where target_muscle = %s', (selected_value,))
         specific_workouts = cursor.fetchall()
+    
+    # Close Database Connection
+    db.close()
+    cursor.close()
+    
     return specific_workouts
 
 #which muscle group did they choose?
