@@ -35,6 +35,10 @@ def quizing():
         else:
             phone = "Information Saknas"
 
+        #Make Database Connection
+        db = make_db_connection()
+        cursor = db.cursor()
+
         #insert into users table
         cursor.execute('insert into users (namn, email, telephonenumber, password) values (%s, %s, %s, %s)', (name, email, phone, password))
         db.commit()
@@ -57,6 +61,11 @@ def quizing():
             msg = Message('Välkommen Till Scandifit', recipients=[email])
             msg.html = render_template('mail_welcome.html', namn=name)
             mail.send(msg)  # Use 'mail', not 'Mail'
+
+            # Close Database Connection
+            db.close()
+            cursor.close()
+
             return redirect('/schedual')
         
     else:
