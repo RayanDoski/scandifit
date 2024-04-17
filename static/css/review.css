@@ -89,31 +89,25 @@
     border-left: 1px solid var(--secondary-color);
 }
 
-.review > aside > form > select {
-    letter-spacing: .5px;
-    padding: 5px 10px;
+.review > aside > ul {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 10px;
+    padding: 20px;
+}
+
+.review > aside > ul > li > a {
+    background-color: var(--company-color);
     border-radius: 5px;
-    outline: 0;
-    background-color: var(--primary-color);
-    border: .5px solid var(--secondary-color);
-    margin: 0px 0px 20px 0px;
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 5px 8px;
+    transition: .5s all;
 }
 
-.review > aside > form > select:hover {
-    border: .5px solid var(--company-color);
-}
-
-.review > aside > form > button {
-    border: .5px solid var(--secondary-color);
-    background-color: var(--primary-color);
-    letter-spacing: .5px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.review > aside > form > button:hover {
-    border: .5px solid var(--company-color);
+.review > aside > ul > li > a:hover {
+    background-color: #2da455;
 }
 
 .review > aside > article {

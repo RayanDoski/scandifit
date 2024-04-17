@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/blog_post.css') }}">{% endblock %}
+{% block title %}<title>Blog</title>{% endblock %}
+{% block content %}
+<section class="blog-post">
+    <article>
+        <img src="{{ url_for('static', filename='pictures/blog/blog-picture-four.png') }}" alt="Blog Post Img">
+        <main>
+            <h2>2023 - 12 - 01</h2>
+            <h1>Så Skapar Du Det Perfekta Träningsprogrammet!</h1>
+
+            <p>Har du någonsin undrat varför vissa människor uppnår sina träningsmål snabbare än andra? Hemligheten ligger ofta i ett välutformat träningsprogram. Ett effektivt träningsprogram är mer än bara en lista över övningar. Det är en skräddarsydd guide som hjälper dig att träna smartare, inte hårdare. <strong>PSST! längre ner i detta inlägg har vi en spännande överraskning för dig!</strong></p>
+
+            <h3>Ett bra träningsprogram har flera faktorer</h3>
+
+            <ol>
+                <li><strong>Dina personliga mål:</strong> Vill du bygga muskler, tappa vikt, förbättra din kondition, eller kanske en kombination av dessa? Ditt program ska vara utformat för att effektivt hjälpa dig att nå dessa mål.</li>
+                <li><strong>Din nuvarande konditionsnivå:</strong> Ett bra program utmanar dig, men det är också realistiskt och tar hänsyn till dina begränsningar för att minimera risken för skador.</li>
+                <li><strong>Din tillgängliga tid:</strong> Oavsett om du kan spendera flera timmar i gymmet varje dag, eller bara har en halvtimme att röra på dig, bör ditt program kunna anpassas till ditt schema.</li>
+                <li><strong>variation:</strong> Ett bra träningsprogram inkluderar en mix av styrketräning, konditionsträning och flexibilitetsträning för att säkerställa en välbalanserad fysisk utveckling.</li>
+            </ol>
+
+            <h3>Snabb Återhämtning</h3>
+            <p>För att må bra och få ut det mesta av din träning är det viktigt att återhämta sig ordentligt. Ge din kropp tid att vila mellan träningspass. <strong>Här är några enkla sätt att återhämta sig snabbt:</strong></p>
+
+            <ol>
+                <li><strong>Bra Sömn:</strong> Sikta på 7-9 timmars kvalitativ sömn varje natt.</li>
+                <li><strong>Rätt Mat:</strong> Ät en balanserad kost med protein, kolhydrater och hälsosamma fetter.</li>
+                <li><strong>Sträcka Ut Musklerna:</strong> Innan träning, gör rörelsesträckor för att förbereda musklerna. Efter träning, gör lugna stretchövningar för att öka rörligheten och minska spänningar.</li>
+                <li><strong>Massage och Andra Sätt:</strong> Få regelbunden massage för att slappna av musklerna. Använd foam rollers och liknande för självmassage och att lösa upp knutor.</li>
+                <li><strong>Drick Tillräckligt med Vatten:</strong> Håll dig välhydrerad för att stödja kroppens återhämtning och minska risken för stelhet och kramp.</li>
+            </ol>
+
+            <h3>Din speciella Överraskning</h3>
+            <p>Vi förstår att skapa det perfekta träningsprogrammet kan kännas som en utmaning. Det är därför ScandiFit har tagit fram en lösning för dig, <strong>En helt GRATIS, personlig träningsplan som är skräddarsydd för just dina mål.</strong> Allt du behöver göra är att svara på några enkla frågor, vilket bara tar <strong>60 sekunder!</strong> Därefter får du en tringsplan som är helt anpassad efter dina behov och mål, vare sig det är att gå ner i vikt, bygga muskler, förbättra konditionen eller bara känna dig hälsosammare.</p>
+
+            <h3>Varför välja Erbjudande?</h3>
+            <ol>
+                <li>Snabbt och Enkelt: Vi vet att din tid är värdefull. Därför tar det <strong>bara 60 sekunder</strong> att få ditt personliga träningsprogram genom att svara på några enkla frågor!</li>
+                <li>Personlig Anpassning: Vi förstår att varje individ är unik. Genom att ta hänsyn till <strong>dina specifika mål och önskemål</strong> kan vi skapa ett träningsprogram som är skräddarsytt just för DIG!</li>
+                <li>Expertvägledning: Vårt team av erfarna tränare finns tillgängliga för att ge dig professionell rådgivning och stöd längs hela din träningsresa. Vi finns här för att <strong>hjälpa dig att nå dina mål!</strong></li>
+                <li>Uppnå Resultat: Med vårt personliga träningsprogram och expertrådgivning kommer du att <strong>se verkliga resultat på nolltid!</strong> Vi är dedikerade till din framgång och att hjälpa dig att nå din fulla potential!</li>
+                <li>Helt GRATIS: Vi tror på att göra hälsa och träning tillgängligt för alla. Därför är vårt personliga träningsprogram <strong>helt GRATIS!</strong> Inga dolda avgifter eller prenumerationer. Det är vår gåva till dig! </li>
+                <li>Missa inte den här fantastiska möjligheten! Klicka på länken nedan för att komma igång och få ditt GRATIS personliga träningsprogram på bara 60 sekunder!</li>
+            </ol>
+
+            <a href="/quiz">Få Ditt Personliga Träningsschema</a>
+        </main>
+    </article>
+    <aside>
+
+        <a href="/blog/upptäck_hemligheterna_bakom_effektiv_hemmaträning">
+            <img src="{{ url_for('static', filename='pictures/blog/blog-picture-two.webp') }}" alt="Blog Post Img">
+            <h3>Upptäck Hemligheterna bakom Effektiv Hemmaträning</h3>
+            <!-- <h4>249 KR</h4> -->
+            <p>Skapa en Regelbunden Träningsrutin: Regelbundenhet är nyckeln när det gäller att bygga muskler. Försök att träna minst...</p>
+        </a>
+
+        <a href="/blog/bygg_muskelmassa_snabbt_med_våra_magiska_tips">
+            <img src="{{ url_for('static', filename='pictures/blog/blog-picture.jpg') }}" alt="Blog Post Img">
+            <h3>Bygg Muskelmassa Snabbt med Våra Magiska Tips</h3>
+            <!-- <h4>249 KR</h4> -->
+            <p>Skapa en Regelbunden Träningsrutin: Regelbundenhet är nyckeln när det gäller att bygga muskler. Försök att träna minst...</p>
+        </a>
+
+        <a href="/blog/gå_ner_i_vikt_och_bygg_muskler_med_dessa_magiska_strategier">
+            <img src="{{ url_for('static', filename='pictures/blog/blog-picture-five.png') }}" alt="Blog Post Img">
+            <h3>Gå Ner i Vikt och Bygg Muskler med Dessa Magiska Strategier!</h3>
+            <p>Vill du bygga muskler, tappa vikt, förbättra din kondition, eller kanske en kombination av dessa? Ditt program ska vara utformat för att effektivt hjälpa dig...</p>
+        </a>
+
+    </aside>
+</section>
+{% endblock %}

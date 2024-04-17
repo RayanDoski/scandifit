@@ -1,0 +1,116 @@
+.plans_and_pricing > h1 {
+    font-family: var(--primary-font);
+    text-align: center;
+    font-size: 65px;
+    letter-spacing: 2.5px;
+    margin: 0px 0px 50px 0px;
+}
+
+.plans_and_pricing > article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.plans_and_pricing > article > div {
+    border: .5px solid var(--secondary-color);
+    border-radius: 5px;
+    width: 650px;
+    box-sizing: border-box;
+    padding: 0px 0px 25px 0px;
+}
+
+.plans_and_pricing > article > div > aside {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid var(--secondary-color);
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.plans_and_pricing > article > div > aside > img {
+    max-width: 250px;
+    max-height: 65px;
+}
+
+.plans_and_pricing > article > div > aside > h2 {
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.plans_and_pricing > article > div > aside > h2 > span {
+    font-weight: lighter;
+}
+
+.plans_and_pricing > article > div > article {
+    width: 95%;
+    margin: 30px auto 0px auto;
+}
+
+.plans_and_pricing > article > div > article > h3 {
+    letter-spacing: 1px;
+    font-size: 20px;
+    margin: 0px 0px 15px 0px;
+}
+
+.plans_and_pricing > article > div > article > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0px 0px 40px 10px;
+}
+
+.plans_and_pricing > article > div > article > div > img {
+    max-width: 30px;
+    max-height: 50px;
+}
+
+.plans_and_pricing > article > div > article > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.plans_and_pricing > article > div > article > ul > h3 {
+    font-size: 23px;
+    letter-spacing: .5px;
+}
+
+.plans_and_pricing > article > div > article > ul > li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+.plans_and_pricing > article > div > article > ul > li > span {
+    font-weight: bold;
+}
+
+.plans_and_pricing > article > div > article > ul > li > img {
+    max-width: 25px;
+    max-height: 25px;
+}
+
+.plans_and_pricing > article > div > article > ul > a {
+    padding: 10px 30px;
+    border-radius: 5px;
+    background-color: var(--company-color);
+    width: 200px;
+    text-align: center;
+    font-family: var(--primary-font);
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 18px;
+    transition: .5s all;
+}
+
+.plans_and_pricing > article > div > article > ul > a:hover {
+    background-color: #2da455;
+}

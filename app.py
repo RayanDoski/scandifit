@@ -2,15 +2,17 @@ from flask import Flask
 from flask_mail import Mail
 
 from views import views
-from profil import profil
+from profile_info import profil
 from login_register import login_register
 from recentioner import recensioner
-from quiz import quiz
-from checkout import checkout
-from schema import schema
+from trainingplan_quiz import trainingplan_quiz
+from cart import cart
+from trainingplan import trainingplan
 from exercises import exercises
 from stripe_python import stripe_py
 from product import product
+from dietplan import dietplan
+from sleepplan import sleepplan
 
 app = Flask(__name__)
 
@@ -20,12 +22,14 @@ app.register_blueprint(views)
 app.register_blueprint(profil)
 app.register_blueprint(login_register)
 app.register_blueprint(recensioner)
-app.register_blueprint(quiz)
-app.register_blueprint(checkout)
-app.register_blueprint(schema)
+app.register_blueprint(trainingplan_quiz)
+app.register_blueprint(cart)
+app.register_blueprint(trainingplan)
 app.register_blueprint(exercises)
 app.register_blueprint(stripe_py)
 app.register_blueprint(product)
+app.register_blueprint(dietplan)
+app.register_blueprint(sleepplan)
 
 # Configure the sender address
 app.config['MAIL_DEFAULT_SENDER'] = 'kontakta@scandifit.se'

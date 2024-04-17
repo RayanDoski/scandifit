@@ -34,81 +34,83 @@
             <li><a href="/blog">Blog</a></li>
             <li><a href="/multivitamin">Multivitamin</a></li>
             <li><a href="https://www.postnord.se/vara-verktyg/spara-brev-paket-och-pall">Spåra Order</a></li>
-            <a href="{% if 'user_id' in session %} /schedual {% else %} /quiz {% endif %}" class="button-link">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
+            <a href="{% if 'user_id' in session %} /profile/trainingplan {% else %} /trainingplan/quiz {% endif %}" class="button-link">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
         </ul>
     </section>
     <!--menu End-->
     <!--Kundvagn Start-->
-    <div id="kundvagn-background" class="{% if product_info %} del_show {% endif %}"></div>
-    <section id="kundvagn" class="{% if product_info %} del_show {% endif %}">
+    <div id="kundvagn-background" class="{% if cart_info %} {% if cart_info[0]|length > 0 %} del_show {% endif %} {% endif %}"></div>
+    <section id="kundvagn" class="{% if cart_info %} {% if cart_info[0]|length > 0 %} del_show {% endif %} {% endif %}">
         <nav>
-            {% if product_info %}
-                    <h4>Din Kundvagn
-                        {% for products in product_info %}
-                            ({{ loop.index }} 
-                        {% endfor %}
-                        Produkt)</h4>
+            {% if cart_info %}
+                {% if cart_info[0]|length > 0 %}
+                    <h4>Din Kundvagn ( {{ cart_info[0]|length }} Produkt)</h4>
                 {% else %}
-                <h4>Din Kundvagn (TOM)</h4>
+                    <h4>Din Kundvagn (TOM)</h4>
+                {% endif %}
             {% endif %}
             <h5 id="close-cart">X</h2>
         </nav>
         <p>ID: 1032255985</p>
-        <form action="/create-checkout-session" method="post">
-            <!--Produkt start-->
-            {% if product_info %}
-                {% for products in product_info %}
-                    {% if products[5] == 'once' %}
-                    <main>
-                        <aside>
-                            <img src="{{ url_for('static', filename='pictures/product-picture/' + products[4] ) }}" alt="Product Picture">
-                            <h2>{{ products[1] }}</h2>
-                        </aside>
-                        <a href="/delete-from-cart?id={{ products[0] }}"><img src="{{ url_for('static', filename='pictures/icons/bin.png') }}" alt="Papperskorg "></a>
-                    </main>
-                    <article>
-                        <aside>
-                            <div>
-                                <button type="button" class="minus">-</button>
-                                <input type="text" name="quanity{{ products[0] }}" id="quanity" readonly value="1">
-                                <button type="button" class="plus">+</button>
-                            </div>
-                        </aside>
-                        <p id="amount-per-product-p"><span id="amount-per-product">{{ products[3] }}</span> SEK</p>
-                    </article>
-                    {% elif products[5] == 'sub' %}
-                        <main>
-                            <aside>
-                                <img src="{{ url_for('static', filename='pictures/product-picture/' + products[4] ) }}" alt="Product Picture">
-                                <h2>{{ products[1] }}</h2>
-                            </aside>
-                            <a href="/delete-from-cart?id={{ products[0] }}"><img src="{{ url_for('static', filename='pictures/icons/bin.png') }}" alt="Papperskorg "></a>
-                        </main>
-                        <article>
-                            <aside>
-                                Prenumeration
-                            </aside>
-                            <p id="amount-per-product-p"><span id="amount-per-product">{{ products[3] }}</span> SEK</p>
-                        </article>
-                    {% endif %}
-                {% endfor %}
+        <!--Produkt start-->
+        {% if cart_info %}
+            {% if cart_info[0]|length > 0 %}
+                <form action="/create_checkout_session" method="post">
+                    {% for items in cart_info[1] %}
+                        {% for product_info in cart_info[0] %}
+                            {% if items[0] == product_info[0] %}
+                                {% if items[1] == 'once' %}
+                                    <main>
+                                        <aside>
+                                            <img src="{{ url_for('static', filename='pictures/product-picture/' + product_info[5] ) }}" alt="Product Picture">
+                                            <h2>{{ product_info[1] }}</h2>
+                                        </aside>
+                                        <a href="/delete_from_cart/{{ product_info[0] }}"><img src="{{ url_for('static', filename='pictures/icons/bin.png') }}" alt="Papperskorg "></a>
+                                    </main>
+                                    <article>
+                                        <aside>
+                                            <div>
+                                                <button type="button" class="minus">-</button>
+                                                <input type="text" name="quantity{{ product_info[0] }}" id="quanity" readonly value="1">
+                                                <button type="button" class="plus">+</button>
+                                            </div>
+                                        </aside>
+                                        <p id="amount-per-product-p"><span id="amount-per-product">{{ product_info[3] }}</span> SEK</p>
+                                    </article>
+                                {% elif items[1] == 'sub' %}
+                                    <main>
+                                        <aside>
+                                            <img src="{{ url_for('static', filename='pictures/product-picture/' + product_info[5] ) }}" alt="Product Picture">
+                                            <h2>{{ product_info[1] }}</h2>
+                                        </aside>
+                                        <a href="/delete_from_cart/{{ product_info[0] }}"><img src="{{ url_for('static', filename='pictures/icons/bin.png') }}" alt="Papperskorg "></a>
+                                    </main>
+                                    <article>
+                                        <aside>
+                                            Prenumeration
+                                        </aside>
+                                        <p id="amount-per-product-p"><span id="amount-per-product">{{ product_info[4] }}</span> SEK</p>
+                                    </article>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    <div class="kundvagn-line"></div>
+                    <div class="frakt-info">
+                        <h3>Gratis Frakt</h3>
+                        <p>0 SEK - Skickas Till Närmaste Ombud Eller Direkt Hem Beroende På Storlek - <img src="{{ url_for('static', filename='pictures/postnord.png') }}" alt="Postnord"></p>
+                    </div>
+                    <!-- <div class="totalbelopp-div">
+                        <h3>Totalbelopp</h4>
+                        <h4 id="total-amount">249.99 SEK</h4>
+                    </div> -->
+                    <div class="button-div" style="margin: 30px 0px 0px 0px;">
+                        <button type="submit">Till betalning</button>
+                    </div>
+                </form>
+                {% endif %}
             {% endif %}
-            <!--Produkt End-->
-            {% if product_info %}
-                <div class="kundvagn-line"></div>
-                <div class="frakt-info">
-                    <h3>Gratis Frakt</h3>
-                    <p>0 SEK - Skickas Till Närmaste Ombud Eller Direkt Hem Beroende På Storlek - <img src="{{ url_for('static', filename='pictures/postnord.png') }}" alt="Postnord"></p>
-                </div>
-                <!-- <div class="totalbelopp-div">
-                    <h3>Totalbelopp</h4>
-                    <h4 id="total-amount">249.99 SEK</h4>
-                </div> -->
-                <div class="button-div" style="margin: 30px 0px 0px 0px;">
-                    <button type="submit">Till betalning</button>
-                </div>
-            {% endif %}
-        </form>
+        <!--Produkt End-->
     </section>
     <!--Kundvagn End-->
     <!--Header start-->
@@ -136,20 +138,22 @@
                 </div>
 
                 <aside>
-                    <a href="{% if 'user_id' in session %} /schedual {% else %} /login {% endif %}">
+                    <a href="{% if 'user_id' in session %} /profile/trainingplan {% else %} /login {% endif %}">
                         <img src="{{ url_for('static', filename='pictures/icons/user.png') }}" alt="Logga In">
                         <h3>{% if 'user_id' in session %} profil {% else %} Logga In {% endif %}</h3>
                     </a>
                     <a id="open-cart">
-                        {% if product_info %}
-                            {% for products in product_info %}
-                                <p>{{ loop.index }}</p>
-                            {% endfor %}
+                        {% if cart_info %}
+                            {% if cart_info[0]|length > 0 %}
+                                {% for items in cart_info[0] %}
+                                    <p>{{ loop.index }}</p>
+                                {% endfor %}
+                            {% endif %}
                         {% endif %}
                         <img src="{{ url_for('static', filename='pictures/icons/cart.png') }}" alt="Kundvagn">
                         <h3>Kundvagn</h3>
                     </a>
-                    <a class="button-link" href="{% if 'user_id' in session %} /schedual {% else %} /quiz {% endif %}">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
+                    <a class="button-link" href="{% if 'user_id' in session %} /profile/trainingplan {% else %} /trainingplan/quiz {% endif %}">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
                     <img src="{{ url_for('static', filename='pictures/icons/hamburger-menu.png') }}" alt="Hamburger Menu" id="hamburger-menu">
                 </aside>
             </main>
@@ -162,7 +166,7 @@
     <footer>
         <aside>
             <img src="{{ url_for('static', filename='pictures/logo-footer.png') }}" alt="Logo">
-            <a href="{% if 'user_id' in session %} /schedual {% else %} /quiz {% endif %}">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
+            <a href="{% if 'user_id' in session %} /profile/trainingplan {% else %} /trainingplan/quiz {% endif %}">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
         </aside>
         <div class="line"></div>
         <main>
@@ -178,7 +182,7 @@
                 <h4 id="dropdown-icon">+</h4>
                 <a href="/blog">Blog</a>
                 <a href="/multivitamin">Multivitamin</a>
-                <a href="/quiz">Din Individuella Träningsplan</a>
+                <a href="{% if 'user_id' in session %} /profile/trainingplan {% else %} /trainingplan/quiz {% endif %}">Din Individuella Träningsplan</a>
             </ul>
             <ul id="dropdown">
                 <h3>Användare</h3>

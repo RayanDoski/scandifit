@@ -11,7 +11,7 @@
     <div class="popup-review-background"></div>
     <div class="section-review-background">
         <h2>Skriv En Recensioner</h2>
-        <form action="{{ url_for('recensioner.insert_review', product_id=product_id, ) }}#review" method="post" enctype="multipart/form-data" id="form-review">
+        <form action="{{ url_for('recensioner.insert_review', pid=pid, ) }}#review" method="post" enctype="multipart/form-data" id="form-review">
             
             <p id="stars-rating">Betyg: 1/5</p>
             <article>
@@ -133,17 +133,14 @@
         </div>
         <aside>
 
-            <form action="{{ url_for('recensioner.recension', product_html=product_html, product_id=product_id, ) }}#review" method="post">
-                <select name="order-reviews" id="">
-                    <option value="top" {{ top_review }}>Top Recensioner</option>
-                    <option value="five" {{ five_review }}>5 Star</option>
-                    <option value="four" {{ four_review }}>4 Star</option>
-                    <option value="three" {{ three_review }}>3 Star</option>
-                    <option value="two" {{ two_review }}>2 Star</option>
-                    <option value="one" {{ one_review }}>1 Star</option>
-                </select>
-                <button type="submit">Updatera</button>
-            </form>
+            <ul>
+                <li><a href="/multivitamin/top#review">Top Recensioner</a></li>
+                <li><a href="/multivitamin/5#review">5 Star</a></li>
+                <li><a href="/multivitamin/4#review">4 Star</a></li>
+                <li><a href="/multivitamin/3#review">3 Star</a></li>
+                <li><a href="/multivitamin/2#review">2 Star</a></li>
+                <li><a href="/multivitamin/1#review">1 Star</a></li>
+            </ul> 
 
             {% for review in reviews %}
                 <article>
@@ -199,7 +196,8 @@
 
                     <h4>{{ review[7] }} personer tyckte att detta var hjälpsamt</h4>
 
-                    <a href="/helpful?id={{ review[0] }}#review">Hjälpsam?</a>
+                    <a href="/helpful/{{review[0]}}">Hjälpsam?</a>
+                    <!-- <a href="/helpful?id={{ review[0] }}#review">Hjälpsam?</a> -->
 
                 </article>
             {% endfor %}

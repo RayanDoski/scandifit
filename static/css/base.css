@@ -710,14 +710,14 @@ footer > main > div > #klarna-logo {
 #kundvagn > p {
     font-weight: lighter;
     font-size: 12px;
-    margin: 0px 0px 25px 0px;
+    margin: 0px;
 }
 
 #kundvagn > form > main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px 0px 20px 0px;
+    margin: 25px 0px 20px 0px;
 }
 
 #kundvagn > form > main > aside {

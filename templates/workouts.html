@@ -1,54 +1,28 @@
-{% extends 'profile-base.html' %}
+{% extends 'profile_base.html' %}
 {% block css %} {{ super() }} <link rel="stylesheet" href="{{ url_for('static', filename='css/workouts.css') }}">{% endblock %}
 {% block title %}<title>Workouts</title>{% endblock %}
 {% block content %}
 {{ super() }}
 <section class="workouts">
     <article>
-        <h1>
-            {% if all == 'selected' %}
-                Alla
-            {% elif cardio == 'selected' %}
-                Cardio
-            {% elif chest == 'selected' %}
-                Bröst
-            {% elif triceps == 'selected' %}
-                Triceps
-            {% elif biceps == 'selected' %}
-                Biceps
-            {% elif back == 'selected' %}
-                Rygg
-            {% elif shoulders == 'selected' %}
-                Axlar
-            {% elif stomach == 'selected' %}
-                Mage
-            {% elif legs == 'selected' %}
-                Ben
-            {% else %}
-                Alla
-            {% endif %}
-            Övningar
-        </h1>
-        <form action="" method="post">
-            <select name="order-workouts" id="">
-                <option value="alla" {{ all }}>Alla</option>
-                <option value="cardio" {{ cardio }}>Cardio</option>
-                <option value="chest" {{ chest }}>Bröst</option>
-                <option value="triceps" {{ triceps }}>Triceps</option>
-                <option value="biceps" {{ biceps }}>Biceps</option>
-                <option value="rygg" {{ back }}>Rygg</option>
-                <option value="axlar" {{ shoulders }}>Axlar</option>
-                <option value="mage" {{ stomach }}>Mage</option>
-                <option value="ben" {{ legs }}>Ben</option>
-            </select>
-            <button type="submit">Updatera</button>
-        </form>
+        <h1>Visa Övningar</h1>
+        <ul>
+            <li><a href="/workouts/alla">Alla</a></li>
+            <li><a href="/workouts/cardio">Cardio</a></li>
+            <li><a href="/workouts/chest">Bröst</a></li>
+            <li><a href="/workouts/triceps">Triceps</a></li>
+            <li><a href="/workouts/biceps">Biceps</a></li>
+            <li><a href="/workouts/back">Rygg</a></li>
+            <li><a href="/workouts/shoulders">Axlar</a></li>
+            <li><a href="/workouts/stomach">Mage</a></li>
+            <li><a href="/workouts/legs">Ben</a></li>
+        </ul>       
     </article>
         
     <main>
         
         {% for workout in workouts %}
-            <a href="/workout?id={{ workout[0] }}">
+            <a href="/workout/{{ workout[0] }}">
                 <img src="{{ url_for('static', filename='pictures/workouts/' + workout[3] ) }}" alt="Training Picture">
                 <h2>{{ workout[1] }}</h2>
             </a>

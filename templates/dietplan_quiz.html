@@ -1,0 +1,254 @@
+{% extends 'base.html' %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/dietplan_quiz.css') }}">{% endblock %}
+{% block title %}<title>Kostplan Quiz</title>{% endblock %}
+{% block content %}
+<section class="dietplan_quiz">
+
+    <aside>
+        <h2 id="progress_nr">0/10</h2>
+        <div>
+            <img id="progress_back" src="{{ url_for('static', filename='pictures/icons/left-arrow.png') }}" alt="arrow_left">
+            <div><div id="progress_bar"></div></div>
+            <img id="progress_forward" src="{{ url_for('static', filename='pictures/icons/right-arrow.png') }}" alt="arrow_right">
+        </div>
+    </aside>
+
+    <form action="/quiz/dietplan/completed" method="post" novalidate>
+
+        <article class="question_one show">
+            <h2>Vad är ditt mål?</h2>
+            <aside>
+
+                <input type="radio" name="goal" id="viktminskning" value="viktminskning" {% if dietplan_info['goal'] == 'viktminskning' %}checked{% endif %}>
+                <label for="viktminskning" id="next_question_one_one">
+                    <img src="{{ url_for('static', filename='pictures/quiz/slim_body.webp') }}" alt="Viktminskning">
+                    <div>
+                        <h2>Viktminskning</h2>
+                        <p>fokuserar på att minska den totala kroppsvikten</p>
+                    </div>
+                </label>
+
+                <input type="radio" name="goal" id="musclemassincrease" value="musclemassincrease" {% if dietplan_info['goal'] == 'musclemassincrease' %}checked{% endif %}>
+                <label for="musclemassincrease" id="next_question_one_two">
+                    <img src="{{ url_for('static', filename='pictures/quiz/hero.webp') }}" alt="musclemassincrease">
+                    <div>
+                        <h2>Öka Muskelmassa</h2>
+                        <p>bygga och öka muskelmassan</p>
+                    </div>
+                </label>
+
+                <input type="radio" name="goal" id="maintenance" value="maintenance" {% if dietplan_info['goal'] == 'maintenance' %}checked{% endif %}>
+                <label for="maintenance" id="next_question_one_three">
+                    <img src="{{ url_for('static', filename='pictures/quiz/get_shredded.png') }}" alt="maintenance">
+                    <div>
+                        <h2>Underhåll</h2>
+                        <p>bibehåll nuvarande vikt och muskelmassa samtidigt som kroppen tonas </p>
+                    </div>
+                </label>
+
+            </aside>
+        </article>
+
+        <article class="question_two">
+            <h2>jag är en....</h2>
+            <aside>
+
+                <input type="radio" name="gender" id="man" value="man" {% if dietplan_info['gender'] == 'man' %}checked{% endif %}>
+                <label for="man" id="man">Man</label>
+
+                <input type="radio" name="gender" id="woman" value="woman" {% if dietplan_info['gender'] == 'woman' %}checked{% endif %}>
+                <label for="woman" id="woman">Woman</label>
+
+            </aside>
+        </article>
+
+        <article class="question_three">
+            <h2>Hur gammal är du?</h2>
+            <label for="age">Ålder (År)</label>
+            <input type="number" name="age" id="age" value="{{ dietplan_info['age'] }}">
+            <button id="next_question_three" type="button">Vidare</button>
+        </article>
+
+        <article class="question_four">
+            <h2>Hur lång är du?</h2>
+            <label for="height">Längd (cm)</label>
+            <input type="number" name="height" id="height" value="{{ dietplan_info['height'] }}">
+            <button id="next_question_four" type="button">Vidare</button>
+        </article>
+
+        <article class="question_five">
+            <h2>Vad är din nuvarande vikt och målvikt?</h2>
+            <div>
+                <label for="currentweight">Nuvarande (Kg)</label>
+                <input type="number" name="currentweight" id="currentweight" value="{{ dietplan_info['weight'] }}">
+                <label for="targetweight">Målvikt (Kg)</label>
+                <input type="number" name="targetweight" id="targetweight" value="{{ dietplan_info['target_weight'] }}">
+                <button id="next_question_five" type="button">Vidare</button>
+            </div>
+        </article>
+
+        <article class="question_six">
+            <h2>Hur fysiskt krävande är din vardag?</h2>
+            <p>(Uteslut Träningspass)</p>
+            <aside>
+
+                <input type="radio" name="physically_demanding_everyday_life" id="physically_demanding_everyday_life_one" value="1" {% if dietplan_info['activity_level'] == '1' %}checked{% endif %}>
+                <label for="physically_demanding_everyday_life_one" id="next_question_six_one">Inte krävande alls, jag rör mig knappt</label>
+
+                <input type="radio" name="physically_demanding_everyday_life" id="physically_demanding_everyday_life_two" value="2" {% if dietplan_info['activity_level'] == '2' %}checked{% endif %}>
+                <label for="physically_demanding_everyday_life_two" id="next_question_six_two">Det är inte så krävande, jag går runt ibland</label>
+
+                <input type="radio" name="physically_demanding_everyday_life" id="physically_demanding_everyday_life_three" value="3" {% if dietplan_info['activity_level'] == '3' %}checked{% endif %}>
+                <label for="physically_demanding_everyday_life_three" id="next_question_six_three">Krävande, jag behöver röra mig regelbundet.</label>
+                
+                <input type="radio" name="physically_demanding_everyday_life" id="physically_demanding_everyday_life_four" value="4" {% if dietplan_info['activity_level'] == '4' %}checked{% endif %}>
+                <label for="physically_demanding_everyday_life_four" id="next_question_six_four">Det är väldigt krävande och tar mycket av min energi</label>
+
+            </aside>
+        </article>
+
+        <article class="question_seven">
+            <h2>Hur ofta tränar du per vecka?</h2>
+            <aside>
+
+                <input type="radio" name="training_sessions_per_week" id="training_sessions_per_week_one" value="1" {% if dietplan_info['training_sessions_per_week'] == 1 %}checked{% endif %}>
+                <label for="training_sessions_per_week_one" id="next_question_seven_one">1</label>
+
+                <input type="radio" name="training_sessions_per_week" id="training_sessions_per_week_two" value="2" {% if dietplan_info['training_sessions_per_week'] == 2 %}checked{% endif %}>
+                <label for="training_sessions_per_week_two" id="next_question_seven_two">2</label>
+
+                <input type="radio" name="training_sessions_per_week" id="training_sessions_per_week_three" value="3" {% if dietplan_info['training_sessions_per_week'] == 3 %}checked{% endif %}>
+                <label for="training_sessions_per_week_three" id="next_question_seven_three">3</label>
+
+                <input type="radio" name="training_sessions_per_week" id="training_sessions_per_week_four" value="4" {% if dietplan_info['training_sessions_per_week'] == 4 %}checked{% endif %}>
+                <label for="training_sessions_per_week_four" id="next_question_seven_four">4</label>
+
+                <input type="radio" name="training_sessions_per_week" id="training_sessions_per_week_five" value="5" {% if dietplan_info['training_sessions_per_week'] == 5 %}checked{% endif %}>
+                <label for="training_sessions_per_week_five" id="next_question_seven_five">5</label>
+
+                <input type="radio" name="training_sessions_per_week" id="training_sessions_per_week_six" value="6" {% if dietplan_info['training_sessions_per_week'] == 6 %}checked{% endif %}>
+                <label for="training_sessions_per_week_six" id="next_question_seven_six">6</label>
+
+                <input type="radio" name="training_sessions_per_week" id="training_sessions_per_week_seven" value="7" {% if dietplan_info['training_sessions_per_week'] == 7 %}checked{% endif %}>
+                <label for="training_sessions_per_week_seven" id="next_question_seven_seven">7</label>
+
+            </aside>
+
+            <input type="radio" name="training_sessions_per_week" id="training_sessions_per_week_eight" value="4" {% if dietplan_info['training_sessions_per_week'] == 4 %}checked{% endif %}>
+            <label for="training_sessions_per_week_seven" id="next_question_seven_eight">basera denna statistik på min personliga Träningsplan</label>
+            <p>Detta kommer att göra din kostplan mycket bättre eftersom vi har detaljerade beskrivningar på din träningsplan</p>
+        </article>
+
+        <article class="question_eight">
+            <h2>Vad är ditt dagliga vattenintag?</h2>
+            <p>svaret behöver inte vara exakt, ta en gissning</p>
+            <aside>
+
+                <input type="radio" name="current_daily_water_intake" id="current_daily_water_intake_one" value="1" {% if dietplan_info['current_daily_water_intake'] == '1' %}checked{% endif %}>
+                <label for="current_daily_water_intake_one" id="next_question_eight_one">
+                    <p>1 Liter</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/Water_bottle.png') }}" alt="Water_bottles">
+                </label>
+
+                <input type="radio" name="current_daily_water_intake" id="current_daily_water_intake_two" value="2" {% if dietplan_info['current_daily_water_intake'] == '2' %}checked{% endif %}>
+                <label for="current_daily_water_intake_two" id="next_question_eight_two">
+                    <p>2 Liter</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/Water_bottle.png') }}" alt="Water_bottles">
+                </label>
+
+                <input type="radio" name="current_daily_water_intake" id="current_daily_water_intake_three" value="3" {% if dietplan_info['current_daily_water_intake'] == '3' %}checked{% endif %}>
+                <label for="current_daily_water_intake_three" id="next_question_eight_three">
+                    <p>3 Liter</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/Water_bottle.png') }}" alt="Water_bottles">
+                </label>
+
+                <input type="radio" name="current_daily_water_intake" id="current_daily_water_intake_four" value="4" {% if dietplan_info['current_daily_water_intake'] == '4' %}checked{% endif %}>
+                <label for="current_daily_water_intake_four" id="next_question_eight_four">
+                    <p>4 Liter</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/Water_bottle.png') }}" alt="Water_bottles">
+                </label>
+
+                <input type="radio" name="current_daily_water_intake" id="current_daily_water_intake_five" value="5" {% if dietplan_info['current_daily_water_intake'] == '5' %}checked{% endif %}>
+                <label for="current_daily_water_intake_five" id="next_question_eight_five">
+                    <p>5 Liter</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/Water_bottle.png') }}" alt="Water_bottles">
+                </label>
+
+                <input type="radio" name="current_daily_water_intake" id="current_daily_water_intake_six" value="6" {% if dietplan_info['current_daily_water_intake'] == '6' %}checked{% endif %}>
+                <label for="current_daily_water_intake_six" id="next_question_eight_six">
+                    <p>6 Liter</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/Water_bottle.png') }}" alt="Water_bottles">
+                </label>
+                
+            </aside>
+        </article>
+
+        <article class="question_nine">
+            <h2>jag är...</h2>
+            <aside>
+
+                <input type="radio" name="dietary_preferences" id="dietary_preferences_one" value="vegetarian" {% if dietplan_info['dietary_preferences'] == 'vegetarian' %}checked{% endif %}>
+                <label for="dietary_preferences_one" id="next_question_nine_one">
+                    <img src="{{ url_for('static', filename='pictures/icons/vegitarian.png') }}" alt="vegetarisk ikon">
+                    <p>Vegetarian</p>
+                </label>
+
+                <input type="radio" name="dietary_preferences" id="dietary_preferences_two" value="vegan" {% if dietplan_info['dietary_preferences'] == 'vegan' %}checked{% endif %}>
+                <label for="dietary_preferences_two" id="next_question_nine_two">
+                    <img src="{{ url_for('static', filename='pictures/icons/vegan.png') }}" alt="vegetarisk ikon">
+                    <p>Vegan</p>
+                </label>
+
+                <input type="radio" name="dietary_preferences" id="dietary_preferences_three" value="none" {% if dietplan_info['dietary_preferences'] == 'none' %}checked{% endif %}>
+                <label for="dietary_preferences_three" id="next_question_nine_three">
+                    <img src="{{ url_for('static', filename='pictures/icons/none-mark.png') }}" alt="vegetarisk ikon">
+                    <p>Inget Av Ovanstående</p>
+                </label>
+
+            </aside>
+        </article>
+
+        <article class="question_ten">
+            <h2>Hur ofta äter du sötsaker <img src="{{ url_for('static', filename='pictures/icons/cake.png') }}" alt="cake"></h2>
+            <h2>eller dricker läsk? <img src="{{ url_for('static', filename='pictures/icons/coke.png') }}" alt="cake"></h2>
+            <aside>
+
+                <input type="radio" name="sugar_intake" id="sugar_intake_one" value="flera gånger om dagen" {% if dietplan_info['sugar_intake'] == 'flera gånger om dagen' %}checked{% endif %}>
+                <label for="sugar_intake_one" id="next_question_ten_one">Flera gånger om dagen</label>
+
+                <input type="radio" name="sugar_intake" id="sugar_intake_two" value="en gång om dagen" {% if dietplan_info['sugar_intake'] == 'en gång om dagen' %}checked{% endif %}>
+                <label for="sugar_intake_two" id="next_question_ten_two">En gång om dagen</label>
+
+                <input type="radio" name="sugar_intake" id="sugar_intake_three" value="ett par gånger i veckan" {% if dietplan_info['sugar_intake'] == 'ett par gånger i veckan' %}checked{% endif %}>
+                <label for="sugar_intake_three" id="next_question_ten_three">Ett par gånger i veckan</label>
+
+                <input type="radio" name="sugar_intake" id="sugar_intake_four" value="sällan" {% if dietplan_info['sugar_intake'] == 'sällan' %}checked{% endif %}>
+                <label for="sugar_intake_four" id="next_question_ten_four">Sällan</label>
+
+                <input type="radio" name="sugar_intake" id="sugar_intake_five" value="aldrig" {% if dietplan_info['sugar_intake'] == 'aldrig' %}checked{% endif %}>
+                <label for="sugar_intake_five" id="next_question_ten_five">Aldrig</label>
+
+            </aside>
+        </article>
+
+        <article class="create_dietplan">
+            <p>Visste Du att.....</p>
+            <h2>Maten du äter påverkar hela 81% av dina resultat!</h2>
+            <button type="submit" id="submit_form">Skapa Kostplan</button>
+        </article>
+
+    </form>
+
+</section>
+
+<section class="alert_message_popup">
+    <div class="error_popup">
+        <img src="{{ url_for('static', filename='pictures/icons/danger.png') }}" alt="Warning">
+        <div>
+            <h2></h2>
+            <p></p>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block js %}<script src="{{ url_for('static', filename='js/dietplan_quiz.js') }}"></script>{% endblock %}

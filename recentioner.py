@@ -1,24 +1,221 @@
 import os
-from urllib.parse import urlparse, urlunparse, parse_qsl, urlencode
-from flask import Blueprint, render_template, request, session, redirect
+from urllib.parse import urlparse, urlunparse
+from flask import Blueprint, render_template, request, session, redirect, url_for
 from db import make_db_connection
-#to get the cart values 
+
+# To get the cart values 
 from cart import show_products_in_cart
 
 recensioner = Blueprint('recensioner', __name__)
 
-@recensioner.route("/recension/<product_html>/<product_id>", methods=['GET', 'POST'])
-def recension(product_html, product_id):
+def recension(product_html, pid, view_first):
+    '''
+    When Viewing a product We view It throue This Function IN Order to display the reviews
+    '''
+    try:
 
+        #Make Database Connection
+        db = make_db_connection()
+        cursor = db.cursor()
+
+        review_values =  getting_review_values_for_specific_product(pid)
+
+        # If these values Values Exist We Will retrive them 
+        view_first = request.args.get('view_first')
+
+        cursor.execute("SELECT *  FROM review WHERE pid = %s ORDER BY CASE WHEN id = %s THEN 0 ELSE 1 END, helpful DESC;", (pid, view_first,))
+        reviews = cursor.fetchall()
+        return render_template(product_html, cart_info=show_products_in_cart(), product_html=product_html, pid=pid, reviews=reviews, average_rating=review_values[5], percentage_five_star=review_values[0], percentage_four_star=review_values[1], percentage_three_star=review_values[2], percentage_two_star=review_values[3], percentage_one_star=review_values[4])
+    
+    finally:
+
+        # Close Database Connection
+        db.close()
+        cursor.close()
+
+def show_specific_reviews(product_html, product_id, show_review):
+    '''
+    When Viewing a product We view It throue This Function IN Order to display the reviews
+
+    This function varies becouse it allows an extra varaiable: show_review
+
+    - show_review (string): this varaible will allow you to view specfic reviews example: 5 stars, or show all reviews
+    '''
+    try:
+        #Make Database Connection
+        db = make_db_connection()
+        cursor = db.cursor()
+
+        review_values =  getting_review_values_for_specific_product(product_id)
+
+        # If They Want To View All The Top Reviews 
+        if show_review == 'top':
+            cursor.execute("select * from review where pid = %s ORDER BY helpful DESC", (product_id,))
+            reviews = cursor.fetchall()
+            return render_template(product_html, cart_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, average_rating=review_values[5], percentage_five_star=review_values[0], percentage_four_star=review_values[1], percentage_three_star=review_values[2], percentage_two_star=review_values[3], percentage_one_star=review_values[4])
+        
+        cursor.execute("select * from review where pid = %s AND stars = %s", (product_id, show_review,))
+        reviews = cursor.fetchall()
+        return render_template(product_html, cart_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, average_rating=review_values[5], percentage_five_star=review_values[0], percentage_four_star=review_values[1], percentage_three_star=review_values[2], percentage_two_star=review_values[3], percentage_one_star=review_values[4])
+    
+    finally:
+        # Close Database Connection
+        db.close()
+        cursor.close()
+
+@recensioner.route("/insert_review/<pid>", methods=['GET', 'POST'])
+def insert_review(pid):
+        '''
+        Inserting A Review For A Product Is Done Through THis Function
+
+        return:
+        - redirect(base_url + '?view_first=' + str(rid) + '#review')
+        '''
+        try:
+
+            #Make Database Connection
+            db = make_db_connection()
+            cursor = db.cursor()
+
+            if request.method == 'POST':
+
+                # Retreving The Values
+                star = request.form.get('star')
+                rubrik = request.form.get('rubrik')
+                recention = request.form.get('recention')
+                name = request.form.get('name')
+
+                # Inserting The Review Valeus
+                cursor.execute('insert into review (name, stars, rubrik, review_text, pid, helpful, verifierad) values (%s, %s, %s, %s, %s, %s, %s)', (name, star, rubrik, recention, pid, 0, 'Inte Verifierad'))
+                db.commit()
+
+                # Retrieve the last inserted id
+                cursor.execute('SELECT LAST_INSERT_ID()')
+                rid = cursor.fetchone()[0]
+
+                # If they added a picture
+                if 'picture' in request.files:
+                    file = request.files['picture']
+                    if file:
+                        if file.filename != '':
+                            # Create the upload folder if it doesn't exist
+                            if not os.path.exists('/Users/rayan/Documents/scandifit/static/pictures/review-pictures'):
+                                os.makedirs('/Users/rayan/Documents/scandifit/static/pictures/review-pictures')
+                    
+                        # Save the uploaded file to the specified folder
+                        file.save(os.path.join('/Users/rayan/Documents/scandifit/static/pictures/review-pictures', file.filename))
+                        # Inserting The values For The Image That They Inserted
+                        cursor.execute('insert into image (rid, image) values (%s, %s)', (rid, file.filename))
+                        db.commit()
+
+                # Get the base URL without query parameters
+                referrer_url = request.referrer
+                parsed_url = urlparse(referrer_url)
+
+                # Get the base URL without query parameters
+                base_url = urlunparse((parsed_url.scheme, parsed_url.netloc, parsed_url.path, '', '', ''))
+
+                return redirect(base_url + '?view_first=' + str(rid) + '#review')
+        finally:
+            # Close Database Connection
+            db.close()
+            cursor.close()
+
+@recensioner.route("/helpful/<id>")
+def helpful(id):
+    '''
+    This function adds one onto helpful when its clicked
+
+    return:
+        - redirect(base_url + '?view_first=' + str(rid) + '#review')
+    '''
+    try:
+
+        #Make Database Connection
+        db = make_db_connection()
+        cursor = db.cursor()
+
+        if 'helpful' not in session:
+            session['helpful']= []
+            session['helpful'].append(id)
+
+            # Reasigning It's Own value To Itself 
+            session['helpful'] = session['helpful']
+
+            # Adding Value To helpful where id matches
+            cursor.execute("UPDATE review SET helpful = helpful + 1 WHERE id = %s;", (id,))
+            db.commit()
+
+        else:
+            if id not in session['helpful']:
+
+                session['helpful'].append(id)
+
+                # Reasigning It's Own value To Itself 
+                session['helpful'] = session['helpful']
+
+                # Adding Value To helpful where id matches
+                cursor.execute("UPDATE review SET helpful = helpful + 1 WHERE id = %s;", (id),)
+                db.commit()
+
+        # Get the base URL without query parameters
+        referrer_url = request.referrer
+        parsed_url = urlparse(referrer_url)
+
+        # Get the base URL without query parameters
+        base_url = urlunparse((parsed_url.scheme, parsed_url.netloc, parsed_url.path, '', '', ''))
+
+        return redirect(base_url + '?view_first=' + str(id) + '#review')
+        # return redirect(url_for('recensioner.recension', pid=pid))
+    
+    finally:
+        # Close Database Connection
+        db.close()
+        cursor.close()
+
+def calculates_percentage_of_star(cursor, pid, stars, amount_of_rows):
+    '''
+    This function calculates procentage of specific stars,
+
+    Example:
+    - 5 stars: 38%
+    - 4 stars: 20%
+    - 3 stars: 10%
+    - etc...
+
+    '''
+    cursor.execute('SELECT COUNT(*) FROM review WHERE pid = %s AND stars = %s', (pid, stars,))
+    star_reviews = cursor.fetchone()[0]
+
+    if amount_of_rows > 0:
+        percentage_star = round(star_reviews / amount_of_rows, 3) * 100
+        percentage_star = "{:.1f}".format(percentage_star)
+    else:
+        percentage_star = 0
+    
+    return percentage_star
+
+def getting_review_values_for_specific_product(product_id):
+    '''
+    This Function calculates The procentage of stars for the chosen product
+
+    return:
+    - percentage_five_star
+    - percentage_four_star
+    - percentage_three_star
+    - percentage_two_star
+    - percentage_one_star
+    - average_rating
+    '''
     #Make Database Connection
     db = make_db_connection()
     cursor = db.cursor()
 
     try:
-        cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s', (product_id,))
+        cursor.execute('SELECT COUNT(*) FROM review WHERE pid = %s', (product_id,))
         amount_of_rows = cursor.fetchone()[0]  # Access the first element of the tuple
 
-        cursor.execute('SELECT SUM(stars) FROM reviews WHERE product_id = %s', (product_id,))
+        cursor.execute('SELECT SUM(stars) FROM review WHERE pid = %s', (product_id,))
         amount_of_stars = cursor.fetchone()[0]  # Access the first element of the tuple
 
         if amount_of_rows > 0:
@@ -28,230 +225,23 @@ def recension(product_html, product_id):
             average_rating = 0
 
         # five star
-        cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 5', (product_id,))
-        five_star_reviews = cursor.fetchone()[0]
-
-        if amount_of_rows > 0:
-            percentage_five_star = round(five_star_reviews / amount_of_rows, 3) * 100
-            percentage_five_star = "{:.1f}".format(percentage_five_star)
-        else:
-            percentage_five_star = 0
+        percentage_five_star = calculates_percentage_of_star(cursor, product_id, 5, amount_of_rows)
         
         # four star
-        cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 4', (product_id,))
-        four_star_reviews = cursor.fetchone()[0]
-
-        if amount_of_rows > 0:
-            percentage_four_star = round(four_star_reviews / amount_of_rows, 3) * 100
-            percentage_four_star = "{:.1f}".format(percentage_four_star)
-        else:
-            percentage_five_star = 0
+        percentage_four_star = calculates_percentage_of_star(cursor, product_id, 4, amount_of_rows)
 
         # three star
-        cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 3', (product_id,))
-        three_star_reviews = cursor.fetchone()[0]
-
-        if amount_of_rows > 0:
-            percentage_three_star = round(three_star_reviews / amount_of_rows, 3) * 100
-            percentage_three_star = "{:.1f}".format(percentage_three_star)
-        else:
-            percentage_five_star = 0
+        percentage_three_star = calculates_percentage_of_star(cursor, product_id, 3, amount_of_rows)
 
         # two star
-        cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 2', (product_id,))
-        two_star_reviews = cursor.fetchone()[0]
-
-        if amount_of_rows > 0:
-            percentage_two_star = round(two_star_reviews / amount_of_rows, 3) * 100
-            percentage_two_star = "{:.1f}".format(percentage_two_star)
-        else:
-            percentage_five_star = 0
+        percentage_two_star = calculates_percentage_of_star(cursor, product_id, 2, amount_of_rows)
 
         # one star
-        cursor.execute('SELECT COUNT(*) FROM reviews WHERE product_id = %s AND stars = 1', (product_id,))
-        one_star_reviews = cursor.fetchone()[0]
+        percentage_one_star = calculates_percentage_of_star(cursor, product_id, 1, amount_of_rows)
 
-        if amount_of_rows > 0:
-            percentage_one_star = round(one_star_reviews / amount_of_rows, 3) * 100
-            percentage_one_star = "{:.1f}".format(percentage_one_star)
-        else:
-            percentage_five_star = 0
+        return percentage_five_star, percentage_four_star, percentage_three_star, percentage_two_star, percentage_one_star, average_rating
 
-
-        # viewing order review 
-        if request.method == 'POST':
-            order_by = request.form.get('order-reviews')
-            if order_by == 'top':
-                top_review = 'selected'
-                five_review = ''
-                four_review = ''
-                three_review = ''
-                two_review = ''
-                one_review = ''
-                cursor.execute("select * from reviews where product_id = %s ORDER BY helpful DESC", (product_id,))
-                reviews = cursor.fetchall()
-                return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
-            elif order_by == 'five':
-                top_review = ''
-                five_review = 'selected'
-                four_review = ''
-                three_review = ''
-                two_review = ''
-                one_review = ''
-                cursor.execute("select * from reviews where product_id = %s AND stars = 5", (product_id,))
-                reviews = cursor.fetchall()
-                return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
-            elif order_by == 'four':
-                top_review = ''
-                five_review = ''
-                four_review = 'selected'
-                three_review = ''
-                two_review = ''
-                one_review = ''
-                cursor.execute("select * from reviews where product_id = %s AND stars = 4", (product_id,))
-                reviews = cursor.fetchall()
-                return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
-            elif order_by == 'three':
-                top_review = ''
-                five_review = ''
-                four_review = ''
-                three_review = 'selected'
-                two_review = ''
-                one_review = ''
-                cursor.execute("select * from reviews where product_id = %s AND stars = 3", (product_id,))
-                reviews = cursor.fetchall()
-                return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
-            elif order_by == 'two':
-                top_review = ''
-                five_review = ''
-                four_review = ''
-                three_review = ''
-                two_review = 'selected'
-                one_review = ''
-                cursor.execute("select * from reviews where product_id = %s AND stars = 2", (product_id,))
-                reviews = cursor.fetchall()
-                return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
-            elif order_by == 'one':
-                top_review = ''
-                five_review = ''
-                four_review = ''
-                three_review = ''
-                two_review = ''
-                one_review = 'selected'
-                cursor.execute("select * from reviews where product_id = %s AND stars = 1", (product_id,))
-                reviews = cursor.fetchall()
-                return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
-        
-        added_review = request.args.get('addreview')
-        helpful_clicked_id = request.args.get('helpfulid')
-        if added_review:
-            top_review = 'selected'
-            five_review = ''
-            four_review = ''
-            three_review = ''
-            two_review = ''
-            one_review = ''
-            cursor.execute("select * from reviews where product_id = %s ORDER BY id DESC", (product_id,))
-            reviews = cursor.fetchall()
-            return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
-        elif helpful_clicked_id:
-            top_review = 'selected'
-            five_review = ''
-            four_review = ''
-            three_review = ''
-            two_review = ''
-            one_review = ''
-            cursor.execute("(SELECT * FROM reviews WHERE product_id = %s AND id = %s) UNION ALL (SELECT * FROM reviews WHERE product_id = %s AND id != %s ORDER BY id DESC)", (product_id, helpful_clicked_id, product_id, helpful_clicked_id))
-            reviews = cursor.fetchall()
-            return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
-        else:
-            top_review = 'selected'
-            five_review = ''
-            four_review = ''
-            three_review = ''
-            two_review = ''
-            one_review = ''
-            cursor.execute("select * from reviews where product_id = %s ORDER BY helpful DESC", (product_id,))
-            reviews = cursor.fetchall()
-            return render_template(product_html, product_info=show_products_in_cart(), product_html=product_html, product_id=product_id, reviews=reviews, top_review=top_review, five_review=five_review, four_review=four_review, three_review=three_review, two_review=two_review, one_review=one_review, average_rating=average_rating, percentage_five_star=percentage_five_star, percentage_four_star=percentage_four_star, percentage_three_star=percentage_three_star, percentage_two_star=percentage_two_star, percentage_one_star=percentage_one_star)
     finally:
         # Close Database Connection
         db.close()
         cursor.close()
-        
-
-#inserting reviews
-@recensioner.route("/insert-review/<product_id>", methods=['GET', 'POST'])
-def insert_review(product_id):
-        
-        #Make Database Connection
-        db = make_db_connection()
-        cursor = db.cursor()
-
-        if request.method == 'POST':
-            star = request.form.get('star')
-            rubrik = request.form.get('rubrik')
-            recention = request.form.get('recention')
-            name = request.form.get('name')
-            if 'picture' in request.files:
-                file = request.files['picture']
-                if file:
-                    if file.filename != '':
-                        # Create the upload folder if it doesn't exist
-                        if not os.path.exists('/Users/rayan/Documents/scandifit/static/pictures/review-pictures'):
-                            os.makedirs('/Users/rayan/Documents/scandifit/static/pictures/review-pictures')
-                
-                    # Save the uploaded file to the specified folder
-                    file.save(os.path.join('/Users/rayan/Documents/scandifit/static/pictures/review-pictures', file.filename))
-            cursor.execute('insert into reviews (name, stars, rubrik, review_text, product_id, helpful, verifierad, image) values (%s, %s, %s, %s, %s, %s, %s, %s)', (name, star, rubrik, recention, product_id, 0, 'Inte Verifierad', file.filename))
-            db.commit()
-
-            # Close Database Connection
-            db.close()
-            cursor.close()
-            
-            # Get the base URL without query parameters
-            parts = list(urlparse(request.referrer))
-            parts = list(urlparse(request.referrer))
-            query_params = dict(parse_qsl(parts[4]))
-            query_params['addreview'] = True
-            parts[4] = urlencode(query_params)
-
-            # Construct the new URL
-            url_with_query = urlunparse(parts)
-
-            return redirect(url_with_query)
-        
-#add helpful count
-@recensioner.route("/helpful")
-def helpful():
-
-    #Make Database Connection
-    db = make_db_connection()
-    cursor = db.cursor()
-
-    id = request.args.get('id')
-    
-    # Get the base URL without query parameters
-    parts = list(urlparse(request.referrer))
-    parts = list(urlparse(request.referrer))
-    query_params = dict(parse_qsl(parts[4]))
-    query_params['helpfulid'] = id
-    parts[4] = urlencode(query_params)
-
-    # Construct the new URL
-    url_with_query = urlunparse(parts)
-
-    if 'helpful-once' in session:
-        if session['helpful-once'] == id:
-            return redirect(url_with_query)
-
-    session['helpful-once'] = id
-    cursor.execute("UPDATE reviews SET helpful = helpful + 1 WHERE id = %s;", (id,))
-    db.commit()
-
-    # Close Database Connection
-    db.close()
-    cursor.close()
-    
-    return redirect(url_with_query)

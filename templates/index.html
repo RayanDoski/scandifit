@@ -9,7 +9,7 @@
         <main id="slide-in">
            <h1>En Minut, Ett Starkare Du - Gratis Träningsschema Nu!</h1> 
            <h2>Träningsschema Baserat På Din Personliga Information</h2>
-           <a href="/quiz">Skapa schema!</a>
+           <a href="{% if 'user_id' in session %} /profile/schedual {% else %} /trainingplan/quiz {% endif %}">Skapa schema!</a>
         </main>
     </section>
 
@@ -240,7 +240,7 @@
     <section class="kontakta-oss" id="kontakta-oss">
         <main id="slide-in">
             <h2>Kontakta oss</h2>
-            <form action="/send-message" method="post">
+            <form action="/send_message" method="post">
                 <label for="namn">Fullständigt Namn</label>
                 <input type="text" name="namn" id="namn">
                 <label for="email">E-mail</label>
