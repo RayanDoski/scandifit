@@ -23,7 +23,14 @@
             <h2>Matrecept</h2>
             <p>som passar dina behov</p>
         </aside>
-        <article></article>
+        <article>
+            {% for recipe in recipes %}
+                <aside>
+                    <img src="{{ recipe['image'] }}" alt="{{ recipe['name'] }}">
+                    <a href="/profile/recipe/{{ recipe['id'] }}">{{ recipe['name'] }}</a>
+                </aside>
+            {% endfor %}                        
+        </article>
     </article>
 
     <article>

@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, session, redirect
 from db import make_db_connection
+import requests
 
 #checking if user is logged in
 from login_register import is_logged_in, is_exklusiv
@@ -35,6 +36,8 @@ def dietplan_def():
 
         water_intake = water_intake_calculator(user_dietplan)
 
+        recipes = get_recipe(6)
+
         return render_template(
             'profile_dietplan.html',
             namn=namn,
@@ -45,7 +48,8 @@ def dietplan_def():
             btn_link=gtv[0],
             btn_text=gtv[1],
             heading=gtv[2],
-            show_dietplan=gtv[3]
+            show_dietplan=gtv[3],
+            recipes=recipes
         )
     finally:
         # Closing Database Connection
@@ -155,6 +159,27 @@ def water_intake_calculator(dietplan_row_values):
 
     return round(non_training_days, 2), round(training_days, 2)
     
+def get_recipe(num_recipes):
+    url = "https://low-carb-recipes.p.rapidapi.com/random"
+
+    headers = {
+        "X-RapidAPI-Key": "706d2375c3msh223563b91efcfe9p15e916jsn65d5dcf62c32",
+        "X-RapidAPI-Host": "low-carb-recipes.p.rapidapi.com"
+    }
+
+    recipes = []
+    for i in range(num_recipes):
+        response = requests.get(url, headers=headers)
+        recipe = response.json()
+        
+        # Check if 'image' key exists in the recipe
+        if 'image' in recipe:
+            recipes.append({'image': recipe['image'], 'name': recipe['name'], 'id': recipe['id']})
+        else:
+            print("Image key not found in recipe:", recipe)
+
+    return recipes
+
 @dietplan.route('/quiz/dietplan', methods=['post', 'get'])
 def quiz_dietplan():
     
@@ -266,3 +291,17 @@ def quiz_dietplan_completed():
         # Closing Database Connection
         cursor.close()
         db.close()
+
+@dietplan.route('/profile/recipe/<id>')
+def specific_recipe(id):
+    url = "https://low-carb-recipes.p.rapidapi.com/recipes/" + id
+
+    headers = {
+        "X-RapidAPI-Key": "706d2375c3msh223563b91efcfe9p15e916jsn65d5dcf62c32",
+        "X-RapidAPI-Host": "low-carb-recipes.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers)
+    recipe = response.json()
+
+    return render_template('recipe.html', recipe=recipe)

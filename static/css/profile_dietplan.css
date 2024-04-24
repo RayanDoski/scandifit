@@ -82,6 +82,58 @@
     color: var(--company-color);
 }
 
+/* mat recept */
+
+.dietplan_section > article > aside {
+    margin: 0px 0px 30px 0px;
+}
+
+.dietplan_section > article > aside > h2 {
+    font-size: 30px;
+    margin: 0px 0px 5px 0px;
+    letter-spacing: 1.5px;
+}
+
+.dietplan_section > article > aside > p {
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.dietplan_section > article > article {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.dietplan_section > article > article > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0px 0px 20px 0px;
+    width: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.dietplan_section > article > article > aside > img {
+    width: 100%;
+    max-height: 100%;
+}
+
+.dietplan_section > article > article > aside > a {
+    margin: 0px 0px 0px 15px;
+    font-size: 18px;
+    text-underline-offset: 4px;
+    letter-spacing: 1px;
+    line-height: 2;
+    transition: .5s all;
+}
+
+.dietplan_section > article > article > aside > a:hover {
+    text-underline-offset: 8px;
+}
+
 .dietplan_section > a {
     margin: auto;
     color: var(--company-color);
