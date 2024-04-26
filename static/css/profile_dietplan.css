@@ -97,6 +97,25 @@
 .dietplan_section > article > aside > p {
     font-size: 18px;
     letter-spacing: 1px;
+    margin: 0px 0px 10px 0px;
+}
+
+.dietplan_section > article > aside > a {
+    display: block;
+    width: 125px;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: var(--company-color);
+    color: var(--primary-color);
+    font-family: var(--primary-font);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    text-decoration: none;
+    transition: .5s all;
+}
+
+.dietplan_section > article > aside > a:hover {
+    background-color: #2da455;
 }
 
 .dietplan_section > article > article {

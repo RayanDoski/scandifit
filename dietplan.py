@@ -294,6 +294,14 @@ def quiz_dietplan_completed():
 
 @dietplan.route('/profile/recipe/<id>')
 def specific_recipe(id):
+
+    #are they logged in?
+    user_data = is_logged_in()
+    if user_data is None:
+        return redirect('/login')
+        
+    namn = user_data[1]
+
     url = "https://low-carb-recipes.p.rapidapi.com/recipes/" + id
 
     headers = {
@@ -304,4 +312,4 @@ def specific_recipe(id):
     response = requests.get(url, headers=headers)
     recipe = response.json()
 
-    return render_template('recipe.html', recipe=recipe)
+    return render_template('recipe.html', recipe=recipe, namn=namn)
