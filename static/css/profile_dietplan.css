@@ -82,6 +82,70 @@
     color: var(--company-color);
 }
 
+@media only screen and (max-width: 1200px) {
+
+    .dietplan_section > article {
+        width: 95%;
+    }
+
+}
+
+@media only screen and (max-width: 975px) {
+
+    .dietplan_section > article {
+        padding: 30px 10px;
+        gap: 10px;
+    }
+
+    .dietplan_section > article > h2 {
+        font-size: 40px;
+        letter-spacing: 1px;
+    }
+
+    .dietplan_section > article > p {
+        font-size: 18px;
+        letter-spacing: .6px;
+    }
+
+    .dietplan_section {
+        padding: 25px 0px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .dietplan_section > article > h2 {
+        font-size: 28px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_section > article > p {
+        font-size: 16px;
+        letter-spacing: 0px;
+    }
+
+    .dietplan_section > a {
+        font-size: 14px;
+        letter-spacing: 0px;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    .dietplan_section > article > h2 {
+        font-size: 24px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_section > article > p {
+        font-size: 16px;
+        letter-spacing: 0px;
+    }
+
+}
+
 /* mat recept */
 
 .dietplan_section > article > aside {
@@ -163,66 +227,36 @@
     cursor: pointer;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 750px) {
 
-    .dietplan_section > article {
+    .dietplan_section > article > aside {
         width: 95%;
+        margin: 0px auto 30px auto;
     }
 
-}
-
-@media only screen and (max-width: 975px) {
-
-    .dietplan_section > article {
-        padding: 30px 10px;
-        gap: 10px;
+    .dietplan_section > article > article {
+        width: 80%;
+        margin: 0px auto 0px auto;
     }
 
-    .dietplan_section > article > h2 {
-        font-size: 40px;
-        letter-spacing: 1px;
-    }
-
-    .dietplan_section > article > p {
-        font-size: 18px;
-        letter-spacing: .6px;
-    }
-
-    .dietplan_section {
-        padding: 25px 0px;
-    }
-
-}
-
-@media only screen and (max-width: 700px) {
-
-    .dietplan_section > article > h2 {
+    .dietplan_section > article > aside > h2 {
         font-size: 28px;
-        letter-spacing: .5px;
     }
-
-    .dietplan_section > article > p {
+    
+    .dietplan_section > article > aside > p {
         font-size: 16px;
-        letter-spacing: 0px;
     }
-
-    .dietplan_section > a {
+    
+    .dietplan_section > article > article > aside > a {
         font-size: 14px;
-        letter-spacing: 0px;
     }
 
-}
+    /* .dietplan_section > article > article > aside {
+        width: 150px;
+    } */
 
-@media only screen and (max-width: 450px) {
-
-    .dietplan_section > article > h2 {
-        font-size: 24px;
-        letter-spacing: .5px;
-    }
-
-    .dietplan_section > article > p {
+    .dietplan_section > article > article > aside > a {
         font-size: 16px;
-        letter-spacing: 0px;
     }
 
 }

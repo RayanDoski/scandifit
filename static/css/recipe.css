@@ -1,5 +1,7 @@
 .recipe_section {
     padding: 50px 100px;
+    max-width: 1600px;
+    margin: auto;
 }
 
 .recipe_section > article {

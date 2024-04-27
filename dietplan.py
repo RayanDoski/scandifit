@@ -302,6 +302,8 @@ def specific_recipe(id):
         
     namn = user_data[1]
 
+    exklusiv = is_exklusiv()
+
     url = "https://low-carb-recipes.p.rapidapi.com/recipes/" + id
 
     headers = {
@@ -312,4 +314,4 @@ def specific_recipe(id):
     response = requests.get(url, headers=headers)
     recipe = response.json()
 
-    return render_template('recipe.html', recipe=recipe, namn=namn)
+    return render_template('recipe.html', recipe=recipe, namn=namn, exklusiv=exklusiv)
