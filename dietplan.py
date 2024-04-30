@@ -9,7 +9,6 @@ dietplan = Blueprint('dietplan', __name__)
 
 @dietplan.route("/profile/dietplan")
 def dietplan_def():
-    
     try:
 
         # Make Database Connection
@@ -32,11 +31,14 @@ def dietplan_def():
         # checking their elagability to view sertant information
         gtv = showing_dietplan(user_dietplan, exklusiv)
 
-        calorie_intake = calorie_calculator(user_dietplan)
-
-        water_intake = water_intake_calculator(user_dietplan)
-
-        recipes = get_recipe(6)
+        if user_dietplan:
+            calorie_intake = calorie_calculator(user_dietplan)
+            water_intake = water_intake_calculator(user_dietplan)
+            recipes = get_recipe(6)
+        else:
+            calorie_intake = None
+            water_intake = None
+            recipes = None
 
         return render_template(
             'profile_dietplan.html',
@@ -74,7 +76,7 @@ def showing_dietplan(user_dietplan, exklusiv):
         show_dietplan = True
     # If They Are Exklusiv And They Don't Have a Dietplan
     elif exklusiv and user_dietplan is None:
-        btn_link = '/profile/dietplan/quiz'
+        btn_link = '/quiz/dietplan'
         btn_text = 'Skapa din Kostplan'
         heading = ''
         show_dietplan = False
@@ -280,7 +282,7 @@ def quiz_dietplan_completed():
             db.commit()
         else:
             # insert new values
-            cursor.execute('insert into dietplan (uid, goal, age, gender, height, weight, target_weight, activity_level, training_session_per_week, dietary_preferences, current_daily_water_intake, sugar_intake) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (uid, goal, age, gender, height, currentweight, targetweight, physically_demanding_everyday_life, training_sessions_per_week, dietary_preferences, current_daily_water_intake, sugar_intake))
+            cursor.execute('insert into dietplan (uid, goal, age, gender, height, weight, target_weight, activity_level, training_session_per_week, dietary_preferences, current_daily_water_intake, sugar_intake) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (uid, goal, age, gender, height, currentweight, targetweight, physically_demanding_everyday_life, training_sessions_per_week, dietary_preferences, current_daily_water_intake, sugar_intake))
             db.commit()
 
         return redirect('/profile/dietplan')

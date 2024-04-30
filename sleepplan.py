@@ -37,10 +37,13 @@ def sleepplan_def():
         # checking their elagability to view sertant information
         gtv = showing_sleepplan(user_sleepplan, exklusiv)
 
-        # Making Caffine Intake Calculations
-        caffeine_in_mg = caffeine_intake_calculator(user_sleepplan)
-
-        sleep_calculations = sleeptime_calculator(user_sleepplan)
+        if user_sleepplan:
+            # Making Caffine Intake Calculations
+            caffeine_in_mg = caffeine_intake_calculator(user_sleepplan)
+            sleep_calculations = sleeptime_calculator(user_sleepplan)
+        else:
+            caffeine_in_mg = None
+            sleep_calculations = None
             
         return render_template(
             'profile_sleepplan.html',
@@ -78,7 +81,7 @@ def showing_sleepplan(user_dietplan, exklusiv):
         show_sleepplan = True
     # If They Are Exklusiv And They Don't Have a Dietplan
     elif exklusiv and user_dietplan is None:
-        btn_link = '/profile/sleepplan/quiz'
+        btn_link = '/quiz/sleepplan'
         btn_text = 'Skapa din Sömnplan'
         heading = ''
         show_sleepplan = False
