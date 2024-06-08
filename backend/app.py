@@ -1,6 +1,8 @@
 from flask import Flask
 from flask_mail import Mail
 
+from flask_cors import CORS
+
 from views import views
 from profile_info import profil
 from login_register import login_register
@@ -17,6 +19,8 @@ from sleepplan import sleepplan
 app = Flask(__name__)
 
 app.secret_key = "scandifit0412175416"
+CORS(app, supports_credentials=True)  # Enable CORS for all routes
+app.config.update(SESSION_COOKIE_SAMESITE="None", SESSION_COOKIE_SECURE=True)
 
 app.register_blueprint(views)
 app.register_blueprint(profil)

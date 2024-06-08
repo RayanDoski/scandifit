@@ -1,0 +1,219 @@
+.FooterContainer {
+    width: 100%;
+    background-color: var(--black);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px 0px;
+}
+
+.FooterContainer > .ContainerForLogoAndLink {
+    width: 95%;
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.FooterContainer > .ContainerForLogoAndLink > img {
+    width: 300px;
+}
+
+.FooterContainer > .ContainerForLogoAndLink > .LinkButton {
+    background-color: var(--black);
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: 1px solid var(--white);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: lighter;
+    letter-spacing: .75px;
+    transition: .5s all;
+    text-align: center;
+    font-family: 'Roboto';
+}
+
+.FooterContainer > .ContainerForLogoAndLink > .LinkButton:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--black);
+}
+
+.FooterContainer > .Line {
+    width: 98%;
+    height: 1px;
+    margin: auto;
+    background-color: var(--white);
+}
+
+.FooterContainer > article {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.FooterContainer > article > div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.FooterContainer > article > div > div > h2 {
+    color: var(--white);
+    letter-spacing: 1px;
+    margin: 5px 0px;
+}
+
+.FooterContainer > article > div > div > .OpenCloseFooterLinks {
+    display: none;
+}
+
+.FooterContainer > article > div > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.FooterContainer > article > div > aside > .Link {
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-weight: lighter;
+    text-underline-offset: 2px;
+    transition: .5s all;
+}
+
+.FooterContainer > article > div > aside > .Link:hover {
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    text-decoration-color: var(--green);
+} 
+
+.FooterContainer > aside {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 40px auto 0px auto;
+}
+
+.FooterContainer > aside > p {
+    color: var(--white);
+    font-size: 14px;
+}
+
+.FooterContainer > aside > div {
+    height: 40px;
+    width: 1px;
+    background-color: var(--white);
+}
+
+.FooterContainer > aside > img {
+    width: 40px;
+}
+
+@media only screen and (max-width: 650px) {
+
+    .FooterContainer > .ContainerForLogoAndLink > img {
+        width: 225px;
+    }
+
+    .FooterContainer > .Line {
+        display: none;
+    }
+
+    .FooterContainer > article {
+        width: 98%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .FooterContainer > article > div {
+        width: 95%;
+        border-bottom: 1px solid var(--white);
+        gap: 0;
+        overflow: hidden;
+    }
+
+    .FooterContainer > article > div > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .FooterContainer > article > div > h2 {
+        font-size: 22px;
+    }
+
+    .FooterContainer > article > div > div > .OpenCloseFooterLinks {
+        display: block;
+    }
+    
+    .FooterContainer > article > div > aside {
+        flex-direction: row;
+        width: 90%;
+        margin: auto;
+        visibility: hidden;
+        pointer-events: none;
+        height: 0;
+        padding: 0;
+        opacity: 0;
+        transition: .5s all;
+    }
+
+    .FooterContainer > article > div > aside.open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+        height: auto;
+        padding: 20px 0px;
+    }
+
+}
+
+@media only screen and (max-width: 470px) {
+
+    .FooterContainer > article > div > aside {
+        flex-direction: column;
+    }
+
+    .FooterContainer > aside {
+        width: 95%;
+        gap: 5px;
+        margin: 20px auto 0px auto;
+        justify-content: center;
+    }
+    
+    .FooterContainer > aside > p {
+        font-size: 12px;
+        margin: 0;
+    }
+    
+    .FooterContainer > aside > div {
+        height: 30px;
+    }
+    
+    .FooterContainer > aside > img {
+        width: 30px;
+    }
+
+    .FooterContainer > .ContainerForLogoAndLink {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .FooterContainer > .ContainerForLogoAndLink > img {
+        width: 250px;
+    }
+    
+}
