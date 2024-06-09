@@ -62,7 +62,7 @@ function Register() {
             <img src={logo} alt='Logo' />
             
             <form onSubmit={handleSubmit}>
-                <h1>Inloggning</h1>
+                <h1>Registrera</h1>
                 <p className='WrongPasswordOrEmail'>{ErrorMessage}</p>
                 <label htmlFor='name'>Namn</label>
                 <input
@@ -103,12 +103,12 @@ function Register() {
 
             <article>
                 <div></div>
-                <p>Ny hos Scandifit?</p>
+                <p>Har Redan Ett Konto?</p>
                 <div></div>
             </article>
 
             <Link className='LinkButton' to='/login'>
-                Skapa Ditt Scandifit-Konto
+                Logga In
             </Link>
 
         </section>
