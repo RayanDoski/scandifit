@@ -5,7 +5,7 @@
 }
 
 .quiz > form > h2 {
-    font-family: var(--white);
+    color: var(--black);
     text-align: center;
     font-size: 40px;
 }
@@ -43,15 +43,18 @@
 }
 
 .quiz > form > .one > h2 {
-    font-family: var(--white);
+    color: var(--black);
     text-align: center;
     font-size: 65px;
+    margin: 0;
 }
 
 .quiz > form > .one > p {
     font-weight: lighter;
     text-align: center;
     font-size: 25px;
+    color: var(--gray);
+    margin: 0;
 }
 
 .quiz > form > .one > main {
@@ -64,7 +67,7 @@
 }
 
 .quiz > form > .one > main > label {
-    background-color: var(--black);
+    background-color: var(--gray);
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -72,7 +75,7 @@
 }
 
 .quiz > form > .one > main > label:hover {
-    background-color: #212121;
+    background-color: var(--black);
 }
 
 .quiz > form > .one > main > label > img{
@@ -84,6 +87,7 @@
     color: var(--white);
     text-align: center;
     padding: 10px 0px;
+    margin: 0;
     font-size: 22px;
     letter-spacing: 1.1px;
 }
@@ -141,11 +145,7 @@
 /* quiz two */
 
 .quiz > form > .two {
-    display: none;
-}
-
-.quiz > form > .two.show {
-    display: block;
+    
 }
 
 .quiz > form > .two > h2 {
@@ -162,7 +162,7 @@
 }
 
 .quiz > form > .two > main > label {
-    background-color: var(--black);
+    background-color: var(--gray);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -172,7 +172,7 @@
 }
 
 .quiz > form > .two > main > label:hover {
-    background-color: #212121;
+    background-color: var(--black);
 }
 
 .quiz > form > .two > main > label > img{
@@ -188,6 +188,7 @@
     font-size: 22px;
     letter-spacing: 1.1px;
     width: 100%;
+    margin: 0;
 }
 
 .quiz > form > .two > main > input {
@@ -249,11 +250,7 @@
 /* quiz three */
 
 .quiz > form > .three {
-    display: none;
-}
-
-.quiz > form > .three.show {
-    display: block;
+    
 }
 
 .quiz > form > .three > h2 {
@@ -272,7 +269,7 @@
 }
 
 .quiz > form > .three > main > label {
-    background-color: var(--black);
+    background-color: var(--gray);
     display: flex;
     box-sizing: border-box;
     justify-content: space-between;
@@ -284,7 +281,7 @@
 }
 
 .quiz > form > .three > main > label:hover {
-    background-color: #212121;
+    background-color: var(--black);
 }
 
 .quiz > form > .three > main > label > img{
@@ -298,15 +295,16 @@
 
 .quiz > form > .three > main > label > aside > h3 {
     color: var(--white);
-    font-size: 40px;
-    letter-spacing: 2px;
+    font-size: 32px;
+    letter-spacing: 1px;
+    margin: 0;
 }
 
 .quiz > form > .three > main > label > aside > p {
     color: var(--white);
-    font-size: 18px;
-    letter-spacing: 1.1px;
-    line-height: 20px;
+    font-size: 16px;
+    letter-spacing: .5px;
+    margin: 0;
 }
 
 .quiz > form > .three > main > input {
@@ -324,19 +322,20 @@
 }
 
 .quiz > form > .three > main > div > h2 {
-    font-size: 45px;
+    font-size: 26px;
     inline-size: 65%;
+    margin: 0;
 }
 
 .quiz > form > .three > main > div > p {
     margin: 10px 0px;
-    letter-spacing: 1.1px;
-    line-height: 20px;
+    letter-spacing: .5px;
 }
 
 .quiz > form > .three > main > div > h6 {
     font-weight: lighter;
     margin: 0px 0px 10px 0px;
+    font-size: 18px;
 }
 
 .quiz > form > .three > main > div > h6 > span {
@@ -395,7 +394,7 @@
     }
     
     .quiz > form > .three > main > div > h2 {
-        font-size: 30px;
+        font-size: 24px;
         inline-size: 75%;
     }
     
@@ -428,11 +427,7 @@
 /* quiz Four */
 
 .quiz > form > .four {
-    display: none;
-}
-
-.quiz > form > .four.show {
-    display: block;
+    
 }
 
 .quiz > form > .four > h2 {
@@ -461,7 +456,7 @@
 }
 
 .quiz > form > .four > main > div > label {
-    background-color: var(--black);
+    background-color: var(--gray);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -472,7 +467,7 @@
 }
 
 .quiz > form > .four > main > div > label:hover {
-    background-color: #212121;
+    background-color: var(--black);
 }
 
 .quiz > form > .four > main > div > label > img{
@@ -481,8 +476,8 @@
 
 .quiz > form > .four > main > div > label > p {
     color: var(--white);
-    font-size: 35px;
-    letter-spacing: 1.3px;
+    font-size: 28px;
+    letter-spacing: .5px;
 }
 
 .quiz > form > .four > main > div > input {
@@ -579,24 +574,20 @@
 /* quiz Five */
 
 .quiz > form > .five {
-    display: none;
-}
-
-.quiz > form > .five.show {
-    display: block;
+    
 }
 
 .quiz > form > .five > main {
-    margin: auto;
     width: 500px;
     position: relative;
+    margin: 200px auto;
 }
 
 .quiz > form > .five > main > h2 {
     font-size: 65px;
     letter-spacing: 2px;
     text-align: center;
-    margin: 200px 0px 50px 0px;
+    margin: 0px 0px 50px 0px;
 }
 
 .quiz > form > .five > main > label {
@@ -627,9 +618,10 @@
     border-radius: 5px;
     position: absolute;
     right: 0;
-    top: 151px;
+    top: 185px;
     cursor: pointer;
     transition: .5s all;
+    margin: 0;
 }
 
 .quiz > form > .five > main > h3:hover {
@@ -662,7 +654,7 @@
         letter-spacing: 1px;
         padding: 5px 20px;
         right: 15px;
-        top: 120px;
+        top: 140px;
     }
 
 }
@@ -670,16 +662,7 @@
 /* quiz Six */
 
 .quiz > form > .six {
-    display: none;
-}
-
-.quiz > form > .six.show {
-    display: block;
-}
-
-.quiz > form > .six {
-    display: none;
-    margin: auto;
+    
 }
 
 .quiz > form > .six > main {
@@ -760,11 +743,7 @@
 /* quiz Seven */
 
 .quiz > form > .seven {
-    display: none;
-}
-
-.quiz > form > .seven.show {
-    display: block;
+    
 }
 
 .quiz > form > .seven > main {
@@ -835,11 +814,7 @@
 /* quiz eight */
 
 .quiz > form > .eight {
-    display: none;
-}
-
-.quiz > form > .eight.show {
-    display: block;
+    
 }
 
 .quiz > form > .eight > main > h2 {
@@ -924,11 +899,7 @@
 /* quiz nine */
 
 .quiz > form > .nine {
-    display: none;
-}
-
-.quiz > form > .nine.show {
-    display: block;
+    
 }
 
 .quiz > form > .nine > main {
@@ -993,11 +964,7 @@
 /* quiz ten */
 
 .quiz > form > .ten {
-    display: none;
-}
-
-.quiz > form > .ten.show {
-    display: block;
+    
 }
 
 .quiz > form > .ten > main {
