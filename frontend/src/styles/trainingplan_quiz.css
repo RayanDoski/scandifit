@@ -39,7 +39,7 @@
 /* quiz one */
 
 .quiz > form > .one {
-    
+    /* Your existing styles */
 }
 
 .quiz > form > .one > h2 {
@@ -72,13 +72,14 @@
     flex-direction: column;
     gap: 0;
     transition: .5s all;
+    border: 1px solid transparent; /* Add this line */
 }
 
 .quiz > form > .one > main > label:hover {
     background-color: var(--black);
 }
 
-.quiz > form > .one > main > label > img{
+.quiz > form > .one > main > label > img {
     width: 300px;
 }
 
@@ -93,8 +94,11 @@
 }
 
 .quiz > form > .one > main > input {
-    visibility: hidden;
     display: none;
+}
+
+.quiz > form > .one > main > input:checked + label {
+    border: 5px solid var(--green);
 }
 
 @media screen and (max-width: 700px) {
