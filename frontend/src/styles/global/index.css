@@ -21,3 +21,15 @@ body {
     box-sizing: border-box;
     background-color: var(--white);
 }
+
+h1 {
+    color: var(--black);
+}
+
+h2 {
+    color: var(--black);
+}
+
+h3 {
+    color: var(--black);
+}

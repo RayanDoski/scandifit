@@ -39,7 +39,18 @@
 /* quiz one */
 
 .quiz > form > .one {
-    /* Your existing styles */
+    position: relative; 
+    top: -25px;
+    opacity: 0;
+    animation: slideIn 0.5s forwards; 
+    margin: 100px 0px 150px 0px;
+}
+
+@keyframes slideIn {
+    to {
+        top: 0;
+        opacity: 1;
+    }
 }
 
 .quiz > form > .one > h2 {
@@ -149,7 +160,11 @@
 /* quiz two */
 
 .quiz > form > .two {
-    
+    position: relative; 
+    top: -25px;
+    opacity: 0;
+    animation: slideIn 0.5s forwards;
+    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .two > h2 {
@@ -198,6 +213,10 @@
 .quiz > form > .two > main > input {
     visibility: hidden;
     display: none;
+}
+
+.quiz > form > .two > main > input:checked + label {
+    border: 5px solid var(--green);
 }
 
 @media screen and (max-width: 700px) {
@@ -254,7 +273,11 @@
 /* quiz three */
 
 .quiz > form > .three {
-    
+    position: relative; 
+    top: -25px;
+    opacity: 0;
+    animation: slideIn 0.5s forwards; 
+    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .three > h2 {
@@ -314,6 +337,10 @@
 .quiz > form > .three > main > input {
     visibility: hidden;
     display: none;
+}
+
+.quiz > form > .three > main > input:checked + label {
+    border: 5px solid var(--green);
 }
 
 .quiz > form > .three > main > div {
@@ -431,7 +458,11 @@
 /* quiz Four */
 
 .quiz > form > .four {
-    
+    position: relative; 
+    top: -25px;
+    opacity: 0;
+    animation: slideIn 0.5s forwards; 
+    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .four > h2 {
@@ -487,6 +518,10 @@
 .quiz > form > .four > main > div > input {
     visibility: hidden;
     display: none;
+}
+
+.quiz > form > .four > main > div > input:checked + label {
+    border: 5px solid var(--green);
 }
 
 @media screen and (max-width: 1050px) {
@@ -578,7 +613,11 @@
 /* quiz Five */
 
 .quiz > form > .five {
-    
+    position: relative; 
+    top: -25px;
+    opacity: 0;
+    animation: slideIn 0.5s forwards; 
+    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .five > main {
@@ -605,7 +644,7 @@
     width: 100%;
     outline: 0;
     border: 0;
-    border-bottom: 5px solid var(--green);
+    border-bottom: 2px solid var(--green);
     padding: 10px;
     font-size: 18px;
     box-sizing: border-box;
@@ -616,8 +655,10 @@
     text-align: center;
     font-size: 20px;
     letter-spacing: 1.5px;
-    background-color: var(--green);
-    color: var(--white);
+    background-color: transparent;
+    border: 1px solid var(--black);
+    color: var(--black);
+    font-weight: lighter;
     padding: 5px 20px;
     border-radius: 5px;
     position: absolute;
@@ -629,7 +670,9 @@
 }
 
 .quiz > form > .five > main > h3:hover {
-    background-color: #2da455;
+    border: 1px solid var(--white);
+    background-color: var(--green);
+    color: var(--white);
 }
 
 @media screen and (max-width: 575px) {
@@ -666,19 +709,22 @@
 /* quiz Six */
 
 .quiz > form > .six {
-    
+    position: relative; 
+    top: -25px;
+    opacity: 0;
+    animation: slideIn 0.5s forwards; 
+    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .six > main {
     margin: auto;
-    width: 500px;
+    width: 600px;
 }
 
 .quiz > form > .six > main > h2 {
     font-size: 65px;
     letter-spacing: 2px;
     text-align: center;
-    margin: 200px 0px 0px 0px;
 }
 
 .quiz > form > .six > main > label {
@@ -692,7 +738,7 @@
     width: 100%;
     outline: 0;
     border: 0;
-    border-bottom: 5px solid var(--green);
+    border-bottom: 2px solid var(--green);
     padding: 10px;
     font-size: 18px;
     box-sizing: border-box;
@@ -704,8 +750,10 @@
     text-align: center;
     font-size: 20px;
     letter-spacing: 1.5px;
-    background-color: var(--green);
-    color: var(--white);
+    background-color: transparent;
+    border: 1px solid var(--black);
+    color: var(--black);
+    font-weight: lighter;
     padding: 7px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -713,7 +761,9 @@
 }
 
 .quiz > form > .six > main > h3:hover {
-    background-color: #2da455;
+    border: 1px solid var(--white);
+    background-color: var(--green);
+    color: var(--white);
 }
 
 @media screen and (max-width: 575px) {
@@ -747,17 +797,21 @@
 /* quiz Seven */
 
 .quiz > form > .seven {
-    
+    position: relative; 
+    top: -25px;
+    opacity: 0;
+    animation: slideIn 0.5s forwards;
+    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .seven > main {
-    margin: 200px auto 0px auto;
+    margin: 0px auto 0px auto;
 }
 
 .quiz > form > .seven > main > h2 {
     font-size: 65px;
-    letter-spacing: 2px;
     text-align: center;
+    margin: 0;
 }
 
 .quiz > form > .seven > main > p {
@@ -765,7 +819,7 @@
     font-size: 20px;
     letter-spacing: 1px;
     text-align: center;
-    margin: 0px 0px 50px 0px;
+    margin: 0px 0px 75px 0px;
 }
 
 .quiz > form > .seven > main > aside {
@@ -780,17 +834,21 @@
     display: none;
 }
 
+.quiz > form > .seven > main > aside > input:checked + label {
+    border: 5px solid var(--green);
+}
+
 .quiz > form > .seven > main > aside > label {
     cursor: pointer;
-    font-size: 40px;
+    font-size: 25px;
     padding: 40px 50px;
-    border: 1px solid var(--green);
+    border: 1px solid var(--black);
     box-sizing: border-box;
-    transition: .5s all;
+    transition: 1s all;
 }
 
 .quiz > form > .seven > main > aside > label:hover {
-    font-size: 45px;
+    font-size: 28px;
 }
 
 @media screen and (max-width: 850px) {
@@ -818,13 +876,17 @@
 /* quiz eight */
 
 .quiz > form > .eight {
-    
+    position: relative; 
+    top: -25px;
+    opacity: 0;
+    animation: slideIn 0.5s forwards; 
+    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .eight > main > h2 {
     font-size: 65px;
     text-align: center;
-    margin: 100px 0px;
+    margin: 0px 0px 75px 0px;
 }
 
 .quiz > form > .eight > main > div {
@@ -844,6 +906,10 @@
 
 .quiz > form > .eight > main > div > aside > input {
     display: none;
+}
+
+.quiz > form > .eight > main > div > aside > input:checked + label {
+    border: 5px solid var(--green);
 }
 
 .quiz > form > .eight > main > div > aside > label {
@@ -877,6 +943,7 @@
 
 
 .quiz > form > .eight > main > div > img {
+    width: 100%;
     max-width: 400px;
 }
 
@@ -903,7 +970,11 @@
 /* quiz nine */
 
 .quiz > form > .nine {
-    
+    position: relative; 
+    top: -25px;
+    opacity: 0;
+    animation: slideIn 0.5s forwards; 
+    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .nine > main {
@@ -917,18 +988,21 @@
 .quiz > form > .nine > main > h2 {
     font-size: 65px;
     text-align: center;
-    margin: 50px 0px;
+    margin: 0px 0px 50px 0px;
 }
 
 .quiz > form > .nine > main > input {
     display: none;
 }
 
+.quiz > form > .nine > main > input:checked + label {
+    border: 5px solid var(--green);
+}
+
 .quiz > form > .nine > main > label {
-    background-color: var(--black);
+    background-color: var(--gray);
     color: var(--white);
-    letter-spacing: 2px;
-    font-size: 35px;
+    font-size: 32px;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -940,7 +1014,7 @@
 }
 
 .quiz > form > .nine > main > label:hover {
-    background-color: #1c1c1c;
+    background-color: var(--black);
 }
 
 .quiz > form > .nine > main > label > img {
@@ -968,7 +1042,11 @@
 /* quiz ten */
 
 .quiz > form > .ten {
-    
+    position: relative; 
+    top: -25px;
+    opacity: 0;
+    animation: slideIn 0.5s forwards;
+    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .ten > main {
@@ -982,11 +1060,15 @@
 .quiz > form > .ten > main > h2 {
     font-size: 65px;
     text-align: center;
-    margin: 50px 0px;
+    margin: 0px 0px 50px 0px;
 }
 
 .quiz > form > .ten > main > input {
     display: none;
+}
+
+.quiz > form > .ten > main > input:checked + label {
+    border: 5px solid var(--green);
 }
 
 .quiz > form > .ten > main > label {
@@ -1000,13 +1082,15 @@
 }
 
 .quiz > form > .ten > main > label > h3 {
-    letter-spacing: 2px;
-    font-size: 35px;
+    font-size: 28px;
+    margin: 0;
+    color: var(--white);
 }
 
 .quiz > form > .ten > main > label > p {
     letter-spacing: 1px;
     font-size: 15px;
+    margin: 0;
 }
 
 .quiz > form > .ten > main > label:hover {
@@ -1045,11 +1129,11 @@
 /* quiz eleven */
 
 .quiz > form > .eleven {
-    display: none;
-}
-
-.quiz > form > .eleven.show {
-    display: block;
+    position: relative; 
+    top: -25px;
+    opacity: 0;
+    animation: slideIn 0.5s forwards;
+    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .eleven > aside {
@@ -1069,7 +1153,7 @@
 
 .quiz > form > .eleven > main > h2 {
     font-size: 65px;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-align: center;
     margin: 0px 0px 75px 0px;
     line-height: 140%;
@@ -1082,8 +1166,8 @@
 .quiz > form > .eleven > main > label {
     display: block;
     margin: 0px 0px 0px 0px;
-    font-size: 20px;
-    letter-spacing: 1.5px;
+    font-size: 18px;
+    color: var(--black);
 }
 
 .quiz > form > .eleven > main > label > span {
@@ -1096,7 +1180,7 @@
 .quiz > form > .eleven > main > input {
     outline: 0;
     border: 0;
-    border-bottom: 5px solid var(--green);
+    border-bottom: 2px solid var(--green);
     padding: 10px;
     font-size: 18px;
     box-sizing: border-box;
@@ -1107,26 +1191,29 @@
 .quiz > form > .eleven > main > #sumbit_btn, .quiz > form > .eleven > aside > #sumbit_btn {
     padding: 15px 20px;
     border: 0;
-    background-color: var(--green);
+    font-weight: lighter;
+    background-color: transparent;
     text-decoration: none;
-    color: var(--white);
-    font-size: 20px;
-    border-radius: 5px;
-    letter-spacing: 1.2px;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    color: var(--black);
+    border: 1px solid var(--black);
+    font-size: 18px;
+    border-radius: 15px;
     transition: .5s all;
     cursor: pointer;
 }
 
 .quiz > form > .eleven > main > #sumbit_btn:hover, .quiz > form > .eleven > aside > #sumbit_btn:hover {
-    background-color: #2da455;
+    color: var(--white);
+    background-color: var(--green);
+    border: 1px solid var(--white);
 }
 
 .quiz > form > .eleven > main > p {
-    margin: 20px 0px 0px 0px;
+    margin: 10px 0px 0px 0px;
     font-weight: lighter;
-    font-size: 20px;
-    letter-spacing: 1.3px;
+    font-size: 14px;
+    color: var(--black);
+    text-align: center;
 }
 
 .quiz > form > .eleven > main > p > a {
@@ -1159,4 +1246,55 @@
         letter-spacing: .8px;
     }
 
+}
+
+/* Popup Error */
+
+.errorMessageBackground {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: .5s all;
+}
+
+.errorMessageBackground.show {
+    position: fixed;
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.717);
+    width: 100%;
+    height: 100%;
+}
+
+.errorMessageContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: 1s all;
+}
+
+.errorMessageContainer.show {
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+    background-color: var(--white);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.errorMessageContainer > p {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: .5px;
 }
