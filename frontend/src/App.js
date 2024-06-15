@@ -4,6 +4,7 @@ import Footer from './components/footer.js';
 import Login from './pages/login.js'
 import Register from './pages/register.js'
 import TrainingPlanQuiz from './pages/trainingPlanQuiz.js'
+import TrainingPlan from './pages/trainingPlan.js'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/trainingplan/quiz" element={<TrainingPlanQuiz />} />
+          <Route path="/profile/trainingplan" element={<TrainingPlan />} />
         </Routes>
       <Footer />
     </Router>

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, redirect
+from flask import Blueprint, render_template, request, session, redirect, jsonify
 
 # Connecting To The Database
 from db import make_db_connection
@@ -17,19 +17,15 @@ def schedual():
     db = make_db_connection()
     cursor = db.cursor()
 
-    #are they logged in?
-    user_data = is_logged_in()
-    if user_data is None:
-        return redirect('/login') 
-    
     #getting their quiz values
-    cursor.execute('select * from trainingplan where uid = %s', (user_data[0],))
+    cursor.execute('select * from trainingplan where uid = %s', (session['user_id'],))
     tp = cursor.fetchone()
 
     # Checking If They Have A Schedual Or Not
     if tp is None:
-        schedual = ''
-        schedual_does_not_exist = True
+        return jsonify({
+            'TrainingPlanExists': False
+        })
         return render_template('profile_trainingplan.html', tp=tp, schedual=schedual, namn=user_data[1], schedual_does_not_exist=schedual_does_not_exist, exklusiv=is_exklusiv())
 
     # Close Database Connection
@@ -70,266 +66,388 @@ def schedual():
 
     #How Manny Training sessions per Week
     if amount_of_exercises_per_week == 1:
-        schedual = f'''
-            <h2>Första TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}                        
-
-            {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
-            {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}
-            {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps)}
-            {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}
-            {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}
-            {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}
-            {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}
-        '''
+        schedual = [
+            {
+                "Title": 'Första TräningsPass',
+                "Cardio": [
+                    {"detail": cardio_training_list[0][0]},                        
+                    {"detail": cardio_training_list[1][0]},                        
+                    {"detail": cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {"detail": chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps},
+                    {"detail": triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps},
+                    {"detail": axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps},
+                    {"detail": rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps},
+                    {"detail": biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps},
+                    {"detail": mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps},
+                    {"detail": legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps}
+                ],
+            },
+        ]
     elif amount_of_exercises_per_week == 2:
-        schedual = f'''
-            <h2>Första TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
-            {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}
-            {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps)}
-
-            <h2>Andra TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}
-            {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}
-            {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}
-            {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}
-        '''
+        schedual = [
+            {
+                "Title": 'Första TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps},
+                    {triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps},
+                    {axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Andra TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps},
+                    {biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps},
+                    {mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps},
+                    {legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps}
+                ],
+            },
+        ]
     elif amount_of_exercises_per_week == 3:
-        schedual = f'''
-            <h2>Första TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]} 
-
-            {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
-            {more_of_these_exercises[0][0]}
-            {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}
-
-            <h2>Andra TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}  
-
-            {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}
-            {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}
-            {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps)}
-
-            <h2>Tredje TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}
-            {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}
-            {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
-        '''
+        schedual = [
+            {
+                "Title": 'Första TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps},
+                    {more_of_these_exercises[0][0]},
+                    {triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Andra TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps},
+                    {biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps},
+                    {axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Tredje TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps},
+                    {legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps},
+                    {chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps}
+                ],
+            },
+        ]
     elif amount_of_exercises_per_week == 4:
-        schedual = f'''
-            <h2>Första TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-            
-            {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
-            {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}
-            {create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps)}
-
-            <h2>Andra TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}
-            {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}
-            {create_exercise(axlar_exercise[0][0], axlar_exercise[0][1], axlar_exercise[0][2], sets, reps)}
-
-            <h2>Tredje TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}
-            {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}
-            {create_exercise(legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps)}
-
-            <h2>Fjärde TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-            
-            {more_of_these_exercises[0][0]}
-            {more_of_these_exercises[1][0]}
-            {more_of_these_exercises[2][0]}
-        '''                  
+        schedual = [
+            {
+                "Title": 'Första TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps},
+                    {triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps},
+                    {triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Andra TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps},
+                    {biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps},
+                    {axlar_exercise[0][0], axlar_exercise[0][1], axlar_exercise[0][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Tredje TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps},
+                    {legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps},
+                    {legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Fjärde TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {more_of_these_exercises[0][0]},
+                    {more_of_these_exercises[1][0]},
+                    {more_of_these_exercises[2][0]}
+                ],
+            },
+        ]
     elif amount_of_exercises_per_week == 5:
-        schedual = f'''
-            <h2>Första TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
-            {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}
-            {create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps)}
-
-            <h2>Andra TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}
-            {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}
-            {create_exercise(axlar_exercise[0][0], axlar_exercise[0][1], axlar_exercise[0][2], sets, reps)}
-
-            <h2>Tredje TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}
-            {create_exercise(legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps)}
-
-            <h2>Fjärde TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]} 
-
-            {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}
-            {create_exercise(mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], sets, reps)}
-
-            <h2>Femte TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {more_of_these_exercises[0][0]}
-            {more_of_these_exercises[1][0]}
-            {more_of_these_exercises[2][0]}
-            '''
+        schedual = [
+            {
+                "Title": 'Första TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps},
+                    {triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps},
+                    {triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Andra TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps},
+                    {biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps},
+                    {axlar_exercise[0][0], axlar_exercise[0][1], axlar_exercise[0][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Tredje TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps},
+                    {legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Fjärde TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps},
+                    {mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Femte TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {more_of_these_exercises[0][0]},
+                    {more_of_these_exercises[1][0]},
+                    {more_of_these_exercises[2][0]}
+                ],
+            },
+        ]
     elif amount_of_exercises_per_week == 6:
-        schedual = f'''
-            <h2>Första TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(chest_exercise[0][0], chest_exercise[0][1], chest_exercise[0][2], sets, reps)}
-            {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
-            {create_exercise(chest_exercise[2][0], chest_exercise[2][1], chest_exercise[2][2], sets, reps)}
-
-            <h2>Andra TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps)}
-            {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}
-
-            <h2>Tredje TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(axlar_exercise[0][0], axlar_exercise[0][1], axlar_exercise[0][2], sets, reps)}
-            {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps)}
-            
-            <h2>Fjärde TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}
-            {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}
-
-            <h2>Femte TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}
-            {create_exercise(mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], sets, reps)}
-
-            <h2>Sjätte TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}
-            {create_exercise(legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps)}
-        '''
+        schedual = [
+            {
+                "Title": 'Första TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {chest_exercise[0][0], chest_exercise[0][1], chest_exercise[0][2], sets, reps},
+                    {chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps},
+                    {chest_exercise[2][0], chest_exercise[2][1], chest_exercise[2][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Andra TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps},
+                    {triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Tredje TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {axlar_exercise[0][0], axlar_exercise[0][1], axlar_exercise[0][2], sets, reps},
+                    {axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Fjärde TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps},
+                    {biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Femte TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps},
+                    {mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Sjätte TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps},
+                    {legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps}
+                ],
+            },
+        ]
     else:
-        schedual = f'''
-            <h2>Chest - TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
+        schedual = [
+            {
+                "Title": 'Chest TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps},
+                    {chest_exercise[0][0], chest_exercise[0][1], chest_exercise[0][2], sets, reps},
+                    {chest_exercise[2][0], chest_exercise[2][1], chest_exercise[2][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Triceps TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps},
+                    {triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps} 
+                ],
+            },
+            {
+                "Title": 'Axlar TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {axlar_exercise[0][0], axlar_exercise[0][1], axlar_exercise[0][2], sets, reps},
+                    {axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Rygg TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps},                        
+                    {biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps} 
+                ],
+            },
+            {
+                "Title": 'Mage TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps},                      
+                    {mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], sets, reps} 
+                ],
+            },
+            {
+                "Title": 'Ben TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps},                        
+                    {legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps}
+                ],
+            },
+            {
+                "Title": 'Extra TräningsPass',
+                "Cardio": [
+                    {cardio_training_list[0][0]},                        
+                    {cardio_training_list[1][0]},                        
+                    {cardio_training_list[2][0]} 
+                ],
+                "Exercises": [
+                    {more_of_these_exercises[0][0]},
+                    {more_of_these_exercises[1][0]},
+                    {more_of_these_exercises[2][0]}
+                ],
+            },
+        ]
+    return jsonify({
+        'TrainingPlanExists': True,
+        'Schedual': schedual
+    })
 
-            {create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)}
-            {create_exercise(chest_exercise[0][0], chest_exercise[0][1], chest_exercise[0][2], sets, reps)}
-            {create_exercise(chest_exercise[2][0], chest_exercise[2][1], chest_exercise[2][2], sets, reps)}
-
-            <h2>Triceps - TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps)}
-            {create_exercise(triceps_exercise[1][0], triceps_exercise[1][1], triceps_exercise[1][2], sets, reps)}                        
-
-            <h2>Axlar - TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(axlar_exercise[0][0], axlar_exercise[0][1], axlar_exercise[0][2], sets, reps)}                        
-            {create_exercise(axlar_exercise[1][0], axlar_exercise[1][1], axlar_exercise[1][2], sets, reps)}                        
-            
-            <h2>Rygg - TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(rygg_exercise[0][0], rygg_exercise[0][1], rygg_exercise[0][2], sets, reps)}                        
-            {create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)}                        
-
-            <h2>Mage - TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)}                        
-            {create_exercise(mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], sets, reps)}                        
-
-            <h2>Ben - TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}                      
-
-            {create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)}                        
-            {create_exercise(legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps)}                        
-
-            <h2>Extra - TräningsPass:</h2>
-            {cardio_training_list[0][0]}                        
-            {cardio_training_list[1][0]}                        
-            {cardio_training_list[2][0]}
-
-            {more_of_these_exercises[0][0]}
-            {more_of_these_exercises[1][0]}
-            {more_of_these_exercises[2][0]}
-
-        '''
-        
     return render_template('profile_trainingplan.html', tp=tp, schedual=schedual, namn=user_data[1], exklusiv=is_exklusiv())
 
 # To Get Exercises From Database
@@ -350,13 +468,14 @@ def get_exercise_from_database(exercise):
 
 # Generating Html Code For Exercise
 def create_exercise(link, exercise, muscle_group, sets, reps):
-    training_exercise = f'''
-        <aside>
-            <h3><a href="/workout/{ link }">{ exercise }</a>{ sets }{ reps }</h3>
-            <a href="/workouts/{ muscle_group }">Visa Alternativ Övningar</a>
-        </aside>
-    '''
-    return training_exercise
+    # training_exercise = f'''
+    #     <aside>
+    #         <h3><a href="/workout/{ link }">{ exercise }</a>{ sets }{ reps }</h3>
+    #         <a href="/workouts/{ muscle_group }">Visa Alternativ Övningar</a>
+    #     </aside>
+    # '''
+    # return training_exercise
+    return link, exercise, muscle_group, sets, reps
 
 # Antalet Tränings Pass Per Vecka
 def amount_per_week(amount_of_exercises_per_week):
