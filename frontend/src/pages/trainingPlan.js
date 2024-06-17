@@ -1,9 +1,6 @@
-
-// Images
-import logo from '../images/logo.png';
-
 // Importing CSS
 import '../styles/profile_trainingplan.css';
+import SecondaryHeader from '../components/secondaryHeader.js'
 
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link, Form, useNavigate } from 'react-router-dom';
@@ -50,16 +47,23 @@ function TheTrainingPlan() {
         <section className="schedual-information">
             <main>
                 <article>
-                    <h1>Ditt Tränings Schema</h1>
-                    <a id="din-information-btn">Visa Min Information</a>
+                    <h1>Din Träningsplan</h1>
+                    <Link className='ViewMyInfoBtn' id="din-information-btn">Visa Min Information</Link>
                 </article>
 
-                {/* <aside>
-                    <h3><a href="/workout/{ link }">{ exercise }</a>{ sets }{ reps }</h3>
-                    <a href="/workouts/{ muscle_group }">Visa Alternativ Övningar</a>
-                </aside> */}
+                {Plan.map((TrainingSession, index) => (
+                    <div key={index}>
+                        <h1>{TrainingSession.Title}</h1>
+                        {TrainingSession.Exercises.map((exercise, index) => (
+                            <aside key={index}>
+                                <h3><Link to={`/workout/${exercise.id}`}>{ exercise.name }</Link>{ exercise.frequency }</h3>
+                                <Link to={`/workouts/${exercise.muscle_group}`}>Visa Alternativ Övningar</Link>
+                            </aside>
+                        ))}
+                    </div>
+                ))}
 
-                {Plan}
+                {/* {Plan} */}
 
             </main>
         </section>
@@ -72,7 +76,10 @@ function TrainingPlan() {
 
 
     return (
-        <TheTrainingPlan />
+        <>
+            <SecondaryHeader />
+            <TheTrainingPlan />
+        </>
     );
 }
 

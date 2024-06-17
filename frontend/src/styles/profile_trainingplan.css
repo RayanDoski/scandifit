@@ -1,6 +1,6 @@
 #din-trainingplan {
     padding: 2px 0px;
-    border-bottom: 1.5px solid var(--company-color);
+    border-bottom: 1.5px solid var(--green);
 }
 
 /* If They haven't Created a Schedual */
@@ -20,11 +20,10 @@
 
 .no-trainingplan > main > a {
     padding: 15px 25px;
-    background-color: var(--company-color);
-    font-family: var(--primary-font);
+    background-color: var(--green);
     border-radius: 5px;
     text-decoration: none;
-    color: var(--primary-color);
+    color: var(--white);
     font-size: 25px;
     letter-spacing: 1.5px;
     transition: .5s all;
@@ -45,9 +44,9 @@
     padding: 15px 30px;
     width: 90%;
     box-sizing: border-box;
-    background-color: var(--primary-color);
+    background-color: var(--white);
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    border-radius: 10px;
+    border-radius: 15px;
     margin: auto;
 }
 
@@ -58,26 +57,24 @@
 }
 
 .schedual-information > main > article > h1 {
-    font-family: var(--primary-font);
     font-size: 40px;
-    letter-spacing: 1.5px;
 }
 
-.schedual-information > main > article > a {
-    font-family: var(--primary-font);
-    background-color: var(--company-color);
-    color: var(--primary-color);
-    font-size: 18px;
-    letter-spacing: .5px;
-    padding: 10px;
-    border-radius: 5px;
+.schedual-information > main > article > .ViewMyInfoBtn {
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
     text-decoration: none;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    font-size: 20px;
+    font-weight: lighter;
+    color: var(--black);
     transition: .5s all;
 }
 
-.schedual-information > main > article > a:hover {
-    background-color: #2da455;
+.schedual-information > main > article > .ViewMyInfoBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
 }
 
 .schedual-information > main > h2 {
@@ -87,39 +84,42 @@
     letter-spacing: 1px;
 }
 
-.schedual-information > main > aside {
+.schedual-information > main > div > aside {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 0px 0px 50px 0px;
 }
 
-.schedual-information > main > aside > h3 {
+.schedual-information > main > div > aside > h3 {
     font-size: 20px;
     font-weight: lighter;
     letter-spacing: 1px;
 }
 
-.schedual-information > main > aside > h3 > a {
-    color: var(--company-color);
+.schedual-information > main > div > aside > h3 > a {
+    color: var(--green);
 }
 
-.schedual-information > main > aside > a {
+.schedual-information > main > div > aside > a {
     font-size: 16px;
     font-weight: lighter;
-    letter-spacing: 1px;
-    color: var(--company-color);
+    color: var(--green);
 }
 
-.schedual-information > main > h6 {
-    color: var(--company-color);
+.schedual-information > main > div > h6 {
+    color: var(--green);
     text-decoration: underline;
     font-weight: bold;
     cursor: pointer;
 }
 @media screen and (max-width: 900px) {
 
-    .schedual-information > main > aside {
+    .schedual-information > main {
+        padding: 20px;
+    }
+
+    .schedual-information > main > div > aside {
         display: flex;
         flex-direction: column;
         justify-content: baseline;
@@ -136,55 +136,64 @@
         gap: 10px;
     }
 
-    .schedual-information > main {
-        padding: 25px 30px;
+    .schedual-information > main > div {
+        padding: 25px 10px;
     }
 
     .schedual-information > main > article > h1 {
-        font-size: 50px;
-        letter-spacing: 1px;
+        font-size: 32px;
+        margin: 0;
+    }
+
+    .schedual-information > main > article > .ViewMyInfoBtn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .schedual-information > main > div > aside > h3 {
+        margin: 0;
     }
     
 }
 
 @media screen and (max-width: 550px) {
 
-    .schedual-information > main {
+    .schedual-information > main > div {
         padding: 20px;
         width: 95%;
     }
 
-    .schedual-information > main > article > h1 {
+    .schedual-information > main > div > article > h1 {
         font-size: 32px;
         letter-spacing: 1px;
     }
 
-    .schedual-information > main > article > a {
+    .schedual-information > main > div > article > a {
         font-size: 18px;
         letter-spacing: 0px;
         padding: 7px 50px;
     }
 
-    .schedual-information > main > article {
+    .schedual-information > main > div > article {
         gap: 5px;
     }
 
-    .schedual-information > main > h2 {
+    .schedual-information > main > div > h2 {
         font-size: 23px;
         letter-spacing: 1px;
     }
 
-    .schedual-information > main > aside > h3 {
+    .schedual-information > main > div > aside > h3 {
         font-size: 14px;
         letter-spacing: 0px;
     }
 
-    .schedual-information > main > aside > h3 > a {
+    .schedual-information > main > div > aside > h3 > a {
         font-size: 18px;
         letter-spacing: 0px;
     }
 
-    .schedual-information > main > aside > a {
+    .schedual-information > main > div > aside > a {
         font-size: 14px;
         letter-spacing: .5px;
     }

@@ -1,7 +1,6 @@
 
 .HeaderContainerForWebsite {
-    box-shadow: 0 4px 8px rgba(80, 200, 120, 0.2); /* Light shadow of var(--green) */
-    border-radius: 0px 0px 15px 15px;
+    box-shadow: 10px 10px 20px rgba(80, 200, 120, 0.2);
 }
 
 .HeaderForWebsite {
