@@ -25,7 +25,7 @@ function SecondaryHeader() {
             <ul className={menu ? 'openProfileLinks' : ''}>
                 <li>
                     <NavLink 
-                        to="/profile/exercises" 
+                        to="/profile/exercises/alla" 
                         style={({ isActive }) => isActive ? activeStyle : null}
                         className='profileLinks'>
                         Övningar

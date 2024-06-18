@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, redirect
+from flask import Blueprint, render_template, request, session, redirect, jsonify
 
 # Getting Database variables In Order To Connect 
 from db import make_db_connection
@@ -16,67 +16,63 @@ def workouts(muscle):
     variables:
     - muscle (string): the name of the muscle you want to see exercises off
     '''
-
-    #are they logged in?
-    user_data = is_logged_in()
-    if user_data is None:
-        return redirect('/login')
     
-    # Getting Their Name
-    namn = user_data[1]
-
     # Getting The Specific Exercises
     workouts = selectation(muscle)
+    return jsonify(
+        {
+            "workouts": workouts,
+        }
+    )
 
-    return render_template('workouts.html', workouts=workouts, muscle=muscle, namn=namn, exklusiv=is_exklusiv())
-    
-@exercises.route("/workout/<id>")
+@exercises.route("/workout/<id>", methods=['GET', 'POST'])
 def workout(id):
     '''
     This Route Shows Specific Workouts and detailed text on how to execute them
     '''
+    try:
+        #Make Database Connection
+        db = make_db_connection()
+        cursor = db.cursor()
 
-    #Make Database Connection
-    db = make_db_connection()
-    cursor = db.cursor()
+        # Selecting the specific workout 
+        cursor.execute('select * from workout where id = %s', (id,))
+        workout = cursor.fetchone()
 
-    #are they logged in?
-    user_data = is_logged_in()
-    if user_data is None:
-        return redirect('/login')
-    
-    namn = user_data[1]
-    
-    # Selecting the specific workout 
-    cursor.execute('select * from workout where id = %s', (id,))
-    workout = cursor.fetchone()
+        return jsonify(
+            {
+                "workout": workout,
+            }
+        )
 
-    # Close Database Connection
-    db.close()
-    cursor.close()
+    finally:
+        # Close Database Connection
+        db.close()
+        cursor.close()
     
-    return render_template('workout.html', workout=workout, namn=namn, exklusiv=is_exklusiv())
 
 def selectation(muscle):
     '''
     This Function gets The Exercises
     '''
-    #Make Database Connection
-    db = make_db_connection()
-    cursor = db.cursor()
+    try:
 
-    #om vi anropar funktion utan ett parameter värde
-    if muscle == 'alla':
-        cursor.execute('select * from workout')
-        specific_workouts = cursor.fetchall()
-    else:
-        cursor.execute('select * from workout where target_muscle = %s', (muscle,))
-        specific_workouts = cursor.fetchall()
-    
-    # Close Database Connection
-    db.close()
-    cursor.close()
-    
-    return specific_workouts
+        #Make Database Connection
+        db = make_db_connection()
+        cursor = db.cursor()
 
+        #om vi anropar funktion utan ett parameter värde
+        if muscle == 'alla':
+            cursor.execute('select * from workout')
+            specific_workouts = cursor.fetchall()
+        else:
+            cursor.execute('select * from workout where target_muscle = %s', (muscle,))
+            specific_workouts = cursor.fetchall()
+
+        return specific_workouts
+    
+    finally:
+        # Close Database Connection
+        db.close()
+        cursor.close()
     

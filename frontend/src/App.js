@@ -5,6 +5,8 @@ import Login from './pages/login.js'
 import Register from './pages/register.js'
 import TrainingPlanQuiz from './pages/trainingPlanQuiz.js'
 import TrainingPlan from './pages/trainingPlan.js'
+import Exercises from './pages/exercises.js'
+import Exercise from './pages/exercise.js'
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/trainingplan/quiz" element={<TrainingPlanQuiz />} />
           <Route path="/profile/trainingplan" element={<TrainingPlan />} />
+          <Route path="/profile/exercises/:muscle" element={<Exercises />} />
+          <Route path="/profile/exercise/:id" element={<Exercise />} />
         </Routes>
       <Footer />
     </Router>
