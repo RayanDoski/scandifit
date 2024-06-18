@@ -54,12 +54,29 @@ function TheTrainingPlan() {
                 {Plan.map((TrainingSession, index) => (
                     <div key={index}>
                         <h1>{TrainingSession.Title}</h1>
-                        {TrainingSession.Exercises.map((exercise, index) => (
+
+                        {/* Render Cardio Exercises */}
+                        {TrainingSession.Cardio && TrainingSession.Cardio.map((cardio, index) => (
+                            <aside key={index}>
+                                <h3><Link to={`/workout/${cardio.id}`}>{ cardio.name }</Link>{ cardio.frequency }</h3>
+                                <Link to={`/workouts/${cardio.muscle_group}`}>Visa Alternativ Övningar</Link>
+                            </aside>
+                        ))}
+
+                        {TrainingSession.Exercises && TrainingSession.Exercises.map((exercise, index) => (
                             <aside key={index}>
                                 <h3><Link to={`/workout/${exercise.id}`}>{ exercise.name }</Link>{ exercise.frequency }</h3>
                                 <Link to={`/workouts/${exercise.muscle_group}`}>Visa Alternativ Övningar</Link>
                             </aside>
                         ))}
+
+                        {TrainingSession.ExtraExercises && TrainingSession.ExtraExercises.map((ExtraExercise, index) => (
+                            <aside key={index}>
+                                <h3><Link to={`/workout/${ExtraExercise.id}`}>{ ExtraExercise.name }</Link>{ ExtraExercise.frequency }</h3>
+                                <Link to={`/workouts/${ExtraExercise.muscle_group}`}>Visa Alternativ Övningar</Link>
+                            </aside>
+                        ))}
+
                     </div>
                 ))}
 

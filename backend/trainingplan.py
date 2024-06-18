@@ -64,70 +64,59 @@ def schedual():
 
         # Adding a List Of Cardio Exercises
         cardio_training_list = cardio_exercises(EqiptmentAccess, FitnessGoal, cardio_exercise)
-        frequencyCardio = cardio_training_list
 
         # Problem Område (Vilken Kroppsdel Vill De Utvekcla Mer?)
-        # more_of_these_exercises = problem_area(tp[4], chest_exercise, triceps_exercise, biceps_exercise, mage_exercise, legs_exercise, sets, reps)
+        thierProblemArea = tp[4]
+        more_of_these_exercises = problem_area(thierProblemArea, chest_exercise, triceps_exercise, biceps_exercise, mage_exercise, legs_exercise, frequency)
 
         #How Manny Training sessions per Week
         if amount_of_exercises_per_week == 1:
             schedual = [
                 {
                     "Title": 'Första TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},                        
-                        {"detail": cardio_training_list[1][0]},                        
-                        {"detail": cardio_training_list[2][0]} 
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": chest_exercise[1][0],
                             "name": chest_exercise[1][1],
                             "muscle_group": chest_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": triceps_exercise[1][0],
                             "name": triceps_exercise[1][1],
                             "muscle_group": triceps_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": axlar_exercise[1][0],
                             "name": axlar_exercise[1][1],
                             "muscle_group": axlar_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": rygg_exercise[0][0],
                             "name": rygg_exercise[0][1],
                             "muscle_group": rygg_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": biceps_exercise[0][0],
                             "name": biceps_exercise[0][1],
                             "muscle_group": biceps_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": mage_exercise[0][0],
                             "name": mage_exercise[0][1],
                             "muscle_group": mage_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": legs_exercise[0][0],
                             "name": legs_exercise[0][1],
                             "muscle_group": legs_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ]
                 },
@@ -136,70 +125,55 @@ def schedual():
             schedual = [
                 {
                     "Title": 'Första TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": chest_exercise[1][0],
                             "name": chest_exercise[1][1],
                             "muscle_group": chest_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": triceps_exercise[1][0],
                             "name": triceps_exercise[1][1],
                             "muscle_group": triceps_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": axlar_exercise[1][0],
                             "name": axlar_exercise[1][1],
                             "muscle_group": axlar_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Andra TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": rygg_exercise[0][0],
                             "name": rygg_exercise[0][1],
                             "muscle_group": rygg_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": biceps_exercise[0][0],
                             "name": biceps_exercise[0][1],
                             "muscle_group": biceps_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": mage_exercise[0][0],
                             "name": mage_exercise[0][1],
                             "muscle_group": mage_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": legs_exercise[0][0],
                             "name": legs_exercise[0][1],
                             "muscle_group": legs_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 }
@@ -208,88 +182,68 @@ def schedual():
             schedual = [
                 {
                     "Title": 'Första TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": chest_exercise[1][0],
                             "name": chest_exercise[1][1],
                             "muscle_group": chest_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
-                        more_of_these_exercises[0][0],  # Assuming this is already a dictionary
                         {
                             "id": triceps_exercise[1][0],
                             "name": triceps_exercise[1][1],
                             "muscle_group": triceps_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
+                    "ExtraExercises": build_cardio_section([more_of_these_exercises[0]]),
                 },
                 {
                     "Title": 'Andra TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": rygg_exercise[0][0],
                             "name": rygg_exercise[0][1],
                             "muscle_group": rygg_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": biceps_exercise[0][0],
                             "name": biceps_exercise[0][1],
                             "muscle_group": biceps_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": axlar_exercise[1][0],
                             "name": axlar_exercise[1][1],
                             "muscle_group": axlar_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Tredje TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": mage_exercise[0][0],
                             "name": mage_exercise[0][1],
                             "muscle_group": mage_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": legs_exercise[0][0],
                             "name": legs_exercise[0][1],
                             "muscle_group": legs_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": chest_exercise[1][0],
                             "name": chest_exercise[1][1],
                             "muscle_group": chest_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
@@ -298,122 +252,88 @@ def schedual():
             schedual = [
                 {
                     "Title": 'Första TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": chest_exercise[1][0],
                             "name": chest_exercise[1][1],
                             "muscle_group": chest_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": triceps_exercise[1][0],
                             "name": triceps_exercise[1][1],
                             "muscle_group": triceps_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": triceps_exercise[0][0],
                             "name": triceps_exercise[0][1],
                             "muscle_group": triceps_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Andra TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": rygg_exercise[0][0],
                             "name": rygg_exercise[0][1],
                             "muscle_group": rygg_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": biceps_exercise[0][0],
                             "name": biceps_exercise[0][1],
                             "muscle_group": biceps_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": axlar_exercise[0][0],
                             "name": axlar_exercise[0][1],
                             "muscle_group": axlar_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Tredje TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": mage_exercise[0][0],
                             "name": mage_exercise[0][1],
                             "muscle_group": mage_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": legs_exercise[0][0],
                             "name": legs_exercise[0][1],
                             "muscle_group": legs_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": legs_exercise[1][0],
                             "name": legs_exercise[1][1],
                             "muscle_group": legs_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Fjärde TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
-                    "Exercises": [
-                        more_of_these_exercises[0][0],  # Assuming this is already a properly formatted dictionary
-                        more_of_these_exercises[1][0],  # Assuming this is already a properly formatted dictionary
-                        more_of_these_exercises[2][0]   # Assuming this is already a properly formatted dictionary
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
+                    "ExtraExercises": build_cardio_section(more_of_these_exercises),
                 },
             ]
         elif amount_of_exercises_per_week == 5:
             schedual = [
                 {
                     "Title": 'Första TräningsPass',
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
-                        {
-                            "id": cardio_exercise[0][0],
-                            "name": cardio_exercise[0][1],
-                            "muscle_group": cardio_exercise[0][2],
-                            "frequency": frequencyCardio,
-                        },
                         {
                             "id": chest_exercise[1][0],
                             "name": chest_exercise[1][1],
@@ -436,6 +356,7 @@ def schedual():
                 },
                 {
                     "Title": 'Andra TräningsPass',
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": rygg_exercise[0][0],
@@ -459,6 +380,7 @@ def schedual():
                 },
                 {
                     "Title": 'Tredje TräningsPass',
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": legs_exercise[0][0],
@@ -476,6 +398,7 @@ def schedual():
                 },
                 {
                     "Title": 'Fjärde TräningsPass',
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": mage_exercise[0][0],
@@ -493,6 +416,7 @@ def schedual():
                 },
                 {
                     "Title": 'Femte TräningsPass',
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": mage_exercise[0][0],
@@ -513,152 +437,115 @@ def schedual():
             schedual = [
                 {
                     "Title": 'Första TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": chest_exercise[0][0],
                             "name": chest_exercise[0][1],
                             "muscle_group": chest_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": chest_exercise[1][0],
                             "name": chest_exercise[1][1],
                             "muscle_group": chest_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": chest_exercise[2][0],
                             "name": chest_exercise[2][1],
                             "muscle_group": chest_exercise[2][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Andra TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": triceps_exercise[0][0],
                             "name": triceps_exercise[0][1],
                             "muscle_group": triceps_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": triceps_exercise[1][0],
                             "name": triceps_exercise[1][1],
                             "muscle_group": triceps_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Tredje TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": axlar_exercise[0][0],
                             "name": axlar_exercise[0][1],
                             "muscle_group": axlar_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": axlar_exercise[1][0],
                             "name": axlar_exercise[1][1],
                             "muscle_group": axlar_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Fjärde TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": rygg_exercise[0][0],
                             "name": rygg_exercise[0][1],
                             "muscle_group": rygg_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": biceps_exercise[0][0],
                             "name": biceps_exercise[0][1],
                             "muscle_group": biceps_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Femte TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": mage_exercise[0][0],
                             "name": mage_exercise[0][1],
                             "muscle_group": mage_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": mage_exercise[1][0],
                             "name": mage_exercise[1][1],
                             "muscle_group": mage_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Sjätte TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": legs_exercise[0][0],
                             "name": legs_exercise[0][1],
                             "muscle_group": legs_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": legs_exercise[1][0],
                             "name": legs_exercise[1][1],
                             "muscle_group": legs_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 }
@@ -667,173 +554,122 @@ def schedual():
             schedual = [
                 {
                     "Title": 'Chest TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": chest_exercise[1][0],
                             "name": chest_exercise[1][1],
                             "muscle_group": chest_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": chest_exercise[0][0],
                             "name": chest_exercise[0][1],
                             "muscle_group": chest_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": chest_exercise[2][0],
                             "name": chest_exercise[2][1],
                             "muscle_group": chest_exercise[2][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Triceps TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": triceps_exercise[0][0],
                             "name": triceps_exercise[0][1],
                             "muscle_group": triceps_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": triceps_exercise[1][0],
                             "name": triceps_exercise[1][1],
                             "muscle_group": triceps_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Axlar TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": axlar_exercise[0][0],
                             "name": axlar_exercise[0][1],
                             "muscle_group": axlar_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": axlar_exercise[1][0],
                             "name": axlar_exercise[1][1],
                             "muscle_group": axlar_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Rygg TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": rygg_exercise[0][0],
                             "name": rygg_exercise[0][1],
                             "muscle_group": rygg_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": biceps_exercise[0][0],
                             "name": biceps_exercise[0][1],
                             "muscle_group": biceps_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Mage TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": mage_exercise[0][0],
                             "name": mage_exercise[0][1],
                             "muscle_group": mage_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": mage_exercise[1][0],
                             "name": mage_exercise[1][1],
                             "muscle_group": mage_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                 ],
                 },
                 {
                     "Title": 'Ben TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
                     "Exercises": [
                         {
                             "id": legs_exercise[0][0],
                             "name": legs_exercise[0][1],
                             "muscle_group": legs_exercise[0][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         },
                         {
                             "id": legs_exercise[1][0],
                             "name": legs_exercise[1][1],
                             "muscle_group": legs_exercise[1][2],
-                            "sets": sets,
-                            "reps": reps
+                            "frequency": frequency,
                         }
                     ],
                 },
                 {
                     "Title": 'Extra TräningsPass',
-                    "Cardio": [
-                        {"detail": cardio_training_list[0][0]},
-                        {"detail": cardio_training_list[1][0]},
-                        {"detail": cardio_training_list[2][0]}
-                    ],
-                    "Exercises": [
-                        {
-                            "detail": more_of_these_exercises[0][0]  # Assuming more_of_these_exercises[n][0] is already a dictionary
-                        },
-                        {
-                            "detail": more_of_these_exercises[1][0]  # Assuming more_of_these_exercises[n][1] is already a dictionary
-                        },
-                        {
-                            "detail": more_of_these_exercises[2][0]  # Assuming more_of_these_exercises[n][2] is already a dictionary
-                        }
-                    ],
+                    "Cardio": build_cardio_section(cardio_training_list),
+                    "ExtraExercises": build_cardio_section(more_of_these_exercises),
                 }
             ]
         
@@ -913,44 +749,34 @@ def fitness_goals(their_goal):
     return frequency
 
 # Problem Område (Vilken Kroppsdel Vill De Utvekcla Mer?)
-def problem_area(more_of_what, chest_exercise, triceps_exercise, biceps_exercise, mage_exercise, legs_exercise, sets, reps):
-    try:
-        if more_of_what == 'chest':
-            added_exercise = [
-                [create_exercise(chest_exercise[0][0], chest_exercise[0][1], chest_exercise[0][2], sets, reps)],
-                [create_exercise(chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], sets, reps)],
-                [create_exercise(chest_exercise[2][0], chest_exercise[2][1], chest_exercise[2][2], sets, reps)],
-            ]
-        elif more_of_what == 'arms':
-            added_exercise = [
-                [create_exercise(triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], sets, reps)],
-                [create_exercise(chest_exercise[0][0], chest_exercise[0][1], chest_exercise[0][2], sets, reps)],
-                [create_exercise(biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], sets, reps)],
-            ]
-        elif more_of_what == 'stomach':
-            added_exercise = [
-                [create_exercise(mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], sets, reps)],
-                [create_exercise(mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], sets, reps)],
-                [''],
-            ]
-        else:
-            # more_of_what == 'legs'
-            added_exercise = [
-                [create_exercise(legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], sets, reps)],
-                [create_exercise(legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], sets, reps)],
-                [''],
-            ]
-
-        return added_exercise
-    except:
-        #For Worst Case Cenerios, If it doens't work
+def problem_area(more_of_what, chest_exercise, triceps_exercise, biceps_exercise, mage_exercise, legs_exercise, frequency):
+    if more_of_what == 'chest':
         added_exercise = [
-                [''],
-                [''],
-                [''],
-            ]
-        return added_exercise
-    
+            [chest_exercise[0][0], chest_exercise[0][1], chest_exercise[0][2], frequency],
+            [chest_exercise[1][0], chest_exercise[1][1], chest_exercise[1][2], frequency],
+            [chest_exercise[2][0], chest_exercise[2][1], chest_exercise[2][2], frequency],
+        ]
+    elif more_of_what == 'arms':
+        added_exercise = [
+            [triceps_exercise[0][0], triceps_exercise[0][1], triceps_exercise[0][2], frequency],
+            [chest_exercise[0][0], chest_exercise[0][1], chest_exercise[0][2], frequency],
+            [biceps_exercise[0][0], biceps_exercise[0][1], biceps_exercise[0][2], frequency],
+        ]
+    elif more_of_what == 'stomach':
+        added_exercise = [
+            [mage_exercise[0][0], mage_exercise[0][1], mage_exercise[0][2], frequency],
+            [mage_exercise[1][0], mage_exercise[1][1], mage_exercise[1][2], frequency],
+        ]
+    elif more_of_what == 'legs':
+        added_exercise = [
+            [legs_exercise[0][0], legs_exercise[0][1], legs_exercise[0][2], frequency],
+            [legs_exercise[1][0], legs_exercise[1][1], legs_exercise[1][2], frequency],
+        ]
+    else:
+        added_exercise = []
+
+    return added_exercise
+       
 # Anpassar Cardio Till Användaren
 def cardio_exercises(EqiptmentAccess, their_goal, cardio_exercise):
     # Users Situation (Gym Or Home | Equiptment Access)
@@ -963,7 +789,7 @@ def cardio_exercises(EqiptmentAccess, their_goal, cardio_exercise):
             frequencyCardio = ' - 20 Min '
         
         cardio_training_list = [
-            [cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], frequencyCardio, '']
+            [cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], frequencyCardio]
         ]
 
     else:
@@ -976,11 +802,23 @@ def cardio_exercises(EqiptmentAccess, their_goal, cardio_exercise):
             frequencyCardio = ' - 1 Min Kör / 1 Min Vila x 4 '
         
         cardio_training_list = [
-            [cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], frequencyCardio, ''],
-            [cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], frequencyCardio, ''],
-            [cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], frequencyCardio, '']
+            [cardio_exercise[0][0], cardio_exercise[0][1], cardio_exercise[0][2], frequencyCardio],
+            [cardio_exercise[1][0], cardio_exercise[1][1], cardio_exercise[1][2], frequencyCardio],
+            [cardio_exercise[2][0], cardio_exercise[2][1], cardio_exercise[2][2], frequencyCardio]
         ]
     
     
-    return frequencyCardio
+    return cardio_training_list
     
+def build_cardio_section(cardio_training_list):
+    cardio_section = []
+    for cardio in cardio_training_list:
+        cardio_section.append(
+            {
+                "id": cardio[0],
+                "name": cardio[1],
+                "muscle_group": cardio[2],
+                "frequency": cardio[3]
+            }
+        )
+    return cardio_section
