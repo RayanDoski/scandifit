@@ -1,41 +1,41 @@
 
 // Images
-import logo from '../images/logo.png';
-import LeftArrow from '../images/icons/left-arrow.png';
-import RightArrow from '../images/icons/right-arrow.png';
+import logo from '../../images/logo.png';
+import LeftArrow from '../../images/icons/left-arrow.png';
+import RightArrow from '../../images/icons/right-arrow.png';
 
 // Pictures for quiz one
-import AgeOne from '../images/quiz/18-29.webp';
-import AgeTwo from '../images/quiz/30-39.webp';
-import AgeThree from '../images/quiz/40-49.webp';
-import AgeFour from '../images/quiz/50+.webp';
+import AgeOne from '../../images/quiz/18-29.webp';
+import AgeTwo from '../../images/quiz/30-39.webp';
+import AgeThree from '../../images/quiz/40-49.webp';
+import AgeFour from '../../images/quiz/50+.webp';
 
 // Pictures for quiz two
-import SlimBody from '../images/quiz/slim_body.webp';
-import GainMuscle from '../images/quiz/gain_muscle.png';
-import GetShredded from '../images/quiz/get_shredded.png';
+import SlimBody from '../../images/quiz/slim_body.webp';
+import GainMuscle from '../../images/quiz/gain_muscle.png';
+import GetShredded from '../../images/quiz/get_shredded.png';
 
 // Pictures for quiz three
-import BodyTypeEC from '../images/quiz/body_type_ec.png';
-import BodyTypeME from '../images/quiz/body_type_me.png';
-import BodyTypeEN from '../images/quiz/body_type_en.png';
-import DetermineBodyType from '../images/quiz/determine-body-type.png';
+import BodyTypeEC from '../../images/quiz/body_type_ec.png';
+import BodyTypeME from '../../images/quiz/body_type_me.png';
+import BodyTypeEN from '../../images/quiz/body_type_en.png';
+import DetermineBodyType from '../../images/quiz/determine-body-type.png';
 
 // Pictures for quiz Four
-import Chest from '../images/quiz/chest.webp';
-import Arms from '../images/quiz/arms.webp';
-import Stomach from '../images/quiz/tummy.webp';
-import Legs from '../images/quiz/legs.webp';
+import Chest from '../../images/quiz/chest.webp';
+import Arms from '../../images/quiz/arms.webp';
+import Stomach from '../../images/quiz/tummy.webp';
+import Legs from '../../images/quiz/legs.webp';
 
 // Pictures for quiz Eight
-import HealthStatus from '../images/quiz/health-status.png';
+import HealthStatus from '../../images/quiz/health-status.png';
 
 // Pictures for quiz Nine
-import AtHome from '../images/quiz/home.png';
-import AtGym from '../images/quiz/gym.png';
+import AtHome from '../../images/quiz/home.png';
+import AtGym from '../../images/quiz/gym.png';
 
 // Importing CSS
-import '../styles/trainingplan_quiz.css';
+import '../../styles/trainingplan_quiz.css';
 
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link, Form, useNavigate } from 'react-router-dom';

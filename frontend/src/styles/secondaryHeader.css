@@ -57,6 +57,10 @@
 
 @media screen and (max-width: 950px) {
 
+    .secondaryHeader > ul > .line {
+        display: block;
+    }
+
     .secondaryHeader {
         width: 100%;
         padding: 0px;
@@ -92,15 +96,11 @@
         transition: .5s all;
     }
 
-    .secondaryHeader > ul > .line {
-        display: block;
-    }
-
     .secondaryHeader > .openProfileLinks {
         visibility: visible;
         pointer-events: all;
         padding: 40px 0px;
-        height: 300px;
+        height: 375px;
     }
 
 }

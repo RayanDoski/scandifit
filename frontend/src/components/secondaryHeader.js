@@ -25,6 +25,15 @@ function SecondaryHeader() {
             <ul className={menu ? 'openProfileLinks' : ''}>
                 <li>
                     <NavLink 
+                        to="/profile/myprofile" 
+                        style={({ isActive }) => isActive ? activeStyle : null}
+                        className='profileLinks'>
+                        Min Information
+                    </NavLink>
+                </li>
+                <div className='line'></div>
+                <li>
+                    <NavLink 
                         to="/profile/exercises/alla" 
                         style={({ isActive }) => isActive ? activeStyle : null}
                         className='profileLinks'>

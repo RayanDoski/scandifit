@@ -1,6 +1,6 @@
 // Importing CSS
-import '../styles/profile_trainingplan.css';
-import SecondaryHeader from '../components/secondaryHeader.js'
+import '../../styles/profile_trainingplan.css';
+import SecondaryHeader from '../../components/secondaryHeader.js'
 
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link, Form, useNavigate } from 'react-router-dom';

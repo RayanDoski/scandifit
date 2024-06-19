@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, redirect
+from flask import Blueprint, render_template, request, session, redirect, jsonify
 
 # To Caluclate sleep
 from datetime import datetime, timedelta
@@ -10,7 +10,7 @@ from login_register import is_logged_in, is_exklusiv
 
 sleepplan = Blueprint('sleepplan', __name__)
 
-@sleepplan.route("/profile/sleepplan")
+@sleepplan.route("/profile/sleepplan", methods=['GET', 'POST'])
 def sleepplan_def():
     '''
     This function returns the default page of the sleep plan section.
@@ -20,22 +20,9 @@ def sleepplan_def():
         # Make Database Connection
         db = make_db_connection()
         cursor = db.cursor()
-
-        #are they logged in?
-        user_data = is_logged_in()
-        if user_data is None:
-            return redirect('/login')
         
-        uid = user_data[0]
-        namn = user_data[1]
-        
-        exklusiv = is_exklusiv()
-
-        cursor.execute('select * from sleepplan where uid = %s', (uid,))
+        cursor.execute('select * from sleepplan where uid = %s', (session['user_id'],))
         user_sleepplan = cursor.fetchone()
-
-        # checking their elagability to view sertant information
-        gtv = showing_sleepplan(user_sleepplan, exklusiv)
 
         if user_sleepplan:
             # Making Caffine Intake Calculations
@@ -44,55 +31,18 @@ def sleepplan_def():
         else:
             caffeine_in_mg = None
             sleep_calculations = None
-            
-        return render_template(
-            'profile_sleepplan.html',
-            namn=namn,
-            caffeine_in_mg=caffeine_in_mg,
-            sleep_calculations=sleep_calculations,
-            user_sleepplan=user_sleepplan,
-            exklusiv=exklusiv,
-            btn_link=gtv[0],
-            btn_text=gtv[1],
-            heading=gtv[2],
-            show_sleepplan=gtv[3]
-        )
+
+        return jsonify({
+            "caffeine_in_mg": caffeine_in_mg,
+            "sleep_calculations": sleep_calculations,
+            "user_sleepplan": user_sleepplan
+        })
     
     finally:
         # Closing Database Connection
         cursor.close()
         db.close()
 
-def showing_sleepplan(user_dietplan, exklusiv):
-    '''
-    This Function Checks users elagability to view sertant information
-
-    args:
-    - btn_link = the link on the button
-    - btn_text = The text on the button
-    - heading = what should be shown as a Heading
-    - show_dietplan = Should the DietPlan be displayed or not
-    '''
-    # If They Are Both Exklusiv And They Have a dietplan
-    if exklusiv and user_dietplan:
-        btn_link = ''
-        btn_text = ''
-        heading = ''
-        show_sleepplan = True
-    # If They Are Exklusiv And They Don't Have a Dietplan
-    elif exklusiv and user_dietplan is None:
-        btn_link = '/quiz/sleepplan'
-        btn_text = 'Skapa din Sömnplan'
-        heading = ''
-        show_sleepplan = False
-    # They Are Not Exklsuiv And They Do Not Have A Dietplan
-    else:
-        btn_link = '/profile/plans'
-        btn_text = 'Bli En exklusiv Användare'
-        heading = 'Denna tjänst är reserverad för våra exklusiva användare'
-        show_sleepplan = False
-    
-    return btn_link, btn_text, heading, show_sleepplan
 
 def caffeine_intake_calculator(sleepplan_info):
     '''

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, redirect
+from flask import Blueprint, render_template, request, session, redirect, jsonify
 from db import make_db_connection
 import requests
 
@@ -7,87 +7,35 @@ from login_register import is_logged_in, is_exklusiv
 
 dietplan = Blueprint('dietplan', __name__)
 
-@dietplan.route("/profile/dietplan")
+@dietplan.route("/profile/dietplan", methods=['GET', 'POST'])
 def dietplan_def():
     try:
 
         # Make Database Connection
         db = make_db_connection()
         cursor = db.cursor()
-
-        #are they logged in?
-        user_data = is_logged_in()
-        if user_data is None:
-            return redirect('/login')
         
-        uid = user_data[0]
-        namn = user_data[1]
-        
-        exklusiv = is_exklusiv()
-
-        cursor.execute('select * from dietplan where uid = %s', (uid,))
+        cursor.execute('select * from dietplan where uid = %s', (session['user_id'],))
         user_dietplan = cursor.fetchone()
         
-        # checking their elagability to view sertant information
-        gtv = showing_dietplan(user_dietplan, exklusiv)
-
         if user_dietplan:
             calorie_intake = calorie_calculator(user_dietplan)
             water_intake = water_intake_calculator(user_dietplan)
-            recipes = get_recipe(6)
+            # recipes = get_recipe(6)
         else:
             calorie_intake = None
             water_intake = None
             recipes = None
-
-        return render_template(
-            'profile_dietplan.html',
-            namn=namn,
-            exklusiv=exklusiv,
-            calorie_intake=calorie_intake,
-            water_intake=water_intake,
-            user_dietplan=user_dietplan,
-            btn_link=gtv[0],
-            btn_text=gtv[1],
-            heading=gtv[2],
-            show_dietplan=gtv[3],
-            recipes=recipes
-        )
+        
+        return jsonify({
+            "CalorieIntake": calorie_intake,
+            "WaterIntake": water_intake
+        })
+                  
     finally:
         # Closing Database Connection
         cursor.close()
         db.close()
-
-def showing_dietplan(user_dietplan, exklusiv):
-    '''
-    This Function Checks users elagability to view sertant information
-
-    args:
-    btn_link = the link on the button
-    btn_text = The text on the button
-    heading = what should be shown as a Heading
-    show_dietplan = Should the DietPlan be displayed or not
-    '''
-    # If They Are Both Exklusiv And They Have a dietplan
-    if exklusiv and user_dietplan:
-        btn_link = ''
-        btn_text = ''
-        heading = ''
-        show_dietplan = True
-    # If They Are Exklusiv And They Don't Have a Dietplan
-    elif exklusiv and user_dietplan is None:
-        btn_link = '/quiz/dietplan'
-        btn_text = 'Skapa din Kostplan'
-        heading = ''
-        show_dietplan = False
-    # They Are Not Exklsuiv And They Do Not Have A Dietplan
-    else:
-        btn_link = '/profile/plans'
-        btn_text = 'Bli En exklusiv Användare'
-        heading = 'Denna tjänst är reserverad för våra exklusiva användare'
-        show_dietplan = False
-    
-    return btn_link, btn_text, heading, show_dietplan
 
 def calorie_calculator(dietplan_row_values):
     '''
