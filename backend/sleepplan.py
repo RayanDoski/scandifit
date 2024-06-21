@@ -43,7 +43,6 @@ def sleepplan_def():
         cursor.close()
         db.close()
 
-
 def caffeine_intake_calculator(sleepplan_info):
     '''
     This function The Caffeine limitations for each user (Weight * 3)
@@ -97,110 +96,110 @@ def sleeptime_calculator(sleepplan_info):
     # Output the bedtime
     return bedtime_six_cycles, bedtime_five_cycles, bedtime_four_cycles, hours_in_bed_for_six_cycles, hours_in_bed_for_five_cycles, hours_in_bed_for_four_cycles, wake_up_at
 
-@sleepplan.route("/quiz/sleepplan", methods=['post', 'get'])
-def sleepplan_quiz():
-
-    # Are they logged in?
-    user_data = is_logged_in()
-    if user_data is None:
-        return redirect('/login')
-    
-    uid = user_data[0]
-
-    # Default values
-    sleepplan_info = {
-        'goal': None,
-        'age': None,
-        'gender': None,
-        'height': None,
-        'weight': None,
-        'target_weight': None,
-        'activity_level': None,
-        'training_sessions_per_week': None,
-        'dietary_preferences': None,
-        'current_daily_water_intake': None,
-        'sugar_intake': None
-    }
-    
+@sleepplan.route('/sleepplan/get/info', methods=['post', 'get'])
+def get_sleepplan_info():
     try:
-        # Make Database Connection
-        db = make_db_connection()
-        cursor = db.cursor()
 
-        cursor.execute('select * from sleepplan where uid = %s', (uid))
-        sleepplan = cursor.fetchone()
-
-        if sleepplan:
-            sleepplan_info = {
-                'age': sleepplan[1],
-                'weight': sleepplan[2],
-                'wake_up_time': sleepplan[3],
-                'time_to_sleep': sleepplan[4],
-                'how_much_sleep_do_you_get_on_avg': sleepplan[5],
-                'daily_mood_and_energy': sleepplan[6],
-                'caffeine_in_the_afternoon': sleepplan[7],
-                'sleep_disturbances_or_symptoms': sleepplan[8]
-            }
-        else:
-            # Check if there's dietplan info
-            cursor.execute('SELECT * FROM dietplan WHERE uid = %s', (uid,))
-            extract_dietplan_info = cursor.fetchone()
-
-            if extract_dietplan_info:
-                sleepplan_info['age'] = extract_dietplan_info[2]
-                sleepplan_info['weight'] = extract_dietplan_info[5]
-                
-    finally:
-        # Closing Database Connection
-        cursor.close()
-        db.close()
-
-    return render_template('sleepplan_quiz.html', sleepplan_info=sleepplan_info)
-
-@sleepplan.route("/sleepplan/quiz/completed", methods=['post', 'get'])
-def sleepplan_quiz_completed():
-    try: 
-        wakeuptime = request.form.get('wakeuptime')
-        age = request.form.get('age')
-        weight = request.form.get('weight')
-        time_to_sleep = request.form.get('time_to_sleep')
-        daily_mood_and_energy = request.form.get('daily_mood_and_energy')
-        caffeine_in_the_afternoon = request.form.get('caffeine_in_the_afternoon')
-        how_much_sleep_do_you_get_on_avg = request.form.get('how_much_sleep_do_you_get_on_avg')
-        sleep_disturbances_or_symptoms = request.form.get('sleep_disturbances_or_symptoms')
-
-        # Are they logged in?
-        user_data = is_logged_in()
-        if user_data is None:
-            return redirect('/login')
-        
-        uid = user_data[0]
-        
         # Make Database Connection
         db = make_db_connection()
         cursor = db.cursor()
 
         # Do they already have a sleepplan
-        cursor.execute('select * from sleepplan where uid = %s', (uid,))
+        cursor.execute('select * from sleepplan where uid = %s', (session['user_id'],))
         result = cursor.fetchone()
 
         if result:
-            # Update Values
-            cursor.execute('update sleepplan set age = %s, weight = %s, wake_up_time = %s, time_to_sleep = %s, how_much_sleep_do_you_get_on_avg = %s, daily_mood_and_energy = %s, caffeine_in_the_afternoon = %s, sleep_disturbances_or_symptoms = %s where uid = %s', (age, weight, wakeuptime, time_to_sleep, how_much_sleep_do_you_get_on_avg, daily_mood_and_energy, caffeine_in_the_afternoon, sleep_disturbances_or_symptoms, uid,))
-            db.commit()
+            return jsonify({
+                'success': True,
+                'id': result[0],
+                'age': result[1],
+                'weight': result[2],
+                'wakeUpTime': result[3],
+                'timeToSleep': str(result[4]),
+                'howMuchSleepDoYouGetOnAvg': result[5],
+                'dailyMoodAndEnergy': result[6],
+                'caffeineInTheAfternoon': result[7],
+                'sleepDisturbancesOrSymptoms': result[8]
+            })
         else:
-            # insert new values
-            cursor.execute('insert into sleepplan (uid, age, weight, wake_up_time, time_to_sleep, how_much_sleep_do_you_get_on_avg, daily_mood_and_energy, caffeine_in_the_afternoon, sleep_disturbances_or_symptoms) values (%s, %s, %s, %s, %s, %s, %s, %s, %s)', (uid, age, weight, wakeuptime, time_to_sleep, how_much_sleep_do_you_get_on_avg, daily_mood_and_energy, caffeine_in_the_afternoon, sleep_disturbances_or_symptoms,))
-            db.commit()
-
-        return redirect('/profile/sleepplan')
+            return jsonify({
+                'success': False,
+            })
     
-    except:
-        redirect('/quiz/sleepplan')
     finally:
         # Closing Database Connection
         cursor.close()
         db.close()
 
+@sleepplan.route("/sleepplan/quiz/completed", methods=['post', 'get'])
+def sleepplan_quiz_completed():
+    try:
+
+        # Make Database Connection
+        db = make_db_connection()
+        cursor = db.cursor()
+
+        # Fetching info sent from frontend react
+        data = request.get_json()
+
+        wakeUpTime = data.get('wakeUpTime')
+        age = data.get('age')
+        weight = data.get('weight')
+        timeToSleep = data.get('timeToSleep')
+        dailyMoodAndEnergy = data.get('dailyMoodAndEnergy')
+        caffeineInTheAfternoon = data.get('caffeineInTheAfternoon')
+        howMuchSleepDoYouGetOnAvg = data.get('howMuchSleepDoYouGetOnAvg')
+        sleepDisturbancesOrSymptoms = data.get('sleepDisturbancesOrSymptoms')
+
+        # Validate that all required fields are present
+        if not wakeUpTime:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Väckningstid', 'index': 0})
+        elif not age:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Ålder', 'index': 1})
+        elif not weight:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Vikt', 'index': 2})
+        elif not timeToSleep:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Tid Att Somna', 'index': 3})
+        elif not dailyMoodAndEnergy:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Dagligt Humör Och Energi', 'index': 4})
+        elif not caffeineInTheAfternoon:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Koffein På Eftermiddagen', 'index': 5})
+        elif not howMuchSleepDoYouGetOnAvg:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Hur Mycket Sömn Får Du i Genomsnitt', 'index': 6})
+        elif not sleepDisturbancesOrSymptoms:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Sömnstörningar Eller Symtom', 'index': 7})
+
+        # Do they already have a sleepplan
+        cursor.execute('select * from sleepplan where uid = %s', (session['user_id'],))
+        result = cursor.fetchone()
+
+        if result:
+            # Update Values
+            cursor.execute('update sleepplan set age = %s, weight = %s, wake_up_time = %s, time_to_sleep = %s, how_much_sleep_do_you_get_on_avg = %s, daily_mood_and_energy = %s, caffeine_in_the_afternoon = %s, sleep_disturbances_or_symptoms = %s where uid = %s', (age, weight, wakeUpTime, timeToSleep, howMuchSleepDoYouGetOnAvg, dailyMoodAndEnergy, caffeineInTheAfternoon, sleepDisturbancesOrSymptoms, session['user_id'],))
+            db.commit()
+        else:
+            # insert new values
+            cursor.execute('insert into sleepplan (uid, age, weight, wake_up_time, time_to_sleep, how_much_sleep_do_you_get_on_avg, daily_mood_and_energy, caffeine_in_the_afternoon, sleep_disturbances_or_symptoms) values (%s, %s, %s, %s, %s, %s, %s, %s, %s)', (session['user_id'], age, weight, wakeUpTime, timeToSleep, howMuchSleepDoYouGetOnAvg, dailyMoodAndEnergy, caffeineInTheAfternoon, sleepDisturbancesOrSymptoms,))
+            db.commit()
+
+        return jsonify(
+            {
+                'success': True,
+            }
+        )
+    
+    except:
+        return jsonify(
+            {
+                'success': False, 
+                'message': f'Något Gick Fel, Testa igen senare', 
+                'index': 0
+            }
+        )
+
+    finally:
+        # Closing Database Connection
+        cursor.close()
+        db.close()
 
 

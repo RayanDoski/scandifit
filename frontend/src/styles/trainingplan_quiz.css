@@ -36,6 +36,13 @@
 
 /* quiz */
 
+@keyframes slideIn {
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
 /* quiz one */
 
 .quiz > form > .one {
@@ -44,13 +51,6 @@
     opacity: 0;
     animation: slideIn 0.5s forwards; 
     margin: 100px 0px 150px 0px;
-}
-
-@keyframes slideIn {
-    to {
-        top: 0;
-        opacity: 1;
-    }
 }
 
 .quiz > form > .one > h2 {

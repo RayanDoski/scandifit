@@ -6,6 +6,49 @@ from flask_mail import Mail, Message
 from db import mail
 
 trainingplan_quiz = Blueprint('trainingplan_quiz', __name__)
+
+@trainingplan_quiz.route('/trainingplan/get/info', methods=['post', 'get'])
+def get_sleepplan_info():
+    try:
+
+        # Make Database Connection
+        db = make_db_connection()
+        cursor = db.cursor()
+
+        # Are They Logged in
+        if 'user_id' in session:
+            # Do they already have a sleepplan
+            cursor.execute('select * from trainingplan where uid = %s', (session['user_id'],))
+            result = cursor.fetchone()
+
+            if result:
+                return jsonify({
+                    'success': True,
+                    "age": result[1],
+                    "goal": result[2],
+                    "bodyType": result[3],
+                    "problemArea": result[4],
+                    "height": result[5],
+                    "currentWeight": result[6],
+                    "targetWeight": result[7],
+                    "trainingFrequency": result[8],
+                    "healthCondition": result[9],
+                    "trainingLocation": result[10],
+                    "equipment": result[11]
+                })
+            else:
+                return jsonify({
+                    'success': False,
+                })
+        else:
+            return jsonify({
+                'success': False,
+            })
+    
+    finally:
+        # Closing Database Connection
+        cursor.close()
+        db.close()
     
 @trainingplan_quiz.route("/trainingplan/quiz/completed", methods=['GET', 'POST'])
 def tq_completed():
@@ -57,14 +100,17 @@ def tq_completed():
         return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Träningsplats', 'index': 8})
     elif not equipment:
         return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Utrustning', 'index': 9})
-    elif not name:
-        return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Namn', 'index': 10})
-    elif not email:
-        return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Email', 'index': 10})
-    elif not phonenumber:
-        return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Telefonnummer', 'index': 10})
-    elif not password:
-        return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Lösenord', 'index': 10})
+    
+    # if they are not logged in
+    if 'user_id' not in session:
+        if not name:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Namn', 'index': 10})
+        elif not email:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Email', 'index': 10})
+        elif not phonenumber:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Telefonnummer', 'index': 10})
+        elif not password:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Lösenord', 'index': 10})
 
 
     #Make Database Connection

@@ -1,3 +1,8 @@
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch, Link, Form, useNavigate } from 'react-router-dom';
+
+// Importing CSS
+import '../../styles/trainingplan_quiz.css';
 
 // Images
 import logo from '../../images/logo.png';
@@ -33,12 +38,6 @@ import HealthStatus from '../../images/quiz/health-status.png';
 // Pictures for quiz Nine
 import AtHome from '../../images/quiz/home.png';
 import AtGym from '../../images/quiz/gym.png';
-
-// Importing CSS
-import '../../styles/trainingplan_quiz.css';
-
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link, Form, useNavigate } from 'react-router-dom';
 
 function QuizPartOne({ nextPart, setResponses, responses }) {
 
@@ -454,31 +453,12 @@ function GetTrainingPlan() {
     );
 }
 
-
-
 function TrainingPlanQuiz() {
 
     const [currentPart, setCurrentPart] = useState(0);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate();
-
-    // Are They Logged In? 
-    useEffect(() => {
-        const checkAuth = async () => {
-            try {
-                const response = await fetch('http://127.0.0.1:8000/protected', {
-                    method: 'GET',
-                    credentials: 'include'  // Include credentials (cookies)
-                });
-                const data = await response.json();
-                setIsAuthenticated(data.success)
-            } catch (error) {
-                
-            }
-        };
-        checkAuth();
-    }, []);  // Include navigate in dependency array
 
     const [responses, setResponses] = useState({
         age: '',
@@ -497,6 +477,51 @@ function TrainingPlanQuiz() {
         phonenumber: '',
         password: '',
     });
+
+    // Are They Logged In? 
+    useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/protected', {
+                    method: 'GET',
+                    credentials: 'include'  // Include credentials (cookies)
+                });
+                const data = await response.json();
+                setIsAuthenticated(data.success)
+            } catch (error) {
+                
+            }
+        };
+        checkAuth();
+    }, []);  // Include navigate in dependency array
+
+    // If they have a Trainingplan get the info 
+    useEffect(() => {
+        const checkAuth = async () => {
+            const response = await fetch('http://127.0.0.1:8000/trainingplan/get/info', {
+                method: 'POST',
+                credentials: 'include'  // Include credentials (cookies)
+            });
+            const data = await response.json();
+            if(data.success) {
+                setResponses(prevResponses => ({
+                    ...prevResponses,
+                    age: data.age,
+                    goal: data.goal,
+                    bodyType: data.bodyType,
+                    problemArea: data.problemArea,
+                    height: data.height,
+                    currentWeight: data.currentWeight,
+                    targetWeight: data.targetWeight,
+                    trainingFrequency: data.trainingFrequency,
+                    healthCondition: data.healthCondition,
+                    trainingLocation: data.trainingLocation,
+                    equipment: data.equipment,
+                }));
+            }
+        };
+        checkAuth();
+    }, []);  // Include navigate in dependency array
 
     const nextPart = () => {
         if (currentPart < 10) {

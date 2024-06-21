@@ -428,7 +428,7 @@ function SleepPlan() {
                     </article>
                 </article>
 
-                <a id="view_information_btn">Visa Min Information</a>
+                <Link to='/sleepplan/quiz'>Visa Min Information</Link>
 
             </section>
             {/* for popups */}

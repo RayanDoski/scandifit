@@ -48,7 +48,7 @@ function TheTrainingPlan() {
             <main>
                 <article>
                     <h1>Din Träningsplan</h1>
-                    <Link className='ViewMyInfoBtn' id="din-information-btn">Visa Min Information</Link>
+                    <Link className='ViewMyInfoBtn' to='/trainingplan/quiz' >Visa Min Information</Link>
                 </article>
 
                 {Plan.map((TrainingSession, index) => (
