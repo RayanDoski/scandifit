@@ -4,6 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link, Form, useNavigate } from 'react-router-dom';
 import SecondaryHeader from '../../components/secondaryHeader.js'
 
+// For Login
+import NotLiAuthCheck from '../loginSystem/notLiAuthCheck.js';
+
 // images
 import Night from '../../images/icons/night.png';
 import Sun from '../../images/icons/sun.png';
@@ -96,6 +99,7 @@ function SleepPlan() {
     const [CaffeineInMg, setCaffeineInMg] = useState(0)
     const [sleepCalculations, setsleepCalculations] = useState('')
     const [UserSleepplan, setUserSleepplan] = useState('')
+    const navigate = useNavigate();
 
     // popupValues
     const [ShowPopupCaffeinInMg, setShowPopupCaffeinInMg] = useState(false)
@@ -227,6 +231,9 @@ function SleepPlan() {
                 return null;
         }
     };
+
+    // Are They Logged In? 
+    NotLiAuthCheck()
 
     // Getting Their TrainingPlan
     useEffect(() => {

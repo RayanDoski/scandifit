@@ -1,9 +1,13 @@
-// Importing CSS
-import '../../styles/profile_trainingplan.css';
-import SecondaryHeader from '../../components/secondaryHeader.js'
-
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link, Form, useNavigate } from 'react-router-dom';
+
+// Importing CSS
+import '../../styles/profile_trainingplan.css';
+
+// For Login
+import NotLiAuthCheck from '../loginSystem/notLiAuthCheck.js';
+
+import SecondaryHeader from '../../components/secondaryHeader.js'
 
 function IfScheduleDoesNotExist() {
     return (
@@ -18,6 +22,10 @@ function IfScheduleDoesNotExist() {
 function TheTrainingPlan() {
 
     const [Plan, setPlan] = useState([])
+    const navigate = useNavigate();
+
+    // Are They Logged In? 
+    NotLiAuthCheck()
 
     // Getting Their TrainingPlan
     useEffect(() => {
@@ -87,11 +95,7 @@ function TheTrainingPlan() {
     );
 }
 
-
-
 function TrainingPlan() {
-
-
     return (
         <>
             <SecondaryHeader />

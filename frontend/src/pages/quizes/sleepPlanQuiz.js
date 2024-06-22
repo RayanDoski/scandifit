@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Switch, Link, Form, useNavigate } from 
 // Importing CSS
 import '../../styles/sleepplan_quiz.css';
 
+// For Login
+import NotLiAuthCheck from '../loginSystem/notLiAuthCheck.js';
+
 // Images
 import LeftArrow from '../../images/icons/left-arrow.png';
 import RightArrow from '../../images/icons/right-arrow.png';
@@ -282,21 +285,7 @@ function SleepPlanQuiz() {
     });
 
     // Are They Logged In? 
-    useEffect(() => {
-        const checkAuth = async () => {
-            try {
-                const response = await fetch('http://127.0.0.1:8000/protected', {
-                    method: 'GET',
-                    credentials: 'include'  // Include credentials (cookies)
-                });
-                const data = await response.json();
-                setIsAuthenticated(data.success)
-            } catch (error) {
-                
-            }
-        };
-        checkAuth();
-    }, []);  // Include navigate in dependency array
+    NotLiAuthCheck()
 
     // If they have a sleepplan get the info 
     useEffect(() => {

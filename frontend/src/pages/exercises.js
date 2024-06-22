@@ -1,9 +1,13 @@
-import '../styles/workouts.css';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link, Form, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
+// Importing CSS
+import '../styles/workouts.css';
+
+// For Login
+import NotLiAuthCheck from './loginSystem/notLiAuthCheck.js';
 
 // importing Secondary Header
 import SecondaryHeader from '../components/secondaryHeader.js';
@@ -117,6 +121,9 @@ function Exercises() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate(); // useNavigate hook for programmatic navigation
+
+    // Are They Logged In? 
+    NotLiAuthCheck()
 
     const fetchWorkouts = async () => {
         setLoading(true);

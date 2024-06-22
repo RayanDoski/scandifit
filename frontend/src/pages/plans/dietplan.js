@@ -4,10 +4,17 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link, Form, useNavigate } from 'react-router-dom';
 import SecondaryHeader from '../../components/secondaryHeader.js'
 
+// For Login
+import NotLiAuthCheck from '../loginSystem/notLiAuthCheck.js';
+
 function DietPlan() {
 
     const [CalorieIntake, setCalorieIntake] = useState('')
     const [WaterIntake, setWaterIntake] = useState('')
+    const navigate = useNavigate();
+
+    // Are They Logged In? 
+    NotLiAuthCheck()
 
     // Getting Their TrainingPlan
     useEffect(() => {

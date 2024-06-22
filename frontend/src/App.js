@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/header.js';
 import Footer from './components/footer.js';
-import Login from './pages/login.js'
-import Register from './pages/register.js'
+
+// Login System
+import Login from './pages/loginSystem/login.js'
+import Register from './pages/loginSystem/register.js'
 
 // Quizes
 import TrainingPlanQuiz from './pages/quizes/trainingPlanQuiz.js'
