@@ -32,7 +32,7 @@ function QuizPartOne({ nextPart, setResponses, responses }) {
     );
 }
 
-function QuizPartTwo({ nextPart, setResponses, responses }) {
+function QuizPartTwo({ nextPart, setResponses, responses, preventEnterSubmit }) {
 
     const handleAgeChange = (e) => {
         setResponses({ ...responses, age: e.target.value });
@@ -42,13 +42,13 @@ function QuizPartTwo({ nextPart, setResponses, responses }) {
         <article className="question_two">
             <h2>Hur gammal är du?</h2>
             <label htmlFor="age">Ålder (År)</label>
-            <input type="number" name="age" id="age" onChange={handleAgeChange} value={responses.age} />
+            <input type="number" name="age" id="age" onChange={handleAgeChange} value={responses.age} onKeyDown={preventEnterSubmit} />
             <button type="button" onClick={nextPart}>Vidare</button>
         </article>
     );
 }
 
-function QuizPartThree({ nextPart, setResponses, responses }) {
+function QuizPartThree({ nextPart, setResponses, responses, preventEnterSubmit }) {
 
     const handleWeightChange = (e) => {
         setResponses({ ...responses, weight: e.target.value });
@@ -58,7 +58,7 @@ function QuizPartThree({ nextPart, setResponses, responses }) {
         <article className="question_three">
             <h2>Hur Mycket Väger Du?</h2>
             <label htmlFor="weight">Vikt (Kg)</label>
-            <input type="number" name="weight" id="weight" onChange={handleWeightChange} value={responses.weight} />
+            <input type="number" name="weight" id="weight" onChange={handleWeightChange} value={responses.weight} onKeyDown={preventEnterSubmit}/>
             <button type="button" onClick={nextPart}>Vidare</button>
         </article>
     );
@@ -263,7 +263,7 @@ function GetSleepPlan() {
     );
 }
 
-function TrainingPlanQuiz() {
+function SleepPlanQuiz() {
 
     const [currentPart, setCurrentPart] = useState(0);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -323,6 +323,12 @@ function TrainingPlanQuiz() {
         checkAuth();
     }, []);  // Include navigate in dependency array
 
+    const preventEnterSubmit = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+        }
+    }; 
+
     const nextPart = () => {
         if (currentPart < 8) {
             setCurrentPart(currentPart + 1);
@@ -340,9 +346,9 @@ function TrainingPlanQuiz() {
             case 0:
                 return <QuizPartOne nextPart={nextPart} setResponses={setResponses} responses={responses} />;
             case 1:
-                return <QuizPartTwo nextPart={nextPart} setResponses={setResponses} responses={responses} />;
+                return <QuizPartTwo nextPart={nextPart} setResponses={setResponses} responses={responses} preventEnterSubmit={preventEnterSubmit} />;
             case 2:
-                return <QuizPartThree nextPart={nextPart} setResponses={setResponses} responses={responses} />;
+                return <QuizPartThree nextPart={nextPart} setResponses={setResponses} responses={responses} preventEnterSubmit={preventEnterSubmit} />;
             case 3:
                 return <QuizPartFour nextPart={nextPart} setResponses={setResponses} responses={responses} />;
             case 4:
@@ -405,4 +411,4 @@ function TrainingPlanQuiz() {
     );
 }
 
-export default TrainingPlanQuiz;
+export default SleepPlanQuiz;

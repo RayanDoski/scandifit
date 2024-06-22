@@ -130,113 +130,123 @@ def get_recipe(num_recipes):
 
     return recipes
 
-@dietplan.route('/quiz/dietplan', methods=['post', 'get'])
-def quiz_dietplan():
-    
-    # Check if user is logged in
-    user_data = is_logged_in()
-    if user_data is None:
-        return redirect('/login')
-
-    uid = user_data[0]
-
-    # Default values
-    dietplan_info = {
-        'goal': None,
-        'age': None,
-        'gender': None,
-        'height': None,
-        'weight': None,
-        'target_weight': None,
-        'activity_level': None,
-        'training_sessions_per_week': None,
-        'dietary_preferences': None,
-        'current_daily_water_intake': None,
-        'sugar_intake': None
-    }
-
+@dietplan.route('/dietplan/get/info', methods=['post', 'get'])
+def dietplanGetInfo():
     try:
+
         # Make Database Connection
         db = make_db_connection()
         cursor = db.cursor()
 
-        cursor.execute('SELECT * FROM dietplan WHERE uid = %s', (uid,))
-        dietplan = cursor.fetchone()
+        # Are They Logged in
+        if 'user_id' in session:
+            # Do they already have a sleepplan
+            cursor.execute('select * from dietplan where uid = %s', (session['user_id'],))
+            result = cursor.fetchone()
 
-        if dietplan:
-            # Assign diet plan values
-            dietplan_info = {
-                'goal': dietplan[1],
-                'age': dietplan[2],
-                'gender': dietplan[3],
-                'height': dietplan[4],
-                'weight': dietplan[5],
-                'target_weight': dietplan[6],
-                'activity_level': dietplan[7],
-                'training_sessions_per_week': dietplan[8],
-                'dietary_preferences': dietplan[9],
-                'current_daily_water_intake': dietplan[10],
-                'sugar_intake': dietplan[11]
-            }
+            if result:
+                return jsonify({
+                    'success': True,
+                    'id': result[0],
+                    'goal': result[1],
+                    'age': result[2],
+                    'gender': result[3],
+                    'height': result[4],
+                    'weight': result[5],
+                    'targetWeight': result[6],
+                    'activityLevel': result[7],
+                    "trainingSessionPerWeek": str(result[8]),
+                    "dietaryPrefrences": result[9],
+                    "currentDailyWaterIntake": result[10],
+                    "sugarIntake": result[11]
+                })
+            else:
+                return jsonify({
+                    'success': False,
+                })
         else:
-            # Check if there's sleep plan info
-            cursor.execute('SELECT * FROM sleepplan WHERE uid = %s', (uid,))
-            extract_sleepplan_info = cursor.fetchone()
-
-            if extract_sleepplan_info:
-                dietplan_info['age'] = extract_sleepplan_info[1]
-                dietplan_info['weight'] = extract_sleepplan_info[2]
-
+            return jsonify({
+                'success': False,
+            })
+    
     finally:
         # Closing Database Connection
         cursor.close()
         db.close()
 
-    return render_template('dietplan_quiz.html', dietplan_info=dietplan_info)
-
-@dietplan.route('/quiz/dietplan/completed', methods=['post', 'get'])
+@dietplan.route('/dietplan/quiz/completed', methods=['post', 'get'])
 def quiz_dietplan_completed():
     try: 
-        goal = request.form.get('goal')
-        gender = request.form.get('gender')
-        age = request.form.get('age')
-        height = request.form.get('height')
-        currentweight = request.form.get('currentweight')
-        targetweight = request.form.get('targetweight')
-        physically_demanding_everyday_life = request.form.get('physically_demanding_everyday_life')
-        training_sessions_per_week = request.form.get('training_sessions_per_week')
-        current_daily_water_intake = request.form.get('current_daily_water_intake')
-        dietary_preferences = request.form.get('dietary_preferences')
-        sugar_intake = request.form.get('sugar_intake')
 
-        # Are they logged in?
-        user_data = is_logged_in()
-        if user_data is None:
-            return redirect('/login')
-        
-        uid = user_data[0]
-        
         # Make Database Connection
         db = make_db_connection()
         cursor = db.cursor()
 
+        # Fetching info sent from frontend react
+        data = request.get_json()
+
+        goal = data.get('goal')
+        gender = data.get('gender')
+        age = data.get('age')
+        height = data.get('height')
+        currentweight = data.get('weight')
+        targetweight = data.get('targetWeight')
+        physically_demanding_everyday_life = data.get('activityLevel')
+        training_sessions_per_week = data.get('trainingSessionPerWeek')
+        current_daily_water_intake = data.get('currentDailyWaterIntake')
+        dietary_preferences = data.get('dietaryPrefrences')
+        sugar_intake = data.get('sugarIntake')
+
+        # Validate that all required fields are present
+        if not goal:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Mål', 'index': 0})
+        elif not gender:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Kön', 'index': 1})
+        elif not age:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Ålder', 'index': 2})
+        elif not height:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Längd', 'index': 3})
+        elif not currentweight:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Nuvarande Vikt', 'index': 4})
+        elif not targetweight:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Mål Vikt', 'index': 4})
+        elif not physically_demanding_everyday_life:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Fysiskt krävande vardagsliv', 'index': 5})
+        elif not training_sessions_per_week:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Träningspass per vecka', 'index': 6})
+        elif not current_daily_water_intake:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Ditt Dagliga Vattenintag', 'index': 7})
+        elif not dietary_preferences:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: kostpreferenser', 'index': 8})
+        elif not sugar_intake:
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: sockerintag', 'index': 9})
+        
+
         # Do they already have a sleepplan
-        cursor.execute('select * from dietplan where uid = %s', (uid,))
+        cursor.execute('select * from dietplan where uid = %s', (session['user_id'],))
         result = cursor.fetchone()
 
         if result:
             # Update Values
-            cursor.execute('update dietplan set goal = %s, age = %s, gender = %s, height = %s, weight = %s, target_weight = %s, activity_level = %s, training_session_per_week = %s, dietary_preferences = %s, current_daily_water_intake = %s, sugar_intake = %s where uid = %s', (goal, age, gender, height, currentweight, targetweight, physically_demanding_everyday_life, training_sessions_per_week, dietary_preferences, current_daily_water_intake, sugar_intake, uid))
+            cursor.execute('update dietplan set goal = %s, age = %s, gender = %s, height = %s, weight = %s, target_weight = %s, activity_level = %s, training_session_per_week = %s, dietary_preferences = %s, current_daily_water_intake = %s, sugar_intake = %s where uid = %s', (goal, age, gender, height, currentweight, targetweight, physically_demanding_everyday_life, training_sessions_per_week, dietary_preferences, current_daily_water_intake, sugar_intake, session['user_id']))
             db.commit()
         else:
             # insert new values
-            cursor.execute('insert into dietplan (uid, goal, age, gender, height, weight, target_weight, activity_level, training_session_per_week, dietary_preferences, current_daily_water_intake, sugar_intake) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (uid, goal, age, gender, height, currentweight, targetweight, physically_demanding_everyday_life, training_sessions_per_week, dietary_preferences, current_daily_water_intake, sugar_intake))
+            cursor.execute('insert into dietplan (uid, goal, age, gender, height, weight, target_weight, activity_level, training_session_per_week, dietary_preferences, current_daily_water_intake, sugar_intake) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (session['user_id'], goal, age, gender, height, currentweight, targetweight, physically_demanding_everyday_life, training_sessions_per_week, dietary_preferences, current_daily_water_intake, sugar_intake))
             db.commit()
 
-        return redirect('/profile/dietplan')
+        return jsonify(
+            {
+                'success': True,
+            }
+        )
     
-    # except:
-    #     return redirect('/quiz/dietplan')
+    except:
+        return jsonify(
+            {
+                'success': True,
+            }
+        )
     finally:
         # Closing Database Connection
         cursor.close()

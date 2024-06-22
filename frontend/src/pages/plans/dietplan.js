@@ -31,7 +31,7 @@ function DietPlan() {
         <>
             <SecondaryHeader />
             <section className="dietplan_section">
-
+                
                 <article>
                     <p>Försök Hålla Dig Till Ca</p>
                     <h2>{ CalorieIntake } Kalorier Per Dag</h2>
@@ -44,7 +44,7 @@ function DietPlan() {
                 </article>
 
 
-                <a id="view_information_btn">Visa Min Information</a>
+                <Link to='/dietplan/quiz'>Visa Min Information</Link>
 
             </section>
         </>

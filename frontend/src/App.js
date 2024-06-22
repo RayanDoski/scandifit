@@ -7,6 +7,7 @@ import Register from './pages/register.js'
 // Quizes
 import TrainingPlanQuiz from './pages/quizes/trainingPlanQuiz.js'
 import SleepPlanQuiz from './pages/quizes/sleepPlanQuiz.js'
+import DietPlanQuiz from './pages/quizes/dietPlanQuiz.js'
 
 // Plans
 import TrainingPlan from './pages/plans/trainingPlan.js'
@@ -31,6 +32,7 @@ function App() {
           {/* Quizes */}
           <Route path="/trainingplan/quiz" element={<TrainingPlanQuiz />} />
           <Route path="/sleepplan/quiz" element={<SleepPlanQuiz />} />
+          <Route path="/dietplan/quiz" element={<DietPlanQuiz />} />
 
           {/* Plans */}
           <Route path="/profile/trainingplan" element={<TrainingPlan />} />

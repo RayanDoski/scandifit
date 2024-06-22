@@ -207,7 +207,7 @@ function QuizPartFour({ nextPart, setResponses, responses }) {
     );
 }
 
-function QuizPartFive({ nextPart, setResponses, responses }) {
+function QuizPartFive({ nextPart, setResponses, responses, preventEnterSubmit }) {
 
     const handleHeightChange = (e) => {
         setResponses({ ...responses, height: e.target.value });
@@ -223,7 +223,8 @@ function QuizPartFive({ nextPart, setResponses, responses }) {
                     name="height" 
                     id="height" 
                     value={responses.height} 
-                    onChange={handleHeightChange} 
+                    onChange={handleHeightChange}
+                    onKeyDown={preventEnterSubmit} 
                 />
                 <h3 id="height-vidare" onClick={nextPart}>Vidare</h3>
             </main>
@@ -231,7 +232,7 @@ function QuizPartFive({ nextPart, setResponses, responses }) {
     );
 }
 
-function QuizPartSix({ nextPart, setResponses, responses }) {
+function QuizPartSix({ nextPart, setResponses, responses, preventEnterSubmit }) {
 
     const handleCurrentWeightChange = (e) => {
         setResponses({ ...responses, currentWeight: e.target.value });
@@ -251,7 +252,8 @@ function QuizPartSix({ nextPart, setResponses, responses }) {
                     name="vikt" 
                     id="vikt" 
                     value={responses.currentWeight}
-                    onChange={handleCurrentWeightChange} 
+                    onChange={handleCurrentWeightChange}
+                    onKeyDown={preventEnterSubmit}  
                 />
                 <label htmlFor="målvikt">Målvikt (Kg)</label>
                 <input 
@@ -259,7 +261,8 @@ function QuizPartSix({ nextPart, setResponses, responses }) {
                     name="malvikt" 
                     id="malvikt" 
                     value={responses.targetWeight}
-                    onChange={handleTargetWeightChange}  
+                    onChange={handleTargetWeightChange}
+                    onKeyDown={preventEnterSubmit}   
                 />
                 <h3 id="weight-vidare" onClick={nextPart}>Vidare</h3>
             </main>
@@ -523,6 +526,12 @@ function TrainingPlanQuiz() {
         checkAuth();
     }, []);  // Include navigate in dependency array
 
+    const preventEnterSubmit = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+        }
+    }; 
+
     const nextPart = () => {
         if (currentPart < 10) {
             setCurrentPart(currentPart + 1);
@@ -546,9 +555,9 @@ function TrainingPlanQuiz() {
             case 3:
                 return <QuizPartFour nextPart={nextPart} setResponses={setResponses} responses={responses} />;
             case 4:
-                return <QuizPartFive nextPart={nextPart} setResponses={setResponses} responses={responses} />;
+                return <QuizPartFive nextPart={nextPart} setResponses={setResponses} responses={responses} preventEnterSubmit={preventEnterSubmit} />;
             case 5:
-                return <QuizPartSix nextPart={nextPart} setResponses={setResponses} responses={responses} />;
+                return <QuizPartSix nextPart={nextPart} setResponses={setResponses} responses={responses} preventEnterSubmit={preventEnterSubmit} />;
             case 6:
                 return <QuizPartSeven nextPart={nextPart} setResponses={setResponses} responses={responses} />;
             case 7:

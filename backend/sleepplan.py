@@ -104,23 +104,29 @@ def get_sleepplan_info():
         db = make_db_connection()
         cursor = db.cursor()
 
-        # Do they already have a sleepplan
-        cursor.execute('select * from sleepplan where uid = %s', (session['user_id'],))
-        result = cursor.fetchone()
+        # Are They Logged in
+        if 'user_id' in session:
+            # Do they already have a sleepplan
+            cursor.execute('select * from sleepplan where uid = %s', (session['user_id'],))
+            result = cursor.fetchone()
 
-        if result:
-            return jsonify({
-                'success': True,
-                'id': result[0],
-                'age': result[1],
-                'weight': result[2],
-                'wakeUpTime': result[3],
-                'timeToSleep': str(result[4]),
-                'howMuchSleepDoYouGetOnAvg': result[5],
-                'dailyMoodAndEnergy': result[6],
-                'caffeineInTheAfternoon': result[7],
-                'sleepDisturbancesOrSymptoms': result[8]
-            })
+            if result:
+                return jsonify({
+                    'success': True,
+                    'id': result[0],
+                    'age': result[1],
+                    'weight': result[2],
+                    'wakeUpTime': result[3],
+                    'timeToSleep': str(result[4]),
+                    'howMuchSleepDoYouGetOnAvg': result[5],
+                    'dailyMoodAndEnergy': result[6],
+                    'caffeineInTheAfternoon': result[7],
+                    'sleepDisturbancesOrSymptoms': result[8]
+                })
+            else:
+                return jsonify({
+                    'success': False,
+                })
         else:
             return jsonify({
                 'success': False,
@@ -134,7 +140,7 @@ def get_sleepplan_info():
 @sleepplan.route("/sleepplan/quiz/completed", methods=['post', 'get'])
 def sleepplan_quiz_completed():
     try:
-
+        
         # Make Database Connection
         db = make_db_connection()
         cursor = db.cursor()
