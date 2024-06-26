@@ -127,7 +127,8 @@ def tq_completed():
             return jsonify(
                 {
                     'success': False,
-                    'message': f'Konot Med [{email}] Existerar Redan'
+                    'message': f'Konot Med [{email}] Existerar Redan',
+                    'index': 10
                 }
             )
         else:

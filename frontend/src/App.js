@@ -5,6 +5,7 @@ import Footer from './components/footer.js';
 // Login System
 import Login from './pages/loginSystem/login.js'
 import Register from './pages/loginSystem/register.js'
+import UserInfo from './pages/usersInfo.js'
 
 // Quizes
 import TrainingPlanQuiz from './pages/quizes/trainingPlanQuiz.js'
@@ -23,13 +24,18 @@ import Exercise from './pages/exercise.js'
 function App() {
   return (
     <Router>
-      <Header />
         <Routes>
-          <Route path="/" element={<Header />} />
+          <Route path="/" element=
+            {<>
+              <Header />
+              <Footer />
+            </>
+          } />
 
           {/* Loginsystem */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<><Header /><Login /><Footer /></>} />
+          <Route path="/register" element={<><Header /><Register /><Footer /></>} />
+          <Route path="/profile/myprofile" element={<><Header /><UserInfo /><Footer /></>} />
 
           {/* Quizes */}
           <Route path="/trainingplan/quiz" element={<TrainingPlanQuiz />} />
@@ -37,16 +43,15 @@ function App() {
           <Route path="/dietplan/quiz" element={<DietPlanQuiz />} />
 
           {/* Plans */}
-          <Route path="/profile/trainingplan" element={<TrainingPlan />} />
-          <Route path="/profile/sleepplan" element={<SleepPlan />} />
-          <Route path="/profile/dietplan" element={<DietPlan />} />
+          <Route path="/profile/trainingplan" element={<><Header /><TrainingPlan /><Footer /></>} />
+          <Route path="/profile/sleepplan" element={<><Header /><SleepPlan /><Footer /></>} />
+          <Route path="/profile/dietplan" element={<><Header /><DietPlan /><Footer /></>} />
 
           {/* Exercises */}
-          <Route path="/profile/exercises/:muscle" element={<Exercises />} />
-          <Route path="/profile/exercise/:id" element={<Exercise />} />
+          <Route path="/profile/exercises/:muscle" element={<><Header /><Exercises /><Footer /></>} />
+          <Route path="/profile/exercise/:id" element={<><Header /><Exercise /><Footer /></>} />
 
         </Routes>
-      <Footer />
     </Router>
   );
 }

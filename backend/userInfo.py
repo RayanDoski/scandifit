@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, redirect
+from flask import Blueprint, render_template, request, session, redirect, jsonify
 
 from db import make_db_connection, add_phonenumber_to_user, add_adress_to_user
 
@@ -7,7 +7,7 @@ from login_register import is_logged_in, is_exklusiv
 
 profil = Blueprint('profil', __name__)
         
-@profil.route("/profile/information")
+@profil.route("/profile/information", methods=['GET', 'POST'])
 def profile_information():
     '''
     This function allows users to see there information
@@ -24,33 +24,128 @@ def profile_information():
         db = make_db_connection()
         cursor = db.cursor()
 
-        #are they logged in?
-        user_data = is_logged_in()
-        if user_data is None:
-            return redirect('/login')
-        
-        uid = user_data[0]
-        namn = user_data[1]
-        email = user_data[2]
-        password = user_data[3]
+        if 'user_id' in session:
+            cursor.execute('select * from user where id = %s', (session['user_id']))
+            userInfo = cursor.fetchone()
 
-        #kollar Om Deras Telefonnummr Existerar i Vår Databas
-        cursor.execute('select * from phonenumber where uid = %s', (uid,))
-        # Vi Tar Emot En Rad Från Databasen Och Sedan Tar Vi Emot Den Tredje Columnen (Telefonnummret)
-        telefonnummer = cursor.fetchone()
-        if telefonnummer:
-            telefonnummer = telefonnummer[1]
+            uid = userInfo[0]
+            namn = userInfo[1]
+            email = userInfo[2]
+            password = userInfo[3]
+
+            #kollar Om Deras Telefonnummr Existerar i Vår Databas
+            cursor.execute('select * from phonenumber where uid = %s', (uid,))
+            # Vi Tar Emot En Rad Från Databasen Och Sedan Tar Vi Emot Den Tredje Columnen (Telefonnummret)
+            telefonnummer = cursor.fetchone()
+            if telefonnummer:
+                telefonnummer = telefonnummer[1]
+            else:
+                telefonnummer = 'Information Saknas'
+
+            return jsonify(
+                {
+                    'success': True,
+                    'namn': namn,
+                    'email': email,
+                    'telefonnummer': int(telefonnummer),
+                    'password': password
+                }
+            )
         else:
-            telefonnummer = 'Information Saknas'
-
-        return render_template('profile_information.html', namn=namn, email=email, telefonnummer=telefonnummer, password=password, exklusiv=is_exklusiv())
+            return jsonify(
+                {
+                    'success': False
+                }
+            )
     except:
-        return "Ett Fel Har Hänt"
+        return jsonify(
+                {
+                    'success': False
+                }
+            )
     finally:
         # Close Database Connection
         db.close()
         cursor.close()
+
+
+@profil.route("/profile/information/update", methods=['GET', 'POST'])
+def update_profile_information():
+    '''
+    Updating User Information,
+
+    This Route takes infomraiton that user inserts and adds it to the database and then sends them back.
+    '''
+    try:
+
+        # Make Database Connection
+        db = make_db_connection()
+        cursor = db.cursor()
+
+        # Fetching info sent from frontend react
+        data = request.get_json()
+
+        uid = session['user_id']
+        namn = data.get('namn')
+        email = data.get('email').lower()
+        telefonnummer = data.get('telefonnummer')
+        password = data.get('password').lower()
+
+        # email Check
+        if '@' not in email:
+            return jsonify({'success': False, 'message': 'Ogiltigt e-postformat'})
+        
+        if not namn:
+            return jsonify({'success': False, 'message': 'Namn Fattas'})
+
+        if not password:
+            return jsonify({'success': False, 'message': 'Lösenord Fattas'})
+        
+        # Updating Info Inside  users
+        cursor.execute("UPDATE user SET namn = %s, email = %s, password = %s WHERE id = %s", (namn, email, password, uid))
+        db.commit()
+
+        # Updating Info Inside user_telephonenumber
+        cursor.execute('select * from phonenumber where uid = %s', (uid,))
+        userPhonenumber = cursor.fetchone()
+
+        # Does There Row Exist Or Do We Have To Create It
+        if userPhonenumber:
+            cursor.execute("UPDATE phonenumber SET phonenumber = %s WHERE uid = %s", (telefonnummer, uid))
+            db.commit()
+        else:
+            cursor.execute("insert into phonenumber (uid, phonenumber) values (%s, %s)", (uid, telefonnummer))
+            db.commit()
+
+        return jsonify(
+            {
+                'success': True
+            }
+        )
     
+    except:
+        return jsonify(
+            {
+                'success': False
+            }
+        )
+    finally:
+        # Close Database Connection
+        db.close()
+        cursor.close()
+
+@profil.route("/logout", methods=['GET', 'POST'])
+def logout():
+    '''
+    This function will logout uses by destroying session['user_id']
+    '''
+    session.pop('user_id')
+    return jsonify(
+        {
+            'success': True
+        }
+    )
+
 @profil.route("/profile/adress")
 def profile_adress():
     '''
@@ -90,62 +185,6 @@ def profile_adress():
         return render_template('profile_adress.html', gatuadres=gatuadres, postnummer=postnummer, stad=stad, namn=namn, exklusiv=is_exklusiv())
     except:
         return "Det Gick Snett!"
-    finally:
-        # Close Database Connection
-        db.close()
-        cursor.close()
-    
-@profil.route("/logout")
-def logout():
-    '''
-    This function will logout uses by destroying session['user_id']
-    '''
-    session.pop('user_id')
-    return redirect('/')
-
-@profil.route("/profile/information/update", methods=['GET', 'POST'])
-def update_profile_information():
-    '''
-    Updating User Information,
-
-    This Route takes infomraiton that user inserts and adds it to the database and then sends them back.
-    '''
-
-    try:
-
-        # Make Database Connection
-        db = make_db_connection()
-        cursor = db.cursor()
-
-        #are they logged in?
-        user_data = is_logged_in()
-        if user_data is None:
-            return redirect('/login')
-
-        uid = user_data[0]
-        namn = request.form.get('namn')
-        email = request.form.get('email').lower()
-        telefonnummer = request.form.get('telefonnummer')
-        password = request.form.get('password').lower()
-
-        # Updating Info Inside  users
-        cursor.execute("UPDATE user SET namn = %s, email = %s, password = %s WHERE id = %s", (namn, email, password, uid))
-        db.commit()
-
-        # Updating Info Inside user_telephonenumber
-        cursor.execute('select * from phonenumber where uid = %s', (uid,))
-        user_phonenumber_row = cursor.fetchone()
-
-        # Does There Row Exist Or Do We Have To Create It
-        if user_phonenumber_row:
-            cursor.execute("UPDATE phonenumber SET phonenumber = %s WHERE uid = %s", (telefonnummer, uid))
-            db.commit()
-        else:
-            add_phonenumber_to_user(telefonnummer, uid)
-
-        return redirect('/profile/information')
-    except Exception as e:
-        print(e)
     finally:
         # Close Database Connection
         db.close()

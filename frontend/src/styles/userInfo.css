@@ -1,0 +1,174 @@
+.userInfoSection {
+    max-width: 1600px;
+    padding: 50px 0px;
+    width: 90%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    gap: 20px;
+}
+
+/* left Side */
+
+.userInfoSection > .LeftSide {
+    flex: 1;
+    border-right: 1px solid var(--gray);
+    padding: 20px 20px 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 20px;
+}
+
+.userInfoSection > .LeftSide > .ContactUsBtn {
+    padding: 10px 30px;
+    text-align: center;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.userInfoSection > .LeftSide > .ContactUsBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.userInfoSection > .LeftSide > form > .LogoutBtn {
+    padding: 10px 30px;
+    width: 100%;
+    text-align: center;
+    border-radius: 15px;
+    color: red;
+    border: 1px solid red;
+    font-size: 20px;
+    font-weight: lighter;
+    transition: .5s all;
+}
+
+.userInfoSection > .LeftSide > form > .LogoutBtn:hover {
+    background-color: red;
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+/* Right Side */
+
+.userInfoSection > .RightSide {
+    flex: 2;
+}
+
+.userInfoSection > .RightSide > h1 {
+    font-size: 42px;
+    margin: 20px 0px 0px 0px;
+}
+
+.userInfoSection > .RightSide > form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0px;
+}
+
+.userInfoSection > .RightSide > form > div {
+    width: 100%;
+    padding: 20px;
+    border-top: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userInfoSection > .RightSide > form > div > button {
+    text-align: center;
+    padding: 0px 20px;
+    height: 40px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.userInfoSection > .RightSide > form > div > button:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.userInfoSection > .RightSide > form > div > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.userInfoSection > .RightSide > form > div > aside > label {
+    color: var(--black);
+    font-size: 18px;
+}
+
+.userInfoSection > .RightSide > form > div > aside > input {
+    background-color: transparent;
+    color: var(--gray);
+    border: 0;
+    font-size: 16px;
+    outline: 0;
+    transition: .5s all;
+}
+
+.userInfoSection > .RightSide > form > div > aside > input.editable {
+    border-bottom: 2px solid var(--green);
+    padding: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+
+    .userInfoSection {
+        width: 98%;
+    }
+
+}
+
+@media screen and (max-width: 750px) {
+
+    .userInfoSection {
+        padding: 100px 0px;
+        margin: 0px auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .userInfoSection > .RightSide > h1 {
+        font-size: 32px;
+        margin: 20px 0px 0px 0px;
+    }
+
+    .userInfoSection > .LeftSide {
+        flex: 1;
+        border-right: 1px solid var(--gray);
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        gap: 20px;
+    }
+
+    .userInfoSection > .LeftSide > .ContactUsBtn {
+        font-size: 16px;
+    }
+    
+    .userInfoSection > .LeftSide > form > .LogoutBtn {
+        font-size: 16px;
+    }
+
+}

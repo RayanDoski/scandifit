@@ -13,7 +13,7 @@ const useAuthCheck = () => {
                 });
                 const data = await response.json();
                 if (data.success) {
-                    navigate('/login');
+                    navigate('/');
                 }
             } catch (error) {
                 navigate('/login');

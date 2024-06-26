@@ -4,7 +4,7 @@ from flask_mail import Mail
 from flask_cors import CORS
 
 from views import views
-from profile_info import profil
+from userInfo import profil
 from login_register import login_register
 from recentioner import recensioner
 from trainingplan_quiz import trainingplan_quiz
