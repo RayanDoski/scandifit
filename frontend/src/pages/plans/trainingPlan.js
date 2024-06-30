@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Switch, Link, Form, useNavigate } from 
 // Importing CSS
 import '../../styles/profile_trainingplan.css';
 
+// Importing Loading Screen
+import LoadingScreen from '../../components/loadingScreen.js';
+
 // For Login
 import NotLiAuthCheck from '../loginSystem/notLiAuthCheck.js';
 
@@ -22,6 +25,7 @@ function IfScheduleDoesNotExist() {
 function TheTrainingPlan() {
 
     const [Plan, setPlan] = useState([])
+    const [loading, setLoading] = useState(true)
     const navigate = useNavigate();
 
     // Are They Logged In? 
@@ -29,6 +33,7 @@ function TheTrainingPlan() {
 
     // Getting Their TrainingPlan
     useEffect(() => {
+        setLoading(true)
         const checkAuth = async () => {
             try {
                 const response = await fetch('http://127.0.0.1:8000/profile/trainingplan', {
@@ -37,6 +42,7 @@ function TheTrainingPlan() {
                 });
                 const data = await response.json();
                 if (data.TrainingPlanExists) {
+                    setLoading(false)
                     setPlan(data.Schedual)
                 }
             } catch (error) {
@@ -52,46 +58,50 @@ function TheTrainingPlan() {
     }
 
     return (
-        <section className="schedual-information">
-            <main>
-                <article>
-                    <h1>Din Träningsplan</h1>
-                    <Link className='ViewMyInfoBtn' to='/trainingplan/quiz' >Visa Min Information</Link>
-                </article>
+        <>
+            { loading ? <LoadingScreen /> : (
+                <section className="schedual-information">
+                    <main>
+                        <article>
+                            <h1>Din Träningsplan</h1>
+                            <Link className='ViewMyInfoBtn' to='/trainingplan/quiz' >Visa Min Information</Link>
+                        </article>
 
-                {Plan.map((TrainingSession, index) => (
-                    <div key={index}>
-                        <h1>{TrainingSession.Title}</h1>
+                        {Plan.map((TrainingSession, index) => (
+                            <div key={index}>
+                                <h1>{TrainingSession.Title}</h1>
 
-                        {/* Render Cardio Exercises */}
-                        {TrainingSession.Cardio && TrainingSession.Cardio.map((cardio, index) => (
-                            <aside key={index}>
-                                <h3><Link to={`/profile/exercise/${cardio.id}`}>{ cardio.name }</Link>{ cardio.frequency }</h3>
-                                <Link to={`/profile/exercises/${cardio.muscle_group}`}>Visa Alternativ Övningar</Link>
-                            </aside>
+                                {/* Render Cardio Exercises */}
+                                {TrainingSession.Cardio && TrainingSession.Cardio.map((cardio, index) => (
+                                    <aside key={index}>
+                                        <h3><Link to={`/profile/exercise/${cardio.id}`}>{ cardio.name }</Link>{ cardio.frequency }</h3>
+                                        <Link to={`/profile/exercises/${cardio.muscle_group}`}>Visa Alternativ Övningar</Link>
+                                    </aside>
+                                ))}
+
+                                {TrainingSession.Exercises && TrainingSession.Exercises.map((exercise, index) => (
+                                    <aside key={index}>
+                                        <h3><Link to={`/profile/exercise/${exercise.id}`}>{ exercise.name }</Link>{ exercise.frequency }</h3>
+                                        <Link to={`/profile/exercises/${exercise.muscle_group}`}>Visa Alternativ Övningar</Link>
+                                    </aside>
+                                ))}
+
+                                {TrainingSession.ExtraExercises && TrainingSession.ExtraExercises.map((ExtraExercise, index) => (
+                                    <aside key={index}>
+                                        <h3><Link to={`/profile/exercise/${ExtraExercise.id}`}>{ ExtraExercise.name }</Link>{ ExtraExercise.frequency }</h3>
+                                        <Link to={`/profile/exercises/${ExtraExercise.muscle_group}`}>Visa Alternativ Övningar</Link>
+                                    </aside>
+                                ))}
+
+                            </div>
                         ))}
 
-                        {TrainingSession.Exercises && TrainingSession.Exercises.map((exercise, index) => (
-                            <aside key={index}>
-                                <h3><Link to={`/profile/exercise/${exercise.id}`}>{ exercise.name }</Link>{ exercise.frequency }</h3>
-                                <Link to={`/profile/exercises/${exercise.muscle_group}`}>Visa Alternativ Övningar</Link>
-                            </aside>
-                        ))}
+                        {/* {Plan} */}
 
-                        {TrainingSession.ExtraExercises && TrainingSession.ExtraExercises.map((ExtraExercise, index) => (
-                            <aside key={index}>
-                                <h3><Link to={`/profile/exercise/${ExtraExercise.id}`}>{ ExtraExercise.name }</Link>{ ExtraExercise.frequency }</h3>
-                                <Link to={`/profile/exercises/${ExtraExercise.muscle_group}`}>Visa Alternativ Övningar</Link>
-                            </aside>
-                        ))}
-
-                    </div>
-                ))}
-
-                {/* {Plan} */}
-
-            </main>
-        </section>
+                    </main>
+                </section>
+            )}
+        </>
     );
 }
 

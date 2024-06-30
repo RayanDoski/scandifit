@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Switch, Link, Form, useNavigate } from 
 // Importing CSS
 import '../../styles/dietplan_quiz.css';
 
+// Importing Loading Screen
+import LoadingScreen from '../../components/loadingScreenFullScreen.js';
+
 // For Login
 import NotLiAuthCheck from '../loginSystem/notLiAuthCheck.js';
 
@@ -356,6 +359,7 @@ function DietPlanQuiz() {
     const [currentPart, setCurrentPart] = useState(0);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [errorMessage, setErrorMessage] = useState('')
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
 
     const [responses, setResponses] = useState({
@@ -453,6 +457,7 @@ function DietPlanQuiz() {
     // Handle Form Submit With Input Info
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true)
         const response = await fetch('http://127.0.0.1:8000/dietplan/quiz/completed', {
             method: 'POST',
             credentials: 'include',
@@ -463,6 +468,7 @@ function DietPlanQuiz() {
         });
         const data = await response.json();
         if (data.success) {
+            setLoading(false)
             navigate('/profile/dietplan')
         } else {
             setCurrentPart(data.index)
@@ -471,27 +477,30 @@ function DietPlanQuiz() {
     };
     
     return (
-        <section className="dietplan_quiz">
-            <form onSubmit={handleSubmit} id="form-quiz">
-                {/* bar */}
-                <h2 id="progress-count">{currentPart}/10</h2>
-                <nav>
-                    <img src={LeftArrow} alt="LeftArrow" id="go-backwards" onClick={previousPart} />
-                    <div>
-                        <div id="progress-bar" style={{ width: `${currentPart * 10}%`}}></div>
-                    </div>
-                    <img src={RightArrow} alt="RightArrow" id="go-forward" onClick={nextPart} />
-                </nav>
-                {renderCurrentPart()}
+        <>
+            { loading ? <LoadingScreen /> : '' }
+            <section className="dietplan_quiz">
+                <form onSubmit={handleSubmit} id="form-quiz">
+                    {/* bar */}
+                    <h2 id="progress-count">{currentPart}/10</h2>
+                    <nav>
+                        <img src={LeftArrow} alt="LeftArrow" id="go-backwards" onClick={previousPart} />
+                        <div>
+                            <div id="progress-bar" style={{ width: `${currentPart * 10}%`}}></div>
+                        </div>
+                        <img src={RightArrow} alt="RightArrow" id="go-forward" onClick={nextPart} />
+                    </nav>
+                    {renderCurrentPart()}
 
-                <div onClick={() => setErrorMessage('')} className={errorMessage ? 'errorMessageBackground show' : 'errorMessageBackground' }>
-                    <div className={ errorMessage ? 'errorMessageContainer show' : 'errorMessageContainer' } >
-                        <p>{errorMessage}</p>
+                    <div onClick={() => setErrorMessage('')} className={errorMessage ? 'errorMessageBackground show' : 'errorMessageBackground' }>
+                        <div className={ errorMessage ? 'errorMessageContainer show' : 'errorMessageContainer' } >
+                            <p>{errorMessage}</p>
+                        </div>
                     </div>
-                </div>
 
-            </form>
-        </section>
+                </form>
+            </section>
+        </>
     );
 }
 

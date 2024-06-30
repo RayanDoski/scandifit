@@ -1,6 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+// Header and Footer
 import Header from './components/header.js';
 import Footer from './components/footer.js';
+
+// Loading Screens
+import LoadingScreenFullScreen from './components/loadingScreenFullScreen.js';
+import LoadingScreen from './components/loadingScreen.js';
 
 // Login System
 import Login from './pages/loginSystem/login.js'
@@ -21,16 +27,17 @@ import DietPlan from './pages/plans/dietplan.js'
 import Exercises from './pages/exercises.js'
 import Exercise from './pages/exercise.js'
 
+// contact us 
+import ContactUs from './pages/contactUs.js' 
+
 function App() {
   return (
     <Router>
         <Routes>
-          <Route path="/" element=
-            {<>
-              <Header />
-              <Footer />
-            </>
-          } />
+          <Route path="/" element={<><Header /><LoadingScreen /><Footer /></>} />
+
+          {/* ContactUs */}
+          <Route path="/contactus" element={<><Header /><ContactUs /><Footer /></>} />
 
           {/* Loginsystem */}
           <Route path="/login" element={<><Header /><Login /><Footer /></>} />

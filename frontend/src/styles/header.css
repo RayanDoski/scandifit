@@ -262,3 +262,263 @@
     color: var(--white);
     border: 1px solid var(--white);
 }
+
+/* Cart Slide In Menu */
+
+.BackgroundForCartSlideInMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.539);
+    z-index: 3;
+    display: none;
+}
+
+.BackgroundForCartSlideInMenu.show {
+    display: block;
+}
+
+.ContainerForCartSlideInMenu {
+    position: fixed;
+    z-index: 4;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    padding: 25px;
+    background-color: var(--white);
+    border-radius: 15px;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: .5s all;
+}
+
+.ContainerForCartSlideInMenu.show {
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+}
+
+.ContainerForCartSlideInMenu > .exitBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    color: var(--black);
+    background-color: transparent;
+    padding: 5px 10px;
+    transition: .5s all;
+}
+
+.ContainerForCartSlideInMenu > .exitBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.ContainerForCartSlideInMenu > h1 {
+    text-align: left;
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0px 0px 40px 0px;
+}
+
+.ContainerForCartSlideInMenu > h1 > span {
+    font-weight: lighter;
+    font-size: 22px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+    padding: 15px 10px;
+    border-top: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+}
+
+.ContainerForCartSlideInMenu > .productDiv > h3 {
+    font-weight: lighter;
+    margin: 0;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > div > h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > div > p {
+    margin: 0;
+    font-weight: lighter;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > img {
+    width: 75px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > div > .quantityDiv {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+} 
+
+.ContainerForCartSlideInMenu > .productDiv > article > div > .quantityDiv > button {
+    padding: 5px;
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+    border: 1px solid var(--black);
+    font-weight: lighter;
+    color: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s all;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > div > .quantityDiv > button:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > div > .quantityDiv > input {
+    background-color: transparent;
+    border: 1px solid var(--black);
+    outline: 0;
+    width: 50px;
+    height: 25px;
+    padding: 5px 10px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > aside {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > aside > h3 {
+    font-weight: lighter;
+    font-size: 18px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > aside > img {
+    width: 15px;
+    cursor: pointer;
+}
+
+.ContainerForCartSlideInMenu > .TotalPrice {
+    margin: 30px 0px 30px 0px;
+}
+
+.ContainerForCartSlideInMenu > .TotalPrice > p {
+    margin: 0;
+    font-weight: lighter;
+}
+
+.ContainerForCartSlideInMenu > .TotalPrice > h2 {
+    margin: 0;
+}
+
+.ContainerForCartSlideInMenu > .proceedBtn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 18px;
+    border: 1px solid var(--black);
+    background-color: transparent;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.ContainerForCartSlideInMenu > .proceedBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media only screen and (max-width: 600px) {
+
+    .ContainerForCartSlideInMenu {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .ContainerForCartSlideInMenu > h1 {
+        font-size: 22px;
+        margin: 0px 0px 20px 0px;
+    }
+
+    .ContainerForCartSlideInMenu > .productDiv {
+        margin: 10px 0px;
+        padding: 10px 5px;
+    }
+
+    .ContainerForCartSlideInMenu > .productDiv > h3 {
+        font-size: 16px;
+    }
+
+    .ContainerForCartSlideInMenu > .productDiv > article > div > h2 {
+        font-size: 16px;
+    }
+    
+    .ContainerForCartSlideInMenu > .productDiv > article > img {
+        width: 50px;
+    }
+
+    .ContainerForCartSlideInMenu > .productDiv > article > div > .quantityDiv > button {
+        padding: 10px;
+        width: 15px;
+        height: 15px;
+    }
+
+    .ContainerForCartSlideInMenu > .productDiv > article > div > .quantityDiv > input {
+        width: 40px;
+        height: 15px;
+        padding: 10px;
+    }
+
+    .ContainerForCartSlideInMenu > .TotalPrice {
+        margin: 25px 0px;
+    }
+
+    .ContainerForCartSlideInMenu > .TotalPrice > p {
+        font-size: 14px;
+    }
+
+    .ContainerForCartSlideInMenu > .TotalPrice > h2 {
+        font-size: 22px;
+    }
+
+    .ContainerForCartSlideInMenu > .proceedBtn {
+        padding: 8px;
+        border-radius: 15px;
+        font-size: 16px;
+    }
+
+    .ContainerForCartSlideInMenu > .exitBtn {
+        font-size: 12px;
+        padding: 2.5px 8px;
+    }
+
+}

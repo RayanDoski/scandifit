@@ -34,7 +34,9 @@ function Login() {
         });
         const data = await response.json();
         if (data.success) {
-            navigate('/')
+            navigate('/profile/myprofile')
+            // Whole Website Has To Reload For Changes to be implemented
+            window.location.reload();
         } else {
             setErrorMessage('Ogiltig Email eller lösenord')
         }

@@ -1,5 +1,5 @@
 # from flask import Blueprint, render_template
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect, jsonify
 from flask_mail import Message
 from db import mail
 
@@ -17,16 +17,32 @@ def send_message():
     '''
     Takes Information From Contact Form and sends It as a mail to us and to them.
     '''
-    if request.method == 'POST':
-        namn = request.form.get('namn')
-        email = request.form.get('email')
-        meddelande = request.form.get('meddelande')
-        
+
+    try:
+        # Fetching info sent from frontend react
+        data = request.get_json()
+
+        namn = data.get('name')
+        email = data.get('email')
+        meddelande = data.get('meddelande')
+            
         # for mail sending 
         msg = Message('Vi Har Tagit Emot Ditt Medelande', recipients=[email, 'kontakta@scandifit.se'])
         msg.html = render_template('mail_contact.html', namn=namn, meddelande=meddelande)
         mail.send(msg)  # Use 'mail', not 'Mail'
-        return redirect(request.referrer)
+        return jsonify(
+            {
+                'success': True
+            }
+        )
+    except:
+        return jsonify(
+            {
+                'success': False
+            }
+        )
+
+# The Code Beneth Is Not In Use
 
 @views.route("/jobb")
 def jobb():

@@ -9,9 +9,6 @@ import '../styles/userInfo.css';
 // For Login
 import NotLiAuthCheck from './loginSystem/notLiAuthCheck.js';
 
-// For Logout
-import LogoutUser from './loginSystem/logout.js';
-
 // importing Secondary Header
 import SecondaryHeader from '../components/secondaryHeader.js';
 
@@ -83,11 +80,20 @@ function UserInfo() {
 
     };
 
-    const handleLogout = (e) => {
-        e.preventDefault();
-        LogoutUser()
-    };
+    const navigate = useNavigate();
 
+    const handleLogout = async () => {
+        const response = await fetch('http://127.0.0.1:8000/logout', {
+            method: 'POST',
+            credentials: 'include'
+        });
+        const data = await response.json();
+        if (data.success) {
+            navigate('/');
+            // Whole Website Has To Reload For Changes to be implemented
+            window.location.reload();
+        }
+    };
     return (
         <>
             <SecondaryHeader />
@@ -180,10 +186,8 @@ function UserInfo() {
                 </article>
 
                 <aside className='LeftSide'>
-                    <Link to='/contactUs' className='ContactUsBtn'>Kontakta Oss</Link>
-                    <form onSubmit={handleLogout} >
-                        <button type='submit' className='LogoutBtn'>Logga Ut</button>
-                    </form>
+                    <Link to='/contactus' className='ContactUsBtn'>Kontakta Oss</Link>
+                    <button type='button' className='LogoutBtn' onClick={handleLogout}>Logga Ut</button>
                 </aside>
 
             </section>

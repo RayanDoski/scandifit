@@ -11,14 +11,13 @@
 *::before,
 *::after {
     box-sizing: border-box;
+    font-family: 'Roboto';
+    box-sizing: border-box;
     line-height: 1.5;
 }
 
-
 body {
     margin: 0;
-    font-family: 'Roboto';
-    box-sizing: border-box;
     background-color: var(--white);
 }
 
@@ -31,5 +30,9 @@ h2 {
 }
 
 h3 {
+    color: var(--black);
+}
+
+label {
     color: var(--black);
 }

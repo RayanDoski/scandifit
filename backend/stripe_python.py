@@ -24,59 +24,79 @@ def create_checkout_session():
     '''
     This function creates a new Checkout Session for a customer
     '''
-    # Define a mapping of product types to price IDs
-    multivitamin_product = {
-        'once': 'price_1OPAFZKgpFWeoEQVlTl26PyM',
-        'sub': 'price_1OPAGDKgpFWeoEQVRiucrGxx',
-    }
-
-    #are they logged in?
-    user_data = is_logged_in()
-
-    if user_data is None:
-        # This Custom Field Will Make Users Have To Enter A Password Becouse They Don't Have An Account 
-        custom_field_info = {
-            "key": "password",
-            "label": {"type": "custom", "custom": "Välj Ett Lösenord För Ditt Scandifit Konto"},
-            "type": "text",
-        }
-
-        # Adding The appropriate mail becouse they aren't logged in
-        mail = None
-
-    else:
-        custom_field_info = {}
-        mail = user_data[2]
+    # multivitamin_product = {
+    #     'once': 'price_1OPAFZKgpFWeoEQVlTl26PyM',
+    #     'sub': 'price_1OPAGDKgpFWeoEQVRiucrGxx',
+    # }
 
     # Checking witch items that are in cart
     if 'cart_pid' in session:
-
-        for items in session['cart_pid']:
-            if items[0] == 1 and items[1] in multivitamin_product:
-                
-                if items[1] == 'once':
-                    mode = 'payment'
-                    card = ['card', 'klarna']
-
-                    # Getting The Amount
-                    if request.method == 'POST':
-                        quantity = request.form.get(f'quantity{items[0]}')
-
-                elif items[1] == 'sub':
-                    mode = 'subscription'
-                    card = ['card']
-                    
-                    # Getting The Amount
-                    quantity = 1
-                
-                line_item_variable = {
-                    'price': multivitamin_product[items[1]],
-                    'quantity': quantity
-                }
+        mode = 'payment'
+        card = ['card', 'klarna']
+        
+        line_item_variable = {
+            'price': 'price_1OPAFZKgpFWeoEQVlTl26PyM',
+            'quantity': 1
+        }
 
     # If They Complete the Order, where do we send them?
     success_end_url = '/order_complete/{CHECKOUT_SESSION_ID}'
-    return stripe_checkout_code(line_item_variable, card, mode, success_end_url, custom_field_info, mail)
+    # return stripe_checkout_code(line_item_variable, card, mode, success_end_url, custom_field_info, mail)
+    try:
+
+        # Generate a unique customer identifier (you can use your own logic)
+        customer_identifier = str(uuid.uuid4())
+
+        # Get the current time
+        purchase_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        checkout_session = stripe.checkout.Session.create(
+            line_items = [
+                line_item_variable
+            ],
+
+            # In sweden
+            locale='sv',
+
+            # Payment options we provide
+            payment_method_types=card,
+
+            # Already inserted mail
+            # customer_email='Rayan.d15@outlook.com',
+
+            # Allow promotions
+            allow_promotion_codes=True,
+
+            # Phonenr reqired
+            phone_number_collection={"enabled": True},
+            
+            # Add collection
+            billing_address_collection='required',
+
+            # Billing mode
+            mode=mode,
+
+            # Giving customer a value, (For retrival Purposes)
+            customer=stripe.Customer.create(
+                id=customer_identifier,
+                email='Rayan.d15@outlook.com',
+            ),
+
+            # Create Date When Purchases
+            metadata={
+                'purchase_time': purchase_time
+            },
+
+            # Success and cancel url:s
+            success_url = your_domain + success_end_url,
+            cancel_url = your_domain + '/',
+
+        )
+    
+    except Exception as e:
+        return str(e)
+    
+    return redirect(checkout_session.url)
 
 @stripe_py.route('/scandifit_exklusiv', methods=['post', 'get'])
 def scandifit_exklusiv_checkout():
@@ -116,70 +136,6 @@ def scandifit_exklusiv_checkout():
     # If They Complete the Order, where do we send them?
     success_end_url = '/exklusiv/{CHECKOUT_SESSION_ID}'
     return stripe_checkout_code(line_item_variable, card, mode, success_end_url, custom_field_info, mail)
-
-def stripe_checkout_code(line_item_variable, card, mode, success_end_url, custom_field_info, mail):
-    '''
-    This Function Creates the checkout
-    '''
-    try:
-
-        # Generate a unique customer identifier (you can use your own logic)
-        customer_identifier = str(uuid.uuid4())
-
-        # Get the current time
-        purchase_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        
-        checkout_session = stripe.checkout.Session.create(
-            line_items = [
-                line_item_variable
-            ],
-
-            custom_fields=[
-                custom_field_info
-            ],
-
-            # In sweden
-            locale='sv',
-
-            # Payment options we provide
-            payment_method_types=card,
-
-            # Already inserted mail
-            # customer_email='Rayan.d15@outlook.com',
-
-            # Allow promotions
-            allow_promotion_codes=True,
-
-            # Phonenr reqired
-            phone_number_collection={"enabled": True},
-            
-            # Add collection
-            billing_address_collection='required',
-
-            # Billing mode
-            mode=mode,
-
-            # Giving customer a value, (For retrival Purposes)
-            customer=stripe.Customer.create(
-                id=customer_identifier,
-                email=mail,
-            ),
-
-            # Create Date When Purchases
-            metadata={
-                'purchase_time': purchase_time
-            },
-
-            # Success and cancel url:s
-            success_url = your_domain + success_end_url,
-            cancel_url = your_domain + '/',
-
-        )
-    
-    except Exception as e:
-        return str(e)
-    
-    return redirect(checkout_session.url)
 
 @stripe_py.route('/exklusiv/<checkout_session_id>')
 def become_exklusiv(checkout_session_id):

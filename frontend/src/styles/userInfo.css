@@ -39,7 +39,7 @@
     border: 1px solid var(--white);
 }
 
-.userInfoSection > .LeftSide > form > .LogoutBtn {
+.userInfoSection > .LeftSide > .LogoutBtn {
     padding: 10px 30px;
     width: 100%;
     text-align: center;
@@ -51,7 +51,7 @@
     transition: .5s all;
 }
 
-.userInfoSection > .LeftSide > form > .LogoutBtn:hover {
+.userInfoSection > .LeftSide > .LogoutBtn:hover {
     background-color: red;
     color: var(--white);
     border: 1px solid var(--white);

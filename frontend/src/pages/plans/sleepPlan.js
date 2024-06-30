@@ -4,6 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link, Form, useNavigate } from 'react-router-dom';
 import SecondaryHeader from '../../components/secondaryHeader.js'
 
+// Importing Loading Screen
+import LoadingScreen from '../../components/loadingScreen.js';
+
 // For Login
 import NotLiAuthCheck from '../loginSystem/notLiAuthCheck.js';
 
@@ -99,6 +102,7 @@ function SleepPlan() {
     const [CaffeineInMg, setCaffeineInMg] = useState(0)
     const [sleepCalculations, setsleepCalculations] = useState('')
     const [UserSleepplan, setUserSleepplan] = useState('')
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
 
     // popupValues
@@ -237,6 +241,7 @@ function SleepPlan() {
 
     // Getting Their TrainingPlan
     useEffect(() => {
+        setLoading(true)
         const checkAuth = async () => {
             try {
                 const response = await fetch('http://127.0.0.1:8000/profile/sleepplan', {
@@ -244,6 +249,7 @@ function SleepPlan() {
                     credentials: 'include'  // Include credentials (cookies)
                 });
                 const data = await response.json();
+                setLoading(false)
                 setCaffeineInMg(data.caffeine_in_mg)
                 setsleepCalculations(data.sleep_calculations)
                 setUserSleepplan(data.user_sleepplan)
@@ -257,187 +263,189 @@ function SleepPlan() {
     return (
         <>
             <SecondaryHeader />
-            <section class="sleeplan_section">
+            {loading ? <LoadingScreen /> : (
+                <section class="sleeplan_section">
 
-                {/* <!-- 6th Cykle Sleep desctiption --> */}
-                <article>
-                    <aside>
-
-                        <aside>
-                            <h2>{ sleepCalculations[3] }</h2>
-                            <p>Timmar i sängen <br/> (6 sömncykler)</p>
-                        </aside>
-
-                        <div class="line"></div>
-
-                        <div>
-
-                            <aside>
-                                <img src={Night} alt="Moon" />
-                                <div>
-                                    <h3>{ sleepCalculations[0] }</h3>
-                                    <p>Föreslagen <br/> läggdags</p>
-                                </div>
-                            </aside>
-
-                            <div class="line"></div>
-
-                            <aside>
-                                <img src={Sun} alt="sun" />
-                                <div>
-                                    <h3>{ sleepCalculations[6] }</h3>
-                                    <p>Din <br/> Väckningstid</p>
-                                </div>
-                            </aside>
-
-                        </div>
-
-                    </aside>
-                </article>
-
-                {/* <!-- line --> */}
-                <aside>
-                    <div></div>
-                    <h4>Alternativ</h4>
-                    <div></div>
-                </aside>
-
-                {/* <!-- 5th Cykle Sleep desctiption --> */}
-                <article>
-                    <aside>
-
-                        <aside>
-                            <h2>{ sleepCalculations[4] }</h2>
-                            <p>Timmar i sängen <br/> (5 sömncykler)</p>
-                        </aside>
-
-                        <div class="line"></div>
-
-                        <div>
-
-                            <aside>
-                                <img src={Night} alt="Moon" />
-                                <div>
-                                    <h3>{ sleepCalculations[1] }</h3>
-                                    <p>Föreslagen <br/> läggdags</p>
-                                </div>
-                            </aside>
-
-                            <div class="line"></div>
-
-                            <aside>
-                                <img src={Sun} alt="sun" />
-                                <div>
-                                    <h3>{ sleepCalculations[6] }</h3>
-                                    <p>Din <br/> Väckningstid</p>
-                                </div>
-                            </aside>
-
-                        </div>
-
-                    </aside>
-                </article>
-
-                {/* <!-- line --> */}
-                <aside>
-                    <div></div>
-                    <h4>Alternativ</h4>
-                    <div></div>
-                </aside>
-
-                {/* <!-- 4th Cykle Sleep desctiption --> */}
-                <article>
-                    <aside>
-
-                        <aside>
-                            <h2>{ sleepCalculations[5] }</h2>
-                            <p>Timmar i sängen <br/> (4 sömncykler)</p>
-                        </aside>
-
-                        <div class="line"></div>
-
-                        <div>
-
-                            <aside>
-                                <img src={Night} alt="Moon" />
-                                <div>
-                                    <h3>{ sleepCalculations[2] }</h3>
-                                    <p>Föreslagen <br/> läggdags</p>
-                                </div>
-                            </aside>
-
-                            <div class="line"></div>
-
-                            <aside>
-                                <img src={Sun} alt="sun" />
-                                <div>
-                                    <h3>{ sleepCalculations[6] }</h3>
-                                    <p>Din <br/> Väckningstid</p>
-                                </div>
-                            </aside>
-
-                        </div>
-
-                    </aside>
-                </article>
-
-                {/* <!-- line --> */}
-                <aside>
-                    <div></div>
-                </aside>
-
-                {/* <!-- Caffein Limitation --> */}
-                <article>
-                    <p>Försök Hålla Dig Till Ca</p>
-                    <h2>{ CaffeineInMg } Mg Koffein Per Dag</h2>
-                    <div>
-                        <aside>
-                        {renderCaffeineImages(CaffeineInMg)}
-                        </aside>
-                        <div class="line"></div>
-                        <h3>{ CaffeineInMg / 100 } Koppar Kaffe</h3>
-                    </div>
-                    <h4 onClick={() => OnOffPopup(ShowPopupCaffeinInMg, setShowPopupCaffeinInMg)}>Att Tänka På</h4>
-                </article>
-
-                {/* <!-- line --> */}
-                <aside>
-                    <div></div>
-                </aside>
-
-                {/* <!-- Phone in Night Mode Before Sleep --> */}
-                <article>
-                    <p>Sätt På Ögonskydd samt låg ljusstyrka</p>
-                    <h2>En timme innan läggdags</h2>
-                    <img src={LookingAtScreenAtNight} alt="Phone_before_sleep" />
-                    <h4 onClick={() => OnOffPopup(ShowPopupOneHourBeforeBedtime, setShowPopupOneHourBeforeBedtime)} >Varför?</h4>
-                </article>
-
-                {/* <!-- line --> */}
-                <aside>
-                    <div></div>
-                </aside>
-
-                {/* <!-- Fördelar Och Nackdelar --> */}
-                <article>
+                    {/* <!-- 6th Cykle Sleep desctiption --> */}
                     <article>
                         <aside>
-                            <img src={GoodSleep} alt="Good_sleep" />
-                            <h2>Fördelarna Med Bra Sömn</h2>
-                            <h4 onClick={() => OnOffPopup(ShowPopupBenifitsOfGoodSleep, setShowPopupBenifitsOfGoodSleep)} >Visa Alla</h4>
-                        </aside>
-                        <div class="line"></div>
-                        <aside>
-                            <img src={Insomnia} alt="Bad_sleep" />
-                            <h2>Nackdelarna Med Dålig Sömn</h2>
-                            <h4 onClick={() => OnOffPopup(ShowPopupDisadvantagesOfBadSleep, setShowPopupDisadvantagesOfBadSleep)} >Visa Alla</h4>
+
+                            <aside>
+                                <h2>{ sleepCalculations[3] }</h2>
+                                <p>Timmar i sängen <br/> (6 sömncykler)</p>
+                            </aside>
+
+                            <div class="line"></div>
+
+                            <div>
+
+                                <aside>
+                                    <img src={Night} alt="Moon" />
+                                    <div>
+                                        <h3>{ sleepCalculations[0] }</h3>
+                                        <p>Föreslagen <br/> läggdags</p>
+                                    </div>
+                                </aside>
+
+                                <div class="line"></div>
+
+                                <aside>
+                                    <img src={Sun} alt="sun" />
+                                    <div>
+                                        <h3>{ sleepCalculations[6] }</h3>
+                                        <p>Din <br/> Väckningstid</p>
+                                    </div>
+                                </aside>
+
+                            </div>
+
                         </aside>
                     </article>
-                </article>
 
-                <Link to='/sleepplan/quiz'>Visa Min Information</Link>
+                    {/* <!-- line --> */}
+                    <aside>
+                        <div></div>
+                        <h4>Alternativ</h4>
+                        <div></div>
+                    </aside>
 
-            </section>
+                    {/* <!-- 5th Cykle Sleep desctiption --> */}
+                    <article>
+                        <aside>
+
+                            <aside>
+                                <h2>{ sleepCalculations[4] }</h2>
+                                <p>Timmar i sängen <br/> (5 sömncykler)</p>
+                            </aside>
+
+                            <div class="line"></div>
+
+                            <div>
+
+                                <aside>
+                                    <img src={Night} alt="Moon" />
+                                    <div>
+                                        <h3>{ sleepCalculations[1] }</h3>
+                                        <p>Föreslagen <br/> läggdags</p>
+                                    </div>
+                                </aside>
+
+                                <div class="line"></div>
+
+                                <aside>
+                                    <img src={Sun} alt="sun" />
+                                    <div>
+                                        <h3>{ sleepCalculations[6] }</h3>
+                                        <p>Din <br/> Väckningstid</p>
+                                    </div>
+                                </aside>
+
+                            </div>
+
+                        </aside>
+                    </article>
+
+                    {/* <!-- line --> */}
+                    <aside>
+                        <div></div>
+                        <h4>Alternativ</h4>
+                        <div></div>
+                    </aside>
+
+                    {/* <!-- 4th Cykle Sleep desctiption --> */}
+                    <article>
+                        <aside>
+
+                            <aside>
+                                <h2>{ sleepCalculations[5] }</h2>
+                                <p>Timmar i sängen <br/> (4 sömncykler)</p>
+                            </aside>
+
+                            <div class="line"></div>
+
+                            <div>
+
+                                <aside>
+                                    <img src={Night} alt="Moon" />
+                                    <div>
+                                        <h3>{ sleepCalculations[2] }</h3>
+                                        <p>Föreslagen <br/> läggdags</p>
+                                    </div>
+                                </aside>
+
+                                <div class="line"></div>
+
+                                <aside>
+                                    <img src={Sun} alt="sun" />
+                                    <div>
+                                        <h3>{ sleepCalculations[6] }</h3>
+                                        <p>Din <br/> Väckningstid</p>
+                                    </div>
+                                </aside>
+
+                            </div>
+
+                        </aside>
+                    </article>
+
+                    {/* <!-- line --> */}
+                    <aside>
+                        <div></div>
+                    </aside>
+
+                    {/* <!-- Caffein Limitation --> */}
+                    <article>
+                        <p>Försök Hålla Dig Till Ca</p>
+                        <h2>{ CaffeineInMg } Mg Koffein Per Dag</h2>
+                        <div>
+                            <aside>
+                            {renderCaffeineImages(CaffeineInMg)}
+                            </aside>
+                            <div class="line"></div>
+                            <h3>{ CaffeineInMg / 100 } Koppar Kaffe</h3>
+                        </div>
+                        <h4 onClick={() => OnOffPopup(ShowPopupCaffeinInMg, setShowPopupCaffeinInMg)}>Att Tänka På</h4>
+                    </article>
+
+                    {/* <!-- line --> */}
+                    <aside>
+                        <div></div>
+                    </aside>
+
+                    {/* <!-- Phone in Night Mode Before Sleep --> */}
+                    <article>
+                        <p>Sätt På Ögonskydd samt låg ljusstyrka</p>
+                        <h2>En timme innan läggdags</h2>
+                        <img src={LookingAtScreenAtNight} alt="Phone_before_sleep" />
+                        <h4 onClick={() => OnOffPopup(ShowPopupOneHourBeforeBedtime, setShowPopupOneHourBeforeBedtime)} >Varför?</h4>
+                    </article>
+
+                    {/* <!-- line --> */}
+                    <aside>
+                        <div></div>
+                    </aside>
+
+                    {/* <!-- Fördelar Och Nackdelar --> */}
+                    <article>
+                        <article>
+                            <aside>
+                                <img src={GoodSleep} alt="Good_sleep" />
+                                <h2>Fördelarna Med Bra Sömn</h2>
+                                <h4 onClick={() => OnOffPopup(ShowPopupBenifitsOfGoodSleep, setShowPopupBenifitsOfGoodSleep)} >Visa Alla</h4>
+                            </aside>
+                            <div class="line"></div>
+                            <aside>
+                                <img src={Insomnia} alt="Bad_sleep" />
+                                <h2>Nackdelarna Med Dålig Sömn</h2>
+                                <h4 onClick={() => OnOffPopup(ShowPopupDisadvantagesOfBadSleep, setShowPopupDisadvantagesOfBadSleep)} >Visa Alla</h4>
+                            </aside>
+                        </article>
+                    </article>
+
+                    <Link to='/sleepplan/quiz'>Visa Min Information</Link>
+
+                </section>
+            )}
             {/* for popups */}
             { ShowPopupCaffeinInMg ? <PopupCaffein caffeineInMg={CaffeineInMg} setShowPopupCaffeinInMg={setShowPopupCaffeinInMg} ShowPopupCaffeinInMg={ShowPopupCaffeinInMg} /> : ''}
             { ShowPopupOneHourBeforeBedtime ? <OneHourBeforeBedtimePopup setShowPopupOneHourBeforeBedtime={setShowPopupOneHourBeforeBedtime} ShowPopupOneHourBeforeBedtime={ShowPopupOneHourBeforeBedtime} /> : ''}

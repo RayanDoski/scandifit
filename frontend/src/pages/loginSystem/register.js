@@ -37,6 +37,8 @@ function Register() {
         const data = await response.json();
         if (data.success) {
             navigate('/')
+            // Whole Website Has To Reload For Changes to be implemented
+            window.location.reload();
         } else {
             setErrorMessage(data.message)
         }

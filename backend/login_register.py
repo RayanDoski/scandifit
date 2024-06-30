@@ -104,14 +104,7 @@ def protected():
     else:
         return jsonify({'success': False})
 
-
-
-
-
-
-
-
-
+# Code Is Not In Use
 
 def is_logged_in():
     '''

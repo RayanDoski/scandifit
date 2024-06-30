@@ -68,7 +68,6 @@ def profile_information():
         db.close()
         cursor.close()
 
-
 @profil.route("/profile/information/update", methods=['GET', 'POST'])
 def update_profile_information():
     '''
@@ -139,12 +138,22 @@ def logout():
     '''
     This function will logout uses by destroying session['user_id']
     '''
-    session.pop('user_id')
-    return jsonify(
-        {
-            'success': True
-        }
-    )
+    if 'user_id' in session:
+        session.pop('user_id')
+        return jsonify(
+            {
+                'success': True
+            }
+        )
+    else:
+        # They are already logged out
+        return jsonify(
+            {
+                'success': True
+            }
+        )
+
+# The Code Beneth Is Not In Use
 
 @profil.route("/profile/adress")
 def profile_adress():

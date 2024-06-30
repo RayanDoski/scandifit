@@ -1,20 +1,121 @@
-from flask import redirect, Blueprint, session, request
+from flask import redirect, Blueprint, session, request, jsonify
 from db import make_db_connection
 
 cart = Blueprint('cart', __name__)
 
-@cart.route('/delete_from_cart/<pid>')
-def delete_item(pid):
+@cart.route('/GetdddCartInfo', methods=['GET', 'POST'])
+def tesdddtings():
+    return session['cart_items']
+
+@cart.route('/GetCartInfo', methods=['GET', 'POST'])
+def GetCartInfo():
+    if 'cart_items' in session:
+        products = []
+        for items in session['cart_items']:
+            product = {
+                'id': items['id'],
+                'name': items['name'],
+                'price': items['price'],
+                'picture': items['picture'],
+                'quantity': items['quantity']
+            }
+            products.append(product)
+        return jsonify(
+            {
+                'success': True,
+                'products': products
+            }
+        )
+    else:
+        return jsonify(
+            {
+                'success': False
+            }
+        )
+    
+@cart.route('/AddCartInfo', methods=['GET', 'POST'])
+def AddCartInfo():
+
+    # # Fetching info sent from frontend react
+    # data = request.get_json()
+
+    # id = data.get('id')
+    # name = data.get('name')
+    # price = data.get('price')
+    # picture = data.get('picture')
+    # quantity = data.get('quantity')
+
+    # Define the new product
+    new_product = {
+        # 'id': id,
+        # 'name': name,
+        # 'price': price,
+        # 'picture': picture,
+        # 'quantity': quantity
+
+        'id': 2,
+        'name': 'Multiiii',
+        'price': 499,
+        'picture': 'opti-men-multivitamin.jpg',
+        'quantity': 1
+    }
+
+    if 'cart_items' not in session:
+        session['cart_items'] = []
+        cartItems = []
+    else:
+        cartItems = session['cart_items']
+
+    # Check if the product already exists in the cart
+    for items in cartItems:
+        if items['id'] == new_product['id']:
+            return jsonify(
+                {
+                    'success': False,
+                    'message': 'Product already in cart'
+                }
+            )
+
+    # Add new product to the cart
+    cartItems.append(new_product)
+    session['cart_items'] = cartItems
+
+    return jsonify(
+        {
+            'success': True,
+            'message': 'Product added to cart'
+        }
+    )
+
+@cart.route('/deleteFromCart', methods=['GET', 'POST'])
+def deleteItem():
     """Remove an item from the user's shopping cart."""
 
-    if 'cart_pid' in session:
+    # Fetching info sent from frontend react
+    data = request.get_json()
 
-        for items in session['cart_pid']:
-            if items[0] == int(pid):
-                session['cart_pid'].remove(items)
-                session['cart_pid'] = session['cart_pid']
+    index = data.get('index')
 
-        return redirect(request.referrer)
+    if 'cart_items' in session:
+        items = session['cart_items']
+        for item in items:
+            if str(item['id']) == str(index):
+                items.remove(item)
+                session['cart_items'] = items
+
+        return jsonify(
+            {
+                'success': True,
+            }
+        )
+    else:
+        return jsonify(
+            {
+                'success': False,
+            }
+        )    
+
+# The code beneth is not in use
 
 @cart.route('/add_product/<product>', methods=['post', 'get'])
 def add_product(product):
