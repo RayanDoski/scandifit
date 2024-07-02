@@ -11,7 +11,7 @@ from trainingplan_quiz import trainingplan_quiz
 from cart import cart
 from trainingplan import trainingplan
 from exercises import exercises
-from stripe_python import stripe_py
+from stripe_python import stripePy
 from product import product
 from dietplan import dietplan
 from sleepplan import sleepplan
@@ -30,7 +30,7 @@ app.register_blueprint(trainingplan_quiz)
 app.register_blueprint(cart)
 app.register_blueprint(trainingplan)
 app.register_blueprint(exercises)
-app.register_blueprint(stripe_py)
+app.register_blueprint(stripePy)
 app.register_blueprint(product)
 app.register_blueprint(dietplan)
 app.register_blueprint(sleepplan)

@@ -17,7 +17,8 @@ def GetCartInfo():
                 'name': items['name'],
                 'price': items['price'],
                 'picture': items['picture'],
-                'quantity': items['quantity']
+                'quantity': items['quantity'],
+                'stripePriceId': items['stripePriceId']
             }
             products.append(product)
         return jsonify(
@@ -57,7 +58,8 @@ def AddCartInfo():
         'name': 'Multiiii',
         'price': 499,
         'picture': 'opti-men-multivitamin.jpg',
-        'quantity': 1
+        'quantity': 1,
+        'stripePriceId': 'price_1OPAFZKgpFWeoEQVlTl26PyM'
     }
 
     if 'cart_items' not in session:

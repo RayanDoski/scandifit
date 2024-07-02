@@ -1,18 +1,21 @@
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+
+// Importing CSS
+import '../styles/header.css';
+
+// Importing loading screen
+import LoadingScreenFullScreen from './loadingScreenFullScreen';
 
 // Images
 import logo from '../images/logo.png';
 import HamburgerMenu from '../images/icons/hamburger-menu.png';
 import wastebasket from '../images/icons/bin.png';
 
-// Importing CSS
-import '../styles/header.css';
-
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-
 function CartSlideInMenu({isCartOpen, closeCart, products, setProducts}) {
 
     const [totalPrice, setTotalPrice] = useState(0);
+    const [loading, setLoading] = useState(false)
 
     const quantityAdjustAdd = (index) => {
         setProducts(prevProducts => {
@@ -87,10 +90,32 @@ function CartSlideInMenu({isCartOpen, closeCart, products, setProducts}) {
         }
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true)
+        const response = await fetch('http://127.0.0.1:8000/create_checkout_session', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ products }),
+        });
+        const data = await response.json();
+        if (data.success) {
+            setLoading(false)
+            window.location.href = data.redirect_url; // Use the provided URL from the server
+        } else {
+            setLoading(false)
+            alert(data.message)
+        }
+    };
+
     return (
         <>
+            { loading ? < LoadingScreenFullScreen /> : '' }
             <section onClick={closeCart} className={isCartOpen ? 'BackgroundForCartSlideInMenu show' : 'BackgroundForCartSlideInMenu'}></section>
-            <form className={isCartOpen ? 'ContainerForCartSlideInMenu show' : 'ContainerForCartSlideInMenu'}>
+            <form onSubmit={handleSubmit} className={isCartOpen ? 'ContainerForCartSlideInMenu show' : 'ContainerForCartSlideInMenu'}>
                 <h1>Varukorg <span>- {products.length} Artiklar</span></h1>
 
                 {products.map((product, index) => (

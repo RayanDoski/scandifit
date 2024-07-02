@@ -1,104 +1,75 @@
 import stripe
-from flask import redirect, Blueprint, session, request, render_template
-
-# Get Database Informaiton
-from db import make_db_connection, insert_into_user, add_phonenumber_to_user, add_adress_to_user, make_user_exklusiv
-
-#checking if user is logged in
-from login_register import is_logged_in, is_exklusiv
-
+from flask import redirect, Blueprint, session, request, render_template, jsonify
 from datetime import datetime
 import uuid
 
-#to get the cart values 
-from cart import show_products_in_cart
-
-stripe_py = Blueprint('stripe_py', __name__)
+stripePy = Blueprint('stripePy', __name__)
 
 stripe.api_key = 'sk_test_51O2qX1KgpFWeoEQVkbkv7tG1dSNCsq7JOfBa84AJAbWHJg2blyhO8y5ljQT8rsi2AAILHnXKBt47IdLYesxho6hG00yYZVnFw4'
 
-your_domain = 'http://127.0.0.1:8000'
+your_domain = 'http://127.0.0.1:3000'
 
-@stripe_py.route('/create_checkout_session', methods=['post', 'get'])
+@stripePy.route('/create_checkout_session', methods=['post', 'get'])
 def create_checkout_session():
     '''
     This function creates a new Checkout Session for a customer
     '''
-    # multivitamin_product = {
-    #     'once': 'price_1OPAFZKgpFWeoEQVlTl26PyM',
-    #     'sub': 'price_1OPAGDKgpFWeoEQVRiucrGxx',
-    # }
-
-    # Checking witch items that are in cart
-    if 'cart_pid' in session:
-        mode = 'payment'
-        card = ['card', 'klarna']
-        
-        line_item_variable = {
-            'price': 'price_1OPAFZKgpFWeoEQVlTl26PyM',
-            'quantity': 1
-        }
-
-    # If They Complete the Order, where do we send them?
-    success_end_url = '/order_complete/{CHECKOUT_SESSION_ID}'
-    # return stripe_checkout_code(line_item_variable, card, mode, success_end_url, custom_field_info, mail)
     try:
+        # Validate the request data
+        data = request.get_json()
+        products = data.get('products', [])
 
-        # Generate a unique customer identifier (you can use your own logic)
+        if not products:
+            return jsonify({'success': False, 'message': 'No products provided'}), 400
+
+        # Create line items from the provided products
+        line_items = []
+        for product in products:
+            line_items.append({
+                'price': product['stripePriceId'],
+                'quantity': product['quantity']
+            })
+
+        # Create a unique customer identifier
         customer_identifier = str(uuid.uuid4())
 
         # Get the current time
         purchase_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        
+
         checkout_session = stripe.checkout.Session.create(
-            line_items = [
-                line_item_variable
-            ],
-
-            # In sweden
+            line_items=line_items,
             locale='sv',
-
-            # Payment options we provide
-            payment_method_types=card,
-
-            # Already inserted mail
-            # customer_email='Rayan.d15@outlook.com',
-
-            # Allow promotions
+            payment_method_types=['card', 'klarna'],
             allow_promotion_codes=True,
-
-            # Phonenr reqired
             phone_number_collection={"enabled": True},
-            
-            # Add collection
             billing_address_collection='required',
-
-            # Billing mode
-            mode=mode,
-
-            # Giving customer a value, (For retrival Purposes)
+            mode='payment',
             customer=stripe.Customer.create(
                 id=customer_identifier,
                 email='Rayan.d15@outlook.com',
             ),
-
-            # Create Date When Purchases
-            metadata={
-                'purchase_time': purchase_time
-            },
-
-            # Success and cancel url:s
-            success_url = your_domain + success_end_url,
-            cancel_url = your_domain + '/',
-
+            metadata={'purchase_time': purchase_time},
+            success_url=f'{your_domain}/ordercomplete/{{CHECKOUT_SESSION_ID}}',
+            cancel_url=f'{your_domain}/',
         )
-    
-    except Exception as e:
-        return str(e)
-    
-    return redirect(checkout_session.url)
 
-@stripe_py.route('/scandifit_exklusiv', methods=['post', 'get'])
+        return jsonify({'success': True, 'redirect_url': checkout_session.url})
+
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)}), 500
+    
+
+@stripePy.route('/api/stripe-session/<session_id>', methods=['GET'])
+def get_stripe_session(session_id):
+    try:
+        session = stripe.checkout.Session.retrieve(session_id)
+        return jsonify(session)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# The code Beneth Is not in use
+
+@stripePy.route('/scandifit_exklusiv', methods=['post', 'get'])
 def scandifit_exklusiv_checkout():
     '''
     This Function Creates a new checkout only for the exklusiv plan 
@@ -137,7 +108,7 @@ def scandifit_exklusiv_checkout():
     success_end_url = '/exklusiv/{CHECKOUT_SESSION_ID}'
     return stripe_checkout_code(line_item_variable, card, mode, success_end_url, custom_field_info, mail)
 
-@stripe_py.route('/exklusiv/<checkout_session_id>')
+@stripePy.route('/exklusiv/<checkout_session_id>')
 def become_exklusiv(checkout_session_id):
     '''
     This function makes users exklusiv and adds values there values to out database
@@ -199,7 +170,7 @@ def become_exklusiv(checkout_session_id):
         db.close()
         cursor.close()
 
-@stripe_py.route("/order_complete/<session_id>", methods=['GET'])
+@stripePy.route("/order_complete/<session_id>", methods=['GET'])
 def order_complete(session_id):
     '''
     This function handles completed orders

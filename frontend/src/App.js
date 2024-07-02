@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/header.js';
 import Footer from './components/footer.js';
 
+// Homepage
+import Home from './pages/home.js';
+
 // Loading Screens
 import LoadingScreenFullScreen from './components/loadingScreenFullScreen.js';
 import LoadingScreen from './components/loadingScreen.js';
@@ -30,11 +33,14 @@ import Exercise from './pages/exercise.js'
 // contact us 
 import ContactUs from './pages/contactUs.js' 
 
+// Order Completed Page
+import OrderCompleted from './pages/orderComplete.js'
+
 function App() {
   return (
     <Router>
         <Routes>
-          <Route path="/" element={<><Header /><LoadingScreen /><Footer /></>} />
+          <Route path="/" element={<><Header /><Home /><Footer /></>} />
 
           {/* ContactUs */}
           <Route path="/contactus" element={<><Header /><ContactUs /><Footer /></>} />
@@ -57,6 +63,9 @@ function App() {
           {/* Exercises */}
           <Route path="/profile/exercises/:muscle" element={<><Header /><Exercises /><Footer /></>} />
           <Route path="/profile/exercise/:id" element={<><Header /><Exercise /><Footer /></>} />
+
+          {/* Order Completed */}
+          <Route path="/ordercomplete/:sessionId" element={<><Header /><OrderCompleted /><Footer /></>} />
 
         </Routes>
     </Router>
