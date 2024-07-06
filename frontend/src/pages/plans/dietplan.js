@@ -56,6 +56,11 @@ function DietPlan() {
                         <h2>{WaterIntake[1]} Liter Vatten Per Dag - <span>Träningsdag</span></h2>
                     </article>
 
+                    <article className='IngredientsThatFitYou' >
+                        <p>Ingredienser Som Passar Dig</p>
+                        <h3>Under<br/><span>Konstruktion</span></h3>
+                    </article>
+
                     <Link to='/dietplan/quiz'>Visa Min Information</Link>
                 </section>
             )}

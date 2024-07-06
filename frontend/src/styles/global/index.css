@@ -33,6 +33,18 @@ h3 {
     color: var(--black);
 }
 
+h4 {
+    color: var(--black);
+}
+
+p {
+    color: var(--black);
+}
+
+li {
+    color: var(--black);
+}
+
 label {
     color: var(--black);
 }

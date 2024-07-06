@@ -85,19 +85,26 @@
 }
 
 .HomepageHeroSection > aside {
-    flex: 1;
+    flex: 3;
     display: flex;
-    justify-content: right;
+    justify-content: center;
     align-items: center;
 }
 
 .HomepageHeroSection > aside > img {
-    height: 600px;
-    max-width: 100%;
-    max-height: 100%;
+    max-height: 800px;
+    height: 100%;
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1150px) {
+
+    .HomepageHeroSection > article {
+        flex: 1;
+    }
+
+    .HomepageHeroSection > aside {
+        flex: 1;
+    }
 
     .HomepageHeroSection > article > h1 {
         font-size: 38px;
@@ -105,14 +112,1096 @@
 
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 950px) {
+
+    .HomepageHeroSection {
+        width: 90%;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .HomepageHeroSection > aside {
+        display: none;
+        width: 100%;
+        justify-content: left;
+        align-items: left;
+    }
+
+    .HomepageHeroSection > aside > img {
+        max-height: 400px;
+        height: 100%;
+    }
+
+}
+
+/* @media only screen and (max-width: 1000px) {
+
+    .HomepageHeroSection {
+        width: 98%;
+        margin: 50px auto;
+    }
 
     .HomepageHeroSection > aside {
         display: none;
     }
 
     .HomepageHeroSection {
-        background-image: '../';
+        background-image: url('../images/holdingphone.png');
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .HomepageHeroSection > article > h1 {
+        font-size: 32px;
+    }
+
+} */
+
+/* ThreeBenifits */
+
+.ThreeBenifitsSection {
+    width: 98%;
+    max-width: 1600px;
+    padding: 20px 50px;
+    margin: 20px auto;
+    border-top: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ThreeBenifitsSection > article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 30%;
+}
+
+.ThreeBenifitsSection > article > img {
+    width: 45px;
+}
+
+.ThreeBenifitsSection > article > h3 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 750px) {
+
+    .ThreeBenifitsSection {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .ThreeBenifitsSection > article > img {
+        width: 55px;
+    }
+
+    .ThreeBenifitsSection > article {
+        width: 100%;
+    }
+
+}
+
+/* ProblemWithAchivingGoal */
+
+.ProblemWithAchivingGoalSection {
+    width: 75%;
+    margin: 50px auto;
+    max-width: 1600px;
+}
+
+.ProblemWithAchivingGoalSection > p {
+    font-size: 18px;
+    color: var(--gray);
+    text-align: center;
+    margin: 0;
+}
+
+.ProblemWithAchivingGoalSection > h2 {
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+}
+
+.ProblemWithAchivingGoalSection > .articleQuestions {
+    margin: 50px auto 75px auto;
+    border: 1px solid var(--gray);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.ProblemWithAchivingGoalSection > .articleQuestions > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 48%;
+}
+
+.ProblemWithAchivingGoalSection > .articleQuestions > div > img {
+    width: 30px;
+    height: 30px;
+}
+
+.ProblemWithAchivingGoalSection > .articleQuestions > div > p {
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+.ProblemWithAchivingGoalSection > .getPackageHere {
+    width: 100%;
+    margin: 50px auto;
+    border: 1px solid var(--gray);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    width: 750px;
+    gap: 40px;
+}
+
+.ProblemWithAchivingGoalSection > .getPackageHere > img {
+    width: 150px;
+}
+
+.ProblemWithAchivingGoalSection > .getPackageHere > aside > h3 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.ProblemWithAchivingGoalSection > .getPackageHere > aside > p {
+    margin: 0;
+    font-weight: 300;
+}
+
+.ProblemWithAchivingGoalSection > .getPackageHere > aside > .getHealthPackageBtn {
+    padding: 10px 20px;
+    margin: 20px 0px 0px 0px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: lighter;
+    color: var(--black);
+    text-align: center;
+    font-weight: 400;
+    display: block;
+    width: 500px;
+    transition: .5s all;
+}
+
+.ProblemWithAchivingGoalSection > .getPackageHere > aside > .getHealthPackageBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.ProblemWithAchivingGoalSection > .getPackageHere > aside > .getHealthPackageBtn > span {
+    font-weight: lighter;
+}
+
+.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage {
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid var(--gray);
+    border-radius: 15px;
+    width: 750px;
+}
+
+.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > h3 {
+    margin: 0;
+    font-weight: 400;
+    color: var(--gray);
+    font-size: 18px;
+}
+
+.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > h2 {
+    margin: 0;
+}
+
+.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > p {
+    margin: 30px 0px;
+    font-weight: 300;
+}
+
+.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > ul > li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > ul > li > img {
+    width: 30px;
+}
+
+@media only screen and (max-width: 1150px) {
+
+    .ProblemWithAchivingGoalSection {
+        width: 95%;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+    .ProblemWithAchivingGoalSection {
+        width: 98%;
+    }
+
+    .ProblemWithAchivingGoalSection > .getPackageHere {
+        width: 100%;
+    }
+
+    .ProblemWithAchivingGoalSection > .getPackageHere > aside > .getHealthPackageBtn {
+        width: 100%;
+    }
+
+    .ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage {
+        width: 100%;
+    }
+
+    .ProblemWithAchivingGoalSection > h2 {
+        font-size: 28px;
+    }
+
+    .ProblemWithAchivingGoalSection > .getPackageHere > aside > h3 {
+        font-size: 22px;
+    }
+
+    .ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > h2 {
+        font-size: 22px;
+    }
+
+    .ProblemWithAchivingGoalSection > .getPackageHere > img {
+        width: 100px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .ProblemWithAchivingGoalSection > h2 {
+        font-size: 24px;
+    }
+
+    .ProblemWithAchivingGoalSection > .getPackageHere > aside > h3 {
+        font-size: 20px;
+    }
+
+    .ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > h2 {
+        font-size: 20px;
+    }
+
+    .ProblemWithAchivingGoalSection > .articleQuestions {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .ProblemWithAchivingGoalSection > .articleQuestions > div {
+        gap: 15px;
+        width: 100%;
+    }
+
+    .ProblemWithAchivingGoalSection > .articleQuestions > div > p {
+        margin: 0;
+    }
+
+    .ProblemWithAchivingGoalSection > .getPackageHere {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+}
+
+/* All Parts Are Needed For Success */
+
+.allPartsAreNeededForSuccess {
+    width: 75%;
+    margin: 50px auto;
+    max-width: 1600px;
+}
+
+.allPartsAreNeededForSuccess > h3 {
+    text-align: center;
+    margin: 0;
+    font-size: 18px;
+    color: var(--gray);
+    font-weight: 400;
+}
+
+.allPartsAreNeededForSuccess > h2 {
+    margin: 0;
+    text-align: center;
+    font-size: 32px;
+}
+
+.allPartsAreNeededForSuccess > .ThreePlansArticle {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: 95%;
+    margin: 50px auto;
+}
+
+.allPartsAreNeededForSuccess > .ThreePlansArticle > div {
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--gray);
+}
+
+.allPartsAreNeededForSuccess > .ThreePlansArticle > div > h4 {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.allPartsAreNeededForSuccess > .ThreePlansArticle > div > h3 {
+    margin: 0;
+    text-align: center;
+    font-size: 24px;
+}
+
+.allPartsAreNeededForSuccess > .ThreePlansArticle > div > p {
+    margin: 20px 0px 0px 0px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.allPartsAreNeededForSuccess > .getHealthPackageBtn {
+    padding: 10px 20px;
+    margin: 50px auto;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: lighter;
+    color: var(--black);
+    text-align: center;
+    font-weight: 400;
+    display: block;
+    width: 500px;
+    transition: .5s all;
+}
+
+.allPartsAreNeededForSuccess > .getHealthPackageBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.allPartsAreNeededForSuccess > .getHealthPackageBtn > span {
+    font-weight: lighter;
+}
+
+.allPartsAreNeededForSuccess > .Testemonial {
+    width: 95%;
+    margin: 20px auto;
+    border: 1px solid var(--gray);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.allPartsAreNeededForSuccess > .Testemonial > img {
+    width: 105px
+}
+
+.allPartsAreNeededForSuccess > .Testemonial > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.allPartsAreNeededForSuccess > .Testemonial > aside > h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.allPartsAreNeededForSuccess > .Testemonial > aside > div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.allPartsAreNeededForSuccess > .Testemonial > aside > div > img {
+    width: 20px;
+    height: 20px;
+}
+
+.allPartsAreNeededForSuccess > .Testemonial > aside > p {
+    margin: 0;
+}
+
+.allPartsAreNeededForSuccess > .TrainingHardWithoutResult {
+    width: 95%;
+    margin: 50px auto 20px auto;
+    border: 1px solid var(--gray);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.allPartsAreNeededForSuccess > .TrainingHardWithoutResult > img {
+    width: 150px;
+    height: 150px;
+}
+
+.allPartsAreNeededForSuccess > .TrainingHardWithoutResult > div > h2 {
+    margin: 0px 0px 20px 0px;
+}
+
+.allPartsAreNeededForSuccess > .TrainingHardWithoutResult > div > p {
+    font-weight: 300;
+    margin: 10px 0px;
+}
+
+.allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked {
+    width: 85%;
+    margin: 50px auto;
+}
+
+.allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked > h2 {
+    font-size: 32px;
+}
+
+.allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked > p {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked > p > span {
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 1150px) {
+
+    .allPartsAreNeededForSuccess {
+        width: 95%;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+    .allPartsAreNeededForSuccess {
+        width: 98%;
+    }
+
+    .allPartsAreNeededForSuccess > h2 {
+        font-size: 28px;
+    }
+
+    .allPartsAreNeededForSuccess > .ThreePlansArticle {
+        width: 100%;
+    }
+
+    .allPartsAreNeededForSuccess > .ThreePlansArticle > div > h3 {
+        font-size: 22px;
+    }
+
+    .allPartsAreNeededForSuccess > .ThreePlansArticle {
+        gap: 10px;
+    }
+
+    .allPartsAreNeededForSuccess > .Testemonial {
+        gap: 15px;
+        width: 100%;
+    }
+
+    .allPartsAreNeededForSuccess > .Testemonial > aside > h2 {
+        font-size: 22px;
+    }
+
+    .allPartsAreNeededForSuccess > .TrainingHardWithoutResult {
+        gap: 15px;
+        width: 100%;
+    }
+
+    .allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked {
+        width: 90%;
+    }
+
+    .allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked > h2 {
+        font-size: 28px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .allPartsAreNeededForSuccess > h2 {
+        font-size: 24px;
+    }
+
+    .allPartsAreNeededForSuccess > .ThreePlansArticle {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .allPartsAreNeededForSuccess > .ThreePlansArticle > div > h3 {
+        font-size: 20px;
+    }
+
+    .allPartsAreNeededForSuccess > .getHealthPackageBtn {
+        width: 85%;
+    }
+
+    .allPartsAreNeededForSuccess > .Testemonial {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .allPartsAreNeededForSuccess > .Testemonial > aside > h2 {
+        font-size: 20px;
+    }
+
+    .allPartsAreNeededForSuccess > .TrainingHardWithoutResult {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .allPartsAreNeededForSuccess > .TrainingHardWithoutResult > img {
+        width: 125px;
+        height: 125px;
+    }
+
+    .allPartsAreNeededForSuccess > .TrainingHardWithoutResult > div > h2 {
+        font-size: 20px;
+    }
+
+    .allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked {
+        width: 100%;
+    }
+
+    .allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked > h2 {
+        font-size: 24px;
+    }
+    
+}
+
+/* Scandifit Health Package Details */
+
+.ScandifitHealthPackage {
+    width: 95%;
+    margin: 50px auto;
+}
+
+.ScandifitHealthPackage > article {
+    width: 800px;
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    border: 1px solid var(--gray);
+}
+
+.ScandifitHealthPackage > article > h2 {
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+}
+
+.ScandifitHealthPackage > article > h3 {
+    margin: 20px 0px 0px 0px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.ScandifitHealthPackage > article > img {
+    width: 500px;
+    margin: auto;
+}
+
+.ScandifitHealthPackage > article > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.ScandifitHealthPackage > article > ul > li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ScandifitHealthPackage > article > ul > li > img {
+    width: 30px;
+}
+
+.ScandifitHealthPackage > .PlusDiv {
+    margin: 50px auto;
+}
+
+.ScandifitHealthPackage > .PlusDiv > h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+}
+
+.ScandifitHealthPackage > .LineDiv {
+    width: 100%;
+    margin: 50px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ScandifitHealthPackage > .LineDiv > .Line {
+    height: 75px;
+    width: 2px;
+    background-color: var(--black);
+}
+
+.ScandifitHealthPackage > h3 {
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.ScandifitHealthPackage > h4 {
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.ScandifitHealthPackage > h2 {
+    text-align: center;
+    margin: 20px 0px 0px 0px;
+    font-weight: 400;
+}
+
+.ScandifitHealthPackage > h2 > span {
+    font-weight: 700;
+}
+
+.ScandifitHealthPackage > p {
+    text-align: center;
+    margin: 0;
+    font-weight: 300;
+}
+
+.ScandifitHealthPackage > .getHealthPackageBtn {
+    padding: 10px 20px;
+    margin: 20px auto 0px auto;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: lighter;
+    color: var(--black);
+    text-align: center;
+    font-weight: 400;
+    display: block;
+    width: 500px;
+    transition: .5s all;
+}
+
+.ScandifitHealthPackage > .getHealthPackageBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.ScandifitHealthPackage > .getHealthPackageBtn > span {
+    font-weight: lighter;
+}
+
+@media only screen and (max-width: 850px) {
+
+    .ScandifitHealthPackage {
+        width: 98%;
+    }
+
+    .ScandifitHealthPackage > article {
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .ScandifitHealthPackage > article > h2 {
+        font-size: 20px;
+    }
+
+    .ScandifitHealthPackage > article > img {
+        width: 350px;
+    }
+
+    .ScandifitHealthPackage > .getHealthPackageBtn {
+        width: 75%;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    .ScandifitHealthPackage > article > img {
+        width: 250px;
+        height: 150px;
+    }
+
+}
+
+/* how Does The ScandifitHealthPackage Work */
+
+.howDoesTheScandifitHealthPackageWork {
+    width: 95%;
+    margin: 100px auto 50px auto;
+    max-width: 1600px;
+}
+
+.howDoesTheScandifitHealthPackageWork > h2 {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0px 0px 40px 0px;
+}
+
+.howDoesTheScandifitHealthPackageWork > article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.howDoesTheScandifitHealthPackageWork > article > div {
+    border-radius: 15px;
+    height: 900px;
+    width: 5px;
+    background-color: var(--green);
+}
+
+.howDoesTheScandifitHealthPackageWork > article > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.howDoesTheScandifitHealthPackageWork > article > aside > div {
+    width: 600px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.howDoesTheScandifitHealthPackageWork > article > aside > div > img {
+    width: 150px;
+}
+
+.howDoesTheScandifitHealthPackageWork > article > aside > div > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.howDoesTheScandifitHealthPackageWork > article > aside > div > aside > h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.howDoesTheScandifitHealthPackageWork > article > aside > div > aside > p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.howDoesTheScandifitHealthPackageWork > article > aside > .line {
+    display: none;
+}
+
+
+@media only screen and (max-width: 1340px) {
+
+    .howDoesTheScandifitHealthPackageWork > article > aside > div {
+        width: 400px;
+    }
+
+}
+
+@media only screen and (max-width: 920px) {
+
+    .howDoesTheScandifitHealthPackageWork > article > aside > div {
+        width: 350px;
+    }
+
+    .howDoesTheScandifitHealthPackageWork > article > aside > div > img {
+        width: 125px;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+    .howDoesTheScandifitHealthPackageWork {
+        width: 98%;
+    }
+
+    .howDoesTheScandifitHealthPackageWork > h2 {
+        font-size: 28px;
+    }
+
+    .howDoesTheScandifitHealthPackageWork > article {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .howDoesTheScandifitHealthPackageWork > article > aside > div {
+        width: 75%;
+        margin: auto;
+        height: 200px;
+    }
+
+    .howDoesTheScandifitHealthPackageWork > article > aside > .remove {
+        display: none;
+    }
+
+    .howDoesTheScandifitHealthPackageWork > article > div {
+        display: none;
+    }
+
+    .howDoesTheScandifitHealthPackageWork > article > aside > .line {
+        display: block;
+        width: 100%;
+        height: 2px;
+        border-radius: 15px;
+        background-color: var(--green);
+        padding: 0;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .howDoesTheScandifitHealthPackageWork > article > aside > div {
+        width: 95%;
+        height: auto;
+        padding: 10px 0px;
+    }
+
+    .howDoesTheScandifitHealthPackageWork > article > aside > div > img {
+        width: 100px;
+    }
+
+}
+
+@media only screen and (max-width: 420px) {
+
+    .howDoesTheScandifitHealthPackageWork > article > aside > div {
+        align-items: baseline;
+        flex-direction: column;
+    }
+
+}
+
+/* Benifits That You Can Expect */
+
+.ThreeBenifitsSection > article > h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+/* Why You Have Failed Before And Why We Work */
+
+.WhyYouHaveFailedBeforeAndWhyWeWork {
+    width: 95%;
+    margin: 50px auto;
+    max-width: 1600px;
+}
+
+.WhyYouHaveFailedBeforeAndWhyWeWork > article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.WhyYouHaveFailedBeforeAndWhyWeWork > article > img {
+    width: 400px;
+}
+
+.WhyYouHaveFailedBeforeAndWhyWeWork > article > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.WhyYouHaveFailedBeforeAndWhyWeWork > article > div > p {
+    margin: 0;
+    font-size: 18px;
+    color: var(--gray);
+    font-weight: 400;
+}
+
+.WhyYouHaveFailedBeforeAndWhyWeWork > article > div > h2 {
+    font-size: 32px;
+    margin: 0;
+}
+
+.WhyYouHaveFailedBeforeAndWhyWeWork > article > div > ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0px 0px 0px;
+}
+
+.WhyYouHaveFailedBeforeAndWhyWeWork > article > div > ul > li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 300;
+}
+
+.WhyYouHaveFailedBeforeAndWhyWeWork > article > div > ul > li > img {
+    width: 30px;
+}
+
+@media only screen and (max-width: 1250px) {
+
+    .WhyYouHaveFailedBeforeAndWhyWeWork > article > img {
+        width: 200px;
+    }
+    
+}
+
+@media only screen and (max-width: 850px) {
+
+    .WhyYouHaveFailedBeforeAndWhyWeWork {
+        width: 90%;
+    }
+
+    .WhyYouHaveFailedBeforeAndWhyWeWork > article > img {
+        width: 200px;
+    }
+
+    .WhyYouHaveFailedBeforeAndWhyWeWork > article > div > h2 {
+        font-size: 28px;
+    }
+
+    .WhyYouHaveFailedBeforeAndWhyWeWork > article > div > ul {
+        gap: 20px;
+    }
+    
+}
+
+@media only screen and (max-width: 750px) {
+
+    .WhyYouHaveFailedBeforeAndWhyWeWork > article {
+        display: flex;
+        align-items: baseline;
+        justify-content: baseline;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+}
+
+/* What Does Other People Say */
+
+.WhatDoesOtherPeopleSay {
+    width: 95%;
+    margin: 50px auto;
+    max-width: 1600px;
+}
+
+.WhatDoesOtherPeopleSay > h2 {
+    font-size: 32px;
+    text-align: center;
+}
+
+.WhatDoesOtherPeopleSay > article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.WhatDoesOtherPeopleSay > article > div {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+}
+
+.WhatDoesOtherPeopleSay > article > div > p {
+    font-weight: 300;
+}
+
+.WhatDoesOtherPeopleSay > article > div > .line {
+    width: 100px;
+    height: 1px;
+    background-color: var(--gray);
+}
+
+.WhatDoesOtherPeopleSay > article > div > h3 {
+    margin: 15px 0px 0px 0px;
+    font-weight: 700;
+}
+
+.WhatDoesOtherPeopleSay > article > div > h4 {
+    margin: 0;
+    font-weight: 400;
+    color: var(--gray);
+}
+
+@media only screen and (max-width: 850px) {
+
+    .WhatDoesOtherPeopleSay > h2 {
+        font-size: 28px;
+    }
+
+}
+
+@media only screen and (max-width: 750px) {
+
+    .WhatDoesOtherPeopleSay > article {
+        flex-direction: column;
     }
 
 }
