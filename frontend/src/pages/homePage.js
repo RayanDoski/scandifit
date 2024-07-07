@@ -27,8 +27,8 @@ function HeroSection() {
         <section className='HeroSection'>
             <article>
                 <h2>Helt Gratis!</h2>
-                <h1>Förvandla Din Hälsa</h1>
-                <p>Var en av de första 5000 att få vårt exklusiva hälsopaket utan kostnad.</p>
+                <h1>Vill du uppnå dina träningsmål snabbare?</h1>
+                <p>Upptäck hemligheten bakom “Scandi Hälsopaketet” som ger dig resultat du inte trodde var möjligt!</p>
             </article>
             <div>
                 <Link to='/signup' className='btn'>Börja Nu!</Link>
@@ -53,21 +53,21 @@ function HealthPackageContains() {
                 <aside>
                     <img src={LaptopSleepplan} alt='HealthPackage On Laptop' />
                     <h3>Sömnplan</h3>
-                    <p>Optimera din sömn för att vakna upp utvilad och återställd varje morgon.</p>
+                    <p>Få bättre sömn, Vakna pigg varje morgon för att <span>maximera din träning och nå dina mål snabbare.</span></p>
                     <h4>Ord: 249 Kr</h4>
                 </aside>
                 <div className='line'></div>
                 <aside>
                     <img src={LaptopTrainingplan} alt='HealthPackage On Laptop' />
                     <h3>Träningsplan</h3>
-                    <p>Anpassade träningsrutiner som förbättrar både styrka och välmående.</p>
+                    <p>Anpassad träningsplan som kommer hjälpa dig <span>nå dina träningsmål snabbare och enklare.</span></p>
                     <h4>Ord: 499 Kr</h4>
                 </aside>
                 <div className='line'></div>
                 <aside>
                     <img src={LaptopKostplan} alt='HealthPackage On Laptop' />
                     <h3>Kostplan</h3>
-                    <p>Personliga kostplaner som boostar din energi och hälsa.</p>
+                    <p>En anpassad kostplan som accelererar resan mot din <span>drömkropp</span></p>
                     <h4>Ord: 249 Kr</h4>
                 </aside>
             </article>
@@ -205,6 +205,48 @@ function Urgency() {
     )
 }
 
+function EachFAQ({ question, answer }) {
+
+    const [openFaqBtn, setOpenFaqBtn] = useState(false)
+
+    return (
+        <>
+            <div className='EachFaqQuestion' onClick={() => setOpenFaqBtn(!openFaqBtn)}>
+                <aside>
+                    <h3>{question}</h3>
+                    <h3>{ openFaqBtn ? '-' : '+' }</h3>
+                </aside>
+                <div className={ openFaqBtn ? 'EachFaqAnswer open' : 'EachFaqAnswer' }>
+                    <p>{answer}</p>
+                </div>
+            </div>
+        </>
+    )
+}
+
+function HomePageLine() {
+    return (
+        <div className='HomePageline'></div>
+    )
+}
+
+function HomePageFAQ() {
+
+    const [openFaqBtn, setOpenFaqBtn] = useState(false)
+
+    return (
+        <section className='HomePageFAQ'>
+            <h2>Vanliga Frågor</h2>
+            <article>
+                <EachFAQ question='Vad är Häslopaket?' answer='Häslopaket är en app som hjälper dig att hitta din nästa date. Du kan skapa' />
+                <EachFAQ question='Vad är Häslopaket?' answer='Häslopaket är en app som hjälper dig att hitta din nästa date. Du kan skapa' />
+                <EachFAQ question='Vad är Häslopaket?' answer='Häslopaket är en app som hjälper dig att hitta din nästa date. Du kan skapa' />
+                <EachFAQ question='Vad är Häslopaket?' answer='Häslopaket är en app som hjälper dig att hitta din nästa date. Du kan skapa' />
+            </article>
+        </section>
+    )
+}
+
 function HomePage() {
 
     return (
@@ -214,6 +256,8 @@ function HomePage() {
             <StepByStepVisualization />
             <HomePageTestemonial />
             <Urgency />
+            <HomePageLine />
+            <HomePageFAQ />
         </>
     );
 }

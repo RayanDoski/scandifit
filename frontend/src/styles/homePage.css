@@ -195,6 +195,10 @@
     text-align: center;
 }
 
+.HealthPackageContains > article > aside > p > span {
+    font-weight: 400;
+}
+
 .HealthPackageContains > article > aside > h4 {
     font-weight: 400;
     margin: 10px 0px;
@@ -624,6 +628,95 @@
 
     .urgency > h3 {
         font-size: 20px;
+    }
+
+}
+
+/* Faq */
+
+.HomePageFAQ {
+    width: 95%;
+    margin: 40px auto;
+}
+
+.HomePageFAQ > h2 {
+    margin: 0px 0px 40px 0px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.HomePageFAQ > article {
+    display: flex;
+    flex-direction: column;
+    width: 750px;
+    margin: 0px auto;
+}
+
+/* FaqEach */
+
+.EachFaqQuestion {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--black);
+    cursor: pointer;
+    margin: 0px 0px 20px 0px;
+    overflow: hidden;
+}
+
+.EachFaqQuestion > aside {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.EachFaqQuestion > aside > h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.EachFaqQuestion > .EachFaqAnswer {
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    pointer-events: none;
+    max-height: 0;
+    transition: .5s ease-in-out;
+}
+
+.EachFaqQuestion > .EachFaqAnswer.open {
+    visibility: visible;
+    pointer-events: all;
+    max-height: 500px;
+}
+
+.EachFaqQuestion > div > p {
+    font-weight: 300;
+    margin: 20px 0px 0px 0px;
+}
+
+/* Line */
+
+.HomePageline {
+    width: 95%;
+    height: 5px;
+    margin: 0px auto;
+    border-radius: 15px;
+    background-color: var(--black);
+    max-width: 1600px;
+}
+
+@media only screen and (max-width: 850px) {
+
+    .HomePageFAQ > h2 {
+        font-size: 28px;
+    }
+
+    .HomePageFAQ > article {
+        width: 100%;
     }
 
 }
