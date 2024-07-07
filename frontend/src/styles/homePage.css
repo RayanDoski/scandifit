@@ -1,0 +1,629 @@
+@keyframes fadeInMoveDown {
+    from {
+        opacity: 0;
+        top: 25px;
+    }
+    to {
+        opacity: 1;
+        top: 0px;
+    }
+}
+
+.HeroSection {
+    padding: 100px 0px 0px 0px;
+    position: relative;
+    animation: fadeInMoveDown 1s ease forwards; /* Animation name, duration, timing function, fill mode */
+}
+
+.HeroSection > article {
+    width: 85%;
+    margin: 0px auto;
+}
+
+.HeroSection > article > h2 {
+    font-size: 32px;
+    font-weight: 400;
+    margin: 0px;
+    text-align: center;
+}
+
+.HeroSection > article > h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+}
+
+.HeroSection > article > p {
+    font-weight: 300;
+    font-size: 16px;
+    margin: 0;
+    text-align: center;
+}
+
+.HeroSection > div {
+    width: 300px;
+    margin: 0px auto;
+}
+
+.HeroSection > div > .btn {
+    padding: 10px;
+    margin: 30px 0px 0px 0px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--black);
+    text-align: center;
+    display: block;
+    transition: .5s all;
+}
+
+.HeroSection > div > .btn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.HeroSection > div > div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.HeroSection > div > div > .reassurance {
+    font-size: 14px;
+    margin: 0;
+    color: var(--gray);
+    text-align: center;
+}
+
+.HeroSection > div > div > img {
+    width: 10px;
+}
+
+.HeroSection > aside {
+    width: 100%;
+    display: flex;
+}
+
+.HeroSection > aside > img {
+    width: 700px;
+    margin: 30px auto 0px auto;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .HeroSection > article {
+        width: 95%;
+    }
+    
+    .HeroSection > article > h2 {
+        font-size: 28px;
+    }
+    
+    .HeroSection > article > h1 {
+        font-size: 38px;
+    }
+
+}
+
+@media only screen and (max-width: 750px) {
+    
+    .HeroSection > article > h2 {
+        font-size: 24px;
+    }
+    
+    .HeroSection > article > h1 {
+        font-size: 34px;
+    }
+
+    .HeroSection > aside > img {
+        width: 100%;
+        margin: 30px auto 0px auto;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+    
+    .HeroSection > div {
+        width: 75%;
+    }
+
+}
+
+/* Health Package Container */
+
+.HealthPackageContains {
+    width: 95%;
+    margin: auto;
+    max-width: 1600px;
+}
+
+.HealthPackageContains > .line {
+    width: 100%;
+    height: 5px;
+    border-radius: 15px;
+    background-color: var(--black);
+}
+
+.HealthPackageContains > h2 {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin: 40px 0px;
+}
+
+.HealthPackageContains > article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin: 0px 0px 40px 0px;
+}
+
+.HealthPackageContains > article > .line {
+    height: 300px;
+    width: 1px;
+    background-color: var(--gray);
+}
+
+.HealthPackageContains > article > aside {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.HealthPackageContains > article > aside > img {
+    width: 200px;
+}
+
+.HealthPackageContains > article > aside > h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.HealthPackageContains > article > aside > p {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+    text-align: center;
+}
+
+.HealthPackageContains > article > aside > h4 {
+    font-weight: 400;
+    margin: 10px 0px;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .HealthPackageContains > h2 {
+        font-size: 28px;
+    }
+
+    .HealthPackageContains > article {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .HealthPackageContains > article > .line {
+        height: 1px;
+        width: 100%;
+        background-color: var(--gray);
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .HealthPackageContains > h2 {
+        font-size: 24px;
+    }
+
+}
+
+/* Step By Step Visualization */
+
+.StepByStepVisualization {
+    max-width: 1600px;
+    margin: auto;
+}
+
+.StepByStepVisualization > h2 {
+    font-size: 32px;
+    margin: 40px 0px 0px 0px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.StepByStepVisualization > p {
+    margin: 0;
+    text-align: center;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.StepByStepVisualization > article {
+    margin: 30px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.StepByStepVisualization > article > .line {
+    height: 700px;
+    width: 1px;
+    background-color: var(--gray);
+}
+
+.StepByStepVisualization > article > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.StepByStepVisualization > article > aside > div {
+    display: flex;
+    align-items: center;
+    width: 550px;
+    height: 200px;
+    gap: 10px;
+}
+
+.StepByStepVisualization > article > aside > div > img {
+    width: 150px;
+}
+
+.StepByStepVisualization > article > aside > div > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.StepByStepVisualization > article > aside > div > aside > h3 {
+    font-weight: 400;
+    font-size: 18px;
+    margin: 0;
+}
+
+.StepByStepVisualization > article > aside > div > aside > p {
+    font-weight: 300;
+    font-size: 16px;
+    margin: 0;
+}
+
+.StepByStepVisualization > article > aside > .analyzeDiv {
+    display: none;
+}
+
+.StepByStepVisualization > article > aside > .line {
+    display: none;
+}
+
+@media only screen and (max-width: 1250px) {
+
+    .StepByStepVisualization > article {
+        gap: 10px;
+    }
+
+    .StepByStepVisualization > article > aside > div {
+        width: 400px;
+        height: 200px;
+    }
+
+}
+
+@media only screen and (max-width: 900px) {
+
+    .StepByStepVisualization > h2 {
+        font-size: 28px;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+    .StepByStepVisualization {
+        width: 98%;
+    }
+
+    .StepByStepVisualization > article {
+        flex-direction: column;
+    }
+
+    .StepByStepVisualization > article > .line {
+        display: none;
+    }
+
+    .StepByStepVisualization > article > aside > .remove {
+        display: none;
+    }
+
+    .StepByStepVisualization > article > aside > .analyzeDiv {
+        display: flex;
+    }
+    
+    .StepByStepVisualization > article > aside > .line {
+        display: block;
+        width: 100%;
+        height: 1px;
+        padding: 0;
+        background-color: var(--gray);
+    }
+
+    .StepByStepVisualization > article > aside > div {
+        width: 100%;
+        height: 200px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .StepByStepVisualization > h2 {
+        font-size: 24px;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+    .StepByStepVisualization > article > aside > div {
+        flex-direction: column;
+        align-items: baseline;
+        height: auto;
+        width: 85%;
+        margin: auto;
+        padding: 10px 0px;
+    }
+
+    .StepByStepVisualization > article > aside > div > img {
+        width: 100px;
+    }
+
+}
+
+/* Testemonial */
+
+.HomePageTestemonial {
+    width: 95%;
+    margin: 40px auto;
+    max-width: 1600px;
+}
+
+.HomePageTestemonial > .line {
+    height: 5px;
+    width: 100%;
+    border-radius: 15px;
+    background-color: var(--black);
+}
+
+.HomePageTestemonial > article {
+    padding: 40px 0px;
+}
+
+.HomePageTestemonial > article > h2 {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0px 0px 40px 0px;
+}
+
+.HomePageTestemonial > article > aside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.HomePageTestemonial > article > aside > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 400px;
+    border: 1px solid var(--black);
+    padding: 20px;
+}
+
+.HomePageTestemonial > article > aside > div > p {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.HomePageTestemonial > article > aside > div > aside {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--black);
+    padding: 10px;
+}
+
+.HomePageTestemonial > article > aside > div > aside > h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.HomePageTestemonial > article > aside > div > aside > div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.HomePageTestemonial > article > aside > div > aside > div > img {
+    width: 15px;
+    height: 15px;
+}
+
+.HomePageTestemonial > article > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto 0px auto;
+    gap: 10px;
+    width: 250px;
+}
+
+.HomePageTestemonial > article > div > div {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--black);
+    cursor: pointer;
+}
+
+.HomePageTestemonial > article > div > article {
+    width: 75px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid var(--black);
+}
+
+.HomePageTestemonial > article > div > article > div {
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+    background-color: var(--black);
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .HomePageTestemonial > article > aside > div > aside {
+        align-items: baseline;
+        justify-content: baseline;
+        flex-direction: column;
+    }
+
+    .HomePageTestemonial > article > aside > div > aside > div {
+        padding: 5px 0px;
+        border-top: 1px solid var(--black);
+    }
+
+}
+
+@media only screen and (max-width: 900px) {
+
+    .HomePageTestemonial > article > h2 {
+        font-size: 28px;
+    }
+    
+    .HomePageTestemonial > article > aside {
+        flex-direction: column;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .HomePageTestemonial > article > h2 {
+        font-size: 24px;
+    }
+
+    .HomePageTestemonial > article > aside > div {
+        width: 100%;
+    }
+
+}
+
+/* Urgency */
+
+.urgency {
+    width: 95%;
+    margin: 40px auto;
+}
+
+.urgency > h2 {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+}
+
+.urgency > p {
+    font-size: 16px;
+    margin: 0;
+    font-weight: 300;
+    text-align: center;
+}
+
+.urgency > h3 {
+    margin: 40px 0px 0px 0px;
+    font-weight: 400;
+    text-align: center;
+    font-size: 28px;
+}
+
+.urgency > h4 {
+    margin: 0;
+    font-weight: 300;
+    font-size: 20px;
+    text-align: center;
+}
+
+.urgency > .btn {
+    width: 300px;
+    padding: 10px;
+    margin: 30px auto 0px auto;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--black);
+    text-align: center;
+    display: block;
+    transition: .5s all;
+}
+
+.urgency > .btn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+
+.urgency > .reassurance {
+    text-align: center;
+    color: var(--gray);
+    font-size: 14px;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .urgency > h2 {
+        font-size: 28px;
+    }
+
+    .urgency > h3 {
+        font-size: 24px;
+    }
+    
+    .urgency > h4 {
+        font-size: 18px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .urgency > h2 {
+        font-size: 24px;
+    }
+
+    .urgency > h3 {
+        font-size: 20px;
+    }
+
+}

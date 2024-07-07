@@ -6,6 +6,7 @@ import Footer from './components/footer.js';
 
 // Homepage
 import Home from './pages/home.js';
+import HomePage from './pages/homePage.js'
 
 // Loading Screens
 import LoadingScreenFullScreen from './components/loadingScreenFullScreen.js';
@@ -41,6 +42,7 @@ function App() {
     <Router>
         <Routes>
           <Route path="/" element={<><Header /><Home /><Footer /></>} />
+          <Route path="/home" element={<><Header /><HomePage /><Footer /></>} />
 
           {/* ContactUs */}
           <Route path="/contactus" element={<><Header /><ContactUs /><Footer /></>} />
