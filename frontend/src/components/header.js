@@ -124,11 +124,18 @@ function CartSlideInMenu({isCartOpen, closeCart, products, setProducts}) {
                             <img src={getImage(product.picture)} alt={product.picture}/>
                             <div>
                                 <h2>{product.name}</h2>
-                                <div className='quantityDiv'>
-                                    <button type='button' onClick={() => quantityAdjustSubtract(index)} >-</button>
-                                    <input type='text' value={product.quantity} readOnly />
-                                    <button type='button' onClick={() => quantityAdjustAdd(index)} >+</button>
-                                </div>
+                                { product.subOrOnce === 'sub' ? (
+                                    <div>
+                                        <h3>Prenumeration</h3>
+                                    </div>
+                                ) : (
+                                    <div className='quantityDiv'>
+                                        <button type='button' onClick={() => quantityAdjustSubtract(index)} >-</button>
+                                        <input type='text' value={product.quantity} readOnly />
+                                        <button type='button' onClick={() => quantityAdjustAdd(index)} >+</button>
+                                    </div>
+                                )}
+                                
                             </div>
                         </article>
                         <aside>

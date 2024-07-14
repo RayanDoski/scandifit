@@ -11,7 +11,7 @@ import Loading from '../components/loadingScreenFullScreen.js';
 // Importing Images
 import Logo from '../images/logo.png'
 import Lock from '../images/icons/safety.png'
-import HeroImg from '../images/holdingphone.png'
+import HeroImg from '../images/holdingPhonePlan.png'
 import TimeIcon from '../images/icons/timeIcon.png'
 import CheckMark from '../images/icons/checkmark.png'
 import MuscleMan from '../images/icons/muscleman.png'
@@ -31,11 +31,7 @@ import HealthyAndStrongIcon from '../images/icons/healthyAndStrongIcon.png'
 import GoalIcon from '../images/icons/GoalIcon.png'
 import RolemodelIcon from '../images/icons/rolemodelIcon.png'
 import HandshakeIcon from '../images/icons/handshakeIcon.png'
-
-
-
-import postnord from '../images/postnord.png';
-import LoadingScreenFullScreen from '../components/loadingScreenFullScreen.js';
+import sad from '../images/icons/sad.png'
 
 function Hero() {
     return (
@@ -43,8 +39,8 @@ function Hero() {
             <article>
                 <img src={Logo} alt='Logo' />
                 <h3>Vill du forma din drömkropp och imponera på dig själv i spegeln?</h3>
-                <h1>Hur Snabbt Kan Du Förändra Din Hälsa? Testa Scandifits Hälsopaket Helt Gratis!</h1>
-                <p>Scandi Hälsopaket:Din Kompletta Plan För Kost, Träning och Sömn Få en specialgjord plan som hjälper dig nå dina mål snabbt – oavsett om du vill gå ner i vikt, bygga muskler eller förbättra din allmänna hälsa. <span>Allt på bara 60 sekunder och helt gratis!</span></p>
+                <h1>Få ditt personliga “scandi hälsopaket” på 60 sekunder och uppnå dina mål upp till 90% snabbare utan att slösa tid på planering!</h1>
+                <p>Få en specialgjord plan för att nå dina mål snabbt – oavsett om du vill gå ner i vikt, bygga muskler eller förbättra din hälsa. <span>Allt på bara 60 sekunder och helt gratis!</span></p>
                 <div>
                     <Link to='/signup' className='btn'>Ja, ge mig mitt hälso paket <br/> <span>Helt Gratis!!</span></Link>
                     <p className='reassurance' > <img src={Lock} alt='Lock' /> 100% Privat, Inga kreditkort behövs</p>
@@ -57,161 +53,79 @@ function Hero() {
     )
 }
 
+function Line() {
+    return (
+        <div className='HomeLineDesign'></div>
+    )
+}
+
 function ThreeBenifits() {
     return (
-        <section className='ThreeBenifitsSection'>
-            <article>
-                <img src={TimeIcon} alt='icon' />
-                <h3>Få ditt personliga hälsopaket på 60s</h3>
-            </article>
-            <article>
-                <img src={CheckMark} alt='icon' />
-                <h3>Steg-för-steg planer för att nå dina träningmål</h3>
-            </article>
-            <article>
-                <img src={MuscleMan} alt='icon' />
-                <h3>Anpassat efter dina mål</h3>
-            </article>
+        <>
+            <Line />
+            <section className='ThreeBenifitsSection'>
+                <article>
+                    <img src={TimeIcon} alt='icon' />
+                    <h3>Få ditt personliga hälsopaket på 60s</h3>
+                </article>
+                <article>
+                    <img src={CheckMark} alt='icon' />
+                    <h3>Steg-för-steg planer för att nå dina träningmål</h3>
+                </article>
+                <article>
+                    <img src={MuscleMan} alt='icon' />
+                    <h3>Anpassat efter dina mål</h3>
+                </article>
+            </section>
+            <Line />
+        </>
+    )
+}
+
+function DoYouTrainHardWithoutSeeingResults() {
+    return (
+        <section className='DoYouTrainHardWithoutSeeingResults'>
+            <img src={sad} alt='Sad Icon' />
+            <aside>
+                <h2>Tränar du hårt utan att se resultat?</h2>
+                <p>Du är inte ensam. <span>Tänk på alla gånger du har slitit på gymmet, följt strikta dieter och ändå inte nått dina träningsmål.</span></p>
+                <p><span>Frustrationen när du ser dig i spegeln och inget förändras, trots regelbunden träning.</span></p>
+                <p>Besvikelsen över att <span>vågen visar samma siffra varje vecka, trots ändrad kost.</span></p>
+                <p>Tröttheten när du <span>vaknar utan tillräcklig sömn,</span> som påverkar din träning och energi.</p>
+                <p><span>Känslan av hopplöshet när du inser att all din ansträngning kanske aldrig kommer att ge dig de resultat du drömmer om.</span></p>
+            </aside>
         </section>
     )
 }
 
-function ProblemWithAchivingGoal() {
+function WhatIfYouHadAPlanThatActuallyWorks() {
     return (
-        <section className='ProblemWithAchivingGoalSection'>
-            <p className='subheader'>Har Du Problem med Att Nå Dina Hälsomål?</p>
-            <h2>Krossa Dina Hinder och Uppnå Dina Träningsmål en Gång för Alla</h2>
-            <article className='articleQuestions'>
-                <div>
-                    <img src={CheckmarkGreen} alt='Checkmark' />
-                    <p>Har du försökt passa in träning i din dag, men misslyckats på grund av brist på tid och en tydlig plan?</p>
-                </div>
-                <div>
-                    <img src={CheckmarkGreen} alt='Checkmark' />
-                    <p>Har du försökt passa in träning i din dag, men misslyckats på grund av brist på tid och en tydlig plan?</p>
-                </div>
-                <div>
-                    <img src={CheckmarkGreen} alt='Checkmark' />
-                    <p>Har du försökt passa in träning i din dag, men misslyckats på grund av brist på tid och en tydlig plan?</p>
-                </div>
-                <div>
-                    <img src={CheckmarkGreen} alt='Checkmark' />
-                    <p>Har du försökt passa in träning i din dag, men misslyckats på grund av brist på tid och en tydlig plan?</p>
-                </div>
-                <div>
-                    <img src={CheckmarkGreen} alt='Checkmark' />
-                    <p>Har du försökt passa in träning i din dag, men misslyckats på grund av brist på tid och en tydlig plan?</p>
-                </div>
-                <div>
-                    <img src={CheckmarkGreen} alt='Checkmark' />
-                    <p>Har du försökt passa in träning i din dag, men misslyckats på grund av brist på tid och en tydlig plan?</p>
-                </div>
-            </article>
-            <h2>Om något av detta låter bekant för dig, då är detta Scandi Hälsopaket perfekt för dig...</h2>
-            <article className='getPackageHere'>
-                <img src={HealthPackage} alt='healthPackage' />
-                <aside>
-                    <h3>Få din personliga hälsopaket här!</h3>
-                    <p>Om du är trött på att inte nå dina hälsomål? Då kommer denna plan att guida dig steg för steg om hur du kan förbättra din hälsa steg för steg.</p>
-                    <Link to='' className='getHealthPackageBtn' >Ja, ge mig mitt hälso paket <br/> <span>Helt Gratis!!</span></Link>
-                </aside>
-            </article>
-            <article className='WhatIsScandifitHealthPackage' > 
-                <h3>Vad Är "Scandi Hälsopaket"?</h3>
-                <h2>Den Ultimata Guiden Till Dina Träningsmål</h2>
-                <p>Scandi Hälsopaketet är en enkel steg-för-steg-plan som hjälper dig att nå dina träningsmål snabbare och enklare. Den här guiden ger dig allt du behöver för att äta rätt, träna och sova bra.</p>
-                <p>Scandi Hälsopaketet har hjälpt massor av människor att nå sina träningsmål och bli hälsosammare. Med det här paketet har:</p>
-                <ul>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Över 10,000 personer gått ner i vikt och blivit starkare</li>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Mer än 20,000 personer fått mer energi och mått bättre</li>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Många nöjda kunder sagt att det funkar jättebra</li>
-                </ul>
-            </article>
+        <section className='WhatIfYouHadAPlanThatActuallyWorks'>
+            <h2>Tänk om du hade en plan som verkligen fungerar?</h2>
+            <p>Tänk dig en vardag utan att undra om ditt träningspass var meningslöst, om din diet är rätt, eller om du får tillräckligt med vila</p>
         </section>
-    )
-}
-
-function AllPartsAreNeededForSuccess() {
-    return (
-        <section className='allPartsAreNeededForSuccess'>
-
-            <h3>Du Behöver Alla Delar För Att Lyckas Med Dina Träningsmål, Inte Bara En</h3>
-            <h2>Implementera Dessa Och Förvandla Din Känsla Från "meh" Till "wow" När Du Ser Dig Själv I Spegeln! </h2>
-
-            <article className='ThreePlansArticle'>
-
-                <div>
-                    <h4>Skräddarsydd</h4>
-                    <h3>Träningsplan</h3>
-                    <p>För att nå dina träningsmål på bästa sätt är det viktigt med ett personligt anpassat träningschema. Det innebär att varje  träning är specifikt utformad för att hjälpa dig att effektivt nå dina mål, vilket sparar tid och undviker ineffektiva övningar.</p>
-                </div>
-
-                <div>
-                    <h4>Skräddarsydd</h4>
-                    <h3>Kostplan</h3>
-                    <p>En personlig kostplan är nödvändig för att ge din kropp rätt  näring för återhämtning och energi under träning. Utan den  kan du missa viktiga näringsämnen som behövs för att maximera dina träningsresultat och prestation.</p>
-                </div>
-
-                <div>
-                    <h4>Skräddarsydd</h4>
-                    <h3>Sömnplan</h3>
-                    <p>En personlig sömnplan är avgörande för att ge din kropp den vila den behöver för återhämtning och prestation. Utan en sådan plan kan du missa viktiga vilotimmar som är nödvändiga för att maximera dina träningsresultat och energinivåer.</p>
-                </div>
-
-            </article>
-
-            <Link to='/thelink' className='getHealthPackageBtn'>Ja, ge mig mitt hälso paket <br/> <span>Helt Gratis!!</span></Link>
-
-            <article className='Testemonial' >
-                <img src={EmptyProfilePicture} alt='ProfilePicture' />
-                <aside>
-                    <h2>"FANTASTISKT RESULTAT!"</h2>
-                    <div>
-                        <img src={GreenStar} alt='star' />
-                        <img src={GreenStar} alt='star' />
-                        <img src={GreenStar} alt='star' />
-                        <img src={GreenStar} alt='star' />
-                        <img src={GreenStar} alt='star' />
-                    </div>
-                    <p>"Scandi Hälsopaketet har förändrat mitt liv. Den personliga träningsplanen, kostplanen och sömnplanen är de bästa jag någonsin har använt. Tack vare Scandi Hälsopaketet har jag nått mina träningsmål mycket snabbare än jag trodde var möjligt. Jag har gått ner 10 kg, byggt upp muskler och känner mig starkare och friskare än någonsin. Jag rekommenderar det varmt till alla som vill ta sin hälsa till nästa nivå." - Sara Lindström</p>
-                </aside>
-            </article>
-
-            <article className='TrainingHardWithoutResult' >
-                <img src={Exhausted} alt='Exhausted' />
-                <div>
-                    <h2>Tränar Du Hårt Utan Att Se Resultat?</h2>
-                    <p>Du är inte ensam. Tänk på alla gånger du har slitit på gymmet, följt strikta dieter och ändå inte nått dina träningsmål. Det känns som att kasta bort din tid och energi. <span>Frustrerande, eller hur?</span></p>
-                    <p><span>Har du någonsin känt så här?</span> Frustrationen när du ser i spegeln och inget förändras, trots regelbunden träning. Besvikelsen över att vågen visar samma siffra varje vecka, trots ändrad kost.</p>
-                    <p><span>Tröttheten när du vaknar utan tillräcklig sömn</span>, som påverkar din träning och energi. Känslan av hopplöshet när du inser att all tid och energi kanske aldrig leder till de resultat du drömmer om.</p>
-                </div>
-            </article>
-            
-            <div className='WhatIfYouHadaPlanThatWorked'>
-                <h2>Vad om du kunde ha en plan som faktiskt fungerar för just dig?</h2>
-                <p><span>Tänk dig en vardag utan att undra om ditt träningspass var meningslöst, om din diet är rätt, eller om du får tillräckligt med vila.</span> Vi förstår hur hopplöst det kan kännas att försöka och försöka utan att se de resultat du vill ha.</p>
-                <p><span>Men tänk om allt kunde förändras?</span></p>
-                <p>Vi har utvecklat en helhetslösning som är personligt anpassad för dig och garanterar att du når dina träningsmål snabbare och enklare.</p>
-            </div>
-            
-        </section>
-        
     )
 }
 
 function ScandifitHealthPackage() {
     return (
         <section className='ScandifitHealthPackage'>
+            
+            <div>
+                <h3>introducerar steg för steg lösningen</h3>
+                <h2>Scandi Hälsopaketet</h2>
+                <p>Vi har utvecklat en helhetslösning som är personligt anpassad för dig och garanterar att du når dina träningsmål snabbare och enklare.</p>
+            </div>
 
             <article>
                 <h2>"Få Ditt 60-sekunders 'Scandi schema' och nå träningsmål 80-90% snabbare!"</h2>
                 <h3>Total värde: 499kr</h3>
                 <img src={LaptopTrainingplan} alt='Trainingplan On Laptop' />
                 <ul>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Med Scandi Schema bestämmer du hur du vill träna, hemma eller på gymmet.</li>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Slipper tänka ut träningsplaner varje gång – börja träna direkt och spara tid.</li>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Tydliga mål och snabba resultat ger motivation att fortsätta träna hårt.</li>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Anpassat för din kropp, gör varje träningspass effektivt och skräddarsytt.</li>
+                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Få en träningsplan som är anpassat till dina mål</li>
+                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Träna direkt med din träningsplan och spara tid och energi</li>
+                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Nå dina träningsmål snabbare och enklare</li>
+                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Anpassat för din kropp, varje övning och träningspass är utformade för just dig</li>
                 </ul>
             </article>
 
@@ -222,10 +136,10 @@ function ScandifitHealthPackage() {
                 <h3>Total värde: 249kr</h3>
                 <img src={LaptopKostplan} alt='Kostplan On Laptop' />
                 <ul>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Med Scandi Schema bestämmer du hur du vill träna, hemma eller på gymmet.</li>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Slipper tänka ut träningsplaner varje gång – börja träna direkt och spara tid.</li>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Tydliga mål och snabba resultat ger motivation att fortsätta träna hårt.</li>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Anpassat för din kropp, gör varje träningspass effektivt och skräddarsytt.</li>
+                    <li><img src={CheckmarkGreen} alt='Checkmark' /> kostplan som visar hur mycket mat och vatten du behöver för att nå dina träningsmål</li>
+                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Följ din plan och slipp oroa dig för vad du ska äta. Spara tid på måltidsplanering</li>
+                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Ät rätt så du får mer energi och blir starkare, vilket hjälper dig att nå dina hälsomål snabbare</li>
+                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Planen är anpassad för att passa just dig och din livsstil, vilket gör det lättare att äta rätt och må bra</li>
                 </ul>
             </article>
 
@@ -236,17 +150,17 @@ function ScandifitHealthPackage() {
                 <h3>Total värde: 249kr</h3>
                 <img src={LaptopSleepplan} alt='Sleepplan On Laptop' />
                 <ul>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Med Scandi Schema bestämmer du hur du vill träna, hemma eller på gymmet.</li>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Slipper tänka ut träningsplaner varje gång – börja träna direkt och spara tid.</li>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Tydliga mål och snabba resultat ger motivation att fortsätta träna hårt.</li>
-                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Anpassat för din kropp, gör varje träningspass effektivt och skräddarsytt.</li>
+                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Få de bästa tiderna att sova och vakna för maximal prestation och energi</li>
+                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Hjälper dig nå dina träningsmål med rätt sömn</li>
+                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Få mer energi och minska risken för skador med bättre sömn</li>
+                    <li><img src={CheckmarkGreen} alt='Checkmark' /> Enkel plan som passar din livsstil och förbättrar din hälsa</li>
                 </ul>
             </article>
 
             <div className='LineDiv'><div className='Line' ></div></div>
 
             <h3>Total värde: 997kr</h3>
-            <h4>Få din scandi hälso paket idag</h4>
+            <h4>Få ditt scandi hälso paket idag</h4>
             <h2><span>Gratis</span> För De Första 5000 Användarna</h2>
             <p>Nuvarande Användare: 2457</p>
             <Link to='' className='getHealthPackageBtn' >Ja, ge mig mitt hälso paket <br/> <span>Helt Gratis!!</span></Link>
@@ -258,48 +172,47 @@ function ScandifitHealthPackage() {
 
 function HowDoesTheScandifitHealthPackageWork() {
     return (
-        <section className='howDoesTheScandifitHealthPackageWork'>
-            <h2>Hur Ditt “Scandi Hälsopaket” Fungerar</h2>
+        <section className='StepByStepVisualization'>
+            <h2>Din väg till bättre hälsa</h2>
+            <p>Steg För Steg</p>
             <article>
                 <aside>
                     <div>
-                        <img src={pictureFromTheQuiz} alt='Picture From The Quiz' />
+                        <img src={pictureFromTheQuiz} alt='Picture From Quiz' />
                         <aside>
-                            <h4>Ta Vårt 60-sekunders Quiz</h4>
+                            <h3>Ta Vårt 60-sekunders Quiz</h3>
                             <p>Börja med vårt 60-sekunders quiz där vi frågar om din träningsnivå, dina mål och din livsstil för att förstå dina behov bättre.</p>
                         </aside>
                     </div>
-                    <div className='line' ></div>
-                    <div className='remove' ></div>
-                    <div>
-                        <img src={trainingSchedualIcon} alt='Training Schedual Icon' />
+                    <div className='remove'></div>
+                    <div className='line'></div>
+                    <div className='analyzeDiv' >
+                        <img src={analyze} alt='analyze' />
                         <aside>
-                            <h4>Få Ditt Personligt Anpassade Träningsschema, Kostplan, Sömnplan</h4>
-                            <p>Efter analysen skapas ett personligt träningsschema, kostplan, sömnplan  som finns i ditt konto i scandifit.</p>
+                            <h3>Analyserar Dina Svar</h3>
+                            <p>När du har slutfört en quiz analyserar vårt system dina svar noggrant för att skapa en plan som passar just dina behov.</p>
                         </aside>
                     </div>
-                    <div className='remove' ></div>
-                    <div className='line' ></div>
+                    <div className='line'></div>
+                    <div>
+                        <img src={runningOnTreadmilIcon} alt='Running on treadmil icon' />
+                        <aside>
+                            <h3>Börja Följa planen</h3>
+                            <p>Börja följa din vårt hälsopaket och upplev hur effektiv och motiverande en anpassad plan kan vara. Vi finns här för att stödja dig varje steg på vägen.</p>
+                        </aside>
+                    </div>
                 </aside>
-                <div></div>
+                <div className='line'></div>
                 <aside>
-                    <div className='remove' ></div>
-                    <div>
-                        <img src={analyze} alt='' />
+                    <div className='remove'></div>
+                    <div className='remove'>
+                        <img src={analyze} alt='analyze' />
                         <aside>
-                            <h4>Analysera Dina Svar</h4>
-                            <p>När du har slutfört quizet analyserar vårt system dina svar noggrant för att skapa en personlig steg-stegträningsplan som passar just dina behov.</p>
+                            <h3>Analyserar Dina Svar</h3>
+                            <p>När du har slutfört en quiz analyserar vårt system dina svar noggrant för att skapa en plan som passar just dina behov.</p>
                         </aside>
                     </div>
-                    <div className='line' ></div>
-                    <div className='remove' ></div>
-                    <div>
-                        <img src={runningOnTreadmilIcon} alt='' />
-                        <aside>
-                            <h4>Börja Träna och Följ planen</h4>
-                            <p>Börja följa ditt personliga scandi hälso paket och upplev hur effektiv och motiverande en  anpassad träningsplan kan vara. Vi finns här för att stödja dig varje steg på vägen</p>
-                        </aside>
-                    </div>
+                    <div className='remove'></div>
                 </aside>
             </article>
         </section>
@@ -328,48 +241,194 @@ function BenifitsThatYouMightExpect() {
     )
 }
 
-function WhyYouHaveFailedBeforeAndWhyWeWork() {
+function HomeTestemonial() {
+
+    const [showOtherTestimonials, setShowOtherTestimonials] = useState(false)
+
+    const styles = {
+        roundBtn: {
+            backgroundColor: '#50C878'
+        },
+        noStyle: {}
+    };
+
     return (
-        <section className='WhyYouHaveFailedBeforeAndWhyWeWork'>
+        <section className='HomePageTestemonial'>
+            <div className='line'></div>
             <article>
-                <img src={HandshakeIcon} alt='icon' />
+                <h2>Vad våra användare säger</h2>
+                <aside>
+
+                    <div className={ showOtherTestimonials ? 'threeFirstTestemonials' : 'threeFirstTestemonials show'}>
+                        <aside>
+                            <h3>Robert</h3>
+                            <div>
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                            </div>
+                        </aside>
+                        <p>Det är ett bra schema! borde ha gjort ett för länge sedan 😃</p>
+                    </div>
+
+                    <div className={ showOtherTestimonials ? 'threeFirstTestemonials' : 'threeFirstTestemonials show'}>
+                        <aside>
+                            <h3>Rayan</h3>
+                            <div>
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                            </div>
+                        </aside>
+                        <p>Älskar träningsprogrammet, men det skulle vara bra om ni lade till en offlineversion</p>
+                    </div>
+
+                    <div className={ showOtherTestimonials ? 'threeFirstTestemonials' : 'threeFirstTestemonials show'}>
+                        <aside>
+                            <h3>Chee</h3>
+                            <div>
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                            </div>
+                        </aside>
+                        <p>Detta är ett riktigt bra program som har hjälpt mig att gå ner 2 kg på en vecka</p>
+                    </div>
+
+                    <div className={ showOtherTestimonials ? 'threeSecondTestemonials show' : 'threeSecondTestemonials'}>
+                        <aside>
+                            <h3>Hyrum</h3>
+                            <div>
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                            </div>
+                        </aside>
+                        <p>Det första programmet som fick mig att komma igång eftersom det gav mig allt jag behövde för att komma igång</p>
+                    </div>
+
+                    <div className={ showOtherTestimonials ? 'threeSecondTestemonials show' : 'threeSecondTestemonials'}>
+                        <aside>
+                            <h3>Robin</h3>
+                            <div>
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                            </div>
+                        </aside>
+                        <p>Trevligt program, fungerar bra, och innehåller en bra, genomtänkt uppsättning av övningar</p>
+                    </div>
+
+                    <div className={ showOtherTestimonials ? 'threeSecondTestemonials show' : 'threeSecondTestemonials'}>
+                        <aside>
+                            <h3>Ahmad</h3>
+                            <div>
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                            </div>
+                        </aside>
+                        <p>Jag provade programmet i en vecka, Rekommenderar starkt för alla att prova</p>
+                    </div>
+
+                </aside>
+
                 <div>
-                    <p>Hemligheten till Framgång</p>
-                    <h2>Varför Scandi Hälsopaketet fungerar när andra metoder misslyckas:</h2>
-                    <ul>
-                        <li><img src={CheckmarkGreen} alt='CheckmarkIcon' /> Skräddarsytt för dig: Vi gör en plan som är perfekt för just dig och dina mål. Varje steg du tar hjälper dig att nå ditt mål snabbt och enkelt.</li>
-                        <li><img src={CheckmarkGreen} alt='CheckmarkIcon' /> Vetenskapligt beprövat: Våra planer bygger på den bästa forskningen. Det betyder att vi vet att våra metoder fungerar.</li>
-                        <li><img src={CheckmarkGreen} alt='CheckmarkIcon' /> Helhetslösning: Vi fokuserar inte bara på träning, utan även på kost och sömn – tre nyckelkomponenter för att nå dina träningsmål.</li>
-                    </ul>
+                    <div onClick={() => setShowOtherTestimonials(!showOtherTestimonials)}>⇦</div>
+                    <article>
+                        <div style={showOtherTestimonials ? styles.noStyle : styles.roundBtn}></div>
+                        <div style={showOtherTestimonials ? styles.roundBtn : styles.noStyle}></div>
+                    </article>
+                    <div onClick={() => setShowOtherTestimonials(!showOtherTestimonials)}>⇨</div>
+                </div>
+
+            </article>
+            <div className='line'></div>
+        </section>
+    )
+}
+
+function HomeUrgency() {
+    return (
+        <section className='urgency'>
+            <h2>Specialerbjudande</h2>
+            <p>Häslopaket Ordinarie Pris: 997 Kr</p>
+            <h3>Gratis för de första 5000 användarna!</h3>
+            <h4>Nuvarande: 2489 Användare</h4>
+            <Link to='/signup' className='btn'>Börja Nu!</Link>
+            <p className='reassurance'>🔒 100% Privat, Inga kreditkort behövs</p>
+        </section>
+    )
+}
+
+function HomeSammanfattning() {
+    return (
+        <section className='HomeSammanfattning'>
+            <p>Sammanfattning</p>
+            <h2>Här Är Vad Du Får Gratis</h2>
+            <article>
+                <img src={Logo} />
+                <ul>
+                    <li>Anpassad Träningsplan <span>Värde 499 kr</span></li>
+                    <li>Anpassad Kostplan <span>Värde 249 kr</span></li>
+                    <li>Anpassad Sömnplan <span>Värde 249 kr</span></li>
+                </ul>
+                <h2>Total Värde: 997kr</h2>
+                <h3>Idag: Helt Gratis</h3>
+                <div>
+                    <Link to='/signup' className='btn'>Ja, ge mig mitt hälso paket <br/> <span>Helt Gratis!!</span></Link>
+                    <p>Denna produkt är digital, vilket innebär att du får tillgång omedelbart!</p>
                 </div>
             </article>
         </section>
     )
 }
 
-function WhatDoesOtherPeopleSay() {
+function HomeEachFAQ({ question, answer }) {
+
+    const [openFaqBtn, setOpenFaqBtn] = useState(false)
+
     return (
-        <section className='WhatDoesOtherPeopleSay'>
-            <h2>Här är vad folk säger om det</h2>
+        <>
+            <div className='EachFaqQuestion' onClick={() => setOpenFaqBtn(!openFaqBtn)}>
+                <aside>
+                    <h3>{question}</h3>
+                    <h3>{ openFaqBtn ? '-' : '+' }</h3>
+                </aside>
+                <div className={ openFaqBtn ? 'EachFaqAnswer open' : 'EachFaqAnswer' }>
+                    <p>{answer}</p>
+                </div>
+            </div>
+        </>
+    )
+}
+
+function HomeFAQ() {
+
+    const [openFaqBtn, setOpenFaqBtn] = useState(false)
+
+    return (
+        <section className='HomePageFAQ'>
+            <h2>Vanliga Frågor</h2>
             <article>
-                <div>
-                    <p>"Vitamin Pro har verkligen hjälpt mig att öka min energinivå under träningen. Nu kan jag hålla mig fokuserad och intensiv genom hela passet, vilket har resulterat i bättre prestation och ökad styrka."</p>
-                    <div className='line'></div>
-                    <h3>Erik B.</h3>
-                    <h4>MjukvaruIngenjör</h4>
-                </div>
-                <div>
-                    <p>"Vitamin Pro har verkligen hjälpt mig att öka min energinivå under träningen. Nu kan jag hålla mig fokuserad och intensiv genom hela passet, vilket har resulterat i bättre prestation och ökad styrka."</p>
-                    <div className='line'></div>
-                    <h3>Erik B.</h3>
-                    <h4>MjukvaruIngenjör</h4>
-                </div>
-                <div>
-                    <p>"Vitamin Pro har verkligen hjälpt mig att öka min energinivå under träningen. Nu kan jag hålla mig fokuserad och intensiv genom hela passet, vilket har resulterat i bättre prestation och ökad styrka."</p>
-                    <div className='line'></div>
-                    <h3>Erik B.</h3>
-                    <h4>MjukvaruIngenjör</h4>
-                </div>
+                <HomeEachFAQ question='Vad ingår i Scandi Hälsopaketet?' answer='Scandi Hälsopaketet erbjuder en integrerad lösning för din hälsa med en anpassad kostplan för att optimera din energi och uppnå dina specifika mål, oavsett om det är viktnedgång, muskeluppbyggnad eller allmän hälsaförbättring. Det inkluderar även en anpassad träningsplan för hemma- eller gymträning som effektiviserar dina träningsinsatser. Dessutom får du en individuell sömnplan med praktiska tips för att förbättra din sömnkvalitet, vilket är avgörande för energinivåer och återhämtning.' />
+                <HomeEachFAQ question='Hur snabbt kan jag förvänta mig resultat?' answer='Många användare ser förbättringar inom några veckor. Om du följer planen noggrant och regelbundet kan du förvänta dig tydliga resultat inom 4-8 veckor.' />
+                <HomeEachFAQ question='Är Scandi Hälsopaketet verkligen gratis? Finns det några dolda kostnader?' answer='Ja, Scandi Hälsopaketet är helt gratis. Det finns inga dolda kostnader eller extra avgifter. Du får tillgång till hela paketet utan att behöva betala något.' />
+                <HomeEachFAQ question='Hur skiljer sig Scandi Hälsopaketet från andra hälsopaket eller träningsprogram?' answer='Scandi Hälsopaketet täcker alla aspekter som behövs för att nå dina träningsmål: träning, kost och sömn. Många andra program fokuserar bara på en av dessa delar, men vårt paket ger dig en komplett plan som är anpassad efter dina personliga behov och mål.' />
+                <HomeEachFAQ question='Hur kan Scandi Hälsopaketet hjälpa mig att nå mina hälsomål?' answer='Scandi Hälsopaketet hjälper dig att nå dina hälsomål genom att erbjuda en personlig plan för träning, kost och sömn. Vi ger dig alla tre delar som behövs för att nå dina träningsmål, och de är personligt anpassade efter dina behov och mål. Detta gör det lättare för dig att följa planen och uppnå bästa möjliga resultat på ett effektivt och hållbart sätt.' />
+                <HomeEachFAQ question='Kan jag kombinera Scandi Hälsopaketet med andra träningsprogram eller kosttillskott?' answer='Ja, du kan kombinera Scandi Hälsopaketet med andra träningsprogram eller kosttillskott. Våra planer är flexibla och kan komplettera andra metoder du använder.' />
             </article>
         </section>
     )
@@ -381,13 +440,23 @@ function Home() {
         <>
             <Hero />
             <ThreeBenifits />
-            <ProblemWithAchivingGoal />
-            <AllPartsAreNeededForSuccess />
-            <ScandifitHealthPackage />
+            <DoYouTrainHardWithoutSeeingResults />
+            <Line />
+            <WhatIfYouHadAPlanThatActuallyWorks />
+            <Line />
+            <ScandifitHealthPackage /> 
+            <Line />
+
             <HowDoesTheScandifitHealthPackageWork />
+            <Line />
             <BenifitsThatYouMightExpect />
-            <WhyYouHaveFailedBeforeAndWhyWeWork />
-            <WhatDoesOtherPeopleSay />
+            <HomeTestemonial />
+            <HomeUrgency />
+            <Line />
+
+            <HomeSammanfattning />
+            <Line />
+            <HomeFAQ />
         </>
     );
 }

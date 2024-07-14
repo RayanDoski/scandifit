@@ -1,14 +1,28 @@
+@keyframes fadeInMoveDown {
+    from {
+        opacity: 0;
+        top: 25px;
+    }
+    to {
+        opacity: 1;
+        top: 0px;
+    }
+}
+
+
 /* hero */
 .HomepageHeroSection {
     width: 95%;
     max-width: 1600px;
-    margin: 50px auto;
+    margin: 50px auto 0px auto;
+    padding: 0px 20px;
     display: flex;
     align-items: center;
+    position: relative;
+    animation: fadeInMoveDown 1s ease forwards;
 }
 
 .HomepageHeroSection > article {
-    flex: 2;
     display: flex;
     flex-direction: column;
 }
@@ -85,26 +99,30 @@
 }
 
 .HomepageHeroSection > aside {
-    flex: 3;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .HomepageHeroSection > aside > img {
-    max-height: 800px;
+    max-height: 600px;
     height: 100%;
 }
 
-@media only screen and (max-width: 1150px) {
+@media only screen and (max-width: 1250px) {
 
     .HomepageHeroSection > article {
-        flex: 1;
+        padding: 20px 0px;
     }
 
-    .HomepageHeroSection > aside {
-        flex: 1;
+    .HomepageHeroSection > aside > img {
+        max-height: 500px;
+        height: 80%;
     }
+
+}
+
+@media only screen and (max-width: 1150px) {
 
     .HomepageHeroSection > article > h1 {
         font-size: 38px;
@@ -115,58 +133,56 @@
 @media only screen and (max-width: 950px) {
 
     .HomepageHeroSection {
-        width: 90%;
+        width: 95%;
+        padding: 0;
         flex-direction: column;
         gap: 20px;
     }
 
+    .HomepageHeroSection > article > img {
+        width: 125px;
+        margin: 0px auto 25px auto;
+    }
+
+    .HomepageHeroSection > article > h1,
+    .HomepageHeroSection > article > p,
+    .HomepageHeroSection > article > h3 {
+        text-align: center;
+    }
+
+    .HomepageHeroSection > article > div {
+        margin: auto;
+    }
+
     .HomepageHeroSection > aside {
-        display: none;
         width: 100%;
-        justify-content: left;
-        align-items: left;
     }
 
     .HomepageHeroSection > aside > img {
-        max-height: 400px;
-        height: 100%;
+        max-height: 600px;
+        width: 100%;
     }
 
 }
 
-/* @media only screen and (max-width: 1000px) {
+/* Line Code */
 
-    .HomepageHeroSection {
-        width: 98%;
-        margin: 50px auto;
-    }
-
-    .HomepageHeroSection > aside {
-        display: none;
-    }
-
-    .HomepageHeroSection {
-        background-image: url('../images/holdingphone.png');
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .HomepageHeroSection > article > h1 {
-        font-size: 32px;
-    }
-
-} */
+.HomeLineDesign {
+    width: 95%;
+    height: 5px;
+    border-radius: 5px;
+    margin: auto;
+    max-width: 1600px;
+    background-color: var(--black);
+}
 
 /* ThreeBenifits */
 
 .ThreeBenifitsSection {
     width: 98%;
     max-width: 1600px;
-    padding: 20px 50px;
+    padding: 0px;
     margin: 20px auto;
-    border-top: 1px solid var(--gray);
-    border-bottom: 1px solid var(--gray);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -209,447 +225,62 @@
 
 }
 
-/* ProblemWithAchivingGoal */
+/* Do You Train Hard Without Seeing Results */
 
-.ProblemWithAchivingGoalSection {
-    width: 75%;
-    margin: 50px auto;
-    max-width: 1600px;
-}
-
-.ProblemWithAchivingGoalSection > p {
-    font-size: 18px;
-    color: var(--gray);
-    text-align: center;
-    margin: 0;
-}
-
-.ProblemWithAchivingGoalSection > h2 {
-    font-size: 32px;
-    text-align: center;
-    margin: 0;
-}
-
-.ProblemWithAchivingGoalSection > .articleQuestions {
-    margin: 50px auto 75px auto;
-    border: 1px solid var(--gray);
-    border-radius: 15px;
-    padding: 20px;
+.DoYouTrainHardWithoutSeeingResults {
+    margin: 40px auto;
+    width: 95%;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    gap: 10px;
-}
-
-.ProblemWithAchivingGoalSection > .articleQuestions > div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 48%;
-}
-
-.ProblemWithAchivingGoalSection > .articleQuestions > div > img {
-    width: 30px;
-    height: 30px;
-}
-
-.ProblemWithAchivingGoalSection > .articleQuestions > div > p {
-    font-size: 16px;
-    font-weight: lighter;
-}
-
-.ProblemWithAchivingGoalSection > .getPackageHere {
-    width: 100%;
-    margin: 50px auto;
-    border: 1px solid var(--gray);
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    width: 750px;
     gap: 40px;
 }
 
-.ProblemWithAchivingGoalSection > .getPackageHere > img {
-    width: 150px;
+.DoYouTrainHardWithoutSeeingResults > img {
+    width: 300px;
+    height: 300px;
 }
 
-.ProblemWithAchivingGoalSection > .getPackageHere > aside > h3 {
-    font-size: 24px;
-    margin: 0;
+.DoYouTrainHardWithoutSeeingResults > aside {
+    width: 650px;
 }
 
-.ProblemWithAchivingGoalSection > .getPackageHere > aside > p {
-    margin: 0;
-    font-weight: 300;
-}
-
-.ProblemWithAchivingGoalSection > .getPackageHere > aside > .getHealthPackageBtn {
-    padding: 10px 20px;
-    margin: 20px 0px 0px 0px;
-    border-radius: 15px;
-    border: 1px solid var(--black);
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: lighter;
-    color: var(--black);
-    text-align: center;
-    font-weight: 400;
-    display: block;
-    width: 500px;
-    transition: .5s all;
-}
-
-.ProblemWithAchivingGoalSection > .getPackageHere > aside > .getHealthPackageBtn:hover {
-    background-color: var(--green);
-    color: var(--white);
-    border: 1px solid var(--white);
-}
-
-.ProblemWithAchivingGoalSection > .getPackageHere > aside > .getHealthPackageBtn > span {
-    font-weight: lighter;
-}
-
-.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage {
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid var(--gray);
-    border-radius: 15px;
-    width: 750px;
-}
-
-.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > h3 {
-    margin: 0;
-    font-weight: 400;
-    color: var(--gray);
-    font-size: 18px;
-}
-
-.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > h2 {
-    margin: 0;
-}
-
-.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > p {
-    margin: 30px 0px;
-    font-weight: 300;
-}
-
-.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > ul > li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > ul > li > img {
-    width: 30px;
-}
-
-@media only screen and (max-width: 1150px) {
-
-    .ProblemWithAchivingGoalSection {
-        width: 95%;
-    }
-
-}
-
-@media only screen and (max-width: 850px) {
-
-    .ProblemWithAchivingGoalSection {
-        width: 98%;
-    }
-
-    .ProblemWithAchivingGoalSection > .getPackageHere {
-        width: 100%;
-    }
-
-    .ProblemWithAchivingGoalSection > .getPackageHere > aside > .getHealthPackageBtn {
-        width: 100%;
-    }
-
-    .ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage {
-        width: 100%;
-    }
-
-    .ProblemWithAchivingGoalSection > h2 {
-        font-size: 28px;
-    }
-
-    .ProblemWithAchivingGoalSection > .getPackageHere > aside > h3 {
-        font-size: 22px;
-    }
-
-    .ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > h2 {
-        font-size: 22px;
-    }
-
-    .ProblemWithAchivingGoalSection > .getPackageHere > img {
-        width: 100px;
-    }
-
-}
-
-@media only screen and (max-width: 700px) {
-
-    .ProblemWithAchivingGoalSection > h2 {
-        font-size: 24px;
-    }
-
-    .ProblemWithAchivingGoalSection > .getPackageHere > aside > h3 {
-        font-size: 20px;
-    }
-
-    .ProblemWithAchivingGoalSection > .WhatIsScandifitHealthPackage > h2 {
-        font-size: 20px;
-    }
-
-    .ProblemWithAchivingGoalSection > .articleQuestions {
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .ProblemWithAchivingGoalSection > .articleQuestions > div {
-        gap: 15px;
-        width: 100%;
-    }
-
-    .ProblemWithAchivingGoalSection > .articleQuestions > div > p {
-        margin: 0;
-    }
-
-    .ProblemWithAchivingGoalSection > .getPackageHere {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-}
-
-/* All Parts Are Needed For Success */
-
-.allPartsAreNeededForSuccess {
-    width: 75%;
-    margin: 50px auto;
-    max-width: 1600px;
-}
-
-.allPartsAreNeededForSuccess > h3 {
-    text-align: center;
-    margin: 0;
-    font-size: 18px;
-    color: var(--gray);
-    font-weight: 400;
-}
-
-.allPartsAreNeededForSuccess > h2 {
-    margin: 0;
-    text-align: center;
+.DoYouTrainHardWithoutSeeingResults > aside > h2 {
     font-size: 32px;
-}
-
-.allPartsAreNeededForSuccess > .ThreePlansArticle {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    width: 95%;
-    margin: 50px auto;
-}
-
-.allPartsAreNeededForSuccess > .ThreePlansArticle > div {
-    padding: 20px;
-    border-radius: 15px;
-    border: 1px solid var(--gray);
-}
-
-.allPartsAreNeededForSuccess > .ThreePlansArticle > div > h4 {
-    text-align: center;
-    font-size: 14px;
-    font-weight: 300;
-    margin: 0;
-}
-
-.allPartsAreNeededForSuccess > .ThreePlansArticle > div > h3 {
-    margin: 0;
-    text-align: center;
-    font-size: 24px;
-}
-
-.allPartsAreNeededForSuccess > .ThreePlansArticle > div > p {
-    margin: 20px 0px 0px 0px;
-    font-weight: 300;
-    text-align: center;
-}
-
-.allPartsAreNeededForSuccess > .getHealthPackageBtn {
-    padding: 10px 20px;
-    margin: 50px auto;
-    border-radius: 15px;
-    border: 1px solid var(--black);
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: lighter;
-    color: var(--black);
-    text-align: center;
-    font-weight: 400;
-    display: block;
-    width: 500px;
-    transition: .5s all;
-}
-
-.allPartsAreNeededForSuccess > .getHealthPackageBtn:hover {
-    background-color: var(--green);
-    color: var(--white);
-    border: 1px solid var(--white);
-}
-
-.allPartsAreNeededForSuccess > .getHealthPackageBtn > span {
-    font-weight: lighter;
-}
-
-.allPartsAreNeededForSuccess > .Testemonial {
-    width: 95%;
-    margin: 20px auto;
-    border: 1px solid var(--gray);
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.allPartsAreNeededForSuccess > .Testemonial > img {
-    width: 105px
-}
-
-.allPartsAreNeededForSuccess > .Testemonial > aside {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.allPartsAreNeededForSuccess > .Testemonial > aside > h2 {
-    font-size: 24px;
-    margin: 0;
-}
-
-.allPartsAreNeededForSuccess > .Testemonial > aside > div {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.allPartsAreNeededForSuccess > .Testemonial > aside > div > img {
-    width: 20px;
-    height: 20px;
-}
-
-.allPartsAreNeededForSuccess > .Testemonial > aside > p {
-    margin: 0;
-}
-
-.allPartsAreNeededForSuccess > .TrainingHardWithoutResult {
-    width: 95%;
-    margin: 50px auto 20px auto;
-    border: 1px solid var(--gray);
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.allPartsAreNeededForSuccess > .TrainingHardWithoutResult > img {
-    width: 150px;
-    height: 150px;
-}
-
-.allPartsAreNeededForSuccess > .TrainingHardWithoutResult > div > h2 {
+    font-weight: 700;
     margin: 0px 0px 20px 0px;
 }
 
-.allPartsAreNeededForSuccess > .TrainingHardWithoutResult > div > p {
+.DoYouTrainHardWithoutSeeingResults > aside > p {
+    font-size: 16px;
     font-weight: 300;
     margin: 10px 0px;
 }
 
-.allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked {
-    width: 85%;
-    margin: 50px auto;
+.DoYouTrainHardWithoutSeeingResults > aside > p > span {
+    font-weight: 400;
 }
 
-.allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked > h2 {
-    font-size: 32px;
-}
+@media only screen and (max-width: 1100px) {
 
-.allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked > p {
-    font-size: 16px;
-    font-weight: 300;
-}
-
-.allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked > p > span {
-    font-weight: 700;
-}
-
-@media only screen and (max-width: 1150px) {
-
-    .allPartsAreNeededForSuccess {
-        width: 95%;
+    .DoYouTrainHardWithoutSeeingResults > img {
+        width: 200px;
+        height: 200px;
     }
 
 }
 
 @media only screen and (max-width: 850px) {
 
-    .allPartsAreNeededForSuccess {
-        width: 98%;
+    .DoYouTrainHardWithoutSeeingResults {
+        flex-direction: column;
     }
 
-    .allPartsAreNeededForSuccess > h2 {
-        font-size: 28px;
+    .DoYouTrainHardWithoutSeeingResults > aside {
+        width: 80%;
     }
 
-    .allPartsAreNeededForSuccess > .ThreePlansArticle {
-        width: 100%;
-    }
-
-    .allPartsAreNeededForSuccess > .ThreePlansArticle > div > h3 {
-        font-size: 22px;
-    }
-
-    .allPartsAreNeededForSuccess > .ThreePlansArticle {
-        gap: 10px;
-    }
-
-    .allPartsAreNeededForSuccess > .Testemonial {
-        gap: 15px;
-        width: 100%;
-    }
-
-    .allPartsAreNeededForSuccess > .Testemonial > aside > h2 {
-        font-size: 22px;
-    }
-
-    .allPartsAreNeededForSuccess > .TrainingHardWithoutResult {
-        gap: 15px;
-        width: 100%;
-    }
-
-    .allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked {
-        width: 90%;
-    }
-
-    .allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked > h2 {
+    .DoYouTrainHardWithoutSeeingResults > aside > h2 {
         font-size: 28px;
     }
 
@@ -657,59 +288,56 @@
 
 @media only screen and (max-width: 700px) {
 
-    .allPartsAreNeededForSuccess > h2 {
-        font-size: 24px;
-    }
-
-    .allPartsAreNeededForSuccess > .ThreePlansArticle {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .allPartsAreNeededForSuccess > .ThreePlansArticle > div > h3 {
-        font-size: 20px;
-    }
-
-    .allPartsAreNeededForSuccess > .getHealthPackageBtn {
-        width: 85%;
-    }
-
-    .allPartsAreNeededForSuccess > .Testemonial {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .allPartsAreNeededForSuccess > .Testemonial > aside > h2 {
-        font-size: 20px;
-    }
-
-    .allPartsAreNeededForSuccess > .TrainingHardWithoutResult {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .allPartsAreNeededForSuccess > .TrainingHardWithoutResult > img {
+    .DoYouTrainHardWithoutSeeingResults > img {
         width: 125px;
         height: 125px;
     }
 
-    .allPartsAreNeededForSuccess > .TrainingHardWithoutResult > div > h2 {
-        font-size: 20px;
-    }
-
-    .allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked {
+    .DoYouTrainHardWithoutSeeingResults > aside {
         width: 100%;
     }
 
-    .allPartsAreNeededForSuccess > .WhatIfYouHadaPlanThatWorked > h2 {
+    .DoYouTrainHardWithoutSeeingResults > aside > h2 {
         font-size: 24px;
     }
-    
+
+}
+
+/* What If You Had A Plan That Actually Works */
+
+.WhatIfYouHadAPlanThatActuallyWorks {
+    width: 95%;
+    margin: 40px auto;
+}
+
+.WhatIfYouHadAPlanThatActuallyWorks > h2 {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0px;
+}
+
+.WhatIfYouHadAPlanThatActuallyWorks > p {
+    font-weight: 300;
+    font-size: 16px;
+    text-align: center;
+    margin: 0;
+}
+
+@media only screen and (max-width: 850px) {
+
+    .WhatIfYouHadAPlanThatActuallyWorks > h2 {
+        font-size: 28px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .WhatIfYouHadAPlanThatActuallyWorks > h2 {
+        font-size: 24px;
+    }
+
 }
 
 /* Scandifit Health Package Details */
@@ -717,6 +345,33 @@
 .ScandifitHealthPackage {
     width: 95%;
     margin: 50px auto;
+}
+
+.ScandifitHealthPackage > div {
+    width: 90%;
+    margin: auto;
+}
+
+.ScandifitHealthPackage > div > h3 {
+    font-size: 18px;
+    color: var(--gray);
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+}
+
+.ScandifitHealthPackage > div > h2 {
+    font-weight: 700;
+    font-size: 32px;
+    margin: 0;
+    text-align: center;
+}
+
+.ScandifitHealthPackage > div > p {
+    font-weight: 300;
+    font-size: 16px;
+    margin: 0px 0px 50px 0px;
+    text-align: center;
 }
 
 .ScandifitHealthPackage > article {
@@ -853,6 +508,10 @@
         width: 98%;
     }
 
+    .ScandifitHealthPackage > div > h2 {
+        font-size: 28px;
+    }
+
     .ScandifitHealthPackage > article {
         width: 100%;
     }
@@ -860,6 +519,10 @@
 }
 
 @media only screen and (max-width: 700px) {
+
+    .ScandifitHealthPackage > div > h2 {
+        font-size: 24px;
+    }
 
     .ScandifitHealthPackage > article > h2 {
         font-size: 20px;
@@ -1044,164 +707,138 @@
     font-size: 18px;
 }
 
-/* Why You Have Failed Before And Why We Work */
+/* Home Sammanfattning */
 
-.WhyYouHaveFailedBeforeAndWhyWeWork {
+.HomeSammanfattning {
     width: 95%;
-    margin: 50px auto;
-    max-width: 1600px;
+    margin: 40px auto;
 }
 
-.WhyYouHaveFailedBeforeAndWhyWeWork > article {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-
-.WhyYouHaveFailedBeforeAndWhyWeWork > article > img {
-    width: 400px;
-}
-
-.WhyYouHaveFailedBeforeAndWhyWeWork > article > div {
-    display: flex;
-    flex-direction: column;
-}
-
-.WhyYouHaveFailedBeforeAndWhyWeWork > article > div > p {
-    margin: 0;
+.HomeSammanfattning > p {
     font-size: 18px;
     color: var(--gray);
-    font-weight: 400;
-}
-
-.WhyYouHaveFailedBeforeAndWhyWeWork > article > div > h2 {
-    font-size: 32px;
-    margin: 0;
-}
-
-.WhyYouHaveFailedBeforeAndWhyWeWork > article > div > ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 20px 0px 0px 0px;
-}
-
-.WhyYouHaveFailedBeforeAndWhyWeWork > article > div > ul > li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 300;
-}
-
-.WhyYouHaveFailedBeforeAndWhyWeWork > article > div > ul > li > img {
-    width: 30px;
-}
-
-@media only screen and (max-width: 1250px) {
-
-    .WhyYouHaveFailedBeforeAndWhyWeWork > article > img {
-        width: 200px;
-    }
-    
-}
-
-@media only screen and (max-width: 850px) {
-
-    .WhyYouHaveFailedBeforeAndWhyWeWork {
-        width: 90%;
-    }
-
-    .WhyYouHaveFailedBeforeAndWhyWeWork > article > img {
-        width: 200px;
-    }
-
-    .WhyYouHaveFailedBeforeAndWhyWeWork > article > div > h2 {
-        font-size: 28px;
-    }
-
-    .WhyYouHaveFailedBeforeAndWhyWeWork > article > div > ul {
-        gap: 20px;
-    }
-    
-}
-
-@media only screen and (max-width: 750px) {
-
-    .WhyYouHaveFailedBeforeAndWhyWeWork > article {
-        display: flex;
-        align-items: baseline;
-        justify-content: baseline;
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-}
-
-/* What Does Other People Say */
-
-.WhatDoesOtherPeopleSay {
-    width: 95%;
-    margin: 50px auto;
-    max-width: 1600px;
-}
-
-.WhatDoesOtherPeopleSay > h2 {
-    font-size: 32px;
+    margin: 0px;
     text-align: center;
 }
 
-.WhatDoesOtherPeopleSay > article {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+.HomeSammanfattning > h2 {
+    font-size: 32px;
+    margin: 0px 0px 40px 0px;
+    text-align: center;
 }
 
-.WhatDoesOtherPeopleSay > article > div {
-    max-width: 400px;
-    width: 100%;
+.HomeSammanfattning > article {
     padding: 20px;
     border-radius: 15px;
+    width: 95%;
+    max-width: 750px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.HomeSammanfattning > article > img {
+    width: 200px;
     border: 1px solid var(--black);
+    margin: auto;
 }
 
-.WhatDoesOtherPeopleSay > article > div > p {
+.HomeSammanfattning > article > ul {
+    padding: 0;
+    margin: 30px 0px;
+    list-style: none;
+}
+
+.HomeSammanfattning > article > ul > li {
+    text-align: center;
     font-weight: 300;
+    margin: 10px 0px;
+    color: var(--black);
 }
 
-.WhatDoesOtherPeopleSay > article > div > .line {
-    width: 100px;
-    height: 1px;
-    background-color: var(--gray);
+.HomeSammanfattning > article > ul > li > span {
+    font-weight: 400;
 }
 
-.WhatDoesOtherPeopleSay > article > div > h3 {
-    margin: 15px 0px 0px 0px;
-    font-weight: 700;
-}
-
-.WhatDoesOtherPeopleSay > article > div > h4 {
+.HomeSammanfattning > article > h2 {
+    font-weight: 28px;
+    font-size: 700;
     margin: 0;
+    text-align: center;
+}
+
+.HomeSammanfattning > article > h3 {
+    font-size: 18px;
     font-weight: 400;
     color: var(--gray);
+    margin: 0;
+    text-align: center;
+}
+
+.HomeSammanfattning > article > div {
+    width: 450px;
+    margin: auto;
+}
+
+.HomeSammanfattning > article > div > .btn {
+    padding: 5px 0;
+    margin: 30px 0px 0px 0px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: lighter;
+    color: var(--black);
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    transition: .5s all;
+}
+
+.HomeSammanfattning > article > div > .btn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.HomeSammanfattning > article > div > .btn > span {
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+.HomeSammanfattning > article > div > p {
+    margin: auto;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    inline-size: 95%;
 }
 
 @media only screen and (max-width: 850px) {
 
-    .WhatDoesOtherPeopleSay > h2 {
+    .HomeSammanfattning > h2 {
         font-size: 28px;
+    }
+
+    .HomeSammanfattning > article > h2 {
+        font-size: 24px;
     }
 
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 700px) {
 
-    .WhatDoesOtherPeopleSay > article {
-        flex-direction: column;
+    .HomeSammanfattning > h2 {
+        font-size: 24px;
+    }
+
+    .HomeSammanfattning > article > div {
+        width: 95%;
+    }
+
+    .HomeSammanfattning > article > h2 {
+        font-size: 20px;
     }
 
 }

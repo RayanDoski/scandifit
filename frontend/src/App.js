@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
 
 // Header and Footer
 import Header from './components/header.js';
@@ -11,6 +12,9 @@ import HomePage from './pages/homePage.js'
 // Loading Screens
 import LoadingScreenFullScreen from './components/loadingScreenFullScreen.js';
 import LoadingScreen from './components/loadingScreen.js';
+
+// Popups
+import SpecialMultivitaminOfferPopup from './pages/popups/specialMultivitaminOffer.js';
 
 // Login System
 import Login from './pages/loginSystem/login.js'
@@ -36,6 +40,9 @@ import ContactUs from './pages/contactUs.js'
 
 // Order Completed Page
 import OrderCompleted from './pages/orderComplete.js'
+
+// Product Pages
+import MultivitaminPage from './pages/products/multivitamin.js'
 
 function App() {
   return (
@@ -69,7 +76,14 @@ function App() {
           {/* Order Completed */}
           <Route path="/ordercomplete/:sessionId" element={<><Header /><OrderCompleted /><Footer /></>} />
 
+          {/* Products */}
+          <Route path="/products/multivitamin" element={<><Header /><MultivitaminPage /><Footer /></>} />
+
         </Routes>
+
+        {/* To Show Popup */}
+        <SpecialMultivitaminOfferPopup />
+        
     </Router>
   );
 }

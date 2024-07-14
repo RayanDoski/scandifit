@@ -375,6 +375,12 @@
     width: 75px;
 }
 
+.ContainerForCartSlideInMenu > .productDiv > article > div > div > h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 300;
+}
+
 .ContainerForCartSlideInMenu > .productDiv > article > div > .quantityDiv {
     display: flex;
     align-items: center;

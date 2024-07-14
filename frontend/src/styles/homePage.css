@@ -427,9 +427,19 @@
 }
 
 .HomePageTestemonial > article > aside > div {
-    display: flex;
+   
+}
+
+.HomePageTestemonial > article > aside > .threeSecondTestemonials,
+.HomePageTestemonial > article > aside > .threeFirstTestemonials {
+    display: none;
     flex-direction: column;
     gap: 10px;
+}
+
+.HomePageTestemonial > article > aside > .threeSecondTestemonials.show,
+.HomePageTestemonial > article > aside > .threeFirstTestemonials.show {
+    display: flex;
     width: 400px;
     border: 1px solid var(--black);
     padding: 20px;
@@ -535,7 +545,8 @@
         font-size: 24px;
     }
 
-    .HomePageTestemonial > article > aside > div {
+    .HomePageTestemonial > article > aside > .threeSecondTestemonials.show,
+    .HomePageTestemonial > article > aside > .threeFirstTestemonials.show {
         width: 100%;
     }
 
@@ -670,6 +681,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .EachFaqQuestion > aside > h3 {

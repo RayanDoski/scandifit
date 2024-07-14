@@ -126,6 +126,16 @@ function StepByStepVisualization() {
 }
 
 function HomePageTestemonial() {
+
+    const [showOtherTestimonials, setShowOtherTestimonials] = useState(false)
+
+    const styles = {
+        roundBtn: {
+            backgroundColor: '#50C878'
+        },
+        noStyle: {}
+    };
+
     return (
         <section className='HomePageTestemonial'>
             <div className='line'></div>
@@ -133,9 +143,37 @@ function HomePageTestemonial() {
                 <h2>Vad våra användare säger</h2>
                 <aside>
 
-                    <div>
+                    <div className={ showOtherTestimonials ? 'threeFirstTestemonials' : 'threeFirstTestemonials show'}>
                         <aside>
-                            <h3>Reyan Doski</h3>
+                            <h3>Robert</h3>
+                            <div>
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                            </div>
+                        </aside>
+                        <p>Det är ett bra schema! borde ha gjort ett för länge sedan 😃</p>
+                    </div>
+
+                    <div className={ showOtherTestimonials ? 'threeFirstTestemonials' : 'threeFirstTestemonials show'}>
+                        <aside>
+                            <h3>Rayan</h3>
+                            <div>
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                            </div>
+                        </aside>
+                        <p>Älskar träningsprogrammet, men det skulle vara bra om ni lade till en offlineversion</p>
+                    </div>
+
+                    <div className={ showOtherTestimonials ? 'threeFirstTestemonials' : 'threeFirstTestemonials show'}>
+                        <aside>
+                            <h3>Chee</h3>
                             <div>
                                 <img src={GreenStar} alt='Green Star' />
                                 <img src={GreenStar} alt='Green Star' />
@@ -147,9 +185,9 @@ function HomePageTestemonial() {
                         <p>Detta är ett riktigt bra program som har hjälpt mig att gå ner 2 kg på en vecka</p>
                     </div>
 
-                    <div>
+                    <div className={ showOtherTestimonials ? 'threeSecondTestemonials show' : 'threeSecondTestemonials'}>
                         <aside>
-                            <h3>Reyan Doski</h3>
+                            <h3>Hyrum</h3>
                             <div>
                                 <img src={GreenStar} alt='Green Star' />
                                 <img src={GreenStar} alt='Green Star' />
@@ -158,12 +196,12 @@ function HomePageTestemonial() {
                                 <img src={GreenStar} alt='Green Star' />
                             </div>
                         </aside>
-                        <p>Detta är ett riktigt bra program som har hjälpt mig att gå ner 2 kg på en vecka</p>
+                        <p>Det första programmet som fick mig att komma igång eftersom det gav mig allt jag behövde för att komma igång</p>
                     </div>
 
-                    <div>
+                    <div className={ showOtherTestimonials ? 'threeSecondTestemonials show' : 'threeSecondTestemonials'}>
                         <aside>
-                            <h3>Reyan Doski</h3>
+                            <h3>Robin</h3>
                             <div>
                                 <img src={GreenStar} alt='Green Star' />
                                 <img src={GreenStar} alt='Green Star' />
@@ -172,18 +210,32 @@ function HomePageTestemonial() {
                                 <img src={GreenStar} alt='Green Star' />
                             </div>
                         </aside>
-                        <p>Detta är ett riktigt bra program som har hjälpt mig att gå ner 2 kg på en vecka</p>
+                        <p>Trevligt program, fungerar bra, och innehåller en bra, genomtänkt uppsättning av övningar</p>
+                    </div>
+
+                    <div className={ showOtherTestimonials ? 'threeSecondTestemonials show' : 'threeSecondTestemonials'}>
+                        <aside>
+                            <h3>Ahmad</h3>
+                            <div>
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                                <img src={GreenStar} alt='Green Star' />
+                            </div>
+                        </aside>
+                        <p>Jag provade programmet i en vecka, Rekommenderar starkt för alla att prova</p>
                     </div>
 
                 </aside>
 
                 <div>
-                    <div>⇦</div>
+                    <div onClick={() => setShowOtherTestimonials(!showOtherTestimonials)}>⇦</div>
                     <article>
-                        <div></div>
-                        <div></div>
+                        <div style={showOtherTestimonials ? styles.noStyle : styles.roundBtn}></div>
+                        <div style={showOtherTestimonials ? styles.roundBtn : styles.noStyle}></div>
                     </article>
-                    <div>⇨</div>
+                    <div onClick={() => setShowOtherTestimonials(!showOtherTestimonials)}>⇨</div>
                 </div>
 
             </article>
@@ -238,10 +290,12 @@ function HomePageFAQ() {
         <section className='HomePageFAQ'>
             <h2>Vanliga Frågor</h2>
             <article>
-                <EachFAQ question='Vad är Häslopaket?' answer='Häslopaket är en app som hjälper dig att hitta din nästa date. Du kan skapa' />
-                <EachFAQ question='Vad är Häslopaket?' answer='Häslopaket är en app som hjälper dig att hitta din nästa date. Du kan skapa' />
-                <EachFAQ question='Vad är Häslopaket?' answer='Häslopaket är en app som hjälper dig att hitta din nästa date. Du kan skapa' />
-                <EachFAQ question='Vad är Häslopaket?' answer='Häslopaket är en app som hjälper dig att hitta din nästa date. Du kan skapa' />
+                <EachFAQ question='Vad ingår i Scandi Hälsopaketet?' answer='Scandi Hälsopaketet erbjuder en integrerad lösning för din hälsa med en anpassad kostplan för att optimera din energi och uppnå dina specifika mål, oavsett om det är viktnedgång, muskeluppbyggnad eller allmän hälsaförbättring. Det inkluderar även en anpassad träningsplan för hemma- eller gymträning som effektiviserar dina träningsinsatser. Dessutom får du en individuell sömnplan med praktiska tips för att förbättra din sömnkvalitet, vilket är avgörande för energinivåer och återhämtning.' />
+                <EachFAQ question='Hur snabbt kan jag förvänta mig resultat?' answer='Många användare ser förbättringar inom några veckor. Om du följer planen noggrant och regelbundet kan du förvänta dig tydliga resultat inom 4-8 veckor.' />
+                <EachFAQ question='Är Scandi Hälsopaketet verkligen gratis? Finns det några dolda kostnader?' answer='Ja, Scandi Hälsopaketet är helt gratis. Det finns inga dolda kostnader eller extra avgifter. Du får tillgång till hela paketet utan att behöva betala något.' />
+                <EachFAQ question='Hur skiljer sig Scandi Hälsopaketet från andra hälsopaket eller träningsprogram?' answer='Scandi Hälsopaketet täcker alla aspekter som behövs för att nå dina träningsmål: träning, kost och sömn. Många andra program fokuserar bara på en av dessa delar, men vårt paket ger dig en komplett plan som är anpassad efter dina personliga behov och mål.' />
+                <EachFAQ question='Hur kan Scandi Hälsopaketet hjälpa mig att nå mina hälsomål?' answer='Scandi Hälsopaketet hjälper dig att nå dina hälsomål genom att erbjuda en personlig plan för träning, kost och sömn. Vi ger dig alla tre delar som behövs för att nå dina träningsmål, och de är personligt anpassade efter dina behov och mål. Detta gör det lättare för dig att följa planen och uppnå bästa möjliga resultat på ett effektivt och hållbart sätt.' />
+                <EachFAQ question='Kan jag kombinera Scandi Hälsopaketet med andra träningsprogram eller kosttillskott?' answer='Ja, du kan kombinera Scandi Hälsopaketet med andra träningsprogram eller kosttillskott. Våra planer är flexibla och kan komplettera andra metoder du använder.' />
             </article>
         </section>
     )

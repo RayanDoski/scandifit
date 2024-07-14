@@ -1,0 +1,131 @@
+.SpecialMultivitaminOfferPopupBackground {
+    display: none;
+}
+
+.SpecialMultivitaminOfferPopupBackground.view {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.626);
+}
+
+.SpecialMultivitaminOfferPopup {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    background-color: rgb(189, 189, 189);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: .5s all;
+    display: flex;
+    align-items: center;
+}
+
+.SpecialMultivitaminOfferPopup.view {
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+}
+
+.SpecialMultivitaminOfferPopup > p {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+    text-align: right;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.SpecialMultivitaminOfferPopup > img {
+    height: 100%;
+}
+
+.SpecialMultivitaminOfferPopup > aside {
+    height: 100%;
+    width: 350px;
+    padding: 50px 20px;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+}
+
+.SpecialMultivitaminOfferPopup > aside > h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.SpecialMultivitaminOfferPopup > aside > p {
+    margin: 0;
+    font-weight: 300;
+}
+
+.SpecialMultivitaminOfferPopup > aside > p > span {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.SpecialMultivitaminOfferPopup > aside > .ShowMoreBtn {
+    margin: 40px 0px 0px 0px;
+    background-color: var(--white);
+    text-align: center;
+    padding: 10px 0px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.SpecialMultivitaminOfferPopup > aside > .ShowMoreBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media screen and (max-width: 850px) {
+
+    .SpecialMultivitaminOfferPopup {
+        width: 80%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .SpecialMultivitaminOfferPopup > img {
+        width: 100%;
+    }
+
+    .SpecialMultivitaminOfferPopup > aside > h2 {
+        font-size: 26px;
+    }
+
+    .SpecialMultivitaminOfferPopup > aside {
+        width: auto;
+        height: auto;
+    }
+    
+}
+
+@media screen and (max-width: 700px) {
+
+    .SpecialMultivitaminOfferPopup {
+        width: 90%;
+    }
+
+    .SpecialMultivitaminOfferPopup > aside > h2 {
+        font-size: 24px;
+    }
+    
+}
