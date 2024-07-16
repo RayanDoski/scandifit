@@ -20,11 +20,24 @@ def create_checkout_session():
         products = data.get('products', [])
 
         if not products:
-            return jsonify({'success': False, 'message': 'No products provided'}), 400
+            return jsonify({'success': False, 'message': 'Din varukorg är tom'}), 400
+
+        # default Values
+        mode = 'payment'
+        payment_method_types = ['card', 'klarna']
+        discounts = []
+        allow_promotion_codes = True
 
         # Create line items from the provided products
         line_items = []
         for product in products:
+            # Checking if it's subscription
+            if product['subOrOnce'] == 'sub':
+                mode = 'subscription'
+                payment_method_types = ['card']
+                discounts = [{"coupon": 'UhRLUPk3'}]
+                allow_promotion_codes = None
+
             line_items.append({
                 'price': product['stripePriceId'],
                 'quantity': product['quantity']
@@ -33,24 +46,28 @@ def create_checkout_session():
         # Create a unique customer identifier
         customer_identifier = str(uuid.uuid4())
 
-        # Get the current time
-        purchase_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
         checkout_session = stripe.checkout.Session.create(
             line_items=line_items,
             locale='sv',
-            payment_method_types=['card', 'klarna'],
-            allow_promotion_codes=True,
+            discounts=discounts,
+            payment_method_types=payment_method_types,
+            allow_promotion_codes=allow_promotion_codes,
             phone_number_collection={"enabled": True},
             billing_address_collection='required',
-            mode='payment',
+            mode=mode,
+
+            # To indentify Specifik Customers
             customer=stripe.Customer.create(
                 id=customer_identifier,
-                email='Rayan.d15@outlook.com',
             ),
-            metadata={'purchase_time': purchase_time},
+
+            # Getting The time of Purchase 
+            metadata={'purchase_time': datetime.now().strftime("%Y-%m-%d %H:%M:%S")},
+
+            # Where they are directed to depending on success of failure
             success_url=f'{your_domain}/ordercomplete/{{CHECKOUT_SESSION_ID}}',
             cancel_url=f'{your_domain}/',
+            
         )
 
         return jsonify({'success': True, 'redirect_url': checkout_session.url})

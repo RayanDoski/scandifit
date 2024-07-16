@@ -1,6 +1,7 @@
 /* Introduction */
 
 .IntroductionMultivitamin {
+    max-width: 1600px;
     width: 75%;
     margin: 100px auto 50px auto;
     display: flex;
@@ -61,6 +62,37 @@
     background-color: var(--green);
     color: var(--white);
     border: 1px solid var(--white);
+}
+
+@media only screen and (max-width: 850px) {
+
+    .IntroductionMultivitamin {
+        width: 90%;
+    }
+    
+
+    .IntroductionMultivitamin > h1 {
+        font-size: 38px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .IntroductionMultivitamin {
+        width: 95%;
+    }
+
+    .IntroductionMultivitamin > h1 {
+        font-size: 34px;
+        line-height: 1.25;
+    }
+
+    .IntroductionMultivitamin > .actionBtn {
+        width: 100%;
+        max-width: 400px;
+    }
+
 }
 
 /* Why Scandi multivitamin */
@@ -193,13 +225,13 @@
 
 .theKeyToYourGoal {
     max-width: 1600px;
-    width: 90%;
+    width: 80%;
     margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 40px 0px;
-    gap: 30px;
+    /* gap: 30px; */
 }
 
 .theKeyToYourGoal > div {
@@ -207,6 +239,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 .theKeyToYourGoal > div > img {
@@ -221,6 +254,7 @@
 }
 
 .theKeyToYourGoal > aside > h2 {
+    margin: 0px 0px 20px 0px;
     font-size: 32px;
     font-weight: 700;
 }
@@ -809,11 +843,12 @@
 .IngredientsAndBenefits > article {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
 }
 
 .IngredientsAndBenefits > article > .line {
-    height: 350px;
+    height: 550px;
     width: 1px;
     background-color: var(--gray);
 }
@@ -824,6 +859,7 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    width: 100%;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -1102,7 +1138,7 @@
 }
 
 .ViewproductMultivitaminPopupBackground {
-    z-index: 4;
+    z-index: 2;
     position: fixed;
     top: 0;
     left: 0;
@@ -1119,7 +1155,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 5;
+    z-index: 3;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1148,7 +1184,9 @@
 }
 
 .ViewproductMultivitaminPopup > img {
-    width: 400px;
+    width: 350px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
 }
 
 .ViewproductMultivitaminPopup > article {

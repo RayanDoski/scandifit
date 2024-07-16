@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
@@ -435,6 +436,15 @@ function HomeFAQ() {
 }
 
 function Home() {
+
+    const navigate = useNavigate();
+
+    // 50 / 50 Chance
+    useEffect(() => {
+        if (Math.random() < 0.5) {
+            navigate('/'); // 50% chance to go to root
+        } 
+    }, [navigate]);
 
     return (
         <>

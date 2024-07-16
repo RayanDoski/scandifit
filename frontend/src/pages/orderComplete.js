@@ -16,7 +16,24 @@ function OrderComplete() {
     const { sessionId } = useParams();
     const [stripeSession, setStripeSession] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    // Deletes Everything in cart
+    useEffect(() => {
+        const deleteAllItemsInCart = async () => {
+            const response = await fetch('http://127.0.0.1:8000/deleteAllFromCart', {
+                method: 'POST',  // Ensure the method matches what your Flask route expects
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await response.json();
+        };
     
+        deleteAllItemsInCart();
+    }, []);
+    
+    // ferching the customers info from stripe
     useEffect(() => {
         const fetchSession = async () => {
             const response = await fetch(`http://127.0.0.1:8000/api/stripe-session/${sessionId}`);

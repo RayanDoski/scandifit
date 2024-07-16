@@ -274,6 +274,7 @@
     background-color: rgba(0, 0, 0, 0.539);
     z-index: 3;
     display: none;
+    z-index: 9;
 }
 
 .BackgroundForCartSlideInMenu.show {
@@ -282,7 +283,7 @@
 
 .ContainerForCartSlideInMenu {
     position: fixed;
-    z-index: 4;
+    z-index: 10;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -430,6 +431,41 @@
 .ContainerForCartSlideInMenu > .productDiv > aside > img {
     width: 15px;
     cursor: pointer;
+}
+
+.ContainerForCartSlideInMenu > .ShippingContainer {
+    width: 100%;
+}
+
+.ContainerForCartSlideInMenu > .ShippingContainer > h3 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.ContainerForCartSlideInMenu > .ShippingContainer > article {
+    width: 100%;
+    padding: 10px 15px;
+    border-top: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ContainerForCartSlideInMenu > .ShippingContainer > article > p {
+    font-weight: 300;
+    font-size: 16px;
+    margin: 0;
+}
+
+.ContainerForCartSlideInMenu > .ShippingContainer > article > div > img {
+    width: 75px;
+}
+
+.ContainerForCartSlideInMenu > .ShippingContainer > article > div > p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
 }
 
 .ContainerForCartSlideInMenu > .TotalPrice {

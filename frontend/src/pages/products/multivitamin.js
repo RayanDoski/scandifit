@@ -5,6 +5,12 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // Importing CSS
 import '../../styles/multivitamin.css';
 
+// Importing Loading Screen
+import LoadingScreen from '../../components/loadingScreenFullScreen.js';
+
+// Import cart
+import CartSlideInMenu from '../../components/cart.js';
+
 // Importing Images
 import Lock from '../../images/icons/open-lock.png'
 import CustomerManagment from '../../images/icons/customer-management.png'
@@ -224,7 +230,7 @@ function TheKeyToYourGoal({ setViewProductPopup }) {
     return (
         <section className='theKeyToYourGoal'>
             <div>
-                <img src={ProductPicture} alt='Picture' />
+                {/* <img src={ProductPicture} alt='Picture' /> */}
             </div>
             <aside>
                 <h2>Scandi Multivitamin - nyckeln till att nå dina träningsmål snabbare och mer effektivt.</h2>
@@ -460,17 +466,21 @@ function IngredientsAndBenefits() {
             <h2>Ingredienser och deras fördelar</h2>
             <article>
                 <aside>
-                    <MultivitaminEachFAQ question='Hur skiljer sig Scandi Hälsopaketet från andra hälsopaket eller träningsprogram?' answer='Scandi Hälsopaketet täcker alla aspekter som behövs för att nå dina träningsmål: träning, kost och sömn. Många andra program fokuserar bara på en av dessa delar, men vårt paket ger dig en komplett plan som är anpassad efter dina personliga behov och mål.' />
-                    <MultivitaminEachFAQ question='Hur skiljer sig Scandi Hälsopaketet från andra hälsopaket eller träningsprogram?' answer='Scandi Hälsopaketet täcker alla aspekter som behövs för att nå dina träningsmål: träning, kost och sömn. Många andra program fokuserar bara på en av dessa delar, men vårt paket ger dig en komplett plan som är anpassad efter dina personliga behov och mål.' />
-                    <MultivitaminEachFAQ question='Hur skiljer sig Scandi Hälsopaketet från andra hälsopaket eller träningsprogram?' answer='Scandi Hälsopaketet täcker alla aspekter som behövs för att nå dina träningsmål: träning, kost och sömn. Många andra program fokuserar bara på en av dessa delar, men vårt paket ger dig en komplett plan som är anpassad efter dina personliga behov och mål.' />
-                    <MultivitaminEachFAQ question='Hur skiljer sig Scandi Hälsopaketet från andra hälsopaket eller träningsprogram?' answer='Scandi Hälsopaketet täcker alla aspekter som behövs för att nå dina träningsmål: träning, kost och sömn. Många andra program fokuserar bara på en av dessa delar, men vårt paket ger dig en komplett plan som är anpassad efter dina personliga behov och mål.' />
+                    <MultivitaminEachFAQ question='A-vitamin' answer='' />
+                    <MultivitaminEachFAQ question='B-12-vitamin' answer='' />
+                    <MultivitaminEachFAQ question='B6-vitamin' answer='' />
+                    <MultivitaminEachFAQ question='Dombrovtrolt' answer='' />
+                    <MultivitaminEachFAQ question='Biotin' answer='' />
+                    <MultivitaminEachFAQ question='C-vitamin' answer='' />
                 </aside>
                 <div className='line'></div>
                 <div>
-                    <MultivitaminEachFAQ question='Hur skiljer sig Scandi Hälsopaketet från andra hälsopaket eller träningsprogram?' answer='Scandi Hälsopaketet täcker alla aspekter som behövs för att nå dina träningsmål: träning, kost och sömn. Många andra program fokuserar bara på en av dessa delar, men vårt paket ger dig en komplett plan som är anpassad efter dina personliga behov och mål.' />
-                    <MultivitaminEachFAQ question='Hur skiljer sig Scandi Hälsopaketet från andra hälsopaket eller träningsprogram?' answer='Scandi Hälsopaketet täcker alla aspekter som behövs för att nå dina träningsmål: träning, kost och sömn. Många andra program fokuserar bara på en av dessa delar, men vårt paket ger dig en komplett plan som är anpassad efter dina personliga behov och mål.' />
-                    <MultivitaminEachFAQ question='Hur skiljer sig Scandi Hälsopaketet från andra hälsopaket eller träningsprogram?' answer='Scandi Hälsopaketet täcker alla aspekter som behövs för att nå dina träningsmål: träning, kost och sömn. Många andra program fokuserar bara på en av dessa delar, men vårt paket ger dig en komplett plan som är anpassad efter dina personliga behov och mål.' />
-                    <MultivitaminEachFAQ question='Hur skiljer sig Scandi Hälsopaketet från andra hälsopaket eller träningsprogram?' answer='Scandi Hälsopaketet täcker alla aspekter som behövs för att nå dina träningsmål: träning, kost och sömn. Många andra program fokuserar bara på en av dessa delar, men vårt paket ger dig en komplett plan som är anpassad efter dina personliga behov och mål.' />
+                    <MultivitaminEachFAQ question='D-vitamin' answer='' />
+                    <MultivitaminEachFAQ question='E-vitamin' answer='' />
+                    <MultivitaminEachFAQ question='Folsyra' answer='' />
+                    <MultivitaminEachFAQ question='Jod' answer='' />
+                    <MultivitaminEachFAQ question='Zink' answer='' />
+                    <MultivitaminEachFAQ question='Andra Vitaminer' answer='' />
                 </div>
             </article>
         </section>
@@ -531,16 +541,18 @@ function MultivitaminGuarantee({ setViewProductPopup }) {
 
 function ViewproductMultivitaminPopup({ setViewProductPopup }) {
 
+    const [loading, setLoading] = useState(false)
     const [subOrOnce, setSubOrOnce] = useState('sub')
     const [price, setPrice] = useState(0)
-    const [stripePriceId, setStripePriceId] = useState('')
+    const [stripePriceId, setStripePriceId] = useState('price_1Pd6V9KgpFWeoEQVHTeeLcyx')
     let id = 1
     let name = 'Scandifit Multivitamin'
-    let picture = 'opti-men-multivitamin.jpg'
+    let picture = 'ScandifitMultivitaminImg.png'
     let quantity = 1
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true)
         const response = await fetch('http://127.0.0.1:8000/AddCartInfo', {
             method: 'POST',
             credentials: 'include',
@@ -551,13 +563,19 @@ function ViewproductMultivitaminPopup({ setViewProductPopup }) {
         });
         const data = await response.json();
         if (data.success) {
+            setLoading(false);
+            setViewProductPopup(false);
             window.location.reload();
-            window.scrollTo(0, 0);
-        } 
+        } else {
+            setLoading(false);
+            setViewProductPopup(false);
+            window.location.reload();
+        }
     };
 
     return (
         <>
+            { loading ? <LoadingScreen /> : '' }
             <div className='ViewproductMultivitaminPopupBackground' onClick={() => setViewProductPopup(false)}></div>
             <section className='ViewproductMultivitaminPopup'>
 
@@ -575,7 +593,7 @@ function ViewproductMultivitaminPopup({ setViewProductPopup }) {
                             value='sub'
                             id='typeOfPurchaseSub'
                             checked={subOrOnce === 'sub'}
-                            onChange={() => { setSubOrOnce('sub'); setPrice(0); setStripePriceId('price_1OPAFZKgpFWeoEQVlTl26PyM')}}
+                            onChange={() => { setSubOrOnce('sub'); setPrice(0); setStripePriceId('price_1Pd6V9KgpFWeoEQVHTeeLcyx')}}
                         />
                         <label htmlFor='typeOfPurchaseSub'>
                             <div>
@@ -591,7 +609,7 @@ function ViewproductMultivitaminPopup({ setViewProductPopup }) {
                             value='once'
                             id='typeOfPurchaseOnce'
                             checked={subOrOnce === 'once'}
-                            onChange={() => {setSubOrOnce('once'); setPrice(499); setStripePriceId('price_1OPAFZKgpFWeoEQVlTl26PyM')}}
+                            onChange={() => {setSubOrOnce('once'); setPrice(499); setStripePriceId('price_1Pd6wiKgpFWeoEQVQAzWAJnE')}}
                         />
                         <label htmlFor='typeOfPurchaseOnce'>
                             <div>
@@ -641,6 +659,24 @@ function ViewproductMultivitaminPopup({ setViewProductPopup }) {
     )
 }
 
+function FAQMultivitamin() {
+    return (
+        <section className='IngredientsAndBenefits'>
+            <h2>Vanliga Frågor</h2>
+            <article>
+                <aside>
+                    <MultivitaminEachFAQ question='Detta är En Fråga' answer='' />
+                    <MultivitaminEachFAQ question='Detta är En Fråga ' answer='' />
+                    <MultivitaminEachFAQ question='Detta är En Fråga ' answer='' />
+                    <MultivitaminEachFAQ question='Detta är En Fråga ' answer='' />
+                    <MultivitaminEachFAQ question='Detta är En Fråga ' answer='' />
+                    <MultivitaminEachFAQ question='Detta är En Fråga ' answer='' />
+                </aside>
+            </article>
+        </section>
+    )
+}
+
 function Multivitamin() {
 
     const [viewProductPopup, setViewProductPopup] = useState(false)
@@ -676,6 +712,8 @@ function Multivitamin() {
             <WhyIsTheFirstMonthFree setViewProductPopup={setViewProductPopup} />
             <Line />
             <MultivitaminGuarantee setViewProductPopup={setViewProductPopup} />
+            <Line />
+            <FAQMultivitamin />
             { viewProductPopup ? <ViewproductMultivitaminPopup setViewProductPopup={setViewProductPopup} />  : ''}
         </>
     );

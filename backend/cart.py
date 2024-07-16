@@ -121,6 +121,24 @@ def deleteItem():
                 'success': False,
             }
         )    
+    
+@cart.route('/deleteAllFromCart', methods=['GET', 'POST'])
+def deleteAllItem():
+    """Remove an item from the user's shopping cart."""
+    if 'cart_items' in session:
+        session['cart_items'] = []
+
+        return jsonify(
+            {
+                'success': True,
+            }
+        )
+    else:
+        return jsonify(
+            {
+                'success': False,
+            }
+        )    
 
 # The code beneth is not in use
 

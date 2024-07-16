@@ -48,7 +48,7 @@ function SpecialMultivitaminOfferPopup() {
                 <aside>
                     <h2>Få din första månad gratis!</h2>
                     <p>Betala <span>endast 49 kr</span> för snabb hemleverans. Därefter 249 kr per månad <span>utan bindningstid</span>.</p>
-                    <Link to='/products/multivitamin' className='ShowMoreBtn' onClick={() => setShowPopup(false)}>Visa Mer</Link>
+                    <Link to='/products/multivitamin' className='ShowMoreBtn' onClick={() => {setShowPopup(false); window.scrollTo(0, 0);}}>Visa Mer</Link>
                 </aside>
             </section>
         </>
