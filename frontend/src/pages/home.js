@@ -34,7 +34,7 @@ function Hero() {
                 <h1>Få ditt personliga “scandi hälsopaket” på 60 sekunder och uppnå dina mål upp till 90% snabbare utan att slösa tid på planering!</h1>
                 <p>Få en specialgjord plan för att nå dina mål snabbt – oavsett om du vill gå ner i vikt, bygga muskler eller förbättra din hälsa. <span>Allt på bara 60 sekunder och helt gratis!</span></p>
                 <div>
-                    <Link to='/signup' className='btn'>Ja, ge mig mitt hälso paket <br/> <span>Helt Gratis!!</span></Link>
+                    <Link to='/trainingplan/quiz' className='btn'>Ja, ge mig mitt hälso paket <br/> <span>Helt Gratis!!</span></Link>
                     <p className='reassurance' > <img src={Lock} alt='Lock' /> 100% Privat, Inga kreditkort behövs</p>
                 </div>
             </article>
@@ -155,7 +155,7 @@ function ScandifitHealthPackage() {
             <h4>Få ditt scandi hälso paket idag</h4>
             <h2><span>Gratis</span> För De Första 5000 Användarna</h2>
             <p>Nuvarande Användare: 2457</p>
-            <Link to='' className='getHealthPackageBtn' >Ja, ge mig mitt hälso paket <br/> <span>Helt Gratis!!</span></Link>
+            <Link to='/trainingplan/quiz' className='getHealthPackageBtn' >Ja, ge mig mitt hälso paket <br/> <span>Helt Gratis!!</span></Link>
 
 
         </section>
@@ -359,7 +359,7 @@ function HomeUrgency() {
             <p>Häslopaket Ordinarie Pris: 997 Kr</p>
             <h3>Gratis för de första 5000 användarna!</h3>
             <h4>Nuvarande: 2489 Användare</h4>
-            <Link to='/signup' className='btn'>Börja Nu!</Link>
+            <Link to='/trainingplan/quiz' className='btn'>Börja Nu!</Link>
             <p className='reassurance'>🔒 100% Privat, Inga kreditkort behövs</p>
         </section>
     )
@@ -380,7 +380,7 @@ function HomeSammanfattning() {
                 <h2>Total Värde: 997kr</h2>
                 <h3>Idag: Helt Gratis</h3>
                 <div>
-                    <Link to='/signup' className='btn'>Ja, ge mig mitt hälso paket <br/> <span>Helt Gratis!!</span></Link>
+                    <Link to='/trainingplan/quiz' className='btn'>Ja, ge mig mitt hälso paket <br/> <span>Helt Gratis!!</span></Link>
                     <p>Denna produkt är digital, vilket innebär att du får tillgång omedelbart!</p>
                 </div>
             </article>

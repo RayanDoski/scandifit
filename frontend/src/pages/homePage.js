@@ -25,7 +25,7 @@ function HeroSection() {
                 <p>Upptäck hemligheten bakom “Scandi Hälsopaketet” som ger dig resultat du inte trodde var möjligt!</p>
             </article>
             <div>
-                <Link to='/signup' className='btn'>Börja Nu!</Link>
+                <Link to='/trainingplan/quiz' className='btn'>Börja Nu!</Link>
                 <div>
                     {/* <img src={Lock} alt='Lock' /> */}
                     <p className='reassurance'>🔒 100% Privat, Inga kreditkort behövs</p>
@@ -245,7 +245,7 @@ function Urgency() {
             <p>Häslopaket Ordinarie Pris: 997 Kr</p>
             <h3>Gratis för de första 5000 användarna!</h3>
             <h4>Nuvarande: 2489 Användare</h4>
-            <Link to='/signup' className='btn'>Börja Nu!</Link>
+            <Link to='/trainingplan/quiz' className='btn'>Börja Nu!</Link>
             <p className='reassurance'>🔒 100% Privat, Inga kreditkort behövs</p>
         </section>
     )
