@@ -5,12 +5,6 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // Importing CSS
 import '../../styles/specialMultivitaminOffer.css';
 
-// Import Loading Screen
-import Loading from '../../components/loadingScreenFullScreen.js';
-
-// For Login
-import NotLiAuthCheck from '../loginSystem/notLiAuthCheck.js';
-
 // Importing Images
 import ProductOfferPicture from '../../images/product-picture/multivitaminHeroImg.jpg'
 

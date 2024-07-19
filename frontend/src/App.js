@@ -9,10 +9,6 @@ import Footer from './components/footer.js';
 import Home from './pages/home.js';
 import HomePage from './pages/homePage.js'
 
-// Loading Screens
-import LoadingScreenFullScreen from './components/loadingScreenFullScreen.js';
-import LoadingScreen from './components/loadingScreen.js';
-
 // Popups
 import SpecialMultivitaminOfferPopup from './pages/popups/specialMultivitaminOffer.js';
 

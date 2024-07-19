@@ -5,9 +5,6 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // Importing CSS
 import '../styles/homePage.css';
 
-// Import Loading Screen
-import Loading from '../components/loadingScreenFullScreen.js';
-
 // Importing Images
 import Lock from '../images/icons/safety.png'
 import LaptopTrainingplan from '../images/laptopTrainingplan.png'
@@ -18,9 +15,6 @@ import pictureFromTheQuiz from '../images/pictureFromTheQuiz.png'
 import analyze from '../images/icons/analyze.png'
 import runningOnTreadmilIcon from '../images/icons/runningOnTreadmilIcon.png'
 import GreenStar from '../images/icons/star-green.png'
-
-import LoadingScreenFullScreen from '../components/loadingScreenFullScreen.js';
-import SleepPlan from './plans/sleepPlan.js';
 
 function HeroSection() {
     return (

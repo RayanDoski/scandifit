@@ -60,7 +60,6 @@ import supermanExercise from '../images/workouts/superman-exercise.jpg';
 import treadmil from '../images/workouts/treadmil.jpg';
 import tricepsDip from '../images/workouts/triceps-dip.jpg';
 import tricepsRopePushdown from '../images/workouts/Triceps-Rope-Pushdown.jpg';
-// Import other images similarly...
 
 // Map image filenames to imports
 const workoutImages = {

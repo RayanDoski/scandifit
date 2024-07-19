@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 // Importing CSS
 import '../styles/home.css';
-
-// Import Loading Screen
-import Loading from '../components/loadingScreenFullScreen.js';
 
 // Importing Images
 import Logo from '../images/logo.png'
@@ -17,21 +13,16 @@ import TimeIcon from '../images/icons/timeIcon.png'
 import CheckMark from '../images/icons/checkmark.png'
 import MuscleMan from '../images/icons/muscleman.png'
 import CheckmarkGreen from '../images/icons/checkde-checkmark.png'
-import HealthPackage from '../images/icons/healthPackage.png'
 import GreenStar from '../images/icons/star-green.png'
-import EmptyProfilePicture from '../images/icons/emptyProfilePicture.png'
-import Exhausted from '../images/icons/exhausted.png'
 import LaptopTrainingplan from '../images/laptopTrainingplan.png'
 import LaptopSleepplan from '../images/laptopSleepplan.png'
 import LaptopKostplan from '../images/laptopKostplan.png'
 import pictureFromTheQuiz from '../images/pictureFromTheQuiz.png'
-import trainingSchedualIcon from '../images/icons/trainingSchedualIcon.png'
 import analyze from '../images/icons/analyze.png'
 import runningOnTreadmilIcon from '../images/icons/runningOnTreadmilIcon.png'
 import HealthyAndStrongIcon from '../images/icons/healthyAndStrongIcon.png'
 import GoalIcon from '../images/icons/GoalIcon.png'
 import RolemodelIcon from '../images/icons/rolemodelIcon.png'
-import HandshakeIcon from '../images/icons/handshakeIcon.png'
 import sad from '../images/icons/sad.png'
 
 function Hero() {

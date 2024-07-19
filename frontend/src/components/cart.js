@@ -14,7 +14,7 @@ import Postnord from '../images/postnord.png'
 function CartSlideInMenu({isCartOpen, setIsCartOpen, products, setProducts}) {
 
     const [totalPrice, setTotalPrice] = useState(0);
-    const [loading, setLoading] = useState(false)
+    const [loadingCart, setLoadingCart] = useState(false)
 
     const quantityAdjustAdd = (index) => {
         setProducts(prevProducts => {
@@ -35,7 +35,6 @@ function CartSlideInMenu({isCartOpen, setIsCartOpen, products, setProducts}) {
     };
 
     const GetCartInfo = async () => {
-        setLoading(true)
         const response = await fetch('http://127.0.0.1:8000/GetCartInfo', {
             method: 'POST',
             credentials: 'include'  // Include credentials (cookies)
@@ -43,7 +42,6 @@ function CartSlideInMenu({isCartOpen, setIsCartOpen, products, setProducts}) {
         const data = await response.json();
         if (data.success) {
             setProducts(data.products)
-            setLoading(false)
             if (data.products.length > 0) {
                 setIsCartOpen(true)
             }
@@ -96,7 +94,7 @@ function CartSlideInMenu({isCartOpen, setIsCartOpen, products, setProducts}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true)
+        setLoadingCart(true)
         const response = await fetch('http://127.0.0.1:8000/create_checkout_session', {
             method: 'POST',
             credentials: 'include',
@@ -107,17 +105,17 @@ function CartSlideInMenu({isCartOpen, setIsCartOpen, products, setProducts}) {
         });
         const data = await response.json();
         if (data.success) {
-            setLoading(false)
+            setLoadingCart(false)
             window.location.href = data.redirect_url; // Use the provided URL from the server
         } else {
-            setLoading(false)
+            setLoadingCart(false)
             alert(data.message)
         }
     };
 
     return (
         <>
-            { loading ? < LoadingScreenFullScreen /> : '' }
+            { loadingCart ? <LoadingScreenFullScreen /> : '' }
             <section onClick={() => setIsCartOpen(false)} className={isCartOpen ? 'BackgroundForCartSlideInMenu show' : 'BackgroundForCartSlideInMenu'}></section>
             <form onSubmit={handleSubmit} className={isCartOpen ? 'ContainerForCartSlideInMenu show' : 'ContainerForCartSlideInMenu'}>
                 <h1>Varukorg <span>- {products.length} Artiklar</span></h1>

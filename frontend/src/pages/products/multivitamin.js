@@ -8,9 +8,6 @@ import '../../styles/multivitamin.css';
 // Importing Loading Screen
 import LoadingScreen from '../../components/loadingScreenFullScreen.js';
 
-// Import cart
-import CartSlideInMenu from '../../components/cart.js';
-
 // Importing Images
 import Lock from '../../images/icons/open-lock.png'
 import CustomerManagment from '../../images/icons/customer-management.png'
