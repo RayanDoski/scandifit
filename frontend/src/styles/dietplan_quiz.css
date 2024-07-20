@@ -1,0 +1,1434 @@
+.dietplan_quiz {
+    margin: 50px auto 50px auto;
+    padding: 0px 20px 0px 20px;
+    max-width: 1400px;
+}
+
+.dietplan_quiz > form > h2 {
+    color: var(--black);
+    text-align: center;
+    font-size: 40px;
+}
+
+.dietplan_quiz > form > nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0px 0px 75px 0px;
+}
+
+.dietplan_quiz > form > nav > img {
+    max-width: 30px;
+    cursor: pointer;
+}
+
+.dietplan_quiz > form > nav > div {
+    width: 100%;
+    height: 10px;
+    background-color: var(--black);
+}
+
+.dietplan_quiz > form > nav > div > div {
+    height: 10px;
+    background-color: var(--green);
+    transition: .5s all;
+}
+
+@keyframes slideIn {
+    0% {
+        top: -25px;
+        opacity: 0;
+    }
+    100% {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .dietplan_quiz > aside > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+        margin: 0px 0px 5px 0px;
+    }
+
+    .dietplan_quiz > aside > div > img {
+        height: 15px;
+        width: 15px;
+    }
+
+    .dietplan_quiz > aside > div > div {
+        height: 5px;
+    }
+    
+    .dietplan_quiz > aside > div > div > div {
+        height: 5px;
+    }
+
+}
+
+/* question_one */
+
+.dietplan_quiz > form > .question_one {
+    margin: 100px 0px 150px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: slideIn 0.5s ease forwards; 
+}
+
+.dietplan_quiz > form > .question_one > h2 {
+    font-family: var(--primary-font);
+    text-align: center;
+    font-size: 65px;
+    margin: 0;
+}
+
+.dietplan_quiz > form > .question_one > aside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 50px 0px;
+}
+
+.dietplan_quiz > form > .question_one > aside > input {
+    display: none;
+}
+
+.dietplan_quiz > form > .question_one > aside > input:checked + label {
+    border: 5px solid var(--green);
+}
+
+.dietplan_quiz > form > .question_one > aside > label {
+    background-color: var(--gray);
+    width: 375px;
+    padding: 10px 0px 0px 0px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: rgba(255, 255, 255, 0.19) 0px 10px 20px, rgba(255, 255, 255, 0.23) 0px 6px 6px;
+    cursor: pointer;
+    transition: .5s all;
+}
+
+.dietplan_quiz > form > .question_one > aside > label:hover {
+    background-color: var(--black);
+}
+
+.dietplan_quiz > form > .question_one > aside > label > img {
+    height: 450px;
+    margin: 0px auto;
+}
+
+.dietplan_quiz > form > .question_one > aside > label > div {
+    background-color: var(--green);
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.dietplan_quiz > form > .question_one > aside > label > div > h2 {
+    color: var(--white);
+    font-size: 22px;
+    text-align: center;
+    margin: 0;
+}
+
+.dietplan_quiz > form > .question_one > aside > label > div > p {
+    text-align: center;
+    color: var(--white);
+    font-size: 18px;
+    margin: 0;
+    font-weight: lighter;
+}
+
+@media screen and (max-width: 1300px) {
+
+    .dietplan_quiz > form > .question_one > aside {
+        gap: 15px;
+        margin: 25px 0px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label {
+        width: 300px;
+        gap: 5px;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    .dietplan_quiz > form > .question_one > aside > label {
+        width: 250px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > img {
+        height: 400px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > div > h2 {
+        inline-size: 100%;
+        font-size: 28px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > div > p {
+        font-size: 16px;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+
+    .dietplan_quiz > form > .question_one > aside {
+        padding: 0px 25px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label {
+        width: 33%;
+        box-sizing: border-box;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > img {
+        height: 300px;
+        width: 120px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > div > h2 {
+        font-size: 24px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > div > p {
+        font-size: 14px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > div {
+        padding: 10px 2.5px;
+        height: 125px;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    .dietplan_quiz > form > .question_one > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside {
+        padding: 0px 5px;
+        gap: 7.5px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > input:checked + label {
+        border: 2.5px solid var(--company-color);
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > img {
+        height: 250px;
+        width: 100px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > div > h2 {
+        font-size: 20px;
+        letter-spacing: 0px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > div > p {
+        font-size: 12px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > div {
+        padding: 10px 2.5px;
+        height: 125px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    .dietplan_quiz > form > .question_one > aside > input:checked + label {
+        border: 2.5px solid var(--company-color);
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > img {
+        height: 200px;
+        width: 80px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > div > h2 {
+        font-size: 16px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > div > p {
+        font-size: 10px;
+    }
+
+    .dietplan_quiz > form > .question_one > aside > label > div {
+        padding: 5px 1.5px;
+        height: 100px;
+    }
+
+}
+
+/* question_two */
+
+.dietplan_quiz > form > .question_two {
+    margin: 100px 0px 150px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: slideIn 0.5s ease forwards; 
+}
+
+.dietplan_quiz > form > .question_two > h2 {
+    font-family: var(--primary-font);
+    text-align: center;
+    font-size: 65px;
+    margin: 0;
+}
+
+.dietplan_quiz > form > .question_two > aside {
+    margin: 75px 0px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.dietplan_quiz > form > .question_two > aside > input {
+    display: none;
+}
+
+.dietplan_quiz > form > .question_two > aside > #woman,
+.dietplan_quiz > form > .question_two > aside > #man {
+    width: 600px;
+    text-align: center;
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.dietplan_quiz > form > .question_two > aside > #woman:hover,
+.dietplan_quiz > form > .question_two > aside > #man:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.dietplan_quiz > form > .question_two > aside > input:checked + #woman,
+.dietplan_quiz > form > .question_two > aside > input:checked + #man {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media screen and (max-width: 1300px) {
+
+    .dietplan_quiz > form > .question_two.show {
+        width: 90%;
+    }
+
+    .dietplan_quiz > form > .question_two > aside {
+        gap: 25px;
+        width: 100%;
+    }
+
+    .dietplan_quiz > form > .question_two > aside > #man {
+        width: 49%;
+    }
+
+    .dietplan_quiz > form > .question_two > aside > #woman {
+        width: 49%;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    .dietplan_quiz > form > .question_two > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_two.show {
+        width: 99%;
+    }
+
+    .dietplan_quiz > form > .question_two > aside {
+        gap: 5px;
+        width: 100%;
+        margin: 25px 0px 0px 0px;
+    }
+
+    .dietplan_quiz > form > .question_two > aside > #man {
+        font-size: 24px;
+        letter-spacing: .5px;
+        padding: 10px 0px;
+    }
+
+    .dietplan_quiz > form > .question_two > aside > #woman {
+        font-size: 24px;
+        letter-spacing: .5px;
+        padding: 10px 0px;
+    }
+
+}
+
+/* question_three */
+
+.dietplan_quiz > form > .question_three {
+    margin: 100px 0px 150px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: slideIn 0.5s ease forwards; 
+}
+
+.dietplan_quiz > form > .question_three > h2 {
+    text-align: center;
+    font-size: 65px;
+    margin: 0;
+}
+
+.dietplan_quiz > form > .question_three > p {
+    font-weight: lighter;
+    font-size: 20px;
+    inline-size: 75%;
+    text-align: center;
+    line-height: 1.25;
+}
+
+.dietplan_quiz > form > .question_three > label {
+    margin: 50px 0px 20px 0px;
+    font-size: 20px;
+}
+
+.dietplan_quiz > form > .question_three > input {
+    width: 400px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    border: 0;
+    background-color: var(--white);
+    border-bottom: var(--green) 2px solid;
+    outline: 0;
+    font-size: 18px;
+    color: var(--black);
+}
+
+.dietplan_quiz > form > .question_three > button {
+    text-align: center;
+    width: 400px;
+    margin: 30px 0px 0px 0px;
+    padding: 5px 30px;
+    font-size: 16px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.dietplan_quiz > form > .question_three > button:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media screen and (max-width: 700px) {
+
+    .dietplan_quiz > form > .question_three > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_three > p {
+        font-size: 16px;
+    }
+    
+    .dietplan_quiz > form > .question_three > label {
+        margin: 25px 0px;
+        font-size: 16px;
+    }
+
+    .dietplan_quiz > form > .question_three > input {
+        width: 400px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .dietplan_quiz > form > .question_three > button {
+        width: 100px;
+        right: 5px;
+        font-size: 14px;
+        letter-spacing: .5px;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+
+    .dietplan_quiz > form > .question_three > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_three > p {
+        font-size: 16px;
+    }
+    
+    .dietplan_quiz > form > .question_three > label {
+        margin: 25px 0px;
+        font-size: 16px;
+    }
+
+    .dietplan_quiz > form > .question_three > input {
+        width: 300px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+}
+
+/* question_four */
+
+.dietplan_quiz > form > .question_four {
+    margin: 100px 0px 150px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: slideIn 0.5s ease forwards; 
+}
+
+.dietplan_quiz > form > .question_four > h2 {
+    font-family: var(--primary-font);
+    text-align: center;
+    font-size: 65px;
+    margin: 0;
+}
+
+.dietplan_quiz > form > .question_four > p {
+    font-weight: lighter;
+    font-size: 20px;
+    inline-size: 75%;
+    text-align: center;
+}
+
+.dietplan_quiz > form > .question_four > label {
+    margin: 50px 0px 20px 0px;
+    font-size: 20px;
+}
+
+.dietplan_quiz > form > .question_four > input {
+    width: 400px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    border: 0;
+    background-color: var(--white);
+    border-bottom: var(--green) 2px solid;
+    outline: 0;
+    font-size: 18px;
+    color: var(--black);
+}
+
+.dietplan_quiz > form > .question_four > button {
+    text-align: center;
+    width: 400px;
+    margin: 30px 0px 0px 0px;
+    padding: 5px 30px;
+    font-size: 16px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.dietplan_quiz > form > .question_four > button:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media screen and (max-width: 700px) {
+
+    .dietplan_quiz > form > .question_four > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_four > p {
+        font-size: 16px;
+    }
+    
+    .dietplan_quiz > form > .question_four > label {
+        margin: 25px 0px;
+        font-size: 16px;
+    }
+
+    .dietplan_quiz > form > .question_four > input {
+        width: 400px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .dietplan_quiz > form > .question_four > button {
+        width: 100px;
+        right: 5px;
+        font-size: 14px;
+        letter-spacing: .5px;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+
+    .dietplan_quiz > form > .question_four > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_four > p {
+        font-size: 16px;
+    }
+    
+    .dietplan_quiz > form > .question_four > label {
+        margin: 25px 0px;
+        font-size: 16px;
+    }
+
+    .dietplan_quiz > form > .question_four > input {
+        width: 300px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+}
+
+/* question_five */
+
+.dietplan_quiz > form > .question_five {
+    margin: 100px 0px 150px 0px;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.5s ease forwards; 
+}
+
+.dietplan_quiz > form > .question_five > h2 {
+    text-align: center;
+    font-size: 65px;
+    margin: 0;
+}
+
+.dietplan_quiz > form > .question_five > div {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: auto;
+}
+
+.dietplan_quiz > form > .question_five > div > label {
+    margin: 50px 0px 20px 0px;
+    font-size: 18px;
+}
+
+.dietplan_quiz > form > .question_five > div > input {
+    width: 400px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    border: 0;
+    background-color: var(--white);
+    border-bottom: var(--green) 2px solid;
+    outline: 0;
+    font-size: 18px;
+    color: var(--black);
+}
+
+.dietplan_quiz > form > .question_five > div > button {
+    text-align: center;
+    width: 400px;
+    margin: 50px 0px 0px 0px;
+    padding: 5px 30px;
+    font-size: 16px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.dietplan_quiz > form > .question_five > div > button:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media screen and (max-width: 1000px) {
+
+    .dietplan_quiz > form > .question_five {
+        width: 100%;
+        padding: 0px 20px;
+        box-sizing: border-box;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    .dietplan_quiz > form > .question_five > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_five > div > label {
+        margin: 30px 0px 20px 0px;
+        font-size: 16px;
+    }
+
+    .dietplan_quiz > form > .question_five > div > input {
+        width: 400px;
+        font-size: 16px;
+    }
+
+    .dietplan_quiz > form > .question_five > div > button {
+        width: 400px;
+        font-size: 16px;
+        letter-spacing: .5px;
+        margin: 25px 0px 0px 0px;
+    }
+
+    .dietplan_quiz > form > .question_five > div {
+        width: 400px;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+
+    .dietplan_quiz > form > .question_five {
+        padding: 0px 10px;
+    }
+
+    .dietplan_quiz > form > .question_five > div > input {
+        width: 300px;
+    }
+
+    .dietplan_quiz > form > .question_five > div > button {
+        width: 300px;
+        padding: 5px 10px;
+    }
+
+    .dietplan_quiz > form > .question_five > div {
+        width: 300px;
+    }
+
+}
+
+/* question_six */
+
+.dietplan_quiz > form > .question_six {
+    margin: 100px 0px 150px 0px;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.5s ease forwards; 
+}
+
+.dietplan_quiz > form > .question_six > h2 {
+    margin: 0;
+    text-align: center;
+    font-size: 65px;
+}
+
+.dietplan_quiz > form > .question_six > p {
+    margin: 0;
+    font-size: 20px;
+    text-align: center;
+}
+
+.dietplan_quiz > form > .question_six > aside {
+    margin: 50px 0px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.dietplan_quiz > form > .question_six > aside > label {
+    text-align: center;
+    width: 800px;
+    margin: 0;
+    padding: 20px 30px;
+    font-size: 16px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.dietplan_quiz > form > .question_six > aside > label:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.dietplan_quiz > form > .question_six > aside > input {
+    display: none;
+}
+
+.dietplan_quiz > form > .question_six > aside > input:checked + label {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media screen and (max-width: 1000px) {
+
+    .dietplan_quiz > form > .question_six {
+        width: 100%;
+        padding: 0px 20px;
+        box-sizing: border-box;
+    }
+
+    .dietplan_quiz > form > .question_six > aside > label {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    .dietplan_quiz > form > .question_six > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_six > p {
+        font-size: 16px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_six > aside > label {
+        padding: 15px 20px;
+        font-size: 16px;
+        line-height: 1.25;
+        letter-spacing: .5;
+    }
+
+    .dietplan_quiz > form > .question_six > aside {
+        margin: 25px 0px 0px 0px;
+        gap: 20px;
+    }
+
+}
+
+/* question_seven */
+
+.dietplan_quiz > form > .question_seven {
+    margin: 100px 0px 150px 0px;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.5s ease forwards; 
+}
+
+.dietplan_quiz > form > .question_seven > h2 {
+    margin: 0;
+    text-align: center;
+    font-size: 65px;
+}
+
+.dietplan_quiz > form > .question_seven > aside {
+    margin: 50px 0px 0px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+.dietplan_quiz > form > .question_seven > aside > label {
+    width: 125px;
+    height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.dietplan_quiz > form > .question_seven > aside > label:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.dietplan_quiz > form > .question_seven > aside > input {
+    display: none;
+}
+
+.dietplan_quiz > form > .question_seven > aside > input:checked + label {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.dietplan_quiz > form > .question_seven > input {
+    display: none;
+}
+
+.dietplan_quiz > form > .question_seven > input:checked + label {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.dietplan_quiz > form > .question_seven > label {
+    width: 50%;
+    margin: 50px auto 0px auto;
+    padding: 10px 0px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.dietplan_quiz > form > .question_seven > label:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.dietplan_quiz > form > .question_seven > p {
+    width: 50%;
+    margin: 7.5px auto 0px auto;
+    font-size: 14px;
+    font-weight: lighter;
+    text-align: center;
+}
+
+@media screen and (max-width: 1250px) {
+
+    .dietplan_quiz > form > .question_seven {
+        width: 100%;
+        padding: 0px 20px;
+        box-sizing: border-box;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    .dietplan_quiz > form > .question_seven > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_seven > aside {
+        margin: 25px 0px 0px 0px;
+        gap: 25px;
+    }
+
+    .dietplan_quiz > form > .question_seven > aside > label {
+        width: 75px;
+        height: 75px;
+        font-size: 16px;
+    }
+
+    .dietplan_quiz > form > .question_seven > label {
+        width: 85%;
+        margin: 25px auto 0px auto;
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+
+    .dietplan_quiz > form > .question_seven > p {
+        width: 99%;
+        margin: 7.5px auto 0px auto;
+        font-size: 14px;
+        text-align: center;
+        line-height: 1.25;
+    }
+
+}
+
+/* question_eight */
+
+.dietplan_quiz > form > .question_eight {
+    margin: 100px 0px 150px 0px;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.5s ease forwards; 
+}
+
+.dietplan_quiz > form > .question_eight > h2 {
+    margin: 0;
+    text-align: center;
+    font-size: 65px;
+}
+
+.dietplan_quiz > form > .question_eight > p {
+    margin: 0;
+    text-align: center;
+    font-size: 20px;
+}
+
+.dietplan_quiz > form > .question_eight > aside {
+    margin: 50px 0px 0px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.dietplan_quiz > form > .question_eight > aside > input {
+    display: none;
+}
+
+.dietplan_quiz > form > .question_eight > aside > input:checked + label {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.dietplan_quiz > form > .question_eight > aside > label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    padding: 10px 40px;
+    align-items: center;
+    margin: 0;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.dietplan_quiz > form > .question_eight > aside > label:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.dietplan_quiz > form > .question_eight > aside > label > img {
+    width: 60px;
+    height: 50px;
+}
+
+.dietplan_quiz > form > .question_eight > aside > label > p {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .dietplan_quiz > form > .question_eight {
+        width: 100%;
+        padding: 25px 20px;
+        box-sizing: border-box;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    .dietplan_quiz > form > .question_eight > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_eight > p {
+        font-size: 16px;
+    }
+
+    .dietplan_quiz > form > .question_eight > aside {
+        margin: 25px 0px 0px 0px;
+        gap: 20px;
+    }
+
+    .dietplan_quiz > form > .question_eight > aside > label {
+        width: 45%;
+        min-width: 250px;
+        padding: 10px 20px;
+    }
+
+    .dietplan_quiz > form > .question_eight > aside > label > img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .dietplan_quiz > form > .question_eight > aside > label > p {
+        font-size: 16px;
+        letter-spacing: .5px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
+    .dietplan_quiz > form > .question_eight {
+        padding: 0;
+    }
+
+}
+
+/* question_nine */
+
+.dietplan_quiz > form > .question_nine {
+    margin: 100px 0px 150px 0px;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.5s ease forwards; 
+}
+
+.dietplan_quiz > form > .question_nine > h2 {
+    margin: 0;
+    text-align: center;
+    font-size: 65px;
+}
+
+.dietplan_quiz > form > .question_nine > aside > input {
+    display: none;
+}
+
+.dietplan_quiz > form > .question_nine > aside > input:checked + label {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.dietplan_quiz > form > .question_nine > aside {
+    margin: 50px 0px 0px 0px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.dietplan_quiz > form > .question_nine > aside > label {
+    width: 800px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    margin: 0;
+    padding: 20px 30px;
+    font-size: 16px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.dietplan_quiz > form > .question_nine > aside > label:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.dietplan_quiz > form > .question_nine > aside > label > img {
+    width: 35px;
+    height: 35px;
+}
+
+.dietplan_quiz > form > .question_nine > aside > label > p {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .dietplan_quiz > form > .question_nine {
+        width: 100%;
+        padding: 0px 20px;
+        box-sizing: border-box;
+    }
+
+    .dietplan_quiz > form > .question_nine > aside > label {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    .dietplan_quiz > form > .question_nine > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_nine > aside > label > p {
+        font-size: 16px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_nine > aside > label {
+        padding: 15px 20px;
+        font-size: 16px;
+        line-height: 1.25;
+        letter-spacing: .5;
+    }
+
+    .dietplan_quiz > form > .question_nine > aside {
+        margin: 25px 0px 0px 0px;
+        gap: 20px;
+    }
+
+    .dietplan_quiz > form > .question_nine > aside > label > img {
+        width: 25px;
+        height: 25px;
+    }
+
+}
+
+/* question_ten */
+
+.dietplan_quiz > form > .question_ten {
+    margin: 100px 0px 150px 0px;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.5s ease forwards; 
+}
+
+.dietplan_quiz > form > .question_ten > h2 {
+    margin: 0;
+    text-align: center;
+    font-size: 65px;
+}
+
+.dietplan_quiz > form > .question_ten > h2 > img {
+    width: 50px;
+    height: 50px;
+}
+
+.dietplan_quiz > form > .question_ten > aside {
+    margin: 50px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+}
+
+.dietplan_quiz > form > .question_ten > aside > input {
+    display: none;
+}
+
+.dietplan_quiz > form > .question_ten > aside > input:checked + label {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.dietplan_quiz > form > .question_ten > aside > label {
+    width: 800px;
+    padding: 20px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.dietplan_quiz > form > .question_ten > aside > label:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media screen and (max-width: 1000px) {
+
+    .dietplan_quiz > form > .question_ten {
+        width: 100%;
+        padding: 0px 20px;
+        box-sizing: border-box;
+    }
+
+    .dietplan_quiz > form > .question_ten > aside > label {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    .dietplan_quiz > form > .question_ten > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_ten > p {
+        font-size: 16px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .question_ten > aside > label {
+        padding: 15px 20px;
+        font-size: 16px;
+        line-height: 1.25;
+        letter-spacing: .5;
+    }
+
+    .dietplan_quiz > form > .question_ten > aside {
+        margin: 25px 0px 0px 0px;
+        gap: 20px;
+    }
+
+    .dietplan_quiz > form > .question_ten > h2 > img {
+        width: 25px;
+        height: 25px;
+    }
+
+}
+
+/* Create Sleepplan */
+.dietplan_quiz > form > .create_dietplan {
+    margin: 100px 0px 150px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: slideIn 0.5s ease forwards; 
+}
+
+.dietplan_quiz > form > .create_dietplan > p {
+    margin: 0;
+    font-size: 20px;
+}
+
+.dietplan_quiz > form > .create_dietplan > h2 {
+    font-size: 65px;
+    margin: 0px 0px 40px 0px;
+    inline-size: 95%;
+    text-align: center;
+}
+
+.dietplan_quiz > form > .create_dietplan > button {
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.dietplan_quiz > form > .create_dietplan > button:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media screen and (max-width: 700px) {
+
+    .dietplan_quiz > form > .create_dietplan > p {
+        font-size: 16px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .create_dietplan > h2 {
+        font-size: 32px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_quiz > form > .create_dietplan > button {
+        padding: 10px 40px;
+        font-size: 15px;
+        letter-spacing: .5px;
+    }
+
+}
+
+
+/* Popup Error */
+
+.errorMessageBackground {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: .5s all;
+}
+
+.errorMessageBackground.show {
+    position: fixed;
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.717);
+    width: 100%;
+    height: 100%;
+}
+
+.errorMessageContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: 1s all;
+}
+
+.errorMessageContainer.show {
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+    background-color: var(--white);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.errorMessageContainer > p {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: .5px;
+}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/jobb.css') }}">{% endblock %}
+{% block title %}<title>Jobb</title>{% endblock %}
+{% block content %}
+<section class="jobb">
+    <h1>Lediga jobb just nu</h1>
+    <p>Här presenterar vi våra lediga tjänster. Klicka på den tjänst du önskar söka och fyll i din ansökan.Det går att sortera listan med lediga tjänster efter Tjänst, Placeringsort, Sista ansökningsdag eller Publiceringsdatum. Klicka på respektive rubrik i det blåmarkerade fältet</p>
+    <h4>Välkommen med din ansökan!</h4>
+    <article>
+        <h6>Tjänst</h6>
+        <aside>
+            <h6>Sista ansökningsdag</h6>
+            <h6>Ort</h6>
+        </aside>
+    </article>
+    <h2>det finns inga lediga jobb för tillfället</h2>
+</section>
+{% endblock %}

@@ -1,0 +1,85 @@
+
+#din-adress {
+    padding: 2px 0px;
+    border-bottom: 1.5px solid var(--company-color);
+}
+
+.profile-information {
+    margin: 50px auto 100px auto;
+}
+
+.profile-information > main {
+    padding: 50px;
+    width: 600px;
+    box-sizing: border-box;
+    background-color: var(--primary-color);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    border-radius: 25px;
+    margin: auto;
+}
+
+.profile-information > main > form {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.profile-information > main > form > h1 {
+    font-family: var(--primary-font);
+    font-size: 45px;
+    letter-spacing: 1.3px;
+}
+
+.profile-information > main > form > label {
+    font-size: 20px;
+    font-weight: lighter;
+    display: block;
+    margin: 50px 0px 0px 0px;
+}
+
+.profile-information > main > form > input {
+    outline: none;
+    border: 0;
+    background-color: var(--primary-color);
+    border-bottom: 5px solid var(--company-color);
+    padding: 10px;
+    font-size: 20px;
+    color: var(--second-color);
+    font-weight: light;
+}
+
+.profile-information > main > form > button {
+    margin-top: 50px;
+    border: 0;
+    padding: 15px 20px;
+    background-color: var(--company-color);
+    font-family: var(--primary-font);
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 20px;
+    border-radius: 5px;
+    letter-spacing: 1.2px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    transition: .5s all;
+}
+
+.profile-information > main > form > button:hover {
+    background-color: #2da455;
+}
+
+@media screen and (max-width: 650px) {
+
+    .profile-information > main {
+        width: 90%;
+        padding: 40px 20px;
+    }
+
+    .profile-information > main > form > input {
+        font-size: 16px;
+    }
+
+    .profile-information > main > form > label {
+        font-size: 16px;
+    }
+    
+}

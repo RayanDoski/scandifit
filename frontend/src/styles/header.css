@@ -1,0 +1,566 @@
+
+.HeaderContainerForWebsite {
+    box-shadow: 10px 10px 20px rgba(80, 200, 120, 0.2);
+}
+
+.HeaderForWebsite {
+    margin: 0px auto;
+    max-width: 1600px;
+    background-color: var(--white);
+    width: 100%;
+    padding: 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* (Left) Logo */
+
+.HeaderForWebsite > .LogoContainer {
+    flex: 1;
+}
+
+.HeaderForWebsite > .LogoContainer > .LogoLink > .Logo {
+    width: 200px;
+    cursor: pointer;
+}
+
+/* (Middle) Header Links Start */
+
+.HeaderForWebsite > .HeaderLinks {
+    flex: 2;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.HeaderForWebsite > .HeaderLinks > .Link {
+    font-size: 20px;
+    color: var(--gray);
+    text-decoration: none;
+    font-weight: lighter;
+    transition: .5s all;
+}
+
+.HeaderForWebsite > .HeaderLinks > .Link:hover {
+    font-size: 21px;
+}
+
+.HeaderForWebsite > .HeaderLinks > .CartLink {
+    font-size: 20px;
+    color: var(--gray);
+    text-decoration: none;
+    font-weight: lighter;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: .5s all;
+}
+
+.HeaderForWebsite > .HeaderLinks > .CartLink:hover {
+    font-size: 21px;
+}
+
+.HeaderForWebsite > .HeaderLinks > .CartLink > .AmountInCart {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: var(--green);
+    color: var(--white);
+}
+
+/* (Right) Button */
+
+.HeaderForWebsite > .ButtonContainer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.HeaderForWebsite > .ButtonContainer .ButtonLink {
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+} 
+
+.HeaderForWebsite > .ButtonContainer .ButtonLink:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.HeaderForWebsite > .ButtonContainer .Hamburgermenu {
+    display: none;
+}
+
+@media only screen and (max-width: 1150px) {
+
+    .HeaderForWebsite > .HeaderLinks {
+        gap: 25px;
+    }
+
+    .HeaderForWebsite > .HeaderLinks > .Link {
+        font-size: 18px;
+    }
+
+    .HeaderForWebsite > .HeaderLinks > .Link:hover {
+        font-size: 19px;
+    }
+
+    .HeaderForWebsite > .HeaderLinks > .CartLink {
+        font-size: 18px;
+    }
+    
+    .HeaderForWebsite > .HeaderLinks > .CartLink:hover {
+        font-size: 19px;
+    }
+
+    .HeaderForWebsite > .ButtonContainer .ButtonLink {
+        padding: 8px 20px;
+        font-size: 18px;
+    } 
+
+    .HeaderForWebsite > .LogoContainer > .LogoLink > .Logo {
+        width: 150px;
+    }
+
+}
+
+@media only screen and (max-width: 950px) {
+
+    .HeaderForWebsite > .HeaderLinks {
+        display: none;
+    }
+
+    .HeaderForWebsite > .ButtonContainer > .ButtonLink {
+        display: none;
+    }
+
+    .HeaderForWebsite > .ButtonContainer .Hamburgermenu {
+        display: block;
+        width: 30px;
+        cursor: pointer;
+    }
+
+}
+
+/* SlideInMenuForHeader */
+
+.BackgroundForSlideInMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.539);
+    z-index: 3;
+    display: none;
+}
+
+.BackgroundForSlideInMenu.show {
+    display: block;
+}
+
+.ContainerForSlideInMenu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: var(--white);
+    width: 0vh;
+    height: 100%;
+    z-index: 4;
+    border-radius: 15px 0px 0px 15px;
+    padding: 40px 30px;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: .5s all;
+}
+
+.ContainerForSlideInMenu.show {
+    visibility: visible;
+    pointer-events: all;
+    width: 25vh;
+    opacity: 1;
+}
+
+.ContainerForSlideInMenu > .SlideInMenuLinks {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+    width: 180px;
+}
+
+.ContainerForSlideInMenu > .SlideInMenuLinks > .line {
+    width: 100%;
+    height: 1px;
+    border-radius: 15px;
+    background-color: var(--gray);
+}
+
+.ContainerForSlideInMenu > .SlideInMenuLinks > .Link {
+    font-size: 20px;
+    color: var(--gray);
+    text-decoration: none;
+    font-weight: lighter;
+    transition: .5s all;
+}
+
+.ContainerForSlideInMenu > .SlideInMenuLinks > .Link:hover {
+    font-size: 21px;
+}
+
+.ContainerForSlideInMenu > .SlideInMenuLinks > .CartLink {
+    font-size: 20px;
+    color: var(--gray);
+    text-decoration: none;
+    font-weight: lighter;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: .5s all;
+}
+
+.ContainerForSlideInMenu > .SlideInMenuLinks > .CartLink:hover {
+    font-size: 21px;
+}
+
+.ContainerForSlideInMenu > .SlideInMenuLinks > .CartLink > .AmountInCart {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: var(--green);
+    color: var(--white);
+    margin: 0;
+}
+
+.ContainerForSlideInMenu > .SlideInMenuLinks > .ButtonLink {
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+    text-align: center;
+} 
+
+.ContainerForSlideInMenu > .SlideInMenuLinks > .ButtonLink:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+/* Cart Slide In Menu */
+
+.BackgroundForCartSlideInMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.539);
+    z-index: 3;
+    display: none;
+    z-index: 9;
+}
+
+.BackgroundForCartSlideInMenu.show {
+    display: block;
+}
+
+.ContainerForCartSlideInMenu {
+    position: fixed;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    padding: 25px;
+    background-color: var(--white);
+    border-radius: 15px;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: .5s all;
+}
+
+.ContainerForCartSlideInMenu.show {
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+}
+
+.ContainerForCartSlideInMenu > .exitBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    color: var(--black);
+    background-color: transparent;
+    padding: 5px 10px;
+    transition: .5s all;
+}
+
+.ContainerForCartSlideInMenu > .exitBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.ContainerForCartSlideInMenu > h1 {
+    text-align: left;
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0px 0px 40px 0px;
+}
+
+.ContainerForCartSlideInMenu > h1 > span {
+    font-weight: lighter;
+    font-size: 22px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+    padding: 15px 10px;
+    border-top: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+}
+
+.ContainerForCartSlideInMenu > .productDiv > h3 {
+    font-weight: lighter;
+    margin: 0;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > div > h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > div > p {
+    margin: 0;
+    font-weight: lighter;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > img {
+    width: 75px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > div > div > h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > div > .quantityDiv {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+} 
+
+.ContainerForCartSlideInMenu > .productDiv > article > div > .quantityDiv > button {
+    padding: 5px;
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+    border: 1px solid var(--black);
+    font-weight: lighter;
+    color: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s all;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > div > .quantityDiv > button:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.ContainerForCartSlideInMenu > .productDiv > article > div > .quantityDiv > input {
+    background-color: transparent;
+    border: 1px solid var(--black);
+    outline: 0;
+    width: 50px;
+    height: 25px;
+    padding: 5px 10px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > aside {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > aside > h3 {
+    font-weight: lighter;
+    font-size: 18px;
+}
+
+.ContainerForCartSlideInMenu > .productDiv > aside > img {
+    width: 15px;
+    cursor: pointer;
+}
+
+.ContainerForCartSlideInMenu > .ShippingContainer {
+    width: 100%;
+}
+
+.ContainerForCartSlideInMenu > .ShippingContainer > h3 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.ContainerForCartSlideInMenu > .ShippingContainer > article {
+    width: 100%;
+    padding: 10px 15px;
+    border-top: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ContainerForCartSlideInMenu > .ShippingContainer > article > p {
+    font-weight: 300;
+    font-size: 16px;
+    margin: 0;
+}
+
+.ContainerForCartSlideInMenu > .ShippingContainer > article > div > img {
+    width: 75px;
+}
+
+.ContainerForCartSlideInMenu > .ShippingContainer > article > div > p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.ContainerForCartSlideInMenu > .TotalPrice {
+    margin: 30px 0px 30px 0px;
+}
+
+.ContainerForCartSlideInMenu > .TotalPrice > p {
+    margin: 0;
+    font-weight: lighter;
+}
+
+.ContainerForCartSlideInMenu > .TotalPrice > h2 {
+    margin: 0;
+}
+
+.ContainerForCartSlideInMenu > .proceedBtn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 18px;
+    border: 1px solid var(--black);
+    background-color: transparent;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.ContainerForCartSlideInMenu > .proceedBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media only screen and (max-width: 600px) {
+
+    .ContainerForCartSlideInMenu {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .ContainerForCartSlideInMenu > h1 {
+        font-size: 22px;
+        margin: 0px 0px 20px 0px;
+    }
+
+    .ContainerForCartSlideInMenu > .productDiv {
+        margin: 10px 0px;
+        padding: 10px 5px;
+    }
+
+    .ContainerForCartSlideInMenu > .productDiv > h3 {
+        font-size: 16px;
+    }
+
+    .ContainerForCartSlideInMenu > .productDiv > article > div > h2 {
+        font-size: 16px;
+    }
+    
+    .ContainerForCartSlideInMenu > .productDiv > article > img {
+        width: 50px;
+    }
+
+    .ContainerForCartSlideInMenu > .productDiv > article > div > .quantityDiv > button {
+        padding: 10px;
+        width: 15px;
+        height: 15px;
+    }
+
+    .ContainerForCartSlideInMenu > .productDiv > article > div > .quantityDiv > input {
+        width: 40px;
+        height: 15px;
+        padding: 10px;
+    }
+
+    .ContainerForCartSlideInMenu > .TotalPrice {
+        margin: 25px 0px;
+    }
+
+    .ContainerForCartSlideInMenu > .TotalPrice > p {
+        font-size: 14px;
+    }
+
+    .ContainerForCartSlideInMenu > .TotalPrice > h2 {
+        font-size: 22px;
+    }
+
+    .ContainerForCartSlideInMenu > .proceedBtn {
+        padding: 8px;
+        border-radius: 15px;
+        font-size: 16px;
+    }
+
+    .ContainerForCartSlideInMenu > .exitBtn {
+        font-size: 12px;
+        padding: 2.5px 8px;
+    }
+
+}

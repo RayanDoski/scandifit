@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Your Email Template</title>
+    <style>
+        /* Reset some default styles to ensure consistency */
+        body, table, td, a {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #50C878;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        td {
+            padding: 20px;
+        }
+        a {
+            color: #50C878;
+            text-decoration: none;
+        }
+        h1 {
+            color: #333;
+            margin: 20px 0px 0px 0px;
+        }
+        h2 {
+            margin: 5px 0px 0px 0px;
+            font-weight: lighter;
+        }
+        p {
+            color: #555;
+            margin: 20px 0px 40px 0px;
+        }
+
+        /* Media query for mobile responsiveness */
+        @media screen and (max-width: 600px) {
+            table {
+                width: 100%;
+            }
+            table, td {
+                border-radius: 0;
+                box-shadow: none;
+            }
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <img style="margin: 0px auto; max-width: 200px;" src="http://127.0.0.1:8000/static/pictures/logo.png" alt="Logo">
+                <h1>Hej {{ namn }}</h1>
+                <h2>Välkommen Till Scandifit</h2>
+                <p>Varmt välkommen till ScandiFit! Vi är glada att ha dig som en ny medlem och ser fram emot att påbörja denna träningsresa tillsammans med dig.</p>
+                <h3 style="margin: 0; font-weight: lighter;">Vänliga hälsningar, <span style="display: block; font-weight: bold;">Scandifit</span></h3>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,524 @@
+{% extends 'base.html' %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/product_multivitamin.css') }}">{% endblock %}
+{% block title %}<title>Multivitamin</title>{% endblock %}
+{% block content %}
+    <section class="product">
+        <aside>
+            <img src="{{ url_for('static', filename='pictures/product-picture/opti-men-multivitamin.jpg') }}" alt="Product Picture">
+        </aside>
+        <div>
+            <article>
+
+                <h1>Opti-Men Multivitamin</h1>
+                <aside>
+                    <!-- getting the stars for the rating -->
+                    {% if 1.5 > average_rating|float > 0.5 %}
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    {% elif 2.5 > average_rating|float > 1.5 %}
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    {% elif 3.5 > average_rating|float > 2.5 %}
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    {% elif 4.5 > average_rating|float > 3.5 %}
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    {% elif average_rating|float > 4.5 %}
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    <img src="{{ url_for('static', filename='pictures/icons/star.png') }}">
+                    {% endif %}
+                    <h4>{{ average_rating }} / 5</h4>
+                </aside>
+                <!-- <p>Multivitaminer är kosttillskott som innehåller en kombination av essentiella vitaminer och mineraler.</p> -->
+
+                <form action="/add_product/1" id="multivitamin-add-to-cart-form" method="get">
+
+                    <label for="sub" id="sub-lable">
+                        <aside>
+                            <h3>Månadsvis Prenumeration</h3>
+                            <p>Avsluta När Du Vill - INGEN BINDNINGSTID</p>
+                        </aside>
+                        <h4>199 Kr</h4>
+                    </label>
+
+                    <input type="radio" name="sub_or_once" value="sub" id="sub" checked>
+
+                    <label for="once" id="once-lable">
+                        <h3>Engångsköp</h3>
+                        <h4>299 Kr</h4>
+                    </label>
+
+                    <input type="radio" name="sub_or_once" value="once" id="once">
+
+                    <button type="submit">Lägg till i kundvagn</button>
+                </form>
+
+                <div>
+
+                    <article>
+                        <aside>
+                            <img src="{{ url_for('static', filename='pictures/postnord.png') }}" alt="Postnord Logo">
+                            <h4>1-3 Dagars Frakt - Hemleverans</h4>
+                            <p>Snabb Leverans</p>
+                        </aside>
+                        <h4>Gratis</h4>
+                    </article>
+
+                    <article>
+                        <div>
+                            <img src="{{ url_for('static', filename='pictures/icons/return-one.png') }}" alt="Postnord Logo">
+                            <h4>90 Dagar Öppet Köp</h4>
+                        </div>
+                    </article>
+
+                    <article>
+                        <aside>
+                            <h4>Betalnings Alternativ</h4>
+                            <div>
+                                <img src="{{ url_for('static', filename='pictures/payment-alternativ/klarna.png') }}" alt="Postnord Logo">
+                                <img src="{{ url_for('static', filename='pictures/payment-alternativ/apple-pay-black.png') }}" alt="Postnord Logo">
+                                <img src="{{ url_for('static', filename='pictures/payment-alternativ/visa-black.png') }}" alt="Postnord Logo">
+                                <img src="{{ url_for('static', filename='pictures/payment-alternativ/amex-black.png') }}" alt="Postnord Logo">
+                                <img src="{{ url_for('static', filename='pictures/payment-alternativ/card-black.png') }}" alt="Postnord Logo">
+                            </div>
+                        </aside>
+                    </article>
+
+                </div>
+
+            </article>
+        </div>
+    </section>
+
+    <section class="why-subscribe">
+        <h2>Varför Prenumerera?</h2>
+
+        <div id="slide-in">
+            <article>
+                <img src="{{ url_for('static', filename='pictures/icons/open-lock.png') }}" alt="Lock">
+                <h3>Ingen bindningstid</h3>
+                <p>Det är ingen bindningstid eller uppsägningstid, avsluta när du vill.</p>
+            </article>
+
+            <article>
+                <img src="{{ url_for('static', filename='pictures/icons/customer-management.png') }}" alt="Lock">
+                <h3>1000+ Kunder</h3>
+                <p>Vi är stolta över att kunna meddela att vi har haft över 1000 kunder.</p>
+            </article>
+
+            <article>
+                <img src="{{ url_for('static', filename='pictures/icons/mail.png') }}" alt="Lock">
+                <h3>TREVLIG KUNDSERVICE</h3>
+                <p>Undersökning från 2023 (695 svar). Mycket nöjd= 5 (skala 1-5). 95.9% var nöjda!</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="line"></section>
+
+    <section class="benifits">
+        <article id="slide-in">
+
+            <h2>Livet Utan Multivitamin</h2>
+            <div>
+                <article>
+                    <img src="{{ url_for('static', filename='pictures/icons/metabolism.png') }}" alt="Lock">
+                    <h3>Ojämn Energinivå</h3>
+                    <p>Utan rätt näringsstöd kan din energinivå bli ostadig. Du riskerar att uppleva svängande energidippar under dagen, vilket påverkar din produktivitet och livskvalitet.</p>
+                </article>
+                <article>
+                    <img src="{{ url_for('static', filename='pictures/icons/missing-vitamins.png') }}" alt="Lock">
+                    <h3>Saknar Viktiga Ämnen</h3>
+                    <p>Utan daglig multivitamin löper du risken att inte få i dig viktiga näringsämnen. Det kan leda till trötthet, nedsatt immunförsvar och generellt sämre hälsa.</p>
+                </article>
+            </div>
+
+            <h3>Livet Med Multivitamin</h2>
+            <div>
+                <article>
+                    <img src="{{ url_for('static', filename='pictures/icons/wellbeing.png') }}" alt="Lock">
+                    <h3>Full Näringskick</h3>
+                    <p>LIVET MED ger en blandning av viktiga vitaminer och mineraler för att säkerställa att din kropp får rätt näring. Upplev mer energi, ett starkare immunförsvar och en bra grund för ditt välmående.</p>
+                </article>
+                <article>
+                    <img src="{{ url_for('static', filename='pictures/icons/muscle-recovery.png') }}" alt="Lock">
+                    <h3>Enkel Hälsoboost</h3>
+                    <p>LIVET MED gör det lättare att ta hand om din hälsa. Istället för många olika kosttillskott ger vår multivitamin ett smidigt och effektivt sätt att stödja din kropps behov, vilket främjar en balanserad och livlig livsstil.</p>
+                </article>
+            </div>
+
+        </article>
+        <aside>
+        </aside>
+    </section>
+
+    <section class="line"></section>
+
+    <section class="ingredients">
+        <h2>Ingredienser och deras fördelar</h2>
+        <div id="slide-in">
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Jod</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Nödvändigt för produktionen av sköldkörtelhormoner som reglerar ämnesomsättningen och stödjer korrekt tillväxt och utveckling.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Kalcium</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Avgörande för benhälsa, nervöverföring, muskelfunktion och blodkoagulering.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Koppar</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Stödjer bildandet av röda blodkroppar, främjar immunfunktion och hjälper till att bibehålla hälsosamma ben och nerver.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Krom</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Hjälper till i metabolismen av kolhydrater och reglerar blodsockernivåer.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Magnesium</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Viktigt för muskel- och nervfunktion, energiproduktion och bibehållande av benhälsa.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Mangan</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Bidrar till benbildning, blodkoagulering och minskar inflammation.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Molybden</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Spelar roll i enzymfunktion, särskilt metabolismen av vissa aminosyror.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Selen</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Fungerar som en antioxidant, stöder immunsystemet och är viktig för sköldkörtelfunktion.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Zink</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Nödvändigt för immunfunktion, sårläkning, DNA-syntes och korrekt smak- och luktsinne.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Vitamin A</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Nödvändigt för syn, immunfunktion och hudhälsa.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Tiamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Stödjer energimetabolism och korrekt funktion av nervsystemet.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Riboflavin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Viktig för energiproduktion, hudhälsa och syn.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Pantotensyra</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Inblandad i syntesen av fettsyror och energiproduktion.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Vitamin B6</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Stödjer hjärnans utveckling och funktion, hjälper kroppen omvandla mat till energi.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Biotin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Spelar roll i metabolismen av kolhydrater, fett och proteiner, främjar hälsosam hud, hår och naglar.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Folsyra</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Avgörande för celluppdelning och DNA-syntes, särskilt under graviditet.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Vitamin B12</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Nödvändigt för nervfunktion, bildandet av röda blodkroppar och DNA-syntes.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Vitamin C</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Fungerar som en antioxidant, stöder immunsystemet och hjälper till i kollagensyntes.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Vitamin D</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Nödvändigt för kalciumabsorption, benhälsa och immunfunktion.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Vitamin E</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Fungerar som en antioxidant och skyddar celler från skador.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Vitamin K</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Nödvändigt för blodkoagulering och benomsättning.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Alfaliponsyra</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Fungerar som en antioxidant och stödjer cellulär hälsa.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Lykopen</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">En antioxidant som kan stödja hjärthälsa och minska risken för vissa sjukdomar.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Citrus bioflavonoider</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Antioxidantegenskaper, kan stödja hjärthälsa.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Bor</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Kan spela en roll i benhälsa och kognitiv funktion.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Aminosyror</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Byggstenar för proteiner, nödvändiga för muskelbyggande, reparation och övergripande kroppsfunktion.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>varav L-Leucin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Grenade aminosyror (BCAAs) som stödjer muskelproteinsyntes och återhämtning.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>varav L-Isoleucin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Aminosyra viktig för immunfunktion och bibehållande av muskelmassa.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>varav L-Glutamin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Aminosyra viktig för immunfunktion och bibehållande av muskelmassa.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Grönt teextrakt</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Innehåller antioxidanter och kan ha olika hälsofördelar, inklusive stöd för hjärthälsa.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Ingefäraextrakt</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Känt för sina antiinflammatoriska och matsmältningsfrämjande egenskaper.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Olivbladsextrakt</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Antioxidant och antiinflammatoriskt, kan stödja hjärthälsa.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Rutin</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Antioxidant som kan stärka blodkärlen och minska inflammation.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Kolinbitartrat</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Nödvändigt för leverfunktion, hjärnutveckling och nervfunktion.</p>
+            </article>
+
+            <article id="open-article">
+                <div id="open-dropdown">
+                    <h3>Inositol</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Stödjer cellmembranets struktur och kan spela en roll i regleringen av humöret.</p>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="line"></section>
+
+    <section class="faq">
+        <aside>
+            <h2>Vanliga frågor</h2>
+        </aside>
+        <article id="slide-in">
+
+            <div id="open-article">
+                <div id="open-dropdown">
+                    <h3>Är Era Multivitaminer Veganska?</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Ja, våra multivitaminer är helt veganska.</p>
+            </div>
+
+            <div id="open-article">
+                <div id="open-dropdown">
+                    <h3>Hur Avlutar Jag Min Prenumeration?</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">För att avsluta din prenumeration, vänligen skicka ett e-postmeddelande från den e-postadress du använde vid köpet. Berätta för oss att du vill avlusta din prenumeration. Vi behandlar din avslutningsbegäran samma dag och skickar en bekräftelse till dig.</p>
+            </div>
+
+            <div id="open-article">
+                <div id="open-dropdown">
+                    <h3>Vad Har Ni För Returpolicy?</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Vår returpolicy på Scandifit ger dig möjlighet att returnera produkter inom 90 dagar från mottagningsdatumet, och återbetalning sker snabbt efter godkännande av returen. För mer information om vår returpolicy, <a href="/returpolicy">klicka här</a></p>
+            </div>
+
+            <div id="open-article">
+                <div id="open-dropdown">
+                    <h3>Hur Kan Jag Kontakta Er?</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Du kan enkelt kontakta vår kundsupport genom att besöka vår hemsida och fylla i vårt snabba mailformulär för att skicka dina frågor. Vi ser fram emot att höra från dig! <a href="/#kontakta-oss">Ta Mig Till Mailformulär</a></p>
+            </div>
+
+            <div id="open-article">
+                <div id="open-dropdown">
+                    <h3>Kan Jag Spåra Mitt Paket?</h3>
+                    <button id="dropdown-btn">+</button>
+                </div>
+                <p id="show-dropdown-text">Absolut! Du kommer få en spårningskod från PostNord när din order skickas, så du kan enkelt följa din leverans. Vid eventuella frågor, kontakta vår kundtjänst.</p>
+            </div>
+
+        </article>
+    </section>
+
+    <section class="line"></section>
+
+    {% include 'review.html' %}
+
+    <!-- <a href="/add-product?id=1" style="font-size: 30px; display: block; font-weight: bold;">En Gång Köp</a>
+    <a href="/add-product?id=2" style="font-size: 30px; display: block; font-weight: bold;">Premnuminera</a> -->
+{% endblock %}
+{% block js %}<script src="{{ url_for('static', filename='js/product_multivitamin.js') }}"></script>{% endblock %}

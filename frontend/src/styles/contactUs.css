@@ -1,0 +1,117 @@
+.ContactUsSection {
+    width: 75%;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ContactUsSection > .subText {
+    margin: 0;
+    font-size: 16px;
+    color: var(--green);
+    font-weight: lighter;
+}
+
+.ContactUsSection > h1 {
+    font-size: 42px;
+    margin: 10px 0px;
+}
+
+.ContactUsSection > p {
+    font-weight: lighter;
+    margin: 0;
+    text-align: center;
+}
+
+.ContactUsSection > .ContactUsForm {
+    margin: 50px 0px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border: 1px solid var(--gray);
+    border-radius: 15px;
+} 
+
+.ContactUsSection > .ContactUsForm > label {
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+.ContactUsSection > .ContactUsForm > input {
+    margin: 0px 0px 30px 0px;
+    outline: 0;
+    border: 0;
+    padding: 10px;
+    color: var(--black);
+    width: 450px;
+    font-size: 16px;
+    background-color: var(--white);
+    border-bottom: 2px solid var(--green);
+}
+
+.ContactUsSection > .ContactUsForm > textarea {
+    margin: 20px 0px 30px 0px;
+    outline: 0;
+    border: 0;
+    padding: 0px 10px 0px 10px;
+    color: var(--black);
+    width: 450px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    border-bottom: 2px solid var(--green);
+}
+
+textarea:required {
+    box-shadow: none;
+    resize: none;
+}
+
+.ContactUsSection > .ContactUsForm > button {
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.ContactUsSection > .ContactUsForm > button:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media only screen and (max-width: 600px) {
+
+    .ContactUsSection {
+        width: 90%;
+        margin: 100px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ContactUsSection > h1 {
+        font-size: 32px;
+        margin: 5px 0px;
+    }
+
+    .ContactUsSection > .ContactUsForm {
+        width: 100%;
+    } 
+
+    .ContactUsSection > .ContactUsForm > input {
+        width: 100%;
+    }
+    
+    .ContactUsSection > .ContactUsForm > textarea {
+        width: 100%;
+    }
+    
+}

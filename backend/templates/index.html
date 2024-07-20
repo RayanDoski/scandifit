@@ -1,0 +1,263 @@
+{% extends 'base.html' %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">{% endblock %}
+{% block title %}<title>Hem</title>{% endblock %}
+{% block content %}
+<section class="home">
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <main id="slide-in">
+           <h1>En Minut, Ett Starkare Du - Gratis Träningsschema Nu!</h1> 
+           <h2>Träningsschema Baserat På Din Personliga Information</h2>
+           <a href="{% if 'user_id' in session %} /profile/schedual {% else %} /trainingplan/quiz {% endif %}">Skapa schema!</a>
+        </main>
+    </section>
+
+    <!-- Varför Oss? -->
+    <section class="why-us">
+        <h2>Varför Oss?</h2>
+        <main id="slide-in">
+
+            <article>
+                <img src="{{ url_for('static', filename='pictures/icons/Free-Tag.png') }}" alt="">
+                <h3>Helt gratis</h3>
+                <p>Alla Våra digitala tjänster är helt gratis att använda.</p>
+            </article>
+
+            <article>
+                <img src="{{ url_for('static', filename='pictures/icons/sixty-sec.png') }}" alt="">
+                <h3>tar endast 60s</h3>
+                <p>Få ditt personlighets baserade träningsshcema på 60s.</p>
+            </article>
+
+            <article>
+                <img src="{{ url_for('static', filename='pictures/icons/schema.png') }}" alt="">
+                <h3>1500 medlemmar</h3>
+                <p>Över 1500 scheman tillverkade åt våra medlemmar.</p>
+            </article>
+
+        </main>
+    </section>
+
+    <!-- logic -->
+    <section class="logic">
+        <main>
+            <aside>
+                <img src="{{ url_for('static', filename='pictures/training-picture.jpg') }}" alt="">
+            </aside>
+            <article id="slide-in">
+                <h2>Skapa Din Framtid</h2>
+                <main>
+                    <div>
+                        <img src="{{ url_for('static', filename='pictures/icons/healthy-and-strong.png') }}" alt="Icon">
+                        <h2>frisk & stark</h2>
+                        <p>Känn styrkan i kroppen och orka med allt du vill göra</p>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', filename='pictures/icons/balans-och-avkoppling.png') }}" alt="Icon">
+                        <h2>Balans & avkoppling</h2>
+                        <p>Flyt genom livet utan stress</p>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', filename='pictures/icons/rolemodel.png') }}" alt="Icon">
+                        <h2>förebild för hälsa</h2>
+                        <p>Ditt välmående kommer att inspirerar andra att ta hand om sig själva. Du blir en förebild som visar att hälsa är möjligt.</p>
+                    </div>
+                </main>
+            </article>
+        </main>
+    </section>
+
+    <!-- logic copy -->
+    <section class="logic">
+        <main id="main-copy">
+            <article id="slide-in">
+                <h2>framgångs garanti</h2>
+                <main>
+                    <div>
+                        <img src="{{ url_for('static', filename='pictures/icons/tailored-after-you.png') }}" alt="Icon">
+                        <h2>Anpassat efter dig</h2>
+                        <p>Få ett program skräddarsytt för DINA mål och förutsättningar.</p>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', filename='pictures/icons/bevisad-effekt.png') }}" alt="Icon">
+                        <h2>Bevisad effekt</h2>
+                        <p>Över 73,45% når eller överträffar målen med vårt program</p>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', filename='pictures/icons/your-training-your-rules.png') }}" alt="Icon">
+                        <h2>Din Träning, Dina Regler</h2>
+                        <p>Hemma eller på Gymmet, Du Bestämmer! Anpassa efter Dina Mål och förutsättningar</p>
+                    </div>
+                </main>
+            </article>
+            <aside>
+                <img src="{{ url_for('static', filename='pictures/training-picture-two.jpg') }}" alt="">
+            </aside>
+        </main>
+    </section>
+
+    <!-- Copy Varför Oss? -->
+    <section class="why-us">
+        <h2>Varför gratis?</h2>
+        <main id="slide-in">
+
+            <article>
+                <img src="{{ url_for('static', filename='pictures/icons/bryr-oss.png') }}" alt="">
+                <h3>Vi bryr oss</h3>
+                <p>Vi bryr oss om din hälsoresa. Ditt välmående är vår högsta prioritet.</p>
+            </article>
+
+            <article>
+                <img src="{{ url_for('static', filename='pictures/icons/accessible-wellness.png') }}" alt="">
+                <h3>Health For all</h3>
+                <p>Vi tror på 'Health for All'. Varje individ förtjänar tillgång till välfärd och en hälsosam livsstil.</p>
+            </article>
+
+            <article>
+                <img src="{{ url_for('static', filename='pictures/icons/community.png') }}" alt="">
+                <h3>gemenskap</h3>
+                <p>Vårt mål är att forma en gemenskap, tillsammans mot välmående. </p>
+            </article>
+
+        </main>
+    </section>
+
+    <!-- testimonials -->
+    <section class="testimonials">
+        <h2>Vad säger folk?</h2>
+        <article>
+
+            <div class="visa" id="testimonial-box">
+                <aside>
+                    <h4>Chee</h4>
+                    <div>
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                    </div>
+                </aside>
+                <p>Detta är ett riktigt bra program som har hjälpt mig att gå ner 2 kg på en vecka</p>
+            </div>
+
+            <div class="visa" id="testimonial-box">
+                <aside>
+                    <h4>Robert</h4>
+                    <div>
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                    </div>
+                </aside>
+                <p>Det är ett bra schema! borde ha gjort ett för länge sedan 😃</p>
+            </div>
+
+            <div class="visa" id="testimonial-box">
+                <aside>
+                    <h4>Hyrum</h4>
+                    <div>
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                    </div>
+                </aside>
+                <p>Det första programmet som fick mig att komma igång eftersom det gav mig allt jag behövde för att komma igång</p>
+            </div>
+
+            <div id="testimonial-box">
+                <aside>
+                    <h4>Ahmad</h4>
+                    <div>
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                    </div>
+                </aside>
+                <p>Jag provade programmet i en vecka, Rekommenderar starkt för alla att prova</p>
+            </div>
+
+            <div id="testimonial-box">
+                <aside>
+                    <h4>Robin</h4>
+                    <div>
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                    </div>
+                </aside>
+                <p>Trevligt program, fungerar bra, och innehåller en bra, genomtänkt uppsättning av övningar</p>
+            </div>
+
+            <div id="testimonial-box">
+                <aside>
+                    <h4>Rayan</h4>
+                    <div>
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star-green.png') }}" alt="star">
+                        <img src="{{ url_for('static', filename='pictures/icons/star.png') }}" alt="star">
+                    </div>
+                </aside>
+                <p>Älskar träningsprogrammet, men det skulle vara bra om ni lade till en offlineversion</p>
+            </div>
+
+        </article>
+        <aside>
+            <button id="testimonial-left"><img src="{{ url_for('static', filename='pictures/icons/left-arrow.png') }}" alt="pil"></button>
+            <div>
+                <div id="testimonial-index-light"></div>
+                <div id="testimonial-index-light"></div>
+            </div>
+            <button id="testimonial-right"><img src="{{ url_for('static', filename='pictures/icons/right-arrow.png') }}" alt="pil"></button>
+        </aside>
+    </section>
+
+    <!-- Om Oss -->
+    <section class="om-oss">
+        <main>
+            <article id="slide-in">
+                <h3>Om Oss</h3>
+                <h2>Scandifit</h2>
+                <p> Scandifit är din personliga träningskompis. Känner du ibland hur svårt det är att hitta rätt träningsplan för dig?</p>
+                <p>Vi löser det genom att erbjuda dig ett gratis, personligt anpassad träningsschema på mindre än 60 sekunder.</p>
+                <p>Hos oss handlar det inte bara om träning, utan om att skapa en starkare, friskare version av dig själv. Så, känn pulsen öka – Scandifit är din snabbaste väg till ett starkare jag!”</p>  
+            </article>
+        </main>
+    </section>
+
+    <!-- Kontakta Oss -->
+    <section class="kontakta-oss" id="kontakta-oss">
+        <main id="slide-in">
+            <h2>Kontakta oss</h2>
+            <form action="/send_message" method="post">
+                <label for="namn">Fullständigt Namn</label>
+                <input type="text" name="namn" id="namn">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email">
+                <label for="meddelande">Meddelande</label>
+                <textarea name="meddelande" id="meddelande" cols="30" rows="10"></textarea>
+                <button type="submit">Skicka</button>
+            </form>
+            <article>
+                <h4>E-Post:</h4>
+                <p>Kontakta@scandifit.se</p>
+                <h4>Svarstider</h4>
+                <p>vardagar: 10 - 17</p>
+                <p>Helger: 10 - 14</p>
+            </article>
+        </main>
+    </section>
+</section>
+{% endblock %}
+{% block js %}<script src="{{ url_for('static', filename='js/index.js') }}"></script>{% endblock %}

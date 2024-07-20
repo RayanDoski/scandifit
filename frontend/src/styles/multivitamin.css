@@ -1,0 +1,1338 @@
+/* Introduction */
+
+.IntroductionMultivitamin {
+    max-width: 1600px;
+    width: 75%;
+    margin: 100px auto 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.IntroductionMultivitamin > h2 {
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+}
+
+.IntroductionMultivitamin > h1 {
+    font-size: 42px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+}
+
+.IntroductionMultivitamin > p {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--gray);
+    text-align: center;
+    margin: 0;
+}
+
+.IntroductionMultivitamin > p > span {
+    font-weight: 400;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.IntroductionMultivitamin > img {
+    max-width: 500px;
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    margin: 40px 0px;
+}
+
+.IntroductionMultivitamin > .actionBtn {
+    width: 400px;
+    text-align: center;
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.IntroductionMultivitamin > .actionBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.IntroductionMultivitamin > h4 {
+    font-weight: 300;
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    margin: 5px 0px 0px 0px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 850px) {
+
+    .IntroductionMultivitamin {
+        width: 90%;
+    }
+    
+
+    .IntroductionMultivitamin > h1 {
+        font-size: 38px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .IntroductionMultivitamin {
+        width: 95%;
+    }
+
+    .IntroductionMultivitamin > h1 {
+        font-size: 34px;
+        line-height: 1.25;
+    }
+
+    .IntroductionMultivitamin > .actionBtn {
+        width: 100%;
+        max-width: 400px;
+    }
+
+}
+
+/* Why Scandi multivitamin */
+
+.WhyScandimultivitamin {
+    width: 95%;
+    margin: auto;
+    padding: 30px 0px;
+    max-width: 1600px;
+}
+
+.WhyScandimultivitamin > h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0px 0px 30px 0px;
+}
+
+.WhyScandimultivitamin > article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.WhyScandimultivitamin > article > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+}
+
+.WhyScandimultivitamin > article > div > img {
+    width: 55px;
+    margin: 0px 0px 20px 0px;
+}
+
+.WhyScandimultivitamin > article > div > h3 {
+    font-weight: 400;
+    font-size: 18px;
+    margin: 0;
+    text-align: center;
+}
+
+.WhyScandimultivitamin > article > div > p {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+    text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .WhyScandimultivitamin > article {
+        flex-direction: column;
+    }
+
+    .WhyScandimultivitamin > article > div {
+        width: 90%;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+    .WhyScandimultivitamin > h2 {
+        font-size: 28px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .WhyScandimultivitamin > h2 {
+        font-size: 24px;
+    }
+
+}
+
+/* Why They Need It */
+
+.whyTheyNeedIt {
+    width: 800px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.whyTheyNeedIt > h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+}
+
+.whyTheyNeedIt > img {
+    width: 100%;
+    max-width: 300px;
+    margin: 30px 0px;
+}
+
+.whyTheyNeedIt > div > p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+@media only screen and (max-width: 850px) {
+
+    .whyTheyNeedIt {
+        width: 95%;
+    }
+
+    .whyTheyNeedIt > h2 {
+        font-size: 28px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .whyTheyNeedIt > h2 {
+        font-size: 24px;
+    }
+
+}
+
+/* The Key To Your Goal */
+
+.theKeyToYourGoal {
+    max-width: 1400px;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0px;
+    gap: 30px;
+}
+
+.theKeyToYourGoal > div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.theKeyToYourGoal > div > img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+}
+
+.theKeyToYourGoal > aside {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.theKeyToYourGoal > aside > h2 {
+    margin: 0px 0px 20px 0px;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.theKeyToYourGoal > aside > p {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.theKeyToYourGoal > aside > p > span {
+    font-weight: 400;
+}
+
+.theKeyToYourGoal > aside > .actionBtn {
+    text-align: center;
+    width: 300px;
+    margin: 20px 0px;
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.theKeyToYourGoal > aside > .actionBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media only screen and (max-width: 900px) {
+
+    .theKeyToYourGoal {
+        flex-direction: column;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+    .theKeyToYourGoal {
+        width: 95%;
+    }
+
+    .theKeyToYourGoal > aside > h2 {
+        font-size: 28px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .theKeyToYourGoal > aside > h2 {
+        font-size: 24px;
+    }
+
+}
+
+/* Why You Need It Two */
+
+.whyYouNeedItTwo {
+    width: 95%;
+    margin: auto;
+    padding: 30px 0px;
+    max-width: 1600px;
+}
+
+.whyYouNeedItTwo > h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0px 0px 30px 0px;
+    text-align: center;
+}
+
+.whyYouNeedItTwo > article {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.whyYouNeedItTwo > article > div {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    border: 1px solid var(--black);
+}
+
+.whyYouNeedItTwo > article > div > img {
+    width: 75px;
+}
+
+.whyYouNeedItTwo > article > div > h3 {
+    margin: 20px 0px;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.whyYouNeedItTwo > article > div > p {
+    margin: 0;
+    font-weight: 300;
+    font-size: 16px;
+    text-align: center;
+}
+
+.whyYouNeedItTwo > article > div > p > span {
+    font-weight: 400;
+}
+
+
+@media only screen and (max-width: 850px) {
+
+    .whyYouNeedItTwo {
+        width: 95%;
+    }
+
+    .whyYouNeedItTwo > h2 {
+        font-size: 28px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .whyYouNeedItTwo > h2 {
+        font-size: 24px;
+    }
+
+}
+
+/* Scandifit Multivitamin Will Help */
+
+.HowMultivitaminWillIncreaseMuscleMass {
+    width: 95%;
+    margin: auto;
+    padding: 40px 0px;
+    max-width: 1600px;
+}
+
+.HowMultivitaminWillIncreaseMuscleMass > h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+}
+
+.HowMultivitaminWillIncreaseMuscleMass > p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.HowMultivitaminWillIncreaseMuscleMass > article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin: 60px 0px 0px 0px;
+}
+
+.HowMultivitaminWillIncreaseMuscleMass > article > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.HowMultivitaminWillIncreaseMuscleMass > article > aside > h3 {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.HowMultivitaminWillIncreaseMuscleMass > article > aside > div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.HowMultivitaminWillIncreaseMuscleMass > article > aside > div > aside > h4 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.HowMultivitaminWillIncreaseMuscleMass > article > aside > div > aside > p {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.HowMultivitaminWillIncreaseMuscleMass > article > aside > div > img {
+    width: 35px;
+    height: 35px;
+}
+
+.HowMultivitaminWillIncreaseMuscleMass > article > img {
+    width: 75%;
+    max-width: 250px;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .HowMultivitaminWillIncreaseMuscleMass > article {
+        flex-direction: column-reverse;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+    .HowMultivitaminWillIncreaseMuscleMass {
+        width: 90%;
+    }
+
+    .HowMultivitaminWillIncreaseMuscleMass > h2 {
+        font-size: 28px;
+    }
+    
+    .HowMultivitaminWillIncreaseMuscleMass > article > aside > h3 {
+        font-size: 22px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .HowMultivitaminWillIncreaseMuscleMass > h2 {
+        font-size: 24px;
+    }
+
+    .HowMultivitaminWillIncreaseMuscleMass > article > aside > h3 {
+        font-size: 20px;
+    }
+
+}
+
+/* scandifit Multivitamin Will Help */
+
+.HowMultivitaminWillHelpLowerWeight {
+    width: 95%;
+    margin: auto;
+    padding: 40px 0px;
+    max-width: 1600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.HowMultivitaminWillHelpLowerWeight > img {
+    width: 250px;
+}
+
+.HowMultivitaminWillHelpLowerWeight > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.HowMultivitaminWillHelpLowerWeight > aside > h3 {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.HowMultivitaminWillHelpLowerWeight > aside > div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.HowMultivitaminWillHelpLowerWeight > aside > div > aside > h4 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.HowMultivitaminWillHelpLowerWeight > aside > div > aside > p {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.HowMultivitaminWillHelpLowerWeight > aside > div > img {
+    width: 35px;
+    height: 35px;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .HowMultivitaminWillHelpLowerWeight {
+        flex-direction: column;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+    .HowMultivitaminWillHelpLowerWeight {
+        width: 90%;
+    }
+    
+    .HowMultivitaminWillHelpLowerWeight > aside > h3 {
+        font-size: 22px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .HowMultivitaminWillHelpLowerWeight > aside > h3 {
+        font-size: 20px;
+    }
+
+}
+
+/* How Multivitamin Will Help With Training */
+
+.HowMultivitaminWillHelpWithTraining {
+    width: 95%;
+    margin: auto;
+    padding: 40px 0px;
+    max-width: 1600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.HowMultivitaminWillHelpWithTraining > .actionBtn {
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+    margin: 60px auto 0px auto;
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.HowMultivitaminWillHelpWithTraining > .actionBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.HowMultivitaminWillHelpWithTraining > article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.HowMultivitaminWillHelpWithTraining > article > img {
+    width: 250px;
+}
+
+.HowMultivitaminWillHelpWithTraining > article > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.HowMultivitaminWillHelpWithTraining > article > aside > h3 {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.HowMultivitaminWillHelpWithTraining > article > aside > div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.HowMultivitaminWillHelpWithTraining > article > aside > div > aside > h4 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.HowMultivitaminWillHelpWithTraining > article > aside > div > aside > p {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.HowMultivitaminWillHelpWithTraining > article > aside > div > img {
+    width: 35px;
+    height: 35px;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .HowMultivitaminWillHelpWithTraining > article {
+        flex-direction: column-reverse;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+    .HowMultivitaminWillHelpWithTraining > article {
+        width: 90%;
+    }
+    
+    .HowMultivitaminWillHelpWithTraining > article > aside > h3 {
+        font-size: 22px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .HowMultivitaminWillHelpWithTraining > article > aside > h3 {
+        font-size: 20px;
+    }
+
+}
+
+/* One Testemonial */
+
+.OneTestemonial {
+    width: 90%;
+    margin: auto;
+    padding: 40px 0px;
+    max-width: 1300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.OneTestemonial > h2 {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.OneTestemonial > p {
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.OneTestemonial > p > span {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.OneTestemonial > h3 {
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+}
+
+@media only screen and (max-width: 850px) {
+
+    .OneTestemonial > h2 {
+        font-size: 28px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .OneTestemonial > h2 {
+        font-size: 24px;
+    }
+
+}
+
+/* How To Consume */
+
+.HowToConsume {
+    width: 95%;
+    padding: 40px 0px;
+    margin: 0px auto;
+    max-width: 1600px;
+}
+
+.HowToConsume > h2 {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+}
+
+.HowToConsume > p {
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+    margin: 0;
+}
+
+.HowToConsume > article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 75px;
+    padding: 40px 0px 0px 0px;
+}
+
+.HowToConsume > article > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 250px;
+}
+
+.HowToConsume > article > div > h4 {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.HowToConsume > article > div > img {
+    width: 100px;
+}
+
+.HowToConsume > article > div > h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 20px 0px 0px 0px;
+    text-align: center;
+}
+
+.HowToConsume > article > div > p {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+    text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .HowToConsume > article {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 75px;
+        padding: 40px 0px 0px 0px;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+    .HowToConsume > h2 {
+        font-size: 28px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .HowToConsume > h2 {
+        font-size: 24px;
+    }
+
+}
+
+/* Ingredients And Benefits */
+
+.IngredientsAndBenefits {
+    width: 90%;
+    margin: 0 auto;
+    padding: 40px 0px;
+    max-width: 1600px;
+}
+
+.IngredientsAndBenefits > h2 {
+    margin: 0px 0px 40px 0px;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.IngredientsAndBenefits > article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.IngredientsAndBenefits > article > .line {
+    height: 550px;
+    width: 1px;
+    background-color: var(--gray);
+}
+
+.IngredientsAndBenefits > article > div,
+.IngredientsAndBenefits > article > aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .IngredientsAndBenefits > article {
+        flex-direction: column;
+    }
+
+    .IngredientsAndBenefits > article > .line {
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+    .IngredientsAndBenefits > h2 {
+        font-size: 28px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .IngredientsAndBenefits > h2 {
+        font-size: 24px;
+    }
+
+}
+
+/* Benifits With Subscription */
+
+.BenefitsWithSubscription {
+    width: 90%;
+    margin: auto;
+    padding: 40px 0px;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.BenefitsWithSubscription > img {
+    width: 250px;
+    height: 250px;
+}
+
+.BenefitsWithSubscription > article > h2 {
+    margin: 0px 0px 20px 0px;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.BenefitsWithSubscription > article > p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.BenefitsWithSubscription > article > h3 {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 20px 0px 10px 0px;
+}
+
+.BenefitsWithSubscription > article > ul {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.BenefitsWithSubscription > article > ul > li {
+    font-weight: 300;
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .BenefitsWithSubscription {
+        flex-direction: column-reverse;
+        align-items: baseline;
+    }
+
+    .BenefitsWithSubscription > img {
+        width: auto;
+        height: 150px;
+        padding: 0px 0px 0px 20px;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+    .BenefitsWithSubscription > article > h2 {
+        font-size: 28px;
+    }
+
+    .BenefitsWithSubscription > article > h3 {
+        font-size: 22px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .BenefitsWithSubscription > article > h2 {
+        font-size: 24px;
+    }
+
+    .BenefitsWithSubscription > article > h3 {
+        font-size: 20px;
+    }
+
+}
+
+/* Why Is The First Month Free */
+
+.WhyIsTheFirstMonthFree {
+    width: 90%;
+    margin: 0 auto;
+    padding: 40px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.WhyIsTheFirstMonthFree > article > h2 {
+    font-size: 32px;
+    margin: 0;
+    font-weight: 700;
+    text-align: center;
+}
+
+.WhyIsTheFirstMonthFree > article > p {
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.WhyIsTheFirstMonthFree > article > h3 {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.WhyIsTheFirstMonthFree > .actionBtn {
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+    margin: 20px auto 0px auto;
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.WhyIsTheFirstMonthFree > .actionBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media only screen and (max-width: 850px) {
+
+    .WhyIsTheFirstMonthFree > article > h2 {
+        font-size: 28px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .WhyIsTheFirstMonthFree > article > h2 {
+        font-size: 24px;
+    }
+
+}
+
+/* Multivitamin Guarantee */
+
+.MultivitaminGuarantee {
+    width: 90%;
+    max-width: 900px;
+    margin: 0px auto;
+    padding: 40px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.MultivitaminGuarantee > aside {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.MultivitaminGuarantee > aside > h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0px 0px 30px 0px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.MultivitaminGuarantee > aside > h2 > img {
+    width: 95px;
+}
+
+.MultivitaminGuarantee > p {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.MultivitaminGuarantee > .actionBtn {
+    text-align: center;
+    margin: 20px 0px 0px 0px;
+    max-width: 300px;
+    width: 100%;
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.MultivitaminGuarantee > .actionBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media only screen and (max-width: 850px) {
+
+    .MultivitaminGuarantee > aside > h2 {
+        font-size: 28px;
+    }
+
+    .MultivitaminGuarantee > aside > h2 > img {
+        width: 75px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .MultivitaminGuarantee > aside > h2 {
+        font-size: 24px;
+    }
+
+    .MultivitaminGuarantee > aside > h2 > img {
+        width: 55px;
+    }
+
+}
+
+/* View product Multivitamin Popup */
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.ViewproductMultivitaminPopupBackground {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.637);
+}
+
+.ViewproductMultivitaminPopup {
+    padding: 50px;
+    border-radius: 15px;
+    background-color: var(--white);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    animation: fadeInScale .75s;
+}
+
+.ViewproductMultivitaminPopup > .closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    padding: 5px 10px;
+    border: 1px solid var(--gray);
+    background-color: transparent;
+    color: var(--gray);
+    font-weight: 300;
+    cursor: pointer;
+    transition: .5s all;
+}
+
+.ViewproductMultivitaminPopup > .closeBtn:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.ViewproductMultivitaminPopup > img {
+    width: 350px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+}
+
+.ViewproductMultivitaminPopup > article {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.ViewproductMultivitaminPopup > article > h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0px 0px 20px 0px;
+}
+
+.ViewproductMultivitaminPopup > article > form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ViewproductMultivitaminPopup > article > form > input {
+    display: none;
+}
+
+.ViewproductMultivitaminPopup > article > form > input:checked + label {
+    border: 1px solid var(--green);
+}
+
+.ViewproductMultivitaminPopup > article > form > label {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 0px;
+    border: 1px dotted var(--black);
+    cursor: pointer;
+    transition: .5s all;
+}
+
+.ViewproductMultivitaminPopup > article > form > label > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.ViewproductMultivitaminPopup > article > form > label > div > h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.ViewproductMultivitaminPopup > article > form > label > div > p {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.ViewproductMultivitaminPopup > article > form > label > p {
+    font-weight: 300;
+    font-size: 16px;
+    margin: 0;
+}
+
+.ViewproductMultivitaminPopup > article > form > button {
+    text-align: center;
+    width: 100%;
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: lighter;
+    color: var(--black);
+    transition: .5s all;
+}
+
+.ViewproductMultivitaminPopup > article > form > button:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.ViewproductMultivitaminPopup > article > form > article {
+    display: flex;
+    flex-direction: column;
+}
+
+.ViewproductMultivitaminPopup > article > form > article > aside {
+    border: 1px dotted var(--black);
+    padding: 20px;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.ViewproductMultivitaminPopup > article > form > article > aside > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.ViewproductMultivitaminPopup > article > form > article > aside > div > img {
+    width: 75px;
+    margin: 0px 0px 5px 0px;
+}
+
+.ViewproductMultivitaminPopup > article > form > article > aside > div > h3 {
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ViewproductMultivitaminPopup > article > form > article > aside > div > h3 > img {
+    width: 25px;
+}
+
+.ViewproductMultivitaminPopup > article > form > article > aside > div > p {
+    margin: 0px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.ViewproductMultivitaminPopup > article > form > article > aside > h3 {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 20px 0px;
+}
+
+.ViewproductMultivitaminPopup > article > form > article > aside > div > aside {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.ViewproductMultivitaminPopup > article > form > article > aside > div > aside > img {
+    width: 30px;
+}

@@ -1,0 +1,33 @@
+{% extends 'profile_base.html' %}
+{% block css %} {{ super() }} <link rel="stylesheet" href="{{ url_for('static', filename='css/workouts.css') }}">{% endblock %}
+{% block title %}<title>Workouts</title>{% endblock %}
+{% block content %}
+{{ super() }}
+<section class="workouts">
+    <article>
+        <h1>Visa Övningar</h1>
+        <ul>
+            <li><a href="/workouts/alla">Alla</a></li>
+            <li><a href="/workouts/cardio">Cardio</a></li>
+            <li><a href="/workouts/chest">Bröst</a></li>
+            <li><a href="/workouts/triceps">Triceps</a></li>
+            <li><a href="/workouts/biceps">Biceps</a></li>
+            <li><a href="/workouts/back">Rygg</a></li>
+            <li><a href="/workouts/shoulders">Axlar</a></li>
+            <li><a href="/workouts/stomach">Mage</a></li>
+            <li><a href="/workouts/legs">Ben</a></li>
+        </ul>       
+    </article>
+        
+    <main>
+        
+        {% for workout in workouts %}
+            <a href="/workout/{{ workout[0] }}">
+                <img src="{{ url_for('static', filename='pictures/workouts/' + workout[3] ) }}" alt="Training Picture">
+                <h2>{{ workout[1] }}</h2>
+            </a>
+        {% endfor %}
+
+    </main>
+</section>
+{% endblock %}

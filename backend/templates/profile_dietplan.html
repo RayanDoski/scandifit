@@ -1,0 +1,104 @@
+{% extends 'profile_base.html' %}
+{% block css %} {{ super() }} <link rel="stylesheet" href="{{ url_for('static', filename='css/profile_dietplan.css') }}">{% endblock %}
+{% block title %}<title>Din Kostplan</title>{% endblock %}
+{% block content %}
+{{ super() }}
+<!-- If We Have Allowed Them To See Dietplan -->
+{% if show_dietplan == true %}
+<section class="dietplan_section">
+
+    <article>
+        <p>Försök Hålla Dig Till Ca</p>
+        <h2>{{ calorie_intake }} Kalorier Per Dag</h2>
+    </article>
+
+    <article>
+        <p>Försök Hålla Dig Till Ca</p>
+        <h2>{{ water_intake[0] }} Liter Vatten Per Dag - <span>Vilodag</span></h2>
+        <h2>{{ water_intake[1] }} Liter Vatten Per Dag - <span>Träningsdag</span></h2>
+    </article>
+
+    <article>
+        <aside>
+            <h2>Matrecept</h2>
+            <p>som passar dina behov</p>
+            <a href="/profile/dietplan">Generera Fler Recept</a>
+        </aside>
+        <article>
+            {% for recipe in recipes %}
+                <aside>
+                    <img src="{{ recipe['image'] }}" alt="{{ recipe['name'] }}">
+                    <a href="/profile/recipe/{{ recipe['id'] }}">{{ recipe['name'] }}</a>
+                </aside>
+            {% endfor %}                        
+        </article>
+    </article>
+
+    <!-- <article>
+        <aside>
+            <h2>Ingredienser</h2>
+            <p>som passar dina behov</p>
+        </aside>
+        <article></article>
+    </article> -->
+
+    <a id="view_information_btn">Visa Min Information</a>
+
+</section>
+<section class="dietplan_popup_message">
+
+    <article id="view_information">
+        <h2>Min Information</h2>
+        <p>Scrolla Ner <span>⬇</span></p>
+        <form action="/quiz/dietplan" method="post">
+
+            <label for="goal">Ditt Mål:</label>
+            <input type="text" name="goal" id="goal" value="{{ user_dietplan[1] }}" readonly>
+
+            <label for="age">Ålder:</label>
+            <input type="text" name="age" id="age" value="{{ user_dietplan[2] }} År Gammal" readonly>
+
+            <label for="gender">Kön:</label>
+            <input type="text" name="gender" id="gender" value="{{ user_dietplan[3] }}" readonly>
+
+            <label for="height">Längd:</label>
+            <input type="text" name="height" id="height" value="{{ user_dietplan[4] }} cm" readonly>
+
+            <label for="weight">Vikt:</label>
+            <input type="text" name="weight" id="weight" value="{{ user_dietplan[5] }} Kg" readonly>
+
+            <label for="target_weight">Mål Vikt:</label>
+            <input type="text" name="target_weight" id="target_weight" value="{{ user_dietplan[6] }} Kg" readonly>
+
+            <label for="activity_level">Aktivitetsnivå: <span>(Träningspass Exkluderat)</span></label>
+            <input type="text" name="activity_level" id="activity_level" value="{% if user_dietplan[7] == '1' %}Inte krävande alls, jag rör mig knappt{% elif user_dietplan[7] == '2' %}Det är inte så krävande, jag går runt ibland{% elif user_dietplan[7] == '3' %}Krävande, jag behöver röra mig regelbundet.{% elif user_dietplan[7] == '4' %}Det är väldigt krävande och tar mycket av min energi{% endif %}" readonly>
+
+            <label for="training_sessions_per_week">Träningspass: <span>(Per Vecka)</span></label>
+            <input type="text" name="training_sessions_per_week" id="training_sessions_per_week" value="{{ user_dietplan[8] }} TräningsPass Per Vecka" readonly>
+
+            <label for="dietary_preferences">Kostpreferenser:</label>
+            <input type="text" name="dietary_preferences" id="dietary_preferences" value="{{ user_dietplan[9] }}" readonly>
+
+            <label for="dietary_preferences">dagligt Vattenintag: <span>(Under Tiden Då Information angavs)</span></label>
+            <input type="text" name="dietary_preferences" id="dietary_preferences" value="{{ user_dietplan[10] }}" readonly>
+
+            <label for="sugar_intake">Sockerintag: <span>(Under Tiden Då Information angavs)</span></label>
+            <input type="text" name="sugar_intake" id="sugar_intake" value="{{ user_dietplan[11] }}" readonly>
+
+            <button type="submit">Redigera Information</button>
+
+        </form>
+        <p></p>
+    </article>
+
+</section>
+{% else %}
+<section class="dietplan">
+    <main>
+        <h1>{{ heading }}</h1>
+        <a href="{{ btn_link }}">{{ btn_text }}</a>
+    </main>
+</section>
+{% endif %}
+{% endblock %}
+{% block js %} {{ super() }} <script src="{{ url_for('static', filename='js/profile_dietplan.js') }}"></script>{% endblock %}

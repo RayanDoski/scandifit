@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">{% endblock %}
+{% block title %}<title>Blog</title>{% endblock %}
+{% block content %}
+<section class="blog">
+    <h1>Blog <span>Lås upp ditt bästa jag på Scandifit</span></h1>
+    <a href="/blog/upptäck_hemligheterna_bakom_effektiv_hemmaträning">
+        <img src="{{ url_for('static', filename='pictures/blog/blog-picture-two.webp') }}" alt="Training">
+        <div>
+            <p>2023 - 12 - 01</p>
+            <h2>Upptäck Hemligheterna bakom Effektiv Hemmaträning</h2>
+            <p>Att gå ner i vikt och bygga muskler samtidigt är fullt möjligt med rätt strategi och uthållighet. Lyssna på din kropp, var konsekvent och fira dina framsteg...</p>
+        </div>
+    </a>
+    <main>
+
+        <a href="/blog/upptäck_hemligheterna_bakom_effektiv_hemmaträning">
+            <img src="{{ url_for('static', filename='pictures/blog/blog-picture-two.webp') }}" alt="Training">
+            <p>2023 - 12 - 01</p>
+            <h2>Upptäck Hemligheterna bakom Effektiv Hemmaträning</h2>
+            <p>Att gå ner i vikt och bygga muskler samtidigt är fullt möjligt med rätt strategi och uthållighet. Lyssna på din kropp, var konsekvent och fira dina framsteg...</p>
+        </a>
+
+        <a href="/blog/bygg_muskelmassa_snabbt_med_våra_magiska_tips">
+            <img src="{{ url_for('static', filename='pictures/blog/blog-picture.jpg') }}" alt="Training">
+            <p>2023 - 12 - 01</p>
+            <h2>Bygg Muskelmassa Snabbt med Våra Magiska Tips</h2>
+            <p>Skapa en Regelbunden Träningsrutin: Regelbundenhet är nyckeln när det gäller att bygga muskler. Försök att träna minst...</p>
+        </a>
+
+        <a href="/blog/effektiv_viktnedgång_din_väg_till_drömkroppen">
+            <img src="{{ url_for('static', filename='pictures/blog/blog-picture-three.webp') }}" alt="Training">
+            <p>2023 - 12 - 01</p>
+            <h2>Effektiv Viktnedgång: Din Väg till Drömkroppen</h2>
+            <p>Att gå ner i vikt kan kännas som en utmaning, men med rätt inställning och verktyg kan du uppnå dina mål och njuta av resan. Här är...</p>
+        </a>
+
+        <a href="/blog/så_skapar_du_det_perfekta_träningsprogrammet">
+            <img src="{{ url_for('static', filename='pictures/blog/blog-picture-four.png') }}" alt="Training">
+            <p>2023 - 12 - 01</p>
+            <h2>Så Skapar Du Det Perfekta Träningsprogrammet!</h2>
+            <p>Vill du bygga muskler, tappa vikt, förbättra din kondition, eller kanske en kombination av dessa? Ditt program ska vara utformat för att effektivt hjälpa dig...</p>
+        </a>
+
+        <a href="/blog/gå_ner_i_vikt_och_bygg_muskler_med_dessa_magiska_strategier">
+            <img src="{{ url_for('static', filename='pictures/blog/blog-picture-five.png') }}" alt="Training">
+            <p>2023 - 12 - 01</p>
+            <h2>Gå Ner i Vikt och Bygg Muskler med Dessa Magiska Strategier!</h2>
+            <p>Vill du bygga muskler, tappa vikt, förbättra din kondition, eller kanske en kombination av dessa? Ditt program ska vara utformat för att effektivt hjälpa dig...</p>
+        </a>
+
+    </main>
+</section>
+{% endblock %}

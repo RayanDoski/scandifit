@@ -1,0 +1,107 @@
+#all-exercises {
+    padding: 2px 0px;
+    border-bottom: 1.5px solid var(--company-color);
+}
+
+.workouts > article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px auto 50px auto;
+    width: 90%;
+}
+
+.workouts > article > h1 {
+    inline-size: 75%;
+    font-family: var(--primary-font);
+    font-size: 42px;
+    margin: 0;
+}
+
+.workouts > article > ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    column-gap: 20px;
+    row-gap: 30px;
+}
+
+.workouts > article > ul > li > .linkToWorkouts {
+    background-color: var(--white);
+    border-radius: 15px;
+    color: var(--black);
+    border: 1px solid var(--black);
+    text-decoration: none;
+    padding: 10px;
+    transition: .5s all;
+}
+
+.workouts > article > ul > li > a:hover {
+    background-color: var(--green);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.workouts > main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    inline-size: 95%;
+    margin: 50px auto 50px auto;
+    gap: 30px;
+}
+
+.workouts > main > .linkToWorkout {
+    text-decoration: none;
+    color: var(--black);
+    border: .5px solid var(--black);
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 400px;
+}
+
+.workouts > main > a > img {
+    width: 100%;
+}
+
+.workouts > main > a > h2 {
+    letter-spacing: 2px;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 950px) {
+
+    .workouts > h1 {
+        max-width: 1400px;
+        inline-size: 100%;
+        margin: 100px auto 50px auto;
+        font-family: var(--primary-font);
+        font-size: 45px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    .workouts > article {
+        flex-direction: column;
+        margin: 50px auto;
+        gap: 20px;
+    }
+
+    .workouts > article > h1 {
+        text-align: center;
+    }
+
+}

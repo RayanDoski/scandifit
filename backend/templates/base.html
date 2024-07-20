@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='pictures/favicon.ico') }}">
+    {% block css %}{% endblock %}
+    {% block title %}<title>Base</title>{% endblock %}
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K7Z69TRS');</script>
+    <!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7Z69TRS"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!--menu Start-->
+    <div id="menu-background"></div>
+    <section id="menu">
+        <nav>
+            <h3>menu</h3>
+            <h4 id="close_menu">X</h4>
+        </nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#kontakta-oss">Kontakta Oss</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/multivitamin">Multivitamin</a></li>
+            <li><a href="https://www.postnord.se/vara-verktyg/spara-brev-paket-och-pall">Spåra Order</a></li>
+            <a href="{% if 'user_id' in session %} /profile/trainingplan {% else %} /trainingplan/quiz {% endif %}" class="button-link">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
+        </ul>
+    </section>
+    <!--menu End-->
+    <!--Kundvagn Start-->
+    <div id="kundvagn-background" class="{% if cart_info %} {% if cart_info[0]|length > 0 %} del_show {% endif %} {% endif %}"></div>
+    <section id="kundvagn" class="{% if cart_info %} {% if cart_info[0]|length > 0 %} del_show {% endif %} {% endif %}">
+        <nav>
+            {% if cart_info %}
+                {% if cart_info[0]|length > 0 %}
+                    <h4>Din Kundvagn ( {{ cart_info[0]|length }} Produkt)</h4>
+                {% else %}
+                    <h4>Din Kundvagn (TOM)</h4>
+                {% endif %}
+            {% endif %}
+            <h5 id="close-cart">X</h2>
+        </nav>
+        <p>ID: 1032255985</p>
+        <!--Produkt start-->
+        {% if cart_info %}
+            {% if cart_info[0]|length > 0 %}
+                <form action="/create_checkout_session" method="post">
+                    {% for items in cart_info[1] %}
+                        {% for product_info in cart_info[0] %}
+                            {% if items[0] == product_info[0] %}
+                                {% if items[1] == 'once' %}
+                                    <main>
+                                        <aside>
+                                            <img src="{{ url_for('static', filename='pictures/product-picture/' + product_info[5] ) }}" alt="Product Picture">
+                                            <h2>{{ product_info[1] }}</h2>
+                                        </aside>
+                                        <a href="/delete_from_cart/{{ product_info[0] }}"><img src="{{ url_for('static', filename='pictures/icons/bin.png') }}" alt="Papperskorg "></a>
+                                    </main>
+                                    <article>
+                                        <aside>
+                                            <div>
+                                                <button type="button" class="minus">-</button>
+                                                <input type="text" name="quantity{{ product_info[0] }}" id="quanity" readonly value="1">
+                                                <button type="button" class="plus">+</button>
+                                            </div>
+                                        </aside>
+                                        <p id="amount-per-product-p"><span id="amount-per-product">{{ product_info[3] }}</span> SEK</p>
+                                    </article>
+                                {% elif items[1] == 'sub' %}
+                                    <main>
+                                        <aside>
+                                            <img src="{{ url_for('static', filename='pictures/product-picture/' + product_info[5] ) }}" alt="Product Picture">
+                                            <h2>{{ product_info[1] }}</h2>
+                                        </aside>
+                                        <a href="/delete_from_cart/{{ product_info[0] }}"><img src="{{ url_for('static', filename='pictures/icons/bin.png') }}" alt="Papperskorg "></a>
+                                    </main>
+                                    <article>
+                                        <aside>
+                                            Prenumeration
+                                        </aside>
+                                        <p id="amount-per-product-p"><span id="amount-per-product">{{ product_info[4] }}</span> SEK</p>
+                                    </article>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    <div class="kundvagn-line"></div>
+                    <div class="frakt-info">
+                        <h3>Gratis Frakt</h3>
+                        <p>0 SEK - Skickas Till Närmaste Ombud Eller Direkt Hem Beroende På Storlek - <img src="{{ url_for('static', filename='pictures/postnord.png') }}" alt="Postnord"></p>
+                    </div>
+                    <!-- <div class="totalbelopp-div">
+                        <h3>Totalbelopp</h4>
+                        <h4 id="total-amount">249.99 SEK</h4>
+                    </div> -->
+                    <div class="button-div" style="margin: 30px 0px 0px 0px;">
+                        <button type="submit">Till betalning</button>
+                    </div>
+                </form>
+                {% endif %}
+            {% endif %}
+        <!--Produkt End-->
+    </section>
+    <!--Kundvagn End-->
+    <!--Header start-->
+    <header>
+
+        <div class="upper-nav">
+            <main>
+                <a href="/#kontakta-oss">Kontakta@scandifit.se</a>
+                <h2>En Minut, Ett Starkare Du – Gratis Träningsschema Nu!</h2>
+                <a href="/jobb">Jobba Hos Oss</a>
+            </main>
+        </div>
+
+        <nav>
+            <main>
+                <div>
+                <a href="/"><img src="{{ url_for('static', filename='pictures/logo.png') }}" alt="Logo"></a>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/#kontakta-oss">Kontakta Oss</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/multivitamin">Multivitamin</a></li>
+                        <li><a href="https://www.postnord.se/vara-verktyg/spara-brev-paket-och-pall">Spåra Order</a></li>
+                    </ul> 
+                </div>
+
+                <aside>
+                    <a href="{% if 'user_id' in session %} /profile/trainingplan {% else %} /login {% endif %}">
+                        <img src="{{ url_for('static', filename='pictures/icons/user.png') }}" alt="Logga In">
+                        <h3>{% if 'user_id' in session %} profil {% else %} Logga In {% endif %}</h3>
+                    </a>
+                    <a id="open-cart">
+                        {% if cart_info %}
+                            {% if cart_info[0]|length > 0 %}
+                                {% for items in cart_info[0] %}
+                                    <p>{{ loop.index }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                        <img src="{{ url_for('static', filename='pictures/icons/cart.png') }}" alt="Kundvagn">
+                        <h3>Kundvagn</h3>
+                    </a>
+                    <a class="button-link" href="{% if 'user_id' in session %} /profile/trainingplan {% else %} /trainingplan/quiz {% endif %}">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
+                    <img src="{{ url_for('static', filename='pictures/icons/hamburger-menu.png') }}" alt="Hamburger Menu" id="hamburger-menu">
+                </aside>
+            </main>
+        </nav>
+
+    </header>
+    <!--Header end-->
+    {% block content %}{% endblock %}
+    <!--Footer Start-->
+    <footer>
+        <aside>
+            <img src="{{ url_for('static', filename='pictures/logo-footer.png') }}" alt="Logo">
+            <a href="{% if 'user_id' in session %} /profile/trainingplan {% else %} /trainingplan/quiz {% endif %}">{% if 'user_id' in session %} Ditt Schema {% else %} Individuell träningsplan {% endif %}</a>
+        </aside>
+        <div class="line"></div>
+        <main>
+            <ul id="dropdown">
+                <h3>Om Scandifit</h3>
+                <h4 id="dropdown-icon">+</h4>
+                <a href="/#kontakta-oss">Kontakta Oss</a>
+                <a href="/terms_of_use">Användarvillkor</a>
+                <a href="/returpolicy">Returpolicy</a>
+            </ul>
+            <ul id="dropdown">
+                <h3>våra produkter</h3>
+                <h4 id="dropdown-icon">+</h4>
+                <a href="/blog">Blog</a>
+                <a href="/multivitamin">Multivitamin</a>
+                <a href="{% if 'user_id' in session %} /profile/trainingplan {% else %} /trainingplan/quiz {% endif %}">Din Individuella Träningsplan</a>
+            </ul>
+            <ul id="dropdown">
+                <h3>Användare</h3>
+                <h4 id="dropdown-icon">+</h4>
+                <a href="/login">Logga In</a>
+                <a href="/signup">Registrera Dig</a>
+                <a href="/jobb">Jobba Hos Oss</a>
+            </ul>
+        </main>
+        <main>
+            <div>
+               <h2>©2023 Scandifit. All rights reserved.</h2>
+               <span></span>
+               <img src="{{ url_for('static', filename='pictures/payment-alternativ/klarna.svg') }}" alt="Betalnings Alternativ" id="klarna-logo">
+               <img src="{{ url_for('static', filename='pictures/payment-alternativ/apple-pay.png') }}" alt="Betalnings Alternativ">
+               <img src="{{ url_for('static', filename='pictures/payment-alternativ/card.png') }}" alt="Betalnings Alternativ">
+               <img src="{{ url_for('static', filename='pictures/payment-alternativ/amex.png') }}" alt="Betalnings Alternativ">
+               <img src="{{ url_for('static', filename='pictures/payment-alternativ/visa.png') }}" alt="Betalnings Alternativ">
+            </div>
+        </main>
+    </footer>
+    <!--Footer End-->
+</body>
+</html>
+<script src="{{ url_for('static', filename='js/base.js') }}"></script>
+{% block js %}{% endblock %}

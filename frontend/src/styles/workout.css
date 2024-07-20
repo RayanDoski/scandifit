@@ -1,0 +1,77 @@
+#all-exercises {
+    padding: 2px 0px;
+    border-bottom: 1.5px solid var(--green);
+}
+
+.workout > main {
+    margin: 50px auto 100px auto;
+    width: 750px;
+    overflow: hidden;
+}
+
+.workout > main > img {
+    width: 100%;
+    border-bottom: 1px solid var(--black);
+}
+
+.workout > main > h2 {
+    color: var(--green);
+    font-weight: lighter;
+    inline-size: 95%;
+    font-size: 16px;
+    margin: 10px auto 0px auto;
+}
+
+.workout > main > h1 {
+    inline-size: 95%;
+    margin: 0px auto;
+    font-size: 32px;
+}
+
+.workout > main > h3 {
+    inline-size: 95%;
+    margin: 20px auto;
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+.workout > main > h3 > strong {
+    font-weight: bold;
+}
+
+.workout > main > p {
+    inline-size: 95%;
+    margin: 0px auto 10px auto;
+    font-weight: lighter;
+}
+
+.workout > main > p > strong {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 780px) {
+
+    .workout > main {
+        width: 90%;
+    }
+
+    .workout > main > h2 {
+        font-size: 14px;
+    }
+    
+    .workout > main > h1 {
+        font-size: 25px;
+        letter-spacing: 1px;
+    }
+    
+    .workout > main > h3 {
+        font-size: 16px;
+    }
+
+    .workout > main > p {
+        font-size: 14px;
+        letter-spacing: .5px;
+    }
+    
+}
+

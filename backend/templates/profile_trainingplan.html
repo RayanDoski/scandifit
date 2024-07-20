@@ -1,0 +1,44 @@
+{% extends 'profile_base.html' %}
+{% block css %} {{ super() }} <link rel="stylesheet" href="{{ url_for('static', filename='css/profile_trainingplan.css') }}">{% endblock %}
+{% block title %}<title>Ditt Schema</title>{% endblock %}
+{% block content %}
+{{ super() }}
+{% if schedual_does_not_exist %}
+<section class="no-trainingplan">
+    <main>
+        <a href="/trainingplan/quiz">Skapa En Träningsplan</a>
+    </main>
+</section>
+{% else %}
+<!-- din Information POPUP -->
+<div class="din-information-background"></div>
+<section class="din-information-popup">
+    <h2>Din Information</h2>
+    <h3>Ditt Träningsschema Är Baseras På Följande Information</h3>
+    <h4>Din Ålder: <span>{{ tp[1] }}</span></h4>
+    <h4>Ditt Mål: <span>{{ tp[2] }}</span></h4>
+    <h4>Din Kroppstyp: <span>{{ tp[3] }}</span></h4>
+    <h4>Ditt Problemområde: <span>{{ tp[4] }}</span></h4>
+    <h4>Din Längd: <span>{{ tp[5] }} Cm</span></h4>
+    <h4>Din Vikt: <span>{{ tp[6] }} Kg</span></h4>
+    <h4>Din Målvikt: <span>{{ tp[7] }} Kg</span></h4>
+    <h4>Antal Pass Per Vecka: <span>{{ tp[8] }} Stycken</span></h4>
+    <h4>Dina Sjukdommar: <span>{{ tp[9] }}</span></h4>
+    <h4>Din Träningsplats: <span>{{ tp[10] }}</span></h4>
+    <h4>Dina Utrustningstillgångar: <span>{{ tp[11] }}</span></h4>
+</section>
+<!-- main  -->
+<section class="schedual-information">
+    <main>
+        <article>
+            <h1>Ditt Tränings Schema</h1>
+            <a id="din-information-btn" href="#">Visa Min Information</a>
+        </article>
+
+        <!-- Makes the schedual text into html code -->
+        {{ schedual | safe }}
+    </main>
+</section>
+{% endif %}
+{% endblock %}
+{% block js %} {{ super() }} <script src="{{ url_for('static', filename='js/profile-schema.js') }}"></script> {% endblock %}

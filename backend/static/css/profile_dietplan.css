@@ -1,0 +1,428 @@
+#din-kostplan {
+    padding: 2px 0px;
+    border-bottom: 1.5px solid var(--company-color);
+}
+
+/* Css Kod För Om De Inte Är Exklusiva Användare */
+.dietplan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+}
+
+.dietplan > main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.dietplan > main > h1 {
+    font-size: 75px;
+    text-align: center;
+    inline-size: 80%;
+    font-family: var(--primary-font);
+}
+
+.dietplan > main > a {
+    padding: 15px 25px;
+    background-color: var(--company-color);
+    font-family: var(--primary-font);
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 25px;
+    letter-spacing: 1.5px;
+    transition: .5s all;
+}
+
+.dietplan > main > a:hover {
+    background-color: #2da455;
+}
+
+/* deitplan */
+
+.dietplan_section {
+    padding: 50px 0px 25px 0px;
+    max-width: 1600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.dietplan_section > article {
+    width: 75%;
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px 0 #333;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 5px;
+}
+
+.dietplan_section > article > p {
+    text-align: center;
+    font-size: 20px;
+    font-weight: lighter;
+    letter-spacing: 1.2px;
+}
+
+.dietplan_section > article > h2 {
+    font-size: 50px;
+    letter-spacing: 2px;
+    font-family: var(--primary-font);
+    text-align: center;
+}
+
+.dietplan_section > article > h2 > span {
+    color: var(--company-color);
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .dietplan_section > article {
+        width: 95%;
+    }
+
+}
+
+@media only screen and (max-width: 975px) {
+
+    .dietplan_section > article {
+        padding: 30px 10px;
+        gap: 10px;
+    }
+
+    .dietplan_section > article > h2 {
+        font-size: 40px;
+        letter-spacing: 1px;
+    }
+
+    .dietplan_section > article > p {
+        font-size: 18px;
+        letter-spacing: .6px;
+    }
+
+    .dietplan_section {
+        padding: 25px 0px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .dietplan_section > article > h2 {
+        font-size: 28px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_section > article > p {
+        font-size: 16px;
+        letter-spacing: 0px;
+    }
+
+    .dietplan_section > a {
+        font-size: 14px;
+        letter-spacing: 0px;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    .dietplan_section > article > h2 {
+        font-size: 24px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_section > article > p {
+        font-size: 16px;
+        letter-spacing: 0px;
+    }
+
+}
+
+/* mat recept */
+
+.dietplan_section > article > aside {
+    margin: 0px 0px 30px 0px;
+}
+
+.dietplan_section > article > aside > h2 {
+    font-size: 30px;
+    margin: 0px 0px 5px 0px;
+    letter-spacing: 1.5px;
+}
+
+.dietplan_section > article > aside > p {
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 0px 0px 10px 0px;
+}
+
+.dietplan_section > article > aside > a {
+    display: block;
+    width: 125px;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: var(--company-color);
+    color: var(--primary-color);
+    font-family: var(--primary-font);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    text-decoration: none;
+    transition: .5s all;
+}
+
+.dietplan_section > article > aside > a:hover {
+    background-color: #2da455;
+}
+
+.dietplan_section > article > article {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.dietplan_section > article > article > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0px 0px 20px 0px;
+    width: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.dietplan_section > article > article > aside > img {
+    width: 100%;
+    max-height: 100%;
+}
+
+.dietplan_section > article > article > aside > a {
+    margin: 0px 0px 0px 15px;
+    font-size: 18px;
+    text-underline-offset: 4px;
+    letter-spacing: 1px;
+    line-height: 2;
+    transition: .5s all;
+}
+
+.dietplan_section > article > article > aside > a:hover {
+    text-underline-offset: 8px;
+}
+
+.dietplan_section > a {
+    margin: auto;
+    color: var(--company-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-size: 18px;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 750px) {
+
+    .dietplan_section > article > aside {
+        width: 95%;
+        margin: 0px auto 30px auto;
+    }
+
+    .dietplan_section > article > article {
+        width: 80%;
+        margin: 0px auto 0px auto;
+    }
+
+    .dietplan_section > article > aside > h2 {
+        font-size: 28px;
+    }
+    
+    .dietplan_section > article > aside > p {
+        font-size: 16px;
+    }
+    
+    .dietplan_section > article > article > aside > a {
+        font-size: 14px;
+    }
+
+    /* .dietplan_section > article > article > aside {
+        width: 150px;
+    } */
+
+    .dietplan_section > article > article > aside > a {
+        font-size: 16px;
+    }
+
+}
+
+/* popups */
+
+.dietplan_popup_message {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.dietplan_popup_message.show {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333333b4;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.dietplan_popup_message > #view_information {
+    visibility: hidden;
+    pointer-events: none;
+    padding: 0;
+    opacity: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .5s all;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 0 0 20px 0 #f5f5f5;
+}
+
+.dietplan_popup_message > #view_information.show {
+    padding: 40px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    height: 75%;
+    overflow: scroll;
+    scrollbar-color: var(--secondary-color) transparent;
+}
+
+.dietplan_popup_message > #view_information > h2{
+    font-family: var(--primary-font);
+    text-align: center;
+    font-size: 50px;
+    letter-spacing: 3px;
+    margin: 0px 0px 20px 0px;
+}
+
+.dietplan_popup_message > #view_information > p {
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.dietplan_popup_message > #view_information > p > span {
+    color: var(--company-color);
+}
+
+.dietplan_popup_message > #view_information > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 500px;
+}
+
+.dietplan_popup_message > #view_information > form > label {
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin: 20px 0px 0px 0px;
+}
+
+.dietplan_popup_message > #view_information > form > label > span {
+    font-size: 11px;
+}
+
+.dietplan_popup_message > #view_information > form > input {
+    border: 0;
+    background-color: var(--primary-color);
+    border-bottom: var(--company-color) 3px solid;
+    padding: 10px 10px 5px 10px;
+    font-size: 18px;
+    font-family: var(--secondary-font);
+    letter-spacing: 1px;
+    outline: 0;
+}
+
+.dietplan_popup_message > #view_information > form > button {
+    padding: 10px 25px;
+    border: 0;
+    box-sizing: border-box;
+    background-color: var(--company-color);
+    font-family: var(--primary-font);
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 20px;
+    width: 300px;
+    letter-spacing: 1.5px;
+    transition: .5s all;
+    margin: 30px 0px 10px 0px;
+}
+
+.dietplan_popup_message > #view_information > form > button:hover {
+    background-color: #2da455;
+}
+
+@media only screen and (max-width: 700px) {
+
+    .dietplan_popup_message > #view_information.show {
+        height: 75%;
+        width: 95%;
+        box-sizing: border-box;
+    }
+
+    .dietplan_popup_message > #view_information > h2{
+        font-size: 32px;
+        letter-spacing: .5px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    .dietplan_popup_message > #view_information > p {
+        letter-spacing: .5px;
+        font-size: 14px;
+    }
+    
+    .dietplan_popup_message > #view_information > form {
+        gap: 5px;
+        width: 100%;
+    }
+
+    .dietplan_popup_message > #view_information > form > label {
+        font-size: 14px;
+        letter-spacing: .5px;
+    }
+    
+    .dietplan_popup_message > #view_information > form > label > span {
+        font-size: 9px;
+    }
+
+    .dietplan_popup_message > #view_information > form > input {
+        border-bottom: var(--company-color) 1.5px solid;
+        font-size: 14px;
+        letter-spacing: .5px;
+    }
+
+    .dietplan_popup_message > #view_information > form > button {
+        padding: 7.5px 17.5px;
+        font-size: 16px;
+        width: 225px;
+        letter-spacing: .5px;
+    }
+
+}
+
+@media only screen and (max-width: 425px) {
+
+    .dietplan_popup_message > #view_information.show {
+        padding: 20px 10px;
+    }
+
+}

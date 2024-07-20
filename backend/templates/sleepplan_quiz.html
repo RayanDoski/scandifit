@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/sleepplan_quiz.css') }}">{% endblock %}
+{% block title %}<title>Sömnplan Quiz</title>{% endblock %}
+{% block content %}
+<section class="sleepplan_quiz">
+
+    <aside>
+        <h2 id="progress_nr">0/8</h2>
+        <div>
+            <img id="progress_back" src="{{ url_for('static', filename='pictures/icons/left-arrow.png') }}" alt="arrow_left">
+            <div><div id="progress_bar"></div></div>
+            <img id="progress_forward" src="{{ url_for('static', filename='pictures/icons/right-arrow.png') }}" alt="arrow_right">
+        </div>
+    </aside>
+
+    <form action="/sleepplan/quiz/completed" method="post" novalidate>
+
+        <article class="question_one show">
+            <h2>När vill Du Vakna?</h2>
+            <p>Att vakna vid samma tid varje dag stabiliserar kroppens interna klocka och främjar regelbundna sömncykler, vilket förbättrar sömnkvaliteten och ökar energinivån under dagen.</p>
+            <label for="wakeuptime">Tid (00:00)</label>
+            <input type="time" name="wakeuptime" id="wakeuptime" value="{{ sleepplan_info['wake_up_time'] }}">
+            <button id="next_question_one" type="button">Vidare</button>
+        </article>
+
+        <article class="question_two">
+            <h2>Hur gammal är du?</h2>
+            <label for="age">Ålder (År)</label>
+            <input type="number" name="age" id="age" value="{{ sleepplan_info['age'] }}">
+            <button id="next_question_two" type="button">Vidare</button>
+        </article>
+
+        <article class="question_three">
+            <h2>Hur Mycket Väger Du?</h2>
+            <label for="weight">Vikt (Kg)</label>
+            <input type="number" name="weight" id="weight" value="{{ sleepplan_info['weight'] }}">
+            <button id="next_question_three" type="button">Vidare</button>
+        </article>
+
+        <article class="question_four">
+            <h2>Hur lång tid brukar det ta för dig att somna?</h2>
+            <p>svaret behöver inte vara exakt, ta en gissning</p>
+            <aside>
+                
+                <input type="radio" name="time_to_sleep" id="time_to_sleep_1" value="5" {%  if sleepplan_info['time_to_sleep'] == 5 %}checked{% endif %}/>
+                <label for="time_to_sleep_1" id="next_question_four_one">
+                    <p>5 Min</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/sleep.png') }}" alt="Sleep_icon">
+                </label>
+
+                <input type="radio" name="time_to_sleep" id="time_to_sleep_2" value="10" {%  if sleepplan_info['time_to_sleep'] == 10 %}checked{% endif %}>
+                <label for="time_to_sleep_2" id="next_question_four_two">
+                    <p>10 Min</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/sleep.png') }}" alt="Sleep_icon">
+                </label>
+
+                <input type="radio" name="time_to_sleep" id="time_to_sleep_3" value="15" {%  if sleepplan_info['time_to_sleep'] == 15 %}checked{% endif %}>
+                <label for="time_to_sleep_3" id="next_question_four_three">
+                    <p>15 Min</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/sleep.png') }}" alt="Sleep_icon">
+                </label>
+
+                <input type="radio" name="time_to_sleep" id="time_to_sleep_4" value="20" {%  if sleepplan_info['time_to_sleep'] == 20 %}checked{% endif %}>
+                <label for="time_to_sleep_4" id="next_question_four_four">
+                    <p>20 Min</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/sleep.png') }}" alt="Sleep_icon">
+                </label>
+
+                <input type="radio" name="time_to_sleep" id="time_to_sleep_5" value="25" {%  if sleepplan_info['time_to_sleep'] == 25 %}checked{% endif %}>
+                <label for="time_to_sleep_5" id="next_question_four_five">
+                    <p>25 Min</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/sleep.png') }}" alt="Sleep_icon">
+                </label>
+
+                <input type="radio" name="time_to_sleep" id="time_to_sleep_6" value="30" {%  if sleepplan_info['time_to_sleep'] == 30 %}checked{% endif %}>
+                <label for="time_to_sleep_6" id="next_question_four_six">
+                    <p>30 Min</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/sleep.png') }}" alt="Sleep_icon">
+                </label>
+
+                <input type="radio" name="time_to_sleep" id="time_to_sleep_7" value="35" {%  if sleepplan_info['time_to_sleep'] == 35 %}checked{% endif %}>
+                <label for="time_to_sleep_7" id="next_question_four_seven">
+                    <p>35 Min</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/sleep.png') }}" alt="Sleep_icon">
+                </label>
+
+                <input type="radio" name="time_to_sleep" id="time_to_sleep_8" value="40" {%  if sleepplan_info['time_to_sleep'] == 40 %}checked{% endif %}>
+                <label for="time_to_sleep_8" id="next_question_four_eight">
+                    <p>40 Min</p>
+                    <img src="{{ url_for('static', filename='pictures/icons/sleep.png') }}" alt="Sleep_icon">
+                </label>
+
+            </aside>
+        </article>
+
+        <article class="question_five">
+            <h2>Hur skulle du beskriva ditt humör och energinivå under en normal dag? <img src="{{ url_for('static', filename='pictures/icons/mood.png') }}" alt="mood_scale"></h2>
+            <aside>
+                
+                <input type="radio" name="daily_mood_and_energy" id="daily_mood_and_energy_1" value="Energisk och positiv" {% if sleepplan_info['daily_mood_and_energy'] == 'Energisk och positiv' %}checked{% endif %}>
+                <label for="daily_mood_and_energy_1" id="next_question_five_one"><p>Energisk och positiv</p></label>
+
+                <input type="radio" name="daily_mood_and_energy" id="daily_mood_and_energy_2" value="Jämnt humör och energi" {% if sleepplan_info['daily_mood_and_energy'] == 'Jämnt humör och energi' %}checked{% endif %}>
+                <label for="daily_mood_and_energy_2" id="next_question_five_two"><p>Jämnt humör och energi</p></label>
+
+                <input type="radio" name="daily_mood_and_energy" id="daily_mood_and_energy_3" value="Ostadig energi, men positivt humör" {% if sleepplan_info['daily_mood_and_energy'] == 'Ostadig energi, men positivt humör' %}checked{% endif %}>
+                <label for="daily_mood_and_energy_3" id="next_question_five_three"><p>Ostadig energi, men positivt humör</p></label>
+
+                <input type="radio" name="daily_mood_and_energy" id="daily_mood_and_energy_4" value="Låg energi, men positivt humör" {% if sleepplan_info['daily_mood_and_energy'] == 'Låg energi, men positivt humör' %}checked{% endif %}>
+                <label for="daily_mood_and_energy_4" id="next_question_five_four"><p>Låg energi, men positivt humör</p></label>
+
+                <input type="radio" name="daily_mood_and_energy" id="daily_mood_and_energy_5" value="Låg energi och nedstämd" {% if sleepplan_info['daily_mood_and_energy'] == 'Låg energi och nedstämd' %}checked{% endif %}>
+                <label for="daily_mood_and_energy_5" id="next_question_five_five"><p>Låg energi och nedstämd</p></label>
+
+            </aside>
+        </article>
+
+        <article class="question_six">
+            <h2>Hur många gånger brukar du dricka kaffe, te eller andra drycker med koffein på eftermiddagen? <img src="{{ url_for('static', filename='pictures/icons/koffein.png') }}" alt="mood_scale"></h2>
+            <aside>
+
+                <input type="radio" name="caffeine_in_the_afternoon" id="caffeine_in_the_afternoon_1" value="Aldrig" {% if sleepplan_info['caffeine_in_the_afternoon'] == 'Aldrig' %}checked{% endif %}>
+                <label for="caffeine_in_the_afternoon_1" id="next_question_six_one"><p>Aldrig</p></label>
+
+                <input type="radio" name="caffeine_in_the_afternoon" id="caffeine_in_the_afternoon_2" value="Ibland" {% if sleepplan_info['caffeine_in_the_afternoon'] == 'Ibland' %}checked{% endif %}>
+                <label for="caffeine_in_the_afternoon_2" id="next_question_six_two"><p>Ibland</p></label>
+
+                <input type="radio" name="caffeine_in_the_afternoon" id="caffeine_in_the_afternoon_3" value="Ofta" {% if sleepplan_info['caffeine_in_the_afternoon'] == 'Ofta' %}checked{% endif %}>
+                <label for="caffeine_in_the_afternoon_3" id="next_question_six_three"><p>Ofta</p></label>
+
+                <input type="radio" name="caffeine_in_the_afternoon" id="caffeine_in_the_afternoon_4" value="Alltid" {% if sleepplan_info['caffeine_in_the_afternoon'] == 'Alltid' %}checked{% endif %}>
+                <label for="caffeine_in_the_afternoon_4" id="next_question_six_four"><p>Alltid</p></label>
+
+            </aside>
+        </article>
+
+        <article class="question_seven">
+            <h2>Hur många timmars sömn får du i genomsnitt per natt? <img src="{{ url_for('static', filename='pictures/icons/good_sleep.png') }}" alt="mood_scale"></h2>
+            <aside>
+
+                <input type="radio" name="how_much_sleep_do_you_get_on_avg" id="how_much_sleep_do_you_get_on_avg_1" value="Mindre än 3h" {% if sleepplan_info['how_much_sleep_do_you_get_on_avg'] == 'Mindre än 3h' %}checked{% endif %}>
+                <label for="how_much_sleep_do_you_get_on_avg_1" id="next_question_seven_one"><p>Mindre än 3h</p></label>
+
+                <input type="radio" name="how_much_sleep_do_you_get_on_avg" id="how_much_sleep_do_you_get_on_avg_2" value="3-4h" {% if sleepplan_info['how_much_sleep_do_you_get_on_avg'] == '3-4h' %}checked{% endif %}>
+                <label for="how_much_sleep_do_you_get_on_avg_2" id="next_question_seven_two"><p>3-4h</p></label>
+
+                <input type="radio" name="how_much_sleep_do_you_get_on_avg" id="how_much_sleep_do_you_get_on_avg_3" value="5-6h" {% if sleepplan_info['how_much_sleep_do_you_get_on_avg'] == '5-6h' %}checked{% endif %}>
+                <label for="how_much_sleep_do_you_get_on_avg_3" id="next_question_seven_three"><p>5-6h</p></label>
+
+                <input type="radio" name="how_much_sleep_do_you_get_on_avg" id="how_much_sleep_do_you_get_on_avg_4" value="7-8h" {% if sleepplan_info['how_much_sleep_do_you_get_on_avg'] == '7-8h' %}checked{% endif %}>
+                <label for="how_much_sleep_do_you_get_on_avg_4" id="next_question_seven_four"><p>7-8h</p></label>
+
+                <input type="radio" name="how_much_sleep_do_you_get_on_avg" id="how_much_sleep_do_you_get_on_avg_5" value="Mer än 8" {% if sleepplan_info['how_much_sleep_do_you_get_on_avg'] == 'Mer än 8' %}checked{% endif %}>
+                <label for="how_much_sleep_do_you_get_on_avg_5" id="next_question_seven_five"><p>Mer än 8</p></label>
+
+            </aside>
+        </article>
+
+        <article class="question_eight">
+            <h2>Upplever du några sömnstörningar eller symtom? <img src="{{ url_for('static', filename='pictures/icons/insomnia.png') }}" alt="mood_scale"></h2>
+            <aside>
+
+                <input type="radio" name="sleep_disturbances_or_symptoms" id="sleep_disturbances_or_symptoms_1" value="Svårigheter att somna" {% if sleepplan_info['sleep_disturbances_or_symptoms'] == 'Svårigheter att somna' %}checked{% endif %}>
+                <label for="sleep_disturbances_or_symptoms_1" id="next_question_eight_one"><p>Svårigheter att somna</p></label>
+
+                <input type="radio" name="sleep_disturbances_or_symptoms" id="sleep_disturbances_or_symptoms_2" value="Vaknar ofta under natten" {% if sleepplan_info['sleep_disturbances_or_symptoms'] == 'Vaknar ofta under natten' %}checked{% endif %}>
+                <label for="sleep_disturbances_or_symptoms_2" id="next_question_eight_two"><p>Vaknar ofta under natten</p></label>
+
+                <input type="radio" name="sleep_disturbances_or_symptoms" id="sleep_disturbances_or_symptoms_3" value="Vaknar för tidigt på morgonen" {% if sleepplan_info['sleep_disturbances_or_symptoms'] == 'Vaknar för tidigt på morgonen' %}checked{% endif %}>
+                <label for="sleep_disturbances_or_symptoms_3" id="next_question_eight_three"><p>Vaknar för tidigt på morgonen</p></label>
+
+                <input type="radio" name="sleep_disturbances_or_symptoms" id="sleep_disturbances_or_symptoms_4" value="Dags trötthet" {% if sleepplan_info['sleep_disturbances_or_symptoms'] == 'Dags trötthet' %}checked{% endif %}>
+                <label for="sleep_disturbances_or_symptoms_4" id="next_question_eight_four"><p>Dags trötthet</p></label>
+
+                <input type="radio" name="sleep_disturbances_or_symptoms" id="sleep_disturbances_or_symptoms_5" value="Snarkning" {% if sleepplan_info['sleep_disturbances_or_symptoms'] == 'Snarkning' %}checked{% endif %}>
+                <label for="sleep_disturbances_or_symptoms_5" id="next_question_eight_five"><p>Snarkning</p></label>
+
+                <input type="radio" name="sleep_disturbances_or_symptoms" id="sleep_disturbances_or_symptoms_6" value="Inget" {% if sleepplan_info['sleep_disturbances_or_symptoms'] == 'Inget' %}checked{% endif %}>
+                <label for="sleep_disturbances_or_symptoms_6" id="next_question_eight_six"><p>Inget</p></label>
+
+            </aside>
+        </article>
+
+        <article class="create_sleepplan">
+            <p>Visste du att...</p>
+            <h2>Din sömn påverkar hela 87% av din dagliga energi och produktivitet!</h2>
+            <button type="submit" id="submit_form">Skapa Sömnplan</button>
+        </article>
+
+    </form>
+
+</section>
+
+<section class="alert_message_popup">
+    <div class="error_popup">
+        <img src="{{ url_for('static', filename='pictures/icons/danger.png') }}" alt="Warning">
+        <div>
+            <h2></h2>
+            <p></p>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block js %}<script src="{{ url_for('static', filename='js/sleepplan_quiz.js') }}"></script>{% endblock %}

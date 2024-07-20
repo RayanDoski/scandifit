@@ -1,0 +1,119 @@
+.secondaryHeader {
+    width: 100%;
+    padding: 15px 50px;
+    background-color: var(--black);
+    margin: auto;
+    z-index: 1;
+} 
+
+.secondaryHeader > .MobileViewOpenBtn {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px 0px;
+}
+
+.secondaryHeader > .MobileViewOpenBtn > h3 {
+    margin: 0;
+    color: var(--white);
+    font-weight: lighter;
+    font-size: 16px;
+}
+
+.secondaryHeader > ul {
+    padding: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1600px;
+    list-style-type: none;
+}
+
+.secondaryHeader > ul > li > .profileLinks {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: lighter;
+    padding: 5px 10px;
+    border-radius: 15px;
+    transition: .5s all;
+}
+
+.secondaryHeader > ul > li > .profileLinks:hover {
+    background-color: var(--green);
+}
+
+.secondaryHeader > ul > li > .profileLinks:active {
+    background-color: var(--green);
+}
+
+.secondaryHeader > ul > .line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--white);
+    display: none;
+}
+
+@media screen and (max-width: 950px) {
+
+    .secondaryHeader > ul > .line {
+        display: block;
+    }
+
+    .secondaryHeader {
+        width: 100%;
+        padding: 0px;
+        background-color: var(--black);
+        margin: auto;
+        z-index: 1;
+    } 
+
+    .secondaryHeader > .MobileViewOpenBtn {
+        display: flex;
+        padding: 15px;
+    }
+
+    .secondaryHeader > ul {
+        visibility: hidden;
+        pointer-events: none;
+        gap: 20px;
+        padding: 0px;
+        flex-direction: column;
+        width: 80%;
+        margin: auto;
+        height: 0px;
+        overflow: hidden;
+        transition: .5s all;
+    }
+
+    .secondaryHeader > ul > li > .profileLinks {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: lighter;
+        padding: 5px 10px;
+        border-radius: 15px;
+        transition: .5s all;
+    }
+
+    .secondaryHeader > .openProfileLinks {
+        visibility: visible;
+        pointer-events: all;
+        padding: 40px 0px;
+        height: 375px;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+
+    .secondaryHeader > ul {
+        width: 95%;
+    }
+
+    .secondaryHeader > .openProfileLinks {
+        padding: 20px 0px;
+        height: 275px;
+    }
+
+}
