@@ -244,7 +244,7 @@ function SleepPlan() {
         setLoading(true)
         const checkAuth = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/profile/sleepplan', {
+                const response = await fetch('http://127.0.0.1:8000/api/profile/sleepplan', {
                     method: 'POST',
                     credentials: 'include'  // Include credentials (cookies)
                 });

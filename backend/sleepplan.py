@@ -1,16 +1,13 @@
-from flask import Blueprint, render_template, request, session, redirect, jsonify
+from flask import Blueprint, request, session, jsonify
 
 # To Caluclate sleep
 from datetime import datetime, timedelta
 
 from db import make_db_connection
 
-#checking if user is logged in
-from login_register import is_logged_in, is_exklusiv
-
 sleepplan = Blueprint('sleepplan', __name__)
 
-@sleepplan.route("/profile/sleepplan", methods=['GET', 'POST'])
+@sleepplan.route("/api/profile/sleepplan", methods=['GET', 'POST'])
 def sleepplan_def():
     '''
     This function returns the default page of the sleep plan section.
@@ -96,7 +93,7 @@ def sleeptime_calculator(sleepplan_info):
     # Output the bedtime
     return bedtime_six_cycles, bedtime_five_cycles, bedtime_four_cycles, hours_in_bed_for_six_cycles, hours_in_bed_for_five_cycles, hours_in_bed_for_four_cycles, wake_up_at
 
-@sleepplan.route('/sleepplan/get/info', methods=['post', 'get'])
+@sleepplan.route('/api/sleepplan/get/info', methods=['post', 'get'])
 def get_sleepplan_info():
     try:
 
@@ -137,7 +134,7 @@ def get_sleepplan_info():
         cursor.close()
         db.close()
 
-@sleepplan.route("/sleepplan/quiz/completed", methods=['post', 'get'])
+@sleepplan.route("/api/sleepplan/quiz/completed", methods=['post', 'get'])
 def sleepplan_quiz_completed():
     try:
         

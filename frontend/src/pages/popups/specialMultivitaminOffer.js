@@ -14,7 +14,7 @@ function SpecialMultivitaminOfferPopup() {
 
     useEffect(() => {
         const checkAuth = async () => {
-            const response = await fetch('http://127.0.0.1:8000/protected', {
+            const response = await fetch('http://127.0.0.1:8000/api/protected', {
                 method: 'GET',
                 credentials: 'include'  // Include credentials (cookies)
             });

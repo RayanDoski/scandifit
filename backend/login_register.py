@@ -1,13 +1,13 @@
-from flask import Blueprint, render_template, request, session, redirect, jsonify
+from flask import Blueprint, render_template, request, session, jsonify
 
-from db import make_db_connection, insert_into_user, add_phonenumber_to_user
+from db import make_db_connection
 
 from flask_mail import Mail, Message
 from db import mail
 
 login_register = Blueprint('login_register', __name__)
 
-@login_register.route("/register", methods=['GET', 'POST'])
+@login_register.route("/api/register", methods=['GET', 'POST'])
 def register():
     try:
         # Fetching info sent from frontend react
@@ -68,7 +68,7 @@ def register():
         db.close()
         cursor.close()
     
-@login_register.route("/login", methods=['GET', 'POST'])
+@login_register.route("/api/login", methods=['GET', 'POST'])
 def login():
     try:
         # Fetching info sent from frontend react
@@ -84,6 +84,10 @@ def login():
         cursor.execute('select * from user where password = %s and email = %s', (password, email))
         user = cursor.fetchone()
 
+        # Close Database Connection
+        db.close()
+        cursor.close()
+
         # authentication check
         if user:
             session['user_id'] = user[0]
@@ -92,69 +96,10 @@ def login():
             return jsonify({'success': False})
     except:
         return jsonify({'success': False})
-    finally:
-        # Close Database Connection
-        db.close()
-        cursor.close()
     
-@login_register.route('/protected', methods=['GET'])
+@login_register.route('/api/protected', methods=['GET'])
 def protected():
     if 'user_id' in session:
         return jsonify({'success': True})
     else:
         return jsonify({'success': False})
-
-# Code Is Not In Use
-
-def is_logged_in():
-    '''
-    Function that checks whether or not the user is logged in by checking if the 'user_id' exists in the session object.
-
-    Return:
-    - id
-    - name
-    - email
-    - password
-    '''
-    try:
-
-        #Make Database Connection
-        db = make_db_connection()
-        cursor = db.cursor()
-
-        if 'user_id' in session:
-            cursor.execute('select * from user where id = %s', (session['user_id'],))
-            data = cursor.fetchone()
-            return session['user_id'], data[1], data[2], data[3]
-        else:
-            return None
-    except:
-        print('Fel Med Att Ta Emot Information Från Användare')
-    finally:
-        # Close Database Connection
-        db.close()
-        cursor.close()
-
-def is_exklusiv():
-    '''
-    Function to check if the current user has exklusiv status or not. Returns a boolean value.
-    '''
-    try:
-
-        #Make Database Connection
-        db = make_db_connection()
-        cursor = db.cursor()
-
-        #are they logged in?
-        user_data = is_logged_in()
-        id = user_data[0]
-
-        # Looking To See If They have exklusiv membership
-        cursor.execute('select * from exklusiv where uid = %s', (id,))
-        exklusiv = cursor.fetchone()
-        return exklusiv
-
-    finally:
-        # Close Database Connection
-        db.close()
-        cursor.close()

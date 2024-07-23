@@ -25,7 +25,7 @@ function DietPlan() {
         setLoading(true)
         const checkAuth = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/profile/dietplan', {
+                const response = await fetch('http://127.0.0.1:8000/api/profile/dietplan', {
                     method: 'POST',
                     credentials: 'include'  // Include credentials (cookies)
                 });

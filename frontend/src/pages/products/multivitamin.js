@@ -547,7 +547,7 @@ function ViewproductMultivitaminPopup({ setViewProductPopup }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
-        const response = await fetch('http://127.0.0.1:8000/AddCartInfo', {
+        const response = await fetch('http://127.0.0.1:8000/api/AddCartInfo', {
             method: 'POST',
             credentials: 'include',
             headers: {
