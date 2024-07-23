@@ -1,13 +1,11 @@
-from flask import Blueprint, render_template, request, session, redirect, jsonify
+from flask import Blueprint, request, session, jsonify
 
 # Insert Into Database
 from db import make_db_connection
-from flask_mail import Mail, Message
-from db import mail
 
 trainingplan_quiz = Blueprint('trainingplan_quiz', __name__)
 
-@trainingplan_quiz.route('/trainingplan/get/info', methods=['post', 'get'])
+@trainingplan_quiz.route('/api/trainingplan/get/info', methods=['post', 'get'])
 def get_sleepplan_info():
     try:
 
@@ -50,7 +48,7 @@ def get_sleepplan_info():
         cursor.close()
         db.close()
     
-@trainingplan_quiz.route("/trainingplan/quiz/completed", methods=['GET', 'POST'])
+@trainingplan_quiz.route("/api/trainingplan/quiz/completed", methods=['GET', 'POST'])
 def tq_completed():
     '''
     When They Finish The Quiz We Handle The Informaiton In Here
@@ -181,10 +179,3 @@ def tq_completed():
                 'success': True,
             }
         )
-
-
-
-    # # for mail sending 
-    # msg = Message('Välkommen Till Scandifit', recipients=[email])
-    # msg.html = render_template('mail_welcome.html', namn=name)
-    # mail.send(msg)  # Use 'mail', not 'Mail'

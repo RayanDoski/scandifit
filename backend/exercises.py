@@ -1,14 +1,11 @@
-from flask import Blueprint, render_template, request, session, redirect, jsonify
+from flask import Blueprint, jsonify
 
 # Getting Database variables In Order To Connect 
 from db import make_db_connection
 
-# Checking if user is logged in
-from login_register import is_logged_in, is_exklusiv
-
 exercises = Blueprint('exercises', __name__)
 
-@exercises.route("/workouts/<muscle>", methods=['GET', 'POST'])
+@exercises.route("/api/workouts/<muscle>", methods=['GET', 'POST'])
 def workouts(muscle):
     '''
     This Function Shows Exercises in groups
@@ -25,7 +22,7 @@ def workouts(muscle):
         }
     )
 
-@exercises.route("/workout/<id>", methods=['GET', 'POST'])
+@exercises.route("/api/workout/<id>", methods=['GET', 'POST'])
 def workout(id):
     '''
     This Route Shows Specific Workouts and detailed text on how to execute them

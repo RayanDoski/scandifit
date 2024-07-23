@@ -382,7 +382,7 @@ function DietPlanQuiz() {
     // If they have a sleepplan get the info 
     useEffect(() => {
         const checkAuth = async () => {
-            const response = await fetch('http://127.0.0.1:8000/dietplan/get/info', {
+            const response = await fetch('http://127.0.0.1:8000/api/dietplan/get/info', {
                 method: 'POST',
                 credentials: 'include'  // Include credentials (cookies)
             });
@@ -458,7 +458,7 @@ function DietPlanQuiz() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
-        const response = await fetch('http://127.0.0.1:8000/dietplan/quiz/completed', {
+        const response = await fetch('http://127.0.0.1:8000/api/dietplan/quiz/completed', {
             method: 'POST',
             credentials: 'include',
             headers: {

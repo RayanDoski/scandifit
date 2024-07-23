@@ -1,14 +1,11 @@
-from flask import Blueprint, render_template, request, session, redirect, jsonify
+from flask import Blueprint, request, session, jsonify
 
 # Connecting To The Database
 from db import make_db_connection
 
-# Checking If User Is Logged In And If They Are Exklusiv
-from login_register import is_logged_in, is_exklusiv
-
 trainingplan = Blueprint('trainingplan', __name__)
         
-@trainingplan.route("/profile/trainingplan", methods=["GET","POST"])
+@trainingplan.route("/api/profile/trainingplan", methods=["GET","POST"])
 def schedual():
     '''
     This Function handles users trainingplan infomraiton and makes a shceudal out of it
