@@ -7,7 +7,7 @@ const useAuthCheck = () => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/protected', {
+                const response = await fetch('/api/protected', {
                     method: 'GET',
                     credentials: 'include'  // Include credentials (cookies)
                 });

@@ -363,7 +363,7 @@ function SleepPlanQuiz() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
-        const response = await fetch('http://127.0.0.1:8000/api/sleepplan/quiz/completed', {
+        const response = await fetch('/api/sleepplan/quiz/completed', {
             method: 'POST',
             credentials: 'include',
             headers: {

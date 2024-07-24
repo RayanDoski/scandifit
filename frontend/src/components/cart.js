@@ -35,7 +35,7 @@ function CartSlideInMenu({isCartOpen, setIsCartOpen, products, setProducts}) {
     };
 
     const GetCartInfo = async () => {
-        const response = await fetch('http://127.0.0.1:8000/api/GetCartInfo', {
+        const response = await fetch('/api/GetCartInfo', {
             method: 'POST',
             credentials: 'include'  // Include credentials (cookies)
         });
@@ -75,7 +75,7 @@ function CartSlideInMenu({isCartOpen, setIsCartOpen, products, setProducts}) {
     }, [products]);
 
     const deleteItem = async (index) => {
-        const response = await fetch('http://127.0.0.1:8000/api/deleteFromCart', {
+        const response = await fetch('/api/deleteFromCart', {
             method: 'POST',
             credentials: 'include',  // Include credentials (cookies)
             headers: {
@@ -95,7 +95,7 @@ function CartSlideInMenu({isCartOpen, setIsCartOpen, products, setProducts}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoadingCart(true)
-        const response = await fetch('http://127.0.0.1:8000/api/create_checkout_session', {
+        const response = await fetch('/api/create_checkout_session', {
             method: 'POST',
             credentials: 'include',
             headers: {
