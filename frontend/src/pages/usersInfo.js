@@ -34,7 +34,7 @@ function UserInfo() {
     // Getting Their Information
     useEffect(() => {
         const checkAuth = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/profile/information', {
+            const response = await fetch('/api/profile/information', {
                 method: 'POST',
                 credentials: 'include'  // Include credentials (cookies)
             });
@@ -63,7 +63,7 @@ function UserInfo() {
         
         // Updating the information
         const updateUserInfo = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/profile/information/update', {
+            const response = await fetch('/api/profile/information/update', {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -83,7 +83,7 @@ function UserInfo() {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
-        const response = await fetch('http://127.0.0.1:8000/api/logout', {
+        const response = await fetch('/api/logout', {
             method: 'POST',
             credentials: 'include'
         });

@@ -20,7 +20,7 @@ function OrderComplete() {
     // Deletes Everything in cart
     useEffect(() => {
         const deleteAllItemsInCart = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/deleteAllFromCart', {
+            const response = await fetch('/api/deleteAllFromCart', {
                 method: 'POST',  // Ensure the method matches what your Flask route expects
                 credentials: 'include',
                 headers: {
@@ -36,7 +36,7 @@ function OrderComplete() {
     // ferching the customers info from stripe
     useEffect(() => {
         const fetchSession = async () => {
-            const response = await fetch(`http://127.0.0.1:8000/api/stripe-session/${sessionId}`);
+            const response = await fetch(`/api/stripe-session/${sessionId}`);
             const data = await response.json();
             setStripeSession(data);
             setLoading(false)

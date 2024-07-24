@@ -39,7 +39,7 @@ function TheTrainingPlan() {
         setLoading(true)
         const checkAuth = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/profile/trainingplan', {
+                const response = await fetch('/api/profile/trainingplan', {
                     method: 'GET',
                     credentials: 'include'  // Include credentials (cookies)
                 });

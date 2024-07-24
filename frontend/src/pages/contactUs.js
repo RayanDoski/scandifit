@@ -25,7 +25,7 @@ function ContactUs() {
         setLoading(true)
         // Updating the information
         const SendThierMessage = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/send_message', {
+            const response = await fetch('/api/send_message', {
                 method: 'POST',
                 credentials: 'include',
                 headers: {

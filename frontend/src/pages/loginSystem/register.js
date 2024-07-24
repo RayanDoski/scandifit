@@ -26,7 +26,7 @@ function Register() {
     // Handle Form Submit With Input Info
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://127.0.0.1:8000/api/register', {
+        const response = await fetch('/api/register', {
             method: 'POST',
             credentials: 'include',
             headers: {

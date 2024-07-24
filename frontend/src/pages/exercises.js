@@ -128,7 +128,7 @@ function Exercises() {
     const fetchWorkouts = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/workouts/${muscle}`, {
+            const response = await fetch(`/api/workouts/${muscle}`, {
                 method: 'POST',
                 credentials: 'include'  // Include credentials (cookies)
             });
