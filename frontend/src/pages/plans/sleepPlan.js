@@ -250,9 +250,14 @@ function SleepPlan() {
                 });
                 const data = await response.json();
                 setLoading(false)
-                setCaffeineInMg(data.caffeine_in_mg)
-                setsleepCalculations(data.sleep_calculations)
-                setUserSleepplan(data.user_sleepplan)
+                if (data.SleepPlanExist) {
+                    setCaffeineInMg(data.caffeine_in_mg)
+                    setsleepCalculations(data.sleep_calculations)
+                    setUserSleepplan(data.user_sleepplan)
+                } else {
+                    navigate('/sleepplan/quiz')
+                }
+                
             } catch (error) {
                 console.error('Failed to fetch plan:', error);
             }

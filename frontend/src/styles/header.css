@@ -177,9 +177,9 @@
     background-color: var(--white);
     width: 0vh;
     height: 100%;
-    z-index: 4;
+    z-index: 998;
     border-radius: 15px 0px 0px 15px;
-    padding: 40px 30px;
+    padding: 0px;
     visibility: hidden;
     pointer-events: none;
     opacity: 0;
@@ -189,7 +189,8 @@
 .ContainerForSlideInMenu.show {
     visibility: visible;
     pointer-events: all;
-    width: 25vh;
+    padding: 40px 30px;
+    width: 250px;
     opacity: 1;
 }
 
@@ -261,6 +262,22 @@
     background-color: var(--green);
     color: var(--white);
     border: 1px solid var(--white);
+}
+
+@media only screen and (max-width: 450px) {
+
+    .ContainerForSlideInMenu.show {
+        width: 250px;
+    }
+
+    .ContainerForSlideInMenu > .SlideInMenuLinks > .Link {
+        font-size: 18px;
+    }
+
+    .ContainerForSlideInMenu > .SlideInMenuLinks > .CartLink {
+        font-size: 18px;
+    }
+
 }
 
 /* Cart Slide In Menu */

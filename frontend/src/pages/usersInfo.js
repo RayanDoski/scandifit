@@ -12,6 +12,9 @@ import NotLiAuthCheck from './loginSystem/notLiAuthCheck.js';
 // importing Secondary Header
 import SecondaryHeader from '../components/secondaryHeader.js';
 
+// Importing Loading Screen
+import loadingScreenFullScreen from '../components/loadingScreenFullScreen.js';
+
 
 function UserInfo() {
 
@@ -28,17 +31,22 @@ function UserInfo() {
     // For error Messages
     const [errorMessage, setErrorMessage] = useState('Din Information')
 
+    // For loading Screen
+    const [loading, setLoading] = useState(false);
+
     // Are They Logged In? 
     NotLiAuthCheck()
 
     // Getting Their Information
     useEffect(() => {
+        setLoading(true)
         const checkAuth = async () => {
             const response = await fetch('/api/profile/information', {
                 method: 'POST',
                 credentials: 'include'  // Include credentials (cookies)
             });
             const data = await response.json();
+            setLoading(false)
             if (data.success) {
                 setName(data.namn)
                 setEmail(data.email)
@@ -63,6 +71,7 @@ function UserInfo() {
         
         // Updating the information
         const updateUserInfo = async () => {
+            setLoading(true)
             const response = await fetch('/api/profile/information/update', {
                 method: 'POST',
                 credentials: 'include',
@@ -72,6 +81,7 @@ function UserInfo() {
                 body: JSON.stringify({ namn: name, email, telefonnummer, password }),
             });
             const data = await response.json();
+            setLoading(false)
             if (!data.success) {
                 setErrorMessage(data.message)
             } 
@@ -83,11 +93,13 @@ function UserInfo() {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
+        setLoading(true)
         const response = await fetch('/api/logout', {
             method: 'POST',
             credentials: 'include'
         });
         const data = await response.json();
+        setLoading(false)
         if (data.success) {
             navigate('/');
             // Whole Website Has To Reload For Changes to be implemented
@@ -96,6 +108,7 @@ function UserInfo() {
     };
     return (
         <>
+            { loading ? <loadingScreenFullScreen /> : '' }
             <SecondaryHeader />
             <section className='userInfoSection'>
 

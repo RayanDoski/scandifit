@@ -22,14 +22,17 @@ def sleepplan_def():
         user_sleepplan = cursor.fetchone()
 
         if user_sleepplan:
+            SleepPlanExist = True
             # Making Caffine Intake Calculations
             caffeine_in_mg = caffeine_intake_calculator(user_sleepplan)
             sleep_calculations = sleeptime_calculator(user_sleepplan)
         else:
+            SleepPlanExist = False
             caffeine_in_mg = None
             sleep_calculations = None
 
         return jsonify({
+            "SleepPlanExist": SleepPlanExist,
             "caffeine_in_mg": caffeine_in_mg,
             "sleep_calculations": sleep_calculations,
             "user_sleepplan": user_sleepplan

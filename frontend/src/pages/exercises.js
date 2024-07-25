@@ -12,6 +12,9 @@ import NotLiAuthCheck from './loginSystem/notLiAuthCheck.js';
 // importing Secondary Header
 import SecondaryHeader from '../components/secondaryHeader.js';
 
+// Importing Loading Screen
+import loadingScreenFullScreen from '../components/loadingScreenFullScreen.js';
+
 // Importing Images
 import bagWork from '../images/workouts/bag-work.jpg';
 import bandFrontRaise from '../images/workouts/Band-front-raise.jpg';
@@ -160,6 +163,7 @@ function Exercises() {
 
     return (
         <>
+            { loading ? <loadingScreenFullScreen /> : '' }
             <SecondaryHeader />
             <section className="workouts">
             <article>

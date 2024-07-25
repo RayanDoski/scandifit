@@ -140,7 +140,8 @@
 @media screen and (max-width: 750px) {
 
     .userInfoSection {
-        padding: 100px 0px;
+        width: 85%;
+        padding: 25px 0px;
         margin: 0px auto;
         display: flex;
         justify-content: center;
@@ -155,7 +156,7 @@
 
     .userInfoSection > .LeftSide {
         flex: 1;
-        border-right: 1px solid var(--gray);
+        border-right: 0;
         padding: 0px;
         display: flex;
         flex-direction: column;

@@ -7,9 +7,6 @@ import '../../styles/profile_trainingplan.css';
 // Importing Loading Screen
 import LoadingScreen from '../../components/loadingScreen.js';
 
-// Import Popup Multivitamin
-import specialMultivitaminOffer from '../../pages/popups/specialMultivitaminOffer.js';
-
 // For Login
 import NotLiAuthCheck from '../loginSystem/notLiAuthCheck.js';
 
