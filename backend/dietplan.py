@@ -16,15 +16,16 @@ def dietplan_def():
         user_dietplan = cursor.fetchone()
         
         if user_dietplan:
+            DietPlanExist = True
             calorie_intake = calorie_calculator(user_dietplan)
             water_intake = water_intake_calculator(user_dietplan)
-            # recipes = get_recipe(6)
         else:
+            DietPlanExist = False
             calorie_intake = None
             water_intake = None
-            recipes = None
         
         return jsonify({
+            "DietPlanExist": DietPlanExist,
             "CalorieIntake": calorie_intake,
             "WaterIntake": water_intake
         })

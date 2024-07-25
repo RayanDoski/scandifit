@@ -31,8 +31,13 @@ function DietPlan() {
                 });
                 const data = await response.json();
                 setLoading(false)
-                setCalorieIntake(data.CalorieIntake)
-                setWaterIntake(data.WaterIntake)
+                if (data.DietPlanExist) {
+                    setCalorieIntake(data.CalorieIntake)
+                    setWaterIntake(data.WaterIntake)
+                } else {
+                    navigate('/dietplan/quiz')
+                }
+                
             } catch (error) {
                 console.error('Failed to fetch plan:', error);
             }

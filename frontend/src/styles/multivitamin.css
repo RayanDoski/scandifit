@@ -1336,3 +1336,50 @@
 .ViewproductMultivitaminPopup > article > form > article > aside > div > aside > img {
     width: 30px;
 }
+
+@media only screen and (max-width: 950px) {
+
+    .ViewproductMultivitaminPopup {
+        flex-direction: column;
+        max-height: 75%;
+        overflow-y: auto;
+    }
+
+    .ViewproductMultivitaminPopup > article > h2 {
+        font-size: 32px;
+    }
+
+    .ViewproductMultivitaminPopup > img {
+        width: 250px;
+    }
+
+    .ViewproductMultivitaminPopup > article {
+        overflow-y: auto; 
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .ViewproductMultivitaminPopup {
+        width: 80%;
+        padding: 25px 10px;
+    }
+
+    .ViewproductMultivitaminPopup > article {
+        width: 100%;
+    }
+
+    .ViewproductMultivitaminPopup > article > form > label {
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+
+    .ViewproductMultivitaminPopup {
+        width: 95%;
+    }
+
+}

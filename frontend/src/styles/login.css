@@ -154,18 +154,39 @@
 
 @media only screen and (max-width: 550px) {
 
+    .LoginSection > form > h1 {
+        font-size: 24px;
+    }
+
+    .LoginSection > form > label {
+        font-size: 16px;
+    }
+
+    .LoginSection > article > p {
+        font-size: 14px;
+    }
+
+    .LoginSection > form > p {
+        font-size: 14px;
+    }
+
+    .LoginSection > form > button {
+        padding: 6px 15px;
+        font-size: 16px;
+    }
+
     .LoginSection > form {
         padding: 20px;
-        width: 95%;
+        width: 85%;
     }
     
     .LoginSection > article {
-        width: 95%;
+        width: 85%;
         gap: 5px;
     }
 
     .LoginSection > .LinkButton {
-        width: 95%;
+        width: 85%;
     }
 
 }
