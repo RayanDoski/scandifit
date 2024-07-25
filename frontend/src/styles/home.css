@@ -144,10 +144,19 @@
         margin: 0px auto 25px auto;
     }
 
-    .HomepageHeroSection > article > h1,
-    .HomepageHeroSection > article > p,
+    .HomepageHeroSection > article > h1 {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .HomepageHeroSection > article > p {
+        text-align: center;
+        font-size: 14px;
+    }
+
     .HomepageHeroSection > article > h3 {
         text-align: center;
+        font-size: 16px;
     }
 
     .HomepageHeroSection > article > div {
@@ -160,6 +169,14 @@
 
     .HomepageHeroSection > aside > img {
         max-height: 600px;
+        width: 500px;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+    .HomepageHeroSection > aside > img {
         width: 100%;
     }
 

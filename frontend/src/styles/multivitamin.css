@@ -90,10 +90,21 @@
 
     .IntroductionMultivitamin {
         width: 95%;
+        margin: 50px auto;
     }
 
+    .IntroductionMultivitamin > h2 {
+        font-size: 16px;
+    }
+
+
+    .IntroductionMultivitamin > p {
+        font-size: 14px;
+    }
+    
+
     .IntroductionMultivitamin > h1 {
-        font-size: 34px;
+        font-size: 24px;
         line-height: 1.25;
     }
 
@@ -1341,7 +1352,7 @@
 
     .ViewproductMultivitaminPopup {
         flex-direction: column;
-        max-height: 75%;
+        max-height: 85%;
         overflow-y: auto;
     }
 
@@ -1355,6 +1366,8 @@
 
     .ViewproductMultivitaminPopup > article {
         overflow-y: auto; 
+        height: 500px;
+        max-height: 100%;
     }
 
 }

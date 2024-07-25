@@ -209,7 +209,7 @@ function MultivitaminTestemonial() {
 function WhyTheyNeedIt() {
     return (
         <section className='whyTheyNeedIt'>
-            <h2>Visste du att bristen på multivitaminer kan vara det som hindrar dig från att nå dina träningsmål och maximera din hälsa?</h2>
+            <h2>Visste du att brist på vitaminer kan hindra dig från att nå dina träningsmål?</h2>
             <img src={SadIcon} alt='Product Image' />
             <div>
                 <p>Har du tränat hårt men ändå inte sett de resultat du vill ha?</p>
@@ -217,7 +217,6 @@ function WhyTheyNeedIt() {
                 <p>Många upplever att de inte når sina träningsmål trots alla ansträngningar.</p>
                 <p>Tänk dig att vakna tidigt för att träna, bara för att känna dig utmattad hela dagen.</p>
                 <p>Du kämpar på gymmet, men dina muskler växer inte och du känner dig trött.</p>
-                <p>Det är lätt att bli frustrerad och börja tvivla på om allt arbete verkligen är värt det.</p>
                 <p>Du kanske till och med frågar dig själv: "Varför når jag inte mina mål trots all min ansträngning?"</p>
                 <p>Men tänk om jag sa att det finns en enkel lösning?</p>
             </div>
@@ -255,17 +254,17 @@ function WhyYouNeedItTwo() {
                 <div>
                     <img src={importantMinerals} alt='Icon' />
                     <h3>Fyller på med viktiga saker</h3>
-                    <p>När du tränar mycket behöver din kropp massor av näringsämnen för att fungera bra. <span>Scandi Multivitamin ger dig alla nödvändiga näringsämnen för att hålla dig stark och frisk under träning.</span></p>
+                    <p>När du tränar mycket behöver din kropp massor av näringsämnen för att fungera bra. <span>Scandifit Multivitamin ger dig alla nödvändiga näringsämnen för att hålla dig stark och frisk under träningen.</span></p>
                 </div>
                 <div>
                     <img src={Recovery} alt='Icon' />
                     <h3>Återhämtning efter träning</h3>
-                    <p>När du tränar mycket behöver <span>dina muskler extra hjälp för att läka</span> och bli starkare. <span>Scandi Multivitamin hjälper dina muskler att återhämta sig snabbare efter träningen.</span></p>
+                    <p>När du tränar mycket behöver <span>dina muskler extra hjälp för att läka</span> och bli starkare. <span>Scandifit Multivitamin hjälper dina muskler att återhämta sig snabbare efter träningen.</span></p>
                 </div>
                 <div>
                     <img src={keepHealthy} alt='Icon' />
                     <h3>Hålla dig frisk</h3>
-                    <p>Ibland kan <span>träning göra din kropp lite svagare, och du kan lättare bli sjuk.</span> scandi Multivitamin kan <span>hjälpa ditt immunsystem att kämpa mot sjukdomar</span> och hålla dig frisk.</p>
+                    <p>Ibland kan <span>träning göra din kropp lite svagare, och du kan lättare bli sjuk.</span> scandifit Multivitamin kan <span>hjälpa ditt immunsystem att kämpa mot sjukdomar</span> och hålla dig frisk.</p>
                 </div>
             </article>
         </section>
@@ -275,7 +274,7 @@ function WhyYouNeedItTwo() {
 function HowMultivitaminWillIncreaseMuscleMass() {
     return (
         <section className='HowMultivitaminWillIncreaseMuscleMass'>
-            <h2>Oavsett vilka mål du har kommer scandi multivitamine hjälpa till</h2>
+            <h2>Oavsett vilka mål du har kommer Scandifit Multivitamin hjälpa till</h2>
             <p>Här är vad scandifit multivitamin kan hjälpa dig med...</p>
             <article>
                 <aside>
@@ -375,7 +374,7 @@ function HowMultivitaminWillHelpWithTraining({ setViewProductPopup }) {
                         <img src={CheckmarkGreen} alt='Icon' />
                         <aside>
                             <h4>Vitamin D</h4>
-                            <p>hjälper till att reparera och bygga upp musklerna efter träningen. <span>så att du återhämtar dig snabbare och bli starkare.</span></p>
+                            <p>hjälper till att reparera och bygga upp musklerna efter träningen. <span>så att du återhämtar dig snabbare och blir starkare.</span></p>
                         </aside>
                     </div>
 
@@ -399,9 +398,9 @@ function OneTestemonial() {
     return (
         <section className='OneTestemonial'>
             <h2>Recension</h2>
-            <p><span>"</span>Vitamin Pro har verkligen förändrat mitt träningsliv! Innan jag började ta det, kämpade jag med att gå ner i vikt och öka min muskelmassa. Dessutom kände jag mig alltid trött och utmattad efter träningen, vilket hindrade mig från att nå mina mål.</p>
-            <p>Men sedan jag började med Vitamin Pro har jag märkt en stor förändring. Jag har lyckats gå ner i vikt, bygga mer muskelmassa och prestera mycket bättre i gymmet. Jag känner mig mer energisk och alert under träningen, och jag kan pressa mig själv hårdare än någonsin tidigare.</p>
-            <p>Dessutom har min återhämtning förbättrats avsevärt, och jag känner mig starkare och piggare än någonsin tidigare. Jag rekommenderar verkligen Vitamin Pro till alla som vill ta sin träning till nästa nivå!<span>"</span></p>
+            <p><span>"</span>Scandifit Multivitamin har verkligen förändrat mitt träningsliv! Innan jag började ta det, kämpade jag med att gå ner i vikt och öka min muskelmassa. Dessutom kände jag mig alltid trött och utmattad innan träningen, vilket hindrade mig från att nå mina mål.</p>
+            <p>Men sedan jag började med Scandifit Multivitamin har jag märkt en stor förändring. Jag har lyckats gå ner i vikt, bygga mer muskelmassa och prestera mycket bättre i gymmet. Jag känner mig mer energisk och alert under träningen, och jag kan pressa mig själv hårdare än någonsin tidigare.</p>
+            <p>Dessutom har min återhämtning förbättrats avsevärt, och jag känner mig starkare och piggare än någonsin tidigare. Jag rekommenderar verkligen Scandifit Multivitamin till alla som vill ta sin träning till nästa nivå!<span>"</span></p>
             <h3>Dennis L.</h3>
         </section>
     )
@@ -490,9 +489,9 @@ function BenifitsWithSubscription() {
     return (
         <section className='BenefitsWithSubscription'>
             <article>
-                <h2>Varför välja Scandi Multivitamine - Fördelar med Abonnemang</h2>
-                <p>För att uppnå de bästa resultaten med ett kosttillskott krävs regelbunden användning. Vi vill göra det så enkelt som möjligt för dig att få den bästa upplevelsen och effekten av din Scandi Multivitamin.</p>
-                <h3>Fördelar med ett Scandi Multivitamin-abonnemang</h3>
+                <h2>Varför välja Scandifit Multivitamin - Fördelar med Abonnemang</h2>
+                <p>För att uppnå de bästa resultaten med ett kosttillskott krävs regelbunden användning. Vi vill göra det så enkelt som möjligt för dig att få den bästa upplevelsen och effekten av din Scandifit Multivitamin.</p>
+                <h3>Fördelar med ett Scandifit Multivitamin-abonnemang</h3>
                 <ul>
                     <li>Ingen bindningstid eller uppsägningstid</li>
                     <li>Leverans direkt hem var 4:e vecka</li>
@@ -510,7 +509,7 @@ function WhyIsTheFirstMonthFree({ setViewProductPopup }) {
         <section className='WhyIsTheFirstMonthFree'>
             <article>
                 <h2>Varför ger vi bort scandifit multivitamin gratis?</h2>
-                <p>Vi vill att du ska kunna uppleva fördelarna med multivitamin utan risk.</p>
+                <p>Vi vill att du ska kunna uppleva fördelarna med vårt multivitamin utan risk.</p>
                 <p>Genom att erbjuda den första månaden gratis, hoppas vi att du ser de positiva effekterna på din hälsa och träning.</p>
                 <h3>Första månaden: Gratis (ord. 249 kr). Betala endast 49 kr för frakten. Ingen bindningstid.</h3>
             </article>
@@ -660,9 +659,9 @@ function FAQMultivitamin() {
             <article>
                 <aside>
                     <MultivitaminEachFAQ question='Hur avslutar jag min prenumeration?' answer='Att avsluta din prenumeration är väldigt enkelt. Skicka ett mail till Kontakta@scandifit.se eller använd formuläret på vår hemsida (länk här) och meddela att du vill avsluta din prenumeration. Vi kommer att ta hand om det direkt!.' />
-                    <MultivitaminEachFAQ question='Vad är Scandifir Multivitamine och vad gör den unik?' answer='Scandifit Multivitamine är ett högkvalitativt kosttillskott som innehåller en noggrant balanserad blandning av vitaminer och mineraler. Vår unika formel är utformad för att ge dig mer energi, förbättra muskelåterhämtning och stärka ditt immunförsvar.' />
-                    <MultivitaminEachFAQ question='Hur tar jag Scandifit Multivitamine?' answer='Du tar två tabletter dagligen, helst i samband med en måltid för att förbättra absorptionen och minska risken för magbesvär.' />
-                    <MultivitaminEachFAQ question='Finns det några biverkningar?' answer='Scandi Multivitamine är generellt säkert för de flesta människor. Dock, om du är gravid, ammar, tar medicin eller har ett medicinskt tillstånd, bör du rådfråga en läkare innan du börjar använda produkten.' />
+                    <MultivitaminEachFAQ question='Vad är Scandifit Multivitamin och vad gör den unik?' answer='Scandifit Multivitamin är ett högkvalitativt kosttillskott som innehåller en noggrant balanserad blandning av vitaminer och mineraler. Vår unika formel är utformad för att ge dig mer energi, förbättra muskelåterhämtning och stärka ditt immunförsvar.' />
+                    <MultivitaminEachFAQ question='Hur tar jag Scandifit Multivitamin?' answer='Du tar två tabletter dagligen, helst i samband med en måltid för att förbättra absorptionen och minska risken för magbesvär.' />
+                    <MultivitaminEachFAQ question='Finns det några biverkningar?' answer='Scandifit Multivitamin är generellt säkert för de flesta människor. Dock, om du är gravid, ammar, tar medicin eller har ett medicinskt tillstånd, bör du rådfråga en läkare innan du börjar använda produkten.' />
                     <MultivitaminEachFAQ question='Hur lång tid tar det att se resultat?' answer='Många användare rapporterar förbättrad energi och hälsa inom några veckor av regelbunden användning. För bästa resultat rekommenderar vi att du använder produkten dagligen.' />
                     <MultivitaminEachFAQ question='Finns det någon bindningstid på abonnemanget?' answer='Nej, det finns ingen bindningstid eller uppsägningstid. Du kan avsluta ditt abonnemang när du vill.' />
                     <MultivitaminEachFAQ question='Vad innebär vår garanti?' answer='Om du provar Scandifit  Multivitamin och inte känner dig bättre och hälsosammare, återbetalar vi fraktkostnaden och du får behålla produkten.' />
