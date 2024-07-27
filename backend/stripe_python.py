@@ -7,7 +7,7 @@ stripePy = Blueprint('stripePy', __name__)
 
 stripe.api_key = 'sk_test_51O2qX1KgpFWeoEQVkbkv7tG1dSNCsq7JOfBa84AJAbWHJg2blyhO8y5ljQT8rsi2AAILHnXKBt47IdLYesxho6hG00yYZVnFw4'
 
-your_domain = 'http://127.0.0.1:3000'
+your_domain = 'https://www.scandifit.se'
 
 @stripePy.route('/api/create_checkout_session', methods=['post', 'get'])
 def create_checkout_session():
@@ -35,7 +35,7 @@ def create_checkout_session():
             if product['subOrOnce'] == 'sub':
                 mode = 'subscription'
                 payment_method_types = ['card']
-                discounts = [{"coupon": 'UhRLUPk3'}]
+                discounts = [{"coupon": '44T9PeG0'}]
                 allow_promotion_codes = None
 
             line_items.append({

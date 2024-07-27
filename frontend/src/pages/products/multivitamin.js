@@ -537,7 +537,7 @@ function ViewproductMultivitaminPopup({ setViewProductPopup }) {
     const [loading, setLoading] = useState(false)
     const [subOrOnce, setSubOrOnce] = useState('sub')
     const [price, setPrice] = useState(0)
-    const [stripePriceId, setStripePriceId] = useState('price_1Pd6V9KgpFWeoEQVHTeeLcyx')
+    const [stripePriceId, setStripePriceId] = useState('price_1Pgy4yKgpFWeoEQVNSVc5cNa')
     let id = 1
     let name = 'Scandifit Multivitamin'
     let picture = 'ScandifitMultivitaminImg.png'
@@ -586,7 +586,7 @@ function ViewproductMultivitaminPopup({ setViewProductPopup }) {
                             value='sub'
                             id='typeOfPurchaseSub'
                             checked={subOrOnce === 'sub'}
-                            onChange={() => { setSubOrOnce('sub'); setPrice(0); setStripePriceId('price_1Pd6V9KgpFWeoEQVHTeeLcyx')}}
+                            onChange={() => { setSubOrOnce('sub'); setPrice(0); setStripePriceId('price_1Pgy4yKgpFWeoEQVNSVc5cNa')}}
                         />
                         <label htmlFor='typeOfPurchaseSub'>
                             <div>
@@ -602,7 +602,7 @@ function ViewproductMultivitaminPopup({ setViewProductPopup }) {
                             value='once'
                             id='typeOfPurchaseOnce'
                             checked={subOrOnce === 'once'}
-                            onChange={() => {setSubOrOnce('once'); setPrice(499); setStripePriceId('price_1Pd6wiKgpFWeoEQVQAzWAJnE')}}
+                            onChange={() => {setSubOrOnce('once'); setPrice(499); setStripePriceId('price_1Pgy4yKgpFWeoEQVnqKxg3jP')}}
                         />
                         <label htmlFor='typeOfPurchaseOnce'>
                             <div>
