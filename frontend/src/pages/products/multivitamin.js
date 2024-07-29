@@ -611,7 +611,7 @@ function ViewproductMultivitaminPopup({ setViewProductPopup }) {
                             <p>499 Kr</p>
                         </label>
 
-                        <button type='submit'>Lägg Till</button>
+                        <button type='submit' id='addToCart'>Lägg Till</button>
 
                         <article>
 
