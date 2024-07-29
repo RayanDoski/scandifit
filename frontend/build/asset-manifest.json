@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.c7262f36.css",
-    "main.js": "/static/js/main.9e385294.js",
+    "main.js": "/static/js/main.4da75eda.js",
     "static/js/453.d855a71b.chunk.js": "/static/js/453.d855a71b.chunk.js",
     "static/media/scandifitMultivitamin.jpg": "/static/media/scandifitMultivitamin.a5f936552cae208d5046.jpg",
     "static/media/ScandifitMultivitaminImg.png": "/static/media/ScandifitMultivitaminImg.e6130ead6ae4bba7f726.png",
@@ -100,11 +100,11 @@
     "index.html": "/index.html",
     "static/media/klarna.svg": "/static/media/klarna.83b22d8f3de5c20c00858b71f23f655e.svg",
     "main.c7262f36.css.map": "/static/css/main.c7262f36.css.map",
-    "main.9e385294.js.map": "/static/js/main.9e385294.js.map",
+    "main.4da75eda.js.map": "/static/js/main.4da75eda.js.map",
     "453.d855a71b.chunk.js.map": "/static/js/453.d855a71b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c7262f36.css",
-    "static/js/main.9e385294.js"
+    "static/js/main.4da75eda.js"
   ]
 }
