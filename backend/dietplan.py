@@ -57,15 +57,15 @@ def calorie_calculator(dietplan_row_values):
     if activity_level == 1:
         activity_baseline = 1.1
     elif activity_level == 2:
-        activity_baseline = 1.2
+        activity_baseline = 1.15
     elif activity_level == 3:
-        activity_baseline = 1.3
+        activity_baseline = 1.20
     else:
         activity_baseline = 1.4
 
     training_sessions_per_week = int(dietplan_row_values[8])
 
-    activity_factor = activity_baseline + (0.07498571 * training_sessions_per_week)
+    activity_factor = activity_baseline + (0.0583 * training_sessions_per_week)
 
     calorie_intake = bmr * activity_factor
 
@@ -73,9 +73,7 @@ def calorie_calculator(dietplan_row_values):
 
     if fitness_goal == 'viktminskning':
         calorie_intake -= 500
-    elif fitness_goal == 'maintenance':
-        calorie_intake = calorie_intake
-    else:
+    elif fitness_goal == 'musclemassincrease':
         calorie_intake += 500
     
     return round(calorie_intake)
