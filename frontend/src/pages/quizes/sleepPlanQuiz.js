@@ -376,6 +376,7 @@ function SleepPlanQuiz() {
             setLoading(false)
             navigate('/profile/sleepplan')
         } else {
+            setLoading(false)
             setCurrentPart(data.index)
             setErrorMessage(data.message) 
         }

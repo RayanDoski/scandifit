@@ -471,6 +471,7 @@ function DietPlanQuiz() {
             setLoading(false)
             navigate('/profile/dietplan')
         } else {
+            setLoading(false)
             setCurrentPart(data.index)
             setErrorMessage(data.message)
         }

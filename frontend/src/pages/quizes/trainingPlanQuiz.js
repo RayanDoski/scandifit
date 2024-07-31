@@ -594,6 +594,7 @@ function TrainingPlanQuiz() {
             setLoading(false)
             navigate('/profile/trainingplan')
         } else {
+            setLoading(false)
             setCurrentPart(data.index)
             setErrorMessage(data.message)
         }
