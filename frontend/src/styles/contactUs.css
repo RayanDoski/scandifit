@@ -74,6 +74,7 @@ textarea:required {
     padding: 10px 30px;
     border-radius: 15px;
     border: 1px solid var(--black);
+    background-color: transparent;
     text-decoration: none;
     font-size: 18px;
     font-weight: lighter;
