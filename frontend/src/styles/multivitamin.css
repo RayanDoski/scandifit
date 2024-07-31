@@ -1212,6 +1212,7 @@
 
 .ViewproductMultivitaminPopup > article {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 400px;
     padding: 20px;
     border-radius: 15px;
 }
@@ -1280,6 +1281,7 @@
     text-decoration: none;
     font-size: 16px;
     font-weight: lighter;
+    background-color: transparent;
     color: var(--black);
     transition: .5s all;
 }
