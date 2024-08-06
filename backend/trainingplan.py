@@ -38,7 +38,7 @@ def schedual():
         # Vilka Övningar Ska Implementeras?
         HomeOrGym = tp[10]
         EqiptmentAccess = tp[11]
-        exercise_list = added_exercises(HomeOrGym, EqiptmentAccess)
+        exercise_list = added_exercises(EqiptmentAccess)
 
         cardio_exercise_list = exercise_list[0]
         chest_exercise_list = exercise_list[1]
@@ -699,8 +699,8 @@ def get_exercise_from_database(exercise):
         cursor.close()
 
 # Vilka Övningar Ska Implementeras?
-def added_exercises(HomeOrGym, EqiptmentAccess):
-    if HomeOrGym == 'hemma' and EqiptmentAccess == 'ingen utrustning':
+def added_exercises(EqiptmentAccess):
+    if EqiptmentAccess == 'ingen utrustning':
         #exercises that fit them (DATABASE ID:S)
         cardio_exercise_list = [42, 44, 45]
         chest_exercise_list = [3, 2, 4]
@@ -710,7 +710,7 @@ def added_exercises(HomeOrGym, EqiptmentAccess):
         biceps_exercise_list = [27]
         mage_exercise_list = [28, 32]
         legs_exercise_list = [40, 41]
-    elif HomeOrGym == 'hemma' and EqiptmentAccess == 'grundläggande utrustning':
+    elif EqiptmentAccess == 'grundläggande utrustning':
         #exercises that fit them (DATABASE ID:S)
         cardio_exercise_list = [43, 42, 44, 45]
         chest_exercise_list = [3, 2, 4]

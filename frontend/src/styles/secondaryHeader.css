@@ -57,63 +57,50 @@
 
 @media screen and (max-width: 950px) {
 
-    .secondaryHeader > ul > .line {
-        display: block;
-    }
-
     .secondaryHeader {
-        width: 100%;
         padding: 0px;
-        background-color: var(--black);
-        margin: auto;
-        z-index: 1;
-    } 
-
-    .secondaryHeader > .MobileViewOpenBtn {
-        display: flex;
-        padding: 15px;
+        background-color: var(--white);
+        border-top: 1px solid var(--black);
+        border-bottom: 1px solid var(--black);
     }
 
     .secondaryHeader > ul {
-        visibility: hidden;
-        pointer-events: none;
+        padding: 30px;
         gap: 20px;
-        padding: 0px;
-        flex-direction: column;
-        width: 80%;
-        margin: auto;
-        height: 0px;
-        overflow: hidden;
-        transition: .5s all;
+        overflow: scroll;
     }
 
     .secondaryHeader > ul > li > .profileLinks {
-        color: var(--white);
+        color: var(--black);
         text-decoration: none;
         font-weight: lighter;
-        padding: 5px 10px;
-        border-radius: 15px;
+        padding: 10px 15px;
+        border-radius: 5px;
         transition: .5s all;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
     }
 
-    .secondaryHeader > .openProfileLinks {
-        visibility: visible;
-        pointer-events: all;
-        padding: 40px 0px;
-        height: 375px;
+    .secondaryHeader > ul > li > .profileLinks:hover {
+        background-color: var(--green);
+        color: var(--white);
+    }
+
+    .secondaryHeader > ul > li > .profileLinks:active {
+        background-color: var(--green);
+        color: var(--white);
     }
 
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
 
     .secondaryHeader > ul {
-        width: 95%;
+        padding: 20px 10px;
+        gap: 5px;
     }
 
-    .secondaryHeader > .openProfileLinks {
-        padding: 20px 0px;
-        height: 350px;
+    .secondaryHeader > ul > li > .profileLinks {
+        font-size: 14px;
     }
 
 }

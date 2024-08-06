@@ -41,39 +41,26 @@ function QuizPartOne({ nextPart, setResponses, responses }) {
     };
 
     return (
-        <article className="question_one">
-            <h2>Vad är ditt mål?</h2>
-            <aside>
-
-                <input type="radio" name="goal" id="viktminskning" value="viktminskning" onClick={nextPart} onChange={handleGoalChange} checked={responses.goal === "viktminskning"} />
-                <label htmlFor="viktminskning" id="next_question_one_one">
-                    <img src={SlimBody} alt="Viktminskning" />
-                    <div>
-                        <h2>Viktminskning</h2>
-                        {/* <p>fokuserar på att minska den totala kroppsvikten</p> */}
-                    </div>
+        <div className="DietplanQuestionOne">
+            <h2>Vad Är Ditt Mål?</h2>
+            <main>
+                <input type="radio" name="goal" value="ned i vikt" className="radio-goals" id="goal-one" onClick={nextPart} onChange={handleGoalChange} checked={responses.goal === "viktminskning"}/>
+                <label htmlFor="goal-one" id="goal">
+                    <p>Viktnedgång</p>
                 </label>
 
-                <input type="radio" name="goal" id="musclemassincrease" value="musclemassincrease" onClick={nextPart} onChange={handleGoalChange} checked={responses.goal === "musclemassincrease"} />
-                <label htmlFor="musclemassincrease" id="next_question_one_two">
-                    <img src={Hero} alt="musclemassincrease" />
-                    <div>
-                        <h2>Öka Muskelmassa</h2>
-                        {/* <p>bygga och öka muskelmassan</p> */}
-                    </div>
+                <input type="radio" name="goal" value="muskelmassa" className="radio-goals" id="goal-two" onClick={nextPart} onChange={handleGoalChange} checked={responses.goal === "musclemassincrease"}/>
+                <label htmlFor="goal-two" id="goal">
+                    <p>Muskeluppbyggnad</p>
                 </label>
 
-                <input type="radio" name="goal" id="maintenance" value="maintenance" onClick={nextPart} onChange={handleGoalChange} checked={responses.goal === "maintenance"} />
-                <label htmlFor="maintenance" id="next_question_one_three">
-                    <img src={getShredded} alt="maintenance" />
-                    <div>
-                        <h2>Underhåll</h2>
-                        {/* <p>bibehåll nuvarande vikt och muskelmassa samtidigt som kroppen tonas </p> */}
-                    </div>
+                <input type="radio" name="goal" value="förbättra din fysik" className="radio-goals" id="goal-three" onClick={nextPart} onChange={handleGoalChange} checked={responses.goal === "maintenance"}/>
+                <label htmlFor="goal-three" id="goal">
+                    <p>Fysisk underhåll</p>
                 </label>
 
-            </aside>
-        </article>
+            </main>
+        </div>
     );
 }
 
@@ -106,12 +93,21 @@ function QuizPartThree({ nextPart, setResponses, responses, preventEnterSubmit }
     };
 
     return (
-        <article className="question_three">
+        <div className="DietplanQuestionThree">
             <h2>Hur gammal är du?</h2>
-            <label htmlFor="age">Ålder (År)</label>
-            <input type="number" name="age" id="age" onChange={handleAgeChange} value={responses.age} onKeyDown={preventEnterSubmit} />
-            <button type="button" onClick={nextPart} >Vidare</button>
-        </article>
+            <main>
+                <label htmlFor="age">Ålder (År)</label>
+                <input 
+                    type="number" 
+                    name="age" 
+                    id="age" 
+                    value={responses.age} 
+                    onChange={handleAgeChange}
+                    onKeyDown={preventEnterSubmit} 
+                />
+                <button onClick={nextPart}>Vidare</button>
+            </main>
+        </div>
     );
 }
 
@@ -122,12 +118,21 @@ function QuizPartFour({ nextPart, setResponses, responses, preventEnterSubmit })
     };
 
     return (
-        <article className="question_four">
+        <div className="DietplanQuestionThree">
             <h2>Hur lång är du?</h2>
-            <label htmlFor="height">Längd (cm)</label>
-            <input type="number" name="height" id="height" onChange={handleHeightChange} value={responses.height} onKeyDown={preventEnterSubmit} />
-            <button type="button" onClick={nextPart} >Vidare</button>
-        </article>
+            <main>
+                <label htmlFor="height">Längd (cm)</label>
+                <input 
+                    type="number" 
+                    name="height" 
+                    id="height" 
+                    value={responses.height} 
+                    onChange={handleHeightChange}
+                    onKeyDown={preventEnterSubmit} 
+                />
+                <button onClick={nextPart}>Vidare</button>
+            </main>
+        </div>
     );
 }
 
@@ -142,16 +147,32 @@ function QuizPartFive({ nextPart, setResponses, responses, preventEnterSubmit })
     };
 
     return (
-        <article className="question_five">
+        <div className="DietplanQuestionThree">
             <h2>Vad är din nuvarande vikt och målvikt?</h2>
-            <div>
+            <main>
                 <label htmlFor="currentweight">Nuvarande (Kg)</label>
-                <input type="number" name="currentweight" id="currentweight" onChange={handleWeightChange} value={responses.weight} onKeyDown={preventEnterSubmit} />
+                <input 
+                    type="number" 
+                    name="currentweight" 
+                    id="currentweight" 
+                    value={responses.weight} 
+                    onChange={handleWeightChange}
+                    onKeyDown={preventEnterSubmit} 
+                />
+                <br/>
                 <label htmlFor="targetweight">Målvikt (Kg)</label>
-                <input type="number" name="targetweight" id="targetweight" onChange={handleTargetWeightChange} value={responses.targetWeight} onKeyDown={preventEnterSubmit} />
-                <button type="button" onClick={nextPart} >Vidare</button>
-            </div>
-        </article>
+                <input 
+                    type="number" 
+                    name="targetweight" 
+                    id="targetweight" 
+                    value={responses.targetWeight} 
+                    onChange={handleTargetWeightChange}
+                    onKeyDown={preventEnterSubmit} 
+                />
+                <br/>
+                <button onClick={nextPart}>Vidare</button>
+            </main>
+        </div>
     );
 }
 
@@ -320,8 +341,7 @@ function QuizPartTen({ nextPart, setResponses, responses }) {
 
     return (
         <article className="question_ten">
-            <h2>Hur ofta äter du sötsaker <img src={Cake} alt="cake" /></h2>
-            <h2>eller dricker läsk? <img src={Coke} alt="cake" /></h2>
+            <h2>Hur ofta äter du sötsaker eller dricker läsk?</h2>
             <aside>
 
                 <input type="radio" name="sugar_intake" id="sugar_intake_one" value="flera gånger om dagen" onClick={nextPart} onChange={handleSugarIntakeChange} checked={responses.sugarIntake === "flera gånger om dagen"} />

@@ -7,31 +7,59 @@
 .quiz > form > h2 {
     color: var(--black);
     text-align: center;
-    font-size: 40px;
+    font-size: 42px;
+    margin: 20px 0px;
 }
 
 .quiz > form > nav {
+    width: 95%;
     display: flex;
     align-items: center;
     gap: 10px;
-    margin: 0px 0px 75px 0px;
+    margin: 0px auto 75px auto;
 }
 
 .quiz > form > nav > img {
-    max-width: 30px;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
 }
 
 .quiz > form > nav > div {
     width: 100%;
-    height: 10px;
+    height: 5px;
     background-color: var(--black);
 }
 
 .quiz > form > nav > div > div {
-    height: 10px;
+    height: 5px;
     background-color: var(--green);
     transition: .5s all;
+}
+
+@media screen and (max-width: 850px) {
+
+    .quiz > form > nav {
+        width: 85%;
+    }
+
+    .quiz > form > h2 {
+        font-size: 38px;
+    }
+
+    .quiz > form > nav > img {
+        width: 20px;
+        height: 20px;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    .quiz > form > h2 {
+        font-size: 34px;
+    }
+
 }
 
 /* quiz */
@@ -50,109 +78,90 @@
     top: -25px;
     opacity: 0;
     animation: slideIn 0.5s forwards; 
-    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .one > h2 {
-    color: var(--black);
+    margin: 30px 0px;
+    font-size: 42px;
     text-align: center;
-    font-size: 65px;
-    margin: 0;
-}
-
-.quiz > form > .one > p {
-    font-weight: lighter;
-    text-align: center;
-    font-size: 25px;
-    color: var(--gray);
-    margin: 0;
 }
 
 .quiz > form > .one > main {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin: 50px 0px 0px 0px;
+    flex-direction: column;
+    gap: 10px;
+    width: 500px;
+    margin: 0px auto;
 }
 
 .quiz > form > .one > main > label {
-    background-color: var(--gray);
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    transition: .5s all;
-    border: 1px solid transparent; /* Add this line */
-}
-
-.quiz > form > .one > main > label:hover {
-    background-color: var(--black);
-}
-
-.quiz > form > .one > main > label > img {
-    width: 300px;
-}
-
-.quiz > form > .one > main > label > p {
-    background-color: var(--green);
-    color: var(--white);
-    text-align: center;
-    padding: 10px 0px;
-    margin: 0;
-    font-size: 22px;
-    letter-spacing: 1.1px;
+    font-size: 18px;
 }
 
 .quiz > form > .one > main > input {
-    display: none;
+    padding: 10px;
+    font-size: 18px;
+    border: 0;
+    border-bottom: 2px solid var(--green);
+    border-radius: 0;
+    background-color: transparent;
+    outline: 0;
 }
 
-.quiz > form > .one > main > input:checked + label {
-    border: 5px solid var(--green);
+.quiz > form > .one > main > button {
+    text-align: center;
+    font-size: 18px;
+    background-color: transparent;
+    border: 1px solid var(--black);
+    color: var(--black);
+    font-weight: lighter;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .5s all;
+}
+
+.quiz > form > .one > main > button:hover {
+    border: 1px solid var(--white);
+    background-color: var(--green);
+    color: var(--white);
+}
+
+
+@media screen and (max-width: 850px) {
+
+    .quiz > form > .one > h2 {
+        font-size: 38px;
+    }
+
+    .quiz > form > .one > main > label {
+        font-size: 16px;
+    }
+    
+    .quiz > form > .one > main > input {
+        font-size: 16px;
+    }
+
 }
 
 @media screen and (max-width: 700px) {
 
-    .quiz {
-        padding: 0px 5px;
-    }
-
     .quiz > form > .one > h2 {
-        font-size: 45px;
-    }
-
-    .quiz > form > .one > p {
-        font-size: 20px;
-    }
-
-    .quiz > form > .one > main > label > img{
-        width: 200px;
-    }
-
-    .quiz > form > .one > main {
-        gap: 10px;
+        font-size: 34px;
     }
 
 }
 
-@media screen and (max-width: 460px) {
-
-    .quiz {
-        padding: 0px;
-    }
-
-    .quiz > form > .one > main > label > img{
-        width: 165px;
-    }
+@media screen and (max-width: 600px) {
 
     .quiz > form > .one > main {
-        gap: 5px;
+        width: 90%;
+        margin: auto;
     }
 
-    .quiz > form > .one > main > label > p {
-        font-size: 18px;
-        letter-spacing: .5px;
+    .quiz > form > .one > main > button {
+        text-align: center;
+        font-size: 16px;
     }
 
 }
@@ -164,50 +173,40 @@
     top: -25px;
     opacity: 0;
     animation: slideIn 0.5s forwards;
-    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .two > h2 {
     text-align: center;
-    font-size: 65px;
+    font-size: 42px;
+    margin: 30px 0px;
 }
 
 .quiz > form > .two > main {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    margin: 50px 0px 0px 0px;
-}
-
-.quiz > form > .two > main > label {
-    background-color: var(--gray);
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0;
-    transition: .5s all;
-    width: 300px;
-}
-
-.quiz > form > .two > main > label:hover {
-    background-color: var(--black);
-}
-
-.quiz > form > .two > main > label > img{
-    height: 500px;
-    max-width: 200px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .quiz > form > .two > main > label > p {
-    background-color: var(--green);
-    color: var(--white);
-    text-align: center;
-    padding: 10px 0px;
-    font-size: 22px;
-    letter-spacing: 1.1px;
-    width: 100%;
+    padding: 20px;
     margin: 0;
+    width: 500px;
+    max-width: 100%;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+    text-align: center;
+    transition: .5s all;
+}
+
+.quiz > form > .two > main > label > p:hover {
+    background-color: var(--black);
+    color: white;
 }
 
 .quiz > form > .two > main > input {
@@ -216,56 +215,46 @@
 }
 
 .quiz > form > .two > main > input:checked + label {
+    border-radius: 5px;
     border: 5px solid var(--green);
+}
+
+@media screen and (max-width: 850px) {
+
+    .quiz > form > .two > h2 {
+        font-size: 38px;
+    }
+
 }
 
 @media screen and (max-width: 700px) {
 
-    .quiz > form > .two > main > label > img{
-        max-width: 150px;
-    }
-
     .quiz > form > .two > h2 {
-        font-size: 45px;
-    }
-
-    .quiz > form > .two > main > label > p {
-        font-size: 20px;
+        font-size: 34px;
     }
 
 }
 
-@media screen and (max-width: 550px) {
-
-    .quiz > form > .two > main > label > img{
-        max-width: 100px;
-        max-height: 200px;
-    }
-
-    .quiz > form > .two > h2 {
-        font-size: 45px;
-    }
+@media screen and (max-width: 600px) {
 
     .quiz > form > .two > main > label > p {
-        font-size: 18px;
-        letter-spacing: 0px;
-    }
-
-    .quiz > form > .two > main {
-        gap: 5px;
-        margin: 50px 5px 0px 5px;
+        width: 400px;
     }
 
 }
 
-@media screen and (max-width: 420px) {
-
-    .quiz > form > .two > main > label > img{
-        max-width: 75px;
-    }
+@media screen and (max-width: 450px) {
 
     .quiz > form > .two > main > label > p {
-        font-size: 14px;
+        width: 300px;
+    }
+
+}
+
+@media screen and (max-width: 350px) {
+
+    .quiz > form > .two > main > label > p {
+        width: 200px;
     }
 
 }
@@ -277,33 +266,28 @@
     top: -25px;
     opacity: 0;
     animation: slideIn 0.5s forwards; 
-    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .three > h2 {
-    font-family: var();
-    font-size: 65px;
+    margin: 30px 0px;
+    font-size: 42px;
     text-align: center;
 }
 
 .quiz > form > .three > main {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 20px;
-    max-width: 1400px;
-    margin: 50px 0px 0px 0px;
 }
 
 .quiz > form > .three > main > label {
-    background-color: var(--gray);
-    display: flex;
-    box-sizing: border-box;
-    justify-content: space-between;
-    padding: 0px 20px;
-    box-sizing: border-box;
     width: 500px;
-    height: 320px;
+    background-color: transparent;
+    border: 1px solid var(--black);
+    padding: 20px;
+    border-radius: 5px;
     transition: .5s all;
 }
 
@@ -311,26 +295,26 @@
     background-color: var(--black);
 }
 
-.quiz > form > .three > main > label > img{
-    max-height: 300px;
-}
-
-.quiz > form > .three > main > label > aside {
-    margin: 25px 0px 0px 0px;
-    width: 75%;
-}
-
-.quiz > form > .three > main > label > aside > h3 {
+.quiz > form > .three > main > label:hover > h3 {
     color: var(--white);
-    font-size: 32px;
-    letter-spacing: 1px;
+}
+
+.quiz > form > .three > main > label:hover > p {
+    color: var(--white);
+}
+
+
+.quiz > form > .three > main > label > h3 {
+    color: var(--black);
+    font-size: 18px;
+    font-weight: 700;
     margin: 0;
 }
 
-.quiz > form > .three > main > label > aside > p {
-    color: var(--white);
+.quiz > form > .three > main > label > p {
+    color: var(--black);
     font-size: 16px;
-    letter-spacing: .5px;
+    font-weight: 300;
     margin: 0;
 }
 
@@ -344,16 +328,17 @@
 }
 
 .quiz > form > .three > main > div {
+    border-radius: 5px;
     padding: 20px;
-    box-sizing: border-box;
     width: 500px;
-    height: 320px;
     border: .5px solid var(--black);
     position: relative;
 }
 
 .quiz > form > .three > main > div > h2 {
-    font-size: 26px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.25;
     inline-size: 65%;
     margin: 0;
 }
@@ -361,98 +346,53 @@
 .quiz > form > .three > main > div > p {
     margin: 10px 0px;
     letter-spacing: .5px;
+    font-size: 16px;
+    font-weight: 300;
 }
 
 .quiz > form > .three > main > div > h6 {
-    font-weight: lighter;
+    font-weight: 300;
     margin: 0px 0px 10px 0px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .quiz > form > .three > main > div > h6 > span {
-    font-weight: bold;
+    font-weight: 400;
 }
 
 .quiz > form > .three > main > div > img {
     position: absolute;
-    max-width: 100px;
+    max-width: 60px;
     top: 20px;
     right: 20px;
 }
 
-@media screen and (max-width: 1070px) {
+@media screen and (max-width: 850px) {
 
     .quiz > form > .three > h2 {
-        font-size: 45px;
-    }
-
-    .quiz > form > .three > main {
-        gap: 5px;
+        font-size: 38px;
     }
 
 }
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 700px) {
 
-    .quiz > form > .three > main {
-        gap: 15px;
+    .quiz > form > .three > h2 {
+        font-size: 34px;
     }
+
+}
+
+@media screen and (max-width: 600px) {
 
     .quiz > form > .three > main > label {
-        padding: 0px 0px 0px 15px;
-        width: 300px;
-        height: 250px;
-    }
-
-    .quiz > form > .three > main > label > aside > h3 {
-        font-size: 30px;
-        letter-spacing: 1px;
-    }
-
-    .quiz > form > .three > main > label > aside > p {
-        font-size: 14px;
-        letter-spacing: .5px;
-    }
-
-    .quiz > form > .three > main > label > img{
-        max-height: 250px;
+        width: 100%;
     }
 
     .quiz > form > .three > main > div {
-        padding: 15px 10px;
-        width: 300px;
-        height: auto;
+        width: 100%;
     }
-    
-    .quiz > form > .three > main > div > h2 {
-        font-size: 24px;
-        inline-size: 75%;
-    }
-    
-    .quiz > form > .three > main > div > p {
-        font-size: 14px;
-        margin: 15px 0px;
-        letter-spacing: .5px;
-    }
-    
-    .quiz > form > .three > main > div > h6 {
-        font-weight: lighter;
-        margin: 0px 0px 10px 0px;
-        font-size: 14px;
-        line-height: 20px;
-    }
-    
-    .quiz > form > .three > main > div > h6 > span {
-        font-weight: bold;
-    }
-    
-    .quiz > form > .three > main > div > img {
-        position: absolute;
-        max-width: 65px;
-        top: 12px;
-        right: 12px;
-    }
-    
+
 }
 
 /* quiz Four */
@@ -462,18 +402,19 @@
     top: -25px;
     opacity: 0;
     animation: slideIn 0.5s forwards; 
-    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .four > h2 {
     text-align: center;
-    font-size: 65px;
+    font-size: 42px;
+    margin: 30px 0px 0px 0px;
 }
 
 .quiz > form > .four > p {
     font-weight: lighter;
     text-align: center;
-    font-size: 25px;
+    font-size: 18px;
+    margin: 0;
 }
 
 .quiz > form > .four > main {
@@ -484,103 +425,58 @@
     margin: 50px 0px 0px 0px;
 }
 
-.quiz > form > .four > main > div {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.quiz > form > .four > main > div > label {
-    background-color: var(--gray);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0px 20px;
-    box-sizing: border-box;
+.quiz > form > .four > main > label {
+    background-color: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    padding: 20px;
     width: 500px;
     transition: .5s all;
 }
 
-.quiz > form > .four > main > div > label:hover {
+.quiz > form > .four > main > label:hover {
     background-color: var(--black);
 }
 
-.quiz > form > .four > main > div > label > img{
-    width: 200px;
-}
-
-.quiz > form > .four > main > div > label > p {
+.quiz > form > .four > main > label:hover > p {
     color: var(--white);
-    font-size: 28px;
-    letter-spacing: .5px;
 }
 
-.quiz > form > .four > main > div > input {
+.quiz > form > .four > main > label > p {
+    color: var(--black);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.quiz > form > .four > main > input {
     visibility: hidden;
     display: none;
 }
 
-.quiz > form > .four > main > div > input:checked + label {
+.quiz > form > .four > main > input:checked + label {
     border: 5px solid var(--green);
-}
-
-@media screen and (max-width: 1050px) {
-
-    .quiz > form > .four > h2 {
-        font-size: 45px;
-    }
-
-    .quiz > form > .four > main > div > label {
-        width: 400px;
-    }
-
-    .quiz > form > .four > main > div > label > img{
-        width: 150px;
-    }
-
-    .quiz > form > .four > main > div > label > p {
-        font-size: 30px;
-        letter-spacing: .5px;
-    }
-    
 }
 
 @media screen and (max-width: 850px) {
 
-    .quiz > form > .four > main > div > label {
-        width: 300px;
-    }
-
-    .quiz > form > .four > main > div > label > img{
-        width: 100px;
-    }
-
-    .quiz > form > .four > main > div > label > p {
-        font-size: 25px;
+    .quiz > form > .four > h2 {
+        font-size: 38px;
     }
     
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 700px) {
 
-    .quiz > form > .four > main > div {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        gap: 20px;
+    .quiz > form > .four > h2 {
+        font-size: 34px;
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+
+    .quiz > form > .four > main > label {
         width: 100%;
-    }
-
-    .quiz > form > .four > main > div > label {
-        width: 90%;
-    }
-
-    .quiz > form > .four > main > div > label > img{
-        width: 150px;
-    }
-
-    .quiz > form > .four > main > div > label > p {
-        font-size: 35px;
     }
     
 }
@@ -612,187 +508,7 @@
 
 /* quiz Five */
 
-.quiz > form > .five {
-    position: relative; 
-    top: -25px;
-    opacity: 0;
-    animation: slideIn 0.5s forwards; 
-    margin: 100px 0px 150px 0px;
-}
-
-.quiz > form > .five > main {
-    width: 500px;
-    position: relative;
-    margin: 200px auto;
-}
-
-.quiz > form > .five > main > h2 {
-    font-size: 65px;
-    letter-spacing: 2px;
-    text-align: center;
-    margin: 0px 0px 50px 0px;
-}
-
-.quiz > form > .five > main > label {
-    display: block;
-    margin: 0px 0px 10px 0px;
-    font-size: 20px;
-    letter-spacing: 1.5px;
-}
-
-.quiz > form > .five > main > input {
-    width: 100%;
-    outline: 0;
-    border: 0;
-    border-bottom: 2px solid var(--green);
-    padding: 10px;
-    font-size: 18px;
-    box-sizing: border-box;
-    background-color: var(--white);
-}
-
-.quiz > form > .five > main > h3 {
-    text-align: center;
-    font-size: 20px;
-    letter-spacing: 1.5px;
-    background-color: transparent;
-    border: 1px solid var(--black);
-    color: var(--black);
-    font-weight: lighter;
-    padding: 5px 20px;
-    border-radius: 5px;
-    position: absolute;
-    right: 0;
-    top: 185px;
-    cursor: pointer;
-    transition: .5s all;
-    margin: 0;
-}
-
-.quiz > form > .five > main > h3:hover {
-    border: 1px solid var(--white);
-    background-color: var(--green);
-    color: var(--white);
-}
-
-@media screen and (max-width: 575px) {
-
-    .quiz > form > .five > main {
-        width: 90%;
-    }
-    
-    .quiz > form > .five > main > h2 {
-        font-size: 45px;
-        margin: 100px 0px 50px 0px;
-    }
-
-    .quiz > form > .five > main > label {
-        font-size: 18px;
-        margin: 0px 0px 5px 0px;
-    }
-
-    .quiz > form > .five > main > input {
-        padding: 10px 10px 5px 10px;
-        font-size: 16px;
-    }
-
-    .quiz > form > .five > main > h3 {
-        font-size: 18px;
-        letter-spacing: 1px;
-        padding: 5px 20px;
-        right: 15px;
-        top: 140px;
-    }
-
-}
-
 /* quiz Six */
-
-.quiz > form > .six {
-    position: relative; 
-    top: -25px;
-    opacity: 0;
-    animation: slideIn 0.5s forwards; 
-    margin: 100px 0px 150px 0px;
-}
-
-.quiz > form > .six > main {
-    margin: auto;
-    width: 600px;
-}
-
-.quiz > form > .six > main > h2 {
-    font-size: 65px;
-    letter-spacing: 2px;
-    text-align: center;
-}
-
-.quiz > form > .six > main > label {
-    display: block;
-    margin: 50px 0px 10px 0px;
-    font-size: 20px;
-    letter-spacing: 1.5px;
-}
-
-.quiz > form > .six > main > input {
-    width: 100%;
-    outline: 0;
-    border: 0;
-    border-bottom: 2px solid var(--green);
-    padding: 10px;
-    font-size: 18px;
-    box-sizing: border-box;
-    background-color: var(--white);
-}
-
-.quiz > form > .six > main > h3 {
-    margin: 50px 0px 0px 0px;
-    text-align: center;
-    font-size: 20px;
-    letter-spacing: 1.5px;
-    background-color: transparent;
-    border: 1px solid var(--black);
-    color: var(--black);
-    font-weight: lighter;
-    padding: 7px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: .5s all;
-}
-
-.quiz > form > .six > main > h3:hover {
-    border: 1px solid var(--white);
-    background-color: var(--green);
-    color: var(--white);
-}
-
-@media screen and (max-width: 575px) {
-
-    .quiz > form > .six > main {
-        width: 90%;
-    }
-    
-    .quiz > form > .six > main > h2 {
-        font-size: 45px;
-        margin: 100px 0px 0px 0px;
-    }
-
-    .quiz > form > .six > main > label {
-        font-size: 18px;
-    }
-
-    .quiz > form > .six > main > input {
-        padding: 10px 10px 5px 10px;
-        font-size: 16px;
-    }
-
-    .quiz > form > .six > main > h3 {
-        font-size: 18px;
-        letter-spacing: 1px;
-        padding: 15px 20px;
-    }
-
-}
 
 /* quiz Seven */
 
@@ -801,28 +517,23 @@
     top: -25px;
     opacity: 0;
     animation: slideIn 0.5s forwards;
-    margin: 100px 0px 150px 0px;
 }
 
-.quiz > form > .seven > main {
-    margin: 0px auto 0px auto;
-}
-
-.quiz > form > .seven > main > h2 {
-    font-size: 65px;
+.quiz > form > .seven > h2 {
+    font-size: 42px;
     text-align: center;
-    margin: 0;
+    margin: 30px 0px 0px 0px;
+    line-height: 1.25;
 }
 
-.quiz > form > .seven > main > p {
+.quiz > form > .seven > p {
     font-weight: lighter;
-    font-size: 20px;
-    letter-spacing: 1px;
+    font-size: 18px;
     text-align: center;
     margin: 0px 0px 75px 0px;
 }
 
-.quiz > form > .seven > main > aside {
+.quiz > form > .seven > aside {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -830,45 +541,46 @@
     gap: 20px;
 }
 
-.quiz > form > .seven > main > aside > input {
+.quiz > form > .seven > aside > input {
     display: none;
 }
 
-.quiz > form > .seven > main > aside > input:checked + label {
+.quiz > form > .seven > aside > input:checked + label {
     border: 5px solid var(--green);
 }
 
-.quiz > form > .seven > main > aside > label {
+.quiz > form > .seven > aside > label {
     cursor: pointer;
-    font-size: 25px;
-    padding: 40px 50px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 20px;
     border: 1px solid var(--black);
-    box-sizing: border-box;
+    border-radius: 5px;
     transition: 1s all;
 }
 
-.quiz > form > .seven > main > aside > label:hover {
-    font-size: 28px;
+.quiz > form > .seven > aside > label:hover {
+    background-color: var(--black);
+    color: var(--white);
 }
 
 @media screen and (max-width: 850px) {
 
-    .quiz > form > .seven > main {
-        margin: 100px 0px 0px 0px;
+    .quiz > form > .seven > h2 {
+        font-size: 38px;
     }
 
-    .quiz > form > .seven > main > h2 {
-        font-size: 45px;
-        letter-spacing: 1px;
-        inline-size: 90%;
-        margin: auto;
-    }
-    
-    .quiz > form > .seven > main > p {
-        font-size: 18px;
-        letter-spacing: 0px;
-        inline-size: 90%;
-        margin: 0px auto 50px auto;
+}
+
+@media screen and (max-width: 700px) {
+
+    .quiz > form > .seven > h2 {
+        font-size: 34px;
     }
 
 }
@@ -880,164 +592,82 @@
     top: -25px;
     opacity: 0;
     animation: slideIn 0.5s forwards; 
-    margin: 100px 0px 150px 0px;
 }
 
-.quiz > form > .eight > main > h2 {
-    font-size: 65px;
+.quiz > form > .eight > h2 {
+    font-size: 42px;
     text-align: center;
     margin: 0px 0px 75px 0px;
 }
 
-.quiz > form > .eight > main > div {
-    background-color: var(--black);
-    box-sizing: border-box;
+.quiz > form > .eight > aside {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    padding: 0px 0px 0px 40px;
-}
-
-.quiz > form > .eight > main > div > aside {
-    display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
 }
 
-.quiz > form > .eight > main > div > aside > input {
+.quiz > form > .eight > aside > input {
     display: none;
 }
 
-.quiz > form > .eight > main > div > aside > input:checked + label {
+.quiz > form > .eight > aside > input:checked + label {
     border: 5px solid var(--green);
 }
 
-.quiz > form > .eight > main > div > aside > label {
+.quiz > form > .eight > aside > label {
     background-color: var(--white);
     color: var(--black);
-    box-sizing: border-box;
+    border: 1px solid var(--black);
+    border-radius: 5px;
     padding: 20px;
-    width: 300px;
-    height: 100px;
-    font-size: 25px;
-    letter-spacing: 1.5px;
-    display: flex;
-    align-items: center;
+    width: 500px;
+    font-size: 18px;
     transition: .5s all;
 }
 
-.quiz > form > .eight > main > div > aside > label:hover {
-    background-color: #d4d4d4;
-    box-shadow: rgba(235, 235, 235, 0.35) 0px 5px 15px;
-}
-
-.quiz > form > .eight > main > div > aside > .inget {
-    background-color: var(--green);
+.quiz > form > .eight > aside > label:hover {
+    background-color: var(--black);
     color: var(--white);
 }
 
-.quiz > form > .eight > main > div > aside > .inget:hover {
-    background-color: var(--green);
-    box-shadow: rgba(44, 208, 15, 0.35) 0px 5px 15px;
+.quiz > form > .eight > aside > .inget {
+    background-color: var(--black);
+    color: var(--white);
 }
 
-
-.quiz > form > .eight > main > div > img {
-    width: 100%;
-    max-width: 400px;
+.quiz > form > .eight > aside > .inget:hover {
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 850px) {
 
-    .quiz > form > .eight > main > h2 {
-        font-size: 45px;
+    .quiz > form > .eight > h2 {
+        font-size: 38px;
     }
 
-    .quiz > form > .eight > main > div {
-        flex-direction: column-reverse;
-        padding: 0;
-        margin: auto;
-        width: 95%;
+}
+
+@media screen and (max-width: 700px) {
+
+    .quiz > form > .eight > h2 {
+        font-size: 34px;
     }
 
-    .quiz > form > .eight > main > div > aside {
-        justify-content: center;
-        margin: 0px 0px 50px 0px;
+}
+
+@media screen and (max-width: 600px) {
+
+    .quiz > form > .eight > aside > label {
+        width: 100%;
     }
 
 }
 
 /* quiz nine */
-
-.quiz > form > .nine {
-    position: relative; 
-    top: -25px;
-    opacity: 0;
-    animation: slideIn 0.5s forwards; 
-    margin: 100px 0px 150px 0px;
-}
-
-.quiz > form > .nine > main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-.quiz > form > .nine > main > h2 {
-    font-size: 65px;
-    text-align: center;
-    margin: 0px 0px 50px 0px;
-}
-
-.quiz > form > .nine > main > input {
-    display: none;
-}
-
-.quiz > form > .nine > main > input:checked + label {
-    border: 5px solid var(--green);
-}
-
-.quiz > form > .nine > main > label {
-    background-color: var(--gray);
-    color: var(--white);
-    font-size: 32px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 50px;
-    box-sizing: border-box;
-    width: 700px;
-    cursor: pointer;
-    transition: .5s all;
-}
-
-.quiz > form > .nine > main > label:hover {
-    background-color: var(--black);
-}
-
-.quiz > form > .nine > main > label > img {
-    max-height: 40px;
-}
-
-@media screen and (max-width: 850px) {
-
-    .quiz > form > .nine > main > h2 {
-        font-size: 45px;
-    }
-
-    .quiz > form > .nine > main > label {
-        width: 90%;
-        font-size: 30px;
-        padding: 15px 25px;
-    }
-
-    .quiz > form > .nine > main > label > img {
-        max-height: 33px;
-    }
-
-}
 
 /* quiz ten */
 
@@ -1046,21 +676,21 @@
     top: -25px;
     opacity: 0;
     animation: slideIn 0.5s forwards;
-    margin: 100px 0px 150px 0px;
+}
+
+.quiz > form > .ten > h2 {
+    font-size: 42px;
+    text-align: center;
+    margin: 30px 0px;
 }
 
 .quiz > form > .ten > main {
+    width: 500px;
+    margin: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
     gap: 20px;
-}
-
-.quiz > form > .ten > main > h2 {
-    font-size: 65px;
-    text-align: center;
-    margin: 0px 0px 50px 0px;
 }
 
 .quiz > form > .ten > main > input {
@@ -1072,56 +702,57 @@
 }
 
 .quiz > form > .ten > main > label {
-    background-color: var(--black);
-    color: var(--white);
+    border: 1px solid var(--black);
+    width: 100%;
     padding: 20px;
-    box-sizing: border-box;
-    width: 700px;
+    border-radius: 5px;
     cursor: pointer;
     transition: .5s all;
 }
 
 .quiz > form > .ten > main > label > h3 {
-    font-size: 28px;
+    font-size: 18px;
     margin: 0;
-    color: var(--white);
+    font-weight: 400;
+    color: var(--black);
 }
 
 .quiz > form > .ten > main > label > p {
-    letter-spacing: 1px;
-    font-size: 15px;
+    font-size: 16px;
     margin: 0;
+    font-weight: 300;
+    color: var(--black);
 }
 
 .quiz > form > .ten > main > label:hover {
-    background-color: #1c1c1c;
+    background-color: var(--black);
 }
 
-.quiz > form > .ten > main > label > img {
-    max-height: 40px;
+.quiz > form > .ten > main > label:hover > p,
+.quiz > form > .ten > main > label:hover > h3 {
+    color: var(--white);
 }
 
 @media screen and (max-width: 850px) {
 
-    .quiz > form > .ten > main > h2 {
-        font-size: 45px;
+    .quiz > form > .ten > h2 {
+        font-size: 38px;
     }
 
-    .quiz > form > .ten > main > label {
-        width: 90%;
-        font-size: 30px
+}
+
+@media screen and (max-width: 700px) {
+
+    .quiz > form > .ten > h2 {
+        font-size: 34px;
     }
 
-    .quiz > form > .ten > main > label > h3 {
-        font-size: 25px
-    }
+}
 
-    .quiz > form > .ten > main > label > p {
-        font-size: 15px
-    }
+@media screen and (max-width: 600px) {
 
-    .quiz > form > .ten > main > label > img {
-        max-height: 33px;
+    .quiz > form > .ten > main {
+        width: 100%;
     }
 
 }
@@ -1133,7 +764,6 @@
     top: -25px;
     opacity: 0;
     animation: slideIn 0.5s forwards;
-    margin: 100px 0px 150px 0px;
 }
 
 .quiz > form > .eleven > aside {

@@ -21,20 +21,29 @@ import Koffein from '../../images/icons/koffein.png';
 import GoodSleep from '../../images/icons/good_sleep.png';
 import Insomnia from '../../images/icons/insomnia.png';
 
-function QuizPartOne({ nextPart, setResponses, responses }) {
+function QuizPartOne({ nextPart, setResponses, responses, preventEnterSubmit }) {
 
     const handleWakeUpTimeChange = (e) => {
         setResponses({ ...responses, wakeUpTime: e.target.value });
     };
 
     return (
-        <article className="question_one">
-            <h2>När vill Du Vakna?</h2>
+        <div className="SleepplanQuestionOne">
+            <h2>När vill du vakna?</h2>
             <p>Att vakna vid samma tid varje dag stabiliserar kroppens interna klocka och främjar regelbundna sömncykler, vilket förbättrar sömnkvaliteten och ökar energinivån under dagen.</p>
-            <label htmlFor="wakeuptime">Tid (00:00)</label>
-            <input type="time" name="wakeuptime" id="wakeuptime" onChange={handleWakeUpTimeChange} value={responses.wakeUpTime} />
-            <button type="button" onClick={nextPart}>Vidare</button>
-        </article>
+            <main>
+                <label htmlFor="wakeuptime">Tid (00:00)</label>
+                <input 
+                    type="time" 
+                    name="wakeuptime" 
+                    id="wakeuptime" 
+                    value={responses.wakeUpTime} 
+                    onChange={handleWakeUpTimeChange}
+                    onKeyDown={preventEnterSubmit} 
+                />
+                <button onClick={nextPart}>Vidare</button>
+            </main>
+        </div>
     );
 }
 
@@ -45,11 +54,20 @@ function QuizPartTwo({ nextPart, setResponses, responses, preventEnterSubmit }) 
     };
 
     return (
-        <article className="question_two">
+        <article className="SleepplanQuestionTwo">
             <h2>Hur gammal är du?</h2>
-            <label htmlFor="age">Ålder (År)</label>
-            <input type="number" name="age" id="age" onChange={handleAgeChange} value={responses.age} onKeyDown={preventEnterSubmit} />
-            <button type="button" onClick={nextPart}>Vidare</button>
+            <main>
+                <label htmlFor="age">Ålder (År)</label>
+                <input 
+                    type="number" 
+                    name="age" 
+                    id="age" 
+                    value={responses.age} 
+                    onChange={handleAgeChange}
+                    onKeyDown={preventEnterSubmit} 
+                />
+                <button onClick={nextPart}>Vidare</button>
+            </main>
         </article>
     );
 }
@@ -61,11 +79,20 @@ function QuizPartThree({ nextPart, setResponses, responses, preventEnterSubmit }
     };
 
     return (
-        <article className="question_three">
-            <h2>Hur Mycket Väger Du?</h2>
-            <label htmlFor="weight">Vikt (Kg)</label>
-            <input type="number" name="weight" id="weight" onChange={handleWeightChange} value={responses.weight} onKeyDown={preventEnterSubmit}/>
-            <button type="button" onClick={nextPart}>Vidare</button>
+        <article className="SleepplanQuestionTwo">
+            <h2>Hur mycket väger du?</h2>
+            <main>
+                <label htmlFor="weight">Vikt (Kg)</label>
+                <input 
+                    type="number" 
+                    name="weight" 
+                    id="weight" 
+                    value={responses.weight} 
+                    onChange={handleWeightChange}
+                    onKeyDown={preventEnterSubmit} 
+                />
+                <button onClick={nextPart}>Vidare</button>
+            </main>
         </article>
     );
 }
@@ -143,7 +170,7 @@ function QuizPartFive({ nextPart, setResponses, responses }) {
 
     return (
         <article className="question_five">
-            <h2>Hur skulle du beskriva ditt humör och energinivå under en normal dag? <img src={Mood} alt="mood_scale" /></h2>
+            <h2>Hur skulle du beskriva ditt humör och energinivå under en normal dag?</h2>
             <aside>
                 
                 <input type="radio" name="daily_mood_and_energy" id="daily_mood_and_energy_1" value="Energisk och positiv" onClick={nextPart} onChange={handleDailyMoodAndEnergyChange} checked={responses.dailyMoodAndEnergy === "Energisk och positiv"} />
@@ -174,7 +201,7 @@ function QuizPartSix({ nextPart, setResponses, responses }) {
 
     return (
         <article className="question_six">
-            <h2>Hur många gånger brukar du dricka kaffe, te eller andra drycker med koffein på eftermiddagen? <img src={Koffein} alt="mood_scale" /></h2>
+            <h2>Hur många gånger brukar du dricka kaffe, te eller andra drycker med koffein på eftermiddagen?</h2>
             <aside>
 
                 <input type="radio" name="caffeine_in_the_afternoon" id="caffeine_in_the_afternoon_1" value="Aldrig" onClick={nextPart} onChange={handleCaffeineInTheAfternoonChange} checked={responses.caffeineInTheAfternoon === "Aldrig"} />
@@ -202,7 +229,7 @@ function QuizPartSeven({ nextPart, setResponses, responses }) {
 
     return (
         <article className="question_seven">
-            <h2>Hur många timmars sömn får du i genomsnitt per natt? <img src={GoodSleep} alt="mood_scale" /></h2>
+            <h2>Hur många timmars sömn får du i genomsnitt per natt?</h2>
             <aside>
 
                 <input type="radio" name="how_much_sleep_do_you_get_on_avg" id="how_much_sleep_do_you_get_on_avg_1" value="Mindre än 3h" onClick={nextPart} onChange={handleHowMuchSleepDoYouGetOnAvgChange} checked={responses.howMuchSleepDoYouGetOnAvg === "Mindre än 3h"} />
@@ -233,7 +260,7 @@ function QuizPartEight({ nextPart, setResponses, responses }) {
 
     return (
         <article className="question_eight">
-            <h2>Upplever du några sömnstörningar eller symtom? <img src={Insomnia} alt="mood_scale" /></h2>
+            <h2>Upplever du några sömnstörningar eller symtom?</h2>
             <aside>
 
                 <input type="radio" name="sleep_disturbances_or_symptoms" id="sleep_disturbances_or_symptoms_1" value="Svårigheter att somna" onClick={nextPart} onChange={handleSleepDisturbancesOrSymptomsChange} checked={responses.sleepDisturbancesOrSymptoms === "Svårigheter att somna"} />

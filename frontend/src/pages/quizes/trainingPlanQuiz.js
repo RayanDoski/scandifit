@@ -42,7 +42,7 @@ import HealthStatus from '../../images/quiz/health-status.png';
 import AtHome from '../../images/quiz/home.png';
 import AtGym from '../../images/quiz/gym.png';
 
-function QuizPartOne({ nextPart, setResponses, responses }) {
+function QuizPartOne({ nextPart, setResponses, responses, preventEnterSubmit }) {
 
     const handleAgeChange = (e) => {
         setResponses({ ...responses, age: e.target.value });
@@ -50,32 +50,18 @@ function QuizPartOne({ nextPart, setResponses, responses }) {
 
     return (
         <div className="one">
-            <h2>Prioritera din hälsa och kondition</h2>
-            <p>Hur Gammal Är Du?</p>
+            <h2>Hur gammal är du?</h2>
             <main>
-                <input type="radio" name="age" value="18-29" className="age" id="age-18-29" onClick={nextPart} onChange={handleAgeChange} checked={responses.age === "18-29"} />
-                <label htmlFor="age-18-29" id="ages">
-                    <img src={AgeOne} alt="age 18-29" />
-                    <p>Ålder: 18-29</p>
-                </label>
-
-                <input type="radio" name="age" value="30-39" className="age" id="age-30-39" onClick={nextPart} onChange={handleAgeChange} checked={responses.age === "30-39"} />
-                <label htmlFor="age-30-39" id="ages">
-                    <img src={AgeTwo} alt="age 30-39" />
-                    <p>Ålder: 30-39</p>
-                </label>
-
-                <input type="radio" name="age" value="40-49" className="age" id="age-40-49" onClick={nextPart} onChange={handleAgeChange} checked={responses.age === "40-49"} />
-                <label htmlFor="age-40-49" id="ages">
-                    <img src={AgeThree} alt="age 40-49" />
-                    <p>Ålder: 40-49</p>
-                </label>
-
-                <input type="radio" name="age" value="50+" className="age" id="age-50+" onClick={nextPart} onChange={handleAgeChange} checked={responses.age === "50+"} />
-                <label htmlFor="age-50+" id="ages">
-                    <img src={AgeFour} alt="age 50+" />
-                    <p>Ålder: 50+</p>
-                </label>
+                <label htmlFor="height">ålder (år)</label>
+                <input 
+                    type="number" 
+                    name="age" 
+                    id="height" 
+                    value={responses.age} 
+                    onChange={handleAgeChange}
+                    onKeyDown={preventEnterSubmit} 
+                />
+                <button id="height-vidare" onClick={nextPart}>Vidare</button>
             </main>
         </div>
     );
@@ -93,20 +79,17 @@ function QuizPartTwo({ nextPart, setResponses, responses }) {
             <main>
                 <input type="radio" name="goal" value="ned i vikt" className="radio-goals" id="goal-one" onClick={nextPart} onChange={handleAgeChange} checked={responses.goal === "ned i vikt"}/>
                 <label htmlFor="goal-one" id="goal">
-                    <img src={SlimBody} alt="goal" />
-                    <p>Gå ner i vikt</p>
+                    <p>Viktnedgång</p>
                 </label>
 
                 <input type="radio" name="goal" value="muskelmassa" className="radio-goals" id="goal-two" onClick={nextPart} onChange={handleAgeChange} checked={responses.goal === "muskelmassa"}/>
                 <label htmlFor="goal-two" id="goal">
-                    <img src={GainMuscle} alt="goal" />
-                    <p>Få muskelmassa</p>
+                    <p>Muskeluppbyggnad</p>
                 </label>
 
                 <input type="radio" name="goal" value="förbättra din fysik" className="radio-goals" id="goal-three" onClick={nextPart} onChange={handleAgeChange} checked={responses.goal === "förbättra din fysik"}/>
                 <label htmlFor="goal-three" id="goal">
-                    <img src={GetShredded} alt="goal"/>
-                    <p>Förbättra din fysik</p>
+                    <p>Fysisk underhåll</p>
                 </label>
 
             </main>
@@ -127,29 +110,20 @@ function QuizPartThree({ nextPart, setResponses, responses }) {
 
                 <input type="radio" name="body-type" value="ectomorph" className="radio-din-kroppstyp" id="kroppstyp-one" onClick={nextPart} onChange={handleAgeChange} checked={responses.bodyType === "ectomorph"} />
                 <label htmlFor="kroppstyp-one" id="din-kroppstyp">
-                    <aside>
-                        <h3>Ectomorph</h3>
-                        <p>Lite kroppsfett och muskler. Jag har svårt att gå upp i vikt.</p>
-                    </aside>
-                    <img src={BodyTypeEC} alt="Din Kroppstyp" />
+                    <h3>Ectomorph</h3>
+                    <p>Lite kroppsfett och muskler. Jag har svårt att gå upp i vikt.</p>
                 </label>
 
                 <input type="radio" name="body-type" value="mesomorph" className="radio-din-kroppstyp" id="kroppstyp-two" onClick={nextPart} onChange={handleAgeChange} checked={responses.bodyType === "mesomorph"} />
                 <label htmlFor="kroppstyp-two" id="din-kroppstyp">
-                    <aside>
-                        <h3>Mesomorph</h3>
-                        <p>Tappar lätt kroppsfett och får snabbt muskler.</p>
-                    </aside>
-                    <img src={BodyTypeME} alt="Din Kroppstyp" />
+                    <h3>Mesomorph</h3>
+                    <p>Tappar lätt kroppsfett och får snabbt muskler.</p>
                 </label>
 
                 <input type="radio" name="body-type" value="endomorph" className="radio-din-kroppstyp" id="kroppstyp-three" onClick={nextPart} onChange={handleAgeChange} checked={responses.bodyType === "endomorph"} />
                 <label htmlFor="kroppstyp-three" id="din-kroppstyp">
-                    <aside>
-                        <h3>Endomorph</h3>
-                        <p>Går lätt upp i vikt jämfört med andra kroppstyper.</p>
-                    </aside>
-                    <img src={BodyTypeEN} alt="Din Kroppstyp" />
+                    <h3>Endomorph</h3>
+                    <p>Går lätt upp i vikt jämfört med andra kroppstyper.</p>
                 </label>
 
                 <div>
@@ -175,36 +149,29 @@ function QuizPartFour({ nextPart, setResponses, responses }) {
     return (
         <div className="four">
             <h2>Välj Ett Problemområde</h2>
+            <p>Välj ett område som du hade viljat focusera extra på</p>
             <main>
-                <div>
 
-                    <input type="radio" name="problem-area" value="chest" className="radio-problem-area" id="problem-area-chest" onClick={nextPart} onChange={handleAgeChange} checked={responses.problemArea === "chest"} />
-                    <label htmlFor="problem-area-chest" id="problem-area">
-                        <p>Svag bröstkorg</p>
-                        <img src={Chest} alt="Problem area chest" />
-                    </label>
+                <input type="radio" name="problem-area" value="chest" className="radio-problem-area" id="problem-area-chest" onClick={nextPart} onChange={handleAgeChange} checked={responses.problemArea === "chest"} />
+                <label htmlFor="problem-area-chest" id="problem-area">
+                    <p>Bröstkorg</p>
+                </label>
 
-                    <input type="radio" name="problem-area" value="arms" className="radio-problem-area" id="problem-area-arms" onClick={nextPart} onChange={handleAgeChange} checked={responses.problemArea === "arms"} />
-                    <label htmlFor="problem-area-arms" id="problem-area">
-                        <p>Smala armar</p>
-                        <img src={Arms} alt="Problem area arms" />
-                    </label>
+                <input type="radio" name="problem-area" value="arms" className="radio-problem-area" id="problem-area-arms" onClick={nextPart} onChange={handleAgeChange} checked={responses.problemArea === "arms"} />
+                <label htmlFor="problem-area-arms" id="problem-area">
+                    <p>Armar</p>
+                </label>
 
-                </div>
-                <div>
-                    <input type="radio" name="problem-area" value="stomach" className="radio-problem-area" id="problem-area-tummy" onClick={nextPart} onChange={handleAgeChange} checked={responses.problemArea === "stomach"} />
-                    <label htmlFor="problem-area-tummy" id="problem-area">
-                        <p>tjock mage</p>
-                        <img src={Stomach} alt="Problem area tummy" />
-                    </label>
+                <input type="radio" name="problem-area" value="stomach" className="radio-problem-area" id="problem-area-tummy" onClick={nextPart} onChange={handleAgeChange} checked={responses.problemArea === "stomach"} />
+                <label htmlFor="problem-area-tummy" id="problem-area">
+                    <p>Mage</p>
+                </label>
 
-                    <input type="radio" name="problem-area" value="legs" className="radio-problem-area" id="problem-area-legs" onClick={nextPart} onChange={handleAgeChange} checked={responses.problemArea === "legs"} />
-                    <label htmlFor="problem-area-legs" id="problem-area">
-                        <p>Smala ben</p>
-                        <img src={Legs} alt="Problem area legs" />
-                    </label>
+                <input type="radio" name="problem-area" value="legs" className="radio-problem-area" id="problem-area-legs" onClick={nextPart} onChange={handleAgeChange} checked={responses.problemArea === "legs"} />
+                <label htmlFor="problem-area-legs" id="problem-area">
+                    <p>Ben</p>
+                </label>
 
-                </div>
             </main>
         </div>
     );
@@ -217,19 +184,19 @@ function QuizPartFive({ nextPart, setResponses, responses, preventEnterSubmit })
     };
 
     return (
-        <div className="five">
+        <div className="one">
+            <h2>Hur lång är du?</h2>
             <main>
-                <h2>Hur lång är du?</h2>
                 <label htmlFor="height">längd (cm)</label>
                 <input 
-                    type="text" 
-                    name="height" 
+                    type="number" 
+                    name="age" 
                     id="height" 
                     value={responses.height} 
                     onChange={handleHeightChange}
                     onKeyDown={preventEnterSubmit} 
                 />
-                <h3 id="height-vidare" onClick={nextPart}>Vidare</h3>
+                <button id="height-vidare" onClick={nextPart}>Vidare</button>
             </main>
         </div>
     );
@@ -246,18 +213,19 @@ function QuizPartSix({ nextPart, setResponses, responses, preventEnterSubmit }) 
     };
 
     return (
-        <div className="six">
+        <div className="one">
+            <h2>Vad är din nuvarande vikt och målvikt?</h2>
             <main>
-                <h2>Vad är din nuvarande vikt och målvikt?</h2>
                 <label htmlFor="vikt">Nuvarande (Kg)</label>
                 <input 
                     type="text" 
                     name="vikt" 
                     id="vikt" 
-                    value={responses.currentWeight}
+                    value={responses.currentWeight} 
                     onChange={handleCurrentWeightChange}
-                    onKeyDown={preventEnterSubmit}  
+                    onKeyDown={preventEnterSubmit} 
                 />
+                <br/>
                 <label htmlFor="målvikt">Målvikt (Kg)</label>
                 <input 
                     type="text" 
@@ -267,7 +235,8 @@ function QuizPartSix({ nextPart, setResponses, responses, preventEnterSubmit }) 
                     onChange={handleTargetWeightChange}
                     onKeyDown={preventEnterSubmit}   
                 />
-                <h3 id="weight-vidare" onClick={nextPart}>Vidare</h3>
+                <br/>
+                <button onClick={nextPart}>Vidare</button>
             </main>
         </div>
     );
@@ -281,34 +250,32 @@ function QuizPartSeven({ nextPart, setResponses, responses }) {
 
     return (
         <div className="seven">
-            <main>
-                <h2>Hur ofta vill du träna per vecka?</h2>
-                <p>allt under 3 kommer att påverka ditt förväntade resultat</p>
-                <aside>
+            <h2>Hur ofta vill du träna per vecka?</h2>
+            <p>allt under 3 kommer att påverka ditt förväntade resultat</p>
+            <aside>
 
-                    <input type="radio" name="gng-per-vecka" value="1" className="antal-gng-per-vecka" id="one" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "1"} />
-                    <label htmlFor="one" id="antal-gng-per-vecka">1</label>
+                <input type="radio" name="gng-per-vecka" value="1" className="antal-gng-per-vecka" id="one" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "1"} />
+                <label htmlFor="one" id="antal-gng-per-vecka">1</label>
 
-                    <input type="radio" name="gng-per-vecka" value="2" className="antal-gng-per-vecka" id="two" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "2"} />
-                    <label htmlFor="two" id="antal-gng-per-vecka">2</label>
+                <input type="radio" name="gng-per-vecka" value="2" className="antal-gng-per-vecka" id="two" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "2"} />
+                <label htmlFor="two" id="antal-gng-per-vecka">2</label>
 
-                    <input type="radio" name="gng-per-vecka" value="3" className="antal-gng-per-vecka" id="three" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "3"} />
-                    <label htmlFor="three" id="antal-gng-per-vecka">3</label>
+                <input type="radio" name="gng-per-vecka" value="3" className="antal-gng-per-vecka" id="three" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "3"} />
+                <label htmlFor="three" id="antal-gng-per-vecka">3</label>
 
-                    <input type="radio" name="gng-per-vecka" value="4" className="antal-gng-per-vecka" id="four" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "4"} />
-                    <label htmlFor="four" id="antal-gng-per-vecka">4</label>
+                <input type="radio" name="gng-per-vecka" value="4" className="antal-gng-per-vecka" id="four" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "4"} />
+                <label htmlFor="four" id="antal-gng-per-vecka">4</label>
 
-                    <input type="radio" name="gng-per-vecka" value="5" className="antal-gng-per-vecka" id="five" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "5"} />
-                    <label htmlFor="five" id="antal-gng-per-vecka">5</label>
+                <input type="radio" name="gng-per-vecka" value="5" className="antal-gng-per-vecka" id="five" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "5"} />
+                <label htmlFor="five" id="antal-gng-per-vecka">5</label>
 
-                    <input type="radio" name="gng-per-vecka" value="6" className="antal-gng-per-vecka" id="six" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "6"} />
-                    <label htmlFor="six" id="antal-gng-per-vecka">6</label>
+                <input type="radio" name="gng-per-vecka" value="6" className="antal-gng-per-vecka" id="six" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "6"} />
+                <label htmlFor="six" id="antal-gng-per-vecka">6</label>
 
-                    <input type="radio" name="gng-per-vecka" value="7" className="antal-gng-per-vecka" id="seven" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "7"} />
-                    <label htmlFor="seven" id="antal-gng-per-vecka">7</label>
+                <input type="radio" name="gng-per-vecka" value="7" className="antal-gng-per-vecka" id="seven" onClick={nextPart} onChange={handleTrainingFrequencyChange} checked={responses.trainingFrequency === "7"} />
+                <label htmlFor="seven" id="antal-gng-per-vecka">7</label>
 
-                </aside>
-            </main>
+            </aside>
         </div>
     );
 }
@@ -321,60 +288,33 @@ function QuizPartEight({ nextPart, setResponses, responses }) {
 
     return (
         <div className="eight">
-            <main>
-                <h2>har du något av följande tillstånd?</h2>
-                <div>
-                    <aside>
+            <h2>Har du något av följande tillstånd?</h2>
+            <aside>
 
-                        <input type="radio" name="sjukdom" value="heart" className="foljande-tillstand" id="sjukdom-heart" onClick={nextPart} onChange={handleHealthConditionChange} checked={responses.healthCondition === "heart"} />
-                        <label htmlFor="sjukdom-heart" id="foljande-tillstand">Hjärtsjukdom</label>
-                        
-                        <input type="radio" name="sjukdom" value="skolosis" className="foljande-tillstand" id="sjukdom-skolosis" onClick={nextPart} onChange={handleHealthConditionChange} checked={responses.healthCondition === "skolosis"} />
-                        <label htmlFor="sjukdom-skolosis" id="foljande-tillstand">Svår skolios</label>
+                <input type="radio" name="sjukdom" value="heart" className="foljande-tillstand" id="sjukdom-heart" onClick={nextPart} onChange={handleHealthConditionChange} checked={responses.healthCondition === "heart"} />
+                <label htmlFor="sjukdom-heart" id="foljande-tillstand">Hjärtsjukdom</label>
+                
+                <input type="radio" name="sjukdom" value="skolosis" className="foljande-tillstand" id="sjukdom-skolosis" onClick={nextPart} onChange={handleHealthConditionChange} checked={responses.healthCondition === "skolosis"} />
+                <label htmlFor="sjukdom-skolosis" id="foljande-tillstand">Svår skolios</label>
 
-                        <input type="radio" name="sjukdom" value="spinal" className="foljande-tillstand" id="sjukdom-Spinal" onClick={nextPart} onChange={handleHealthConditionChange} checked={responses.healthCondition === "spinal"} />
-                        <label htmlFor="sjukdom-Spinal" id="foljande-tillstand">Spinal skada</label>
+                <input type="radio" name="sjukdom" value="spinal" className="foljande-tillstand" id="sjukdom-Spinal" onClick={nextPart} onChange={handleHealthConditionChange} checked={responses.healthCondition === "spinal"} />
+                <label htmlFor="sjukdom-Spinal" id="foljande-tillstand">Spinal skada</label>
 
-                        <input type="radio" name="sjukdom" value="malign" className="foljande-tillstand" id="sjukdom-malign" onClick={nextPart} onChange={handleHealthConditionChange} checked={responses.healthCondition === "malign"} />
-                        <label htmlFor="sjukdom-malign" id="foljande-tillstand">Godartad eller malign tumör</label>
+                <input type="radio" name="sjukdom" value="malign" className="foljande-tillstand" id="sjukdom-malign" onClick={nextPart} onChange={handleHealthConditionChange} checked={responses.healthCondition === "malign"} />
+                <label htmlFor="sjukdom-malign" id="foljande-tillstand">Godartad eller malign tumör</label>
 
-                        <input type="radio" name="sjukdom" value="hypertoni" className="foljande-tillstand" id="sjukdom-Hypertoni" onClick={nextPart} onChange={handleHealthConditionChange} checked={responses.healthCondition === "hypertoni"} />
-                        <label htmlFor="sjukdom-Hypertoni" id="foljande-tillstand">Hypertoni</label>
+                <input type="radio" name="sjukdom" value="hypertoni" className="foljande-tillstand" id="sjukdom-Hypertoni" onClick={nextPart} onChange={handleHealthConditionChange} checked={responses.healthCondition === "hypertoni"} />
+                <label htmlFor="sjukdom-Hypertoni" id="foljande-tillstand">Hypertoni</label>
 
-                        <input type="radio" name="sjukdom" value="inget" className="foljande-tillstand" id="sjukdom-Inget" onClick={nextPart} onChange={handleHealthConditionChange} checked={responses.healthCondition === "inget"} />
-                        <label htmlFor="sjukdom-Inget" id="foljande-tillstand" className="inget">Inget</label>
+                <input type="radio" name="sjukdom" value="inget" className="foljande-tillstand" id="sjukdom-Inget" onClick={nextPart} onChange={handleHealthConditionChange} checked={responses.healthCondition === "inget"} />
+                <label htmlFor="sjukdom-Inget" id="foljande-tillstand" className="inget">Inget av följande</label>
 
-                    </aside>
-                    <img src={HealthStatus} alt="Health Status" />
-                </div>
-            </main>
+            </aside>
         </div>
     );
 }
 
 function QuizPartNine({ nextPart, setResponses, responses }) {
-
-    const handleTrainingLocationChange = (e) => {
-        setResponses({ ...responses, trainingLocation: e.target.value });
-    };
-
-    return (
-        <div className="nine">
-            <main>
-                <h2>Välj platsen för dina träningspass</h2>
-
-                <input type="radio" name="home-or-gym" className="home-or-gym" value="hemma" id="hem" onClick={nextPart} onChange={handleTrainingLocationChange} checked={responses.trainingLocation === "hemma"} />
-                <label htmlFor="hem" id="training-place">Hemma <img src={AtHome} alt="home"/></label>
-
-                <input type="radio" name="home-or-gym" className="home-or-gym" value="gym" id="gym" onClick={nextPart} onChange={handleTrainingLocationChange} checked={responses.trainingLocation === "gym"} />
-                <label htmlFor="gym" id="training-place">gym <img src={AtGym} alt="gym" /></label>
-
-            </main>
-        </div>
-    );
-}
-
-function QuizPartTen({ nextPart, setResponses, responses }) {
 
     const handleEqiptmentChange = (e) => {
         setResponses({ ...responses, equipment: e.target.value });
@@ -382,9 +322,8 @@ function QuizPartTen({ nextPart, setResponses, responses }) {
 
     return (
         <div className="ten">
+            <h2>Vilken typ av utrustning har du tillgång till?</h2>
             <main>
-                <h2>Vilken typ av utrustning har du tillgång till?</h2>
-
                 <input type="radio" name="utrustning" className="utrustning" value="ingen utrustning" id="utrustning-one" onClick={nextPart} onChange={handleEqiptmentChange} checked={responses.equipment === "ingen utrustning"} />
                 <label htmlFor="utrustning-one" id="utrustning">
                     <h3>ingen utrustning</h3>
@@ -401,13 +340,12 @@ function QuizPartTen({ nextPart, setResponses, responses }) {
                     <h3>full utrustning</h3>
                     <p>utrustning som finns i de flesta gym i sverige.</p>
                 </label>
-
             </main>
         </div>
     );
 }
 
-function RegisterToGetTrainingPlan({ setResponses, responses }) {
+function RegisterToGetTrainingPlan({ setResponses, responses, preventEnterSubmit }) {
 
     const handleName = (e) => {
         setResponses({ ...responses, name: e.target.value });
@@ -426,24 +364,51 @@ function RegisterToGetTrainingPlan({ setResponses, responses }) {
     };
 
     return (
-        <div className="eleven">
+        <div className="one">
+            <h2>Skapa ett Gratis Konto för att få tillgång till din Träningsplan!</h2>
             <main>
-                <h2>Skapa ett <span>Gratis Konto</span> för att få tillgång till <span>din Träningsplan!</span></h2>
-
                 <label htmlFor="name">Namn</label>
-                <input type="text" name="name" id="name" onChange={handleName} />
-
+                <input 
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                    value={responses.name} 
+                    onChange={handleName}
+                    onKeyDown={preventEnterSubmit} 
+                />
+                <br/>
                 <label htmlFor="email">E-mail</label>
-                <input type="email" name="email" id="email" onChange={handleEmail} />
-
-                <label htmlFor="telefonnummer">Telefonnummer -<span> Frivilligt, men rekommenderat</span></label>
-                <input type="text" name="telefonnummer" id="telefonnummer" placeholder="SV +46" onChange={handlePhonenumber} />
-
+                <input 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    value={responses.email}
+                    onChange={handleEmail}
+                    onKeyDown={preventEnterSubmit}   
+                />
+                <br/>
+                <label htmlFor="telefonnummer">Telefonnummer</label>
+                <input 
+                    type="text" 
+                    name="telefonnummer" 
+                    id="telefonnummer"
+                    placeholder="SV +46" 
+                    value={responses.phonenumber}
+                    onChange={handlePhonenumber}
+                    onKeyDown={preventEnterSubmit}   
+                />
+                <br/>
                 <label htmlFor="pass">Lösenord</label>
-                <input type="password" name="pass" id="pass" onChange={handlePassword} />
-
-                <button type="submit" id="sumbit_btn">Tillverka Konto</button>
-                <p>Genom att fortsätta godkänner du Scandifits <a href="/terms_of_use">Användarvillkor</a> och <a href="/returpolicy">Returpolicy</a>.</p>
+                <input 
+                    type="password" 
+                    name="pass" 
+                    id="pass"
+                    value={responses.password}
+                    onChange={handlePassword}
+                    onKeyDown={preventEnterSubmit}   
+                />
+                <br/>
+                <button type='submit'>Tillverka Konto</button>
             </main>
         </div>
     );
@@ -477,7 +442,6 @@ function TrainingPlanQuiz() {
         targetWeight: '',
         trainingFrequency: '',
         healthCondition: '',
-        trainingLocation: '',
         equipment: '',
         name: '',
         email: '',
@@ -522,7 +486,6 @@ function TrainingPlanQuiz() {
                     targetWeight: data.targetWeight,
                     trainingFrequency: data.trainingFrequency,
                     healthCondition: data.healthCondition,
-                    trainingLocation: data.trainingLocation,
                     equipment: data.equipment,
                 }));
             }
@@ -537,7 +500,7 @@ function TrainingPlanQuiz() {
     }; 
 
     const nextPart = () => {
-        if (currentPart < 10) {
+        if (currentPart < 9) {
             setCurrentPart(currentPart + 1);
         }
     };
@@ -551,7 +514,7 @@ function TrainingPlanQuiz() {
     const renderCurrentPart = () => {
         switch (currentPart) {
             case 0:
-                return <QuizPartOne nextPart={nextPart} setResponses={setResponses} responses={responses} />;
+                return <QuizPartOne nextPart={nextPart} setResponses={setResponses} responses={responses} preventEnterSubmit={preventEnterSubmit}  />;
             case 1:
                 return <QuizPartTwo nextPart={nextPart} setResponses={setResponses} responses={responses} />;
             case 2:
@@ -569,9 +532,7 @@ function TrainingPlanQuiz() {
             case 8:
                 return <QuizPartNine nextPart={nextPart} setResponses={setResponses} responses={responses} />;
             case 9:
-                return <QuizPartTen nextPart={nextPart} setResponses={setResponses} responses={responses} />;
-            case 10:
-                return isAuthenticated ? <GetTrainingPlan /> : <RegisterToGetTrainingPlan setResponses={setResponses} responses={responses} />;
+                return isAuthenticated ? <GetTrainingPlan /> : <RegisterToGetTrainingPlan setResponses={setResponses} responses={responses} preventEnterSubmit={preventEnterSubmit} />;
             default:
                 return null;
         }
@@ -605,11 +566,11 @@ function TrainingPlanQuiz() {
             <section className="quiz">
                 <form onSubmit={handleSubmit} id="form-quiz">
                     {/* bar */}
-                    <h2 id="progress-count">{currentPart}/10</h2>
+                    <h2 id="progress-count">{currentPart}/9</h2>
                     <nav>
                         <img src={LeftArrow} alt="LeftArrow" id="go-backwards" onClick={previousPart} />
                         <div>
-                            <div id="progress-bar" style={{ width: `${currentPart * 10}%`}}></div>
+                            <div id="progress-bar" style={{ width: `${currentPart * 11.1111111111}%`}}></div>
                         </div>
                         <img src={RightArrow} alt="RightArrow" id="go-forward" onClick={nextPart} />
                     </nav>

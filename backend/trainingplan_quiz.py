@@ -67,7 +67,6 @@ def tq_completed():
     targetWeight = data.get('targetWeight')
     trainingFrequency = data.get('trainingFrequency')
     healthCondition = data.get('healthCondition')
-    trainingLocation = data.get('trainingLocation')
     equipment = data.get('equipment')
     # For Login 
     name = data.get('name')
@@ -94,21 +93,19 @@ def tq_completed():
         return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Träningsfrekvens', 'index': 6})
     elif not healthCondition:
         return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Hälsotillstånd', 'index': 7})
-    elif not trainingLocation:
-        return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Träningsplats', 'index': 8})
     elif not equipment:
-        return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Utrustning', 'index': 9})
+        return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Utrustning', 'index': 8})
     
     # if they are not logged in
     if 'user_id' not in session:
         if not name:
-            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Namn', 'index': 10})
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Namn', 'index': 9})
         elif not email:
-            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Email', 'index': 10})
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Email', 'index': 9})
         elif not phonenumber:
-            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Telefonnummer', 'index': 10})
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Telefonnummer', 'index': 9})
         elif not password:
-            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Lösenord', 'index': 10})
+            return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Lösenord', 'index': 9})
 
 
     #Make Database Connection
@@ -126,7 +123,7 @@ def tq_completed():
                 {
                     'success': False,
                     'message': f'Konot Med [{email}] Existerar Redan',
-                    'index': 10
+                    'index': 9
                 }
             )
         else:
@@ -147,7 +144,7 @@ def tq_completed():
                 db.commit()
         
             # Insert Values Into Trainingplan
-            cursor.execute('insert into trainingplan (uid, age, goal, body_type, problem_area, height, vikt, malvikt, gng_per_vecka, sjukdom, home_or_gym, utrustning) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (uid, age, goal, bodyType, problemArea, height, currentWeight, targetWeight, trainingFrequency, healthCondition, trainingLocation, equipment))
+            cursor.execute('insert into trainingplan (uid, age, goal, body_type, problem_area, height, vikt, malvikt, gng_per_vecka, sjukdom, utrustning) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (uid, age, goal, bodyType, problemArea, height, currentWeight, targetWeight, trainingFrequency, healthCondition, equipment))
             db.commit()
 
             return jsonify(
@@ -167,11 +164,11 @@ def tq_completed():
 
         if plan:
             #insert New Values Into trainingplan table
-            cursor.execute('UPDATE trainingplan SET age = %s, goal = %s, body_type = %s, problem_area = %s, height = %s, vikt = %s, malvikt = %s, gng_per_vecka = %s, sjukdom = %s, home_or_gym = %s, utrustning = %s WHERE uid = %s', (age, goal, bodyType, problemArea, height, currentWeight, targetWeight, trainingFrequency, healthCondition, trainingLocation, equipment, uid))
+            cursor.execute('UPDATE trainingplan SET age = %s, goal = %s, body_type = %s, problem_area = %s, height = %s, vikt = %s, malvikt = %s, gng_per_vecka = %s, sjukdom = %s, utrustning = %s WHERE uid = %s', (age, goal, bodyType, problemArea, height, currentWeight, targetWeight, trainingFrequency, healthCondition, equipment, uid))
             db.commit()
         else:
             # Insert Values Into Trainingplan
-            cursor.execute('insert into trainingplan (uid, age, goal, body_type, problem_area, height, vikt, malvikt, gng_per_vecka, sjukdom, home_or_gym, utrustning) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (uid, age, goal, bodyType, problemArea, height, currentWeight, targetWeight, trainingFrequency, healthCondition, trainingLocation, equipment))
+            cursor.execute('insert into trainingplan (uid, age, goal, body_type, problem_area, height, vikt, malvikt, gng_per_vecka, sjukdom, utrustning) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (uid, age, goal, bodyType, problemArea, height, currentWeight, targetWeight, trainingFrequency, healthCondition, equipment))
             db.commit()
         
         return jsonify(

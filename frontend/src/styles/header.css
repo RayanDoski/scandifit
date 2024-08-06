@@ -20,6 +20,11 @@
     flex: 1;
 }
 
+.HeaderForWebsite > .LogoContainer > .LogoLink {
+    display: flex;
+    align-items: center;
+}
+
 .HeaderForWebsite > .LogoContainer > .LogoLink > .Logo {
     width: 200px;
     cursor: pointer;
@@ -149,6 +154,22 @@
         display: block;
         width: 30px;
         cursor: pointer;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    .HeaderForWebsite {
+        padding: 15px 20px;
+    }
+
+    .HeaderForWebsite > .ButtonContainer .Hamburgermenu {
+        width: 25px;
+    }
+
+    .HeaderForWebsite > .LogoContainer > .LogoLink > .Logo {
+        width: 125px;
     }
 
 }

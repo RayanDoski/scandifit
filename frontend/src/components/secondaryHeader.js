@@ -15,6 +15,8 @@ function SecondaryHeader() {
 
     const activeStyle = {
         backgroundColor: 'var(--green)', // Define your active style
+        color: 'var(--white)',
+        transition: '.5s all'
     };
 
     return (
@@ -25,31 +27,12 @@ function SecondaryHeader() {
             <ul className={menu ? 'openProfileLinks' : ''}>
                 <li>
                     <NavLink 
-                        to="/profile/myprofile" 
-                        style={({ isActive }) => isActive ? activeStyle : null}
-                        className='profileLinks'>
-                        Min Information
-                    </NavLink>
-                </li>
-                <div className='line'></div>
-                <li>
-                    <NavLink 
-                        to="/profile/exercises/alla" 
-                        style={({ isActive }) => isActive ? activeStyle : null}
-                        className='profileLinks'>
-                        Övningar
-                    </NavLink>
-                </li>
-                <div className='line'></div>
-                <li>
-                    <NavLink 
                         to="/profile/trainingplan" 
                         style={({ isActive }) => isActive ? activeStyle : null}
                         className='profileLinks'>
                         Träningsplan
                     </NavLink>
                 </li>
-                <div className='line'></div>
                 <li>
                     <NavLink 
                         to="/profile/sleepplan" 
@@ -58,13 +41,28 @@ function SecondaryHeader() {
                         Sömnplan
                     </NavLink>
                 </li>
-                <div className='line'></div>
                 <li>
                     <NavLink 
                         to="/profile/dietplan" 
                         style={({ isActive }) => isActive ? activeStyle : null}
                         className='profileLinks'>
                         Kostplan
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                        to="/profile/exercises/alla" 
+                        style={({ isActive }) => isActive ? activeStyle : null}
+                        className='profileLinks'>
+                        Övningar
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                        to="/profile/myprofile" 
+                        style={({ isActive }) => isActive ? activeStyle : null}
+                        className='profileLinks'>
+                        Profil
                     </NavLink>
                 </li>
             </ul>
