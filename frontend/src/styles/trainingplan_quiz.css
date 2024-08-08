@@ -757,6 +757,101 @@
 
 }
 
+/* Eleven Extra Question */
+
+.quiz > form > .ElevenExtraQuestion {
+    position: relative; 
+    top: -25px;
+    opacity: 0;
+    animation: slideIn 0.5s forwards;
+}
+
+.quiz > form > .ElevenExtraQuestion > h3 {
+    margin: 30px 0px 0px 0px;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+}
+
+.quiz > form > .ElevenExtraQuestion > h2 {
+    font-size: 42px;
+    text-align: center;
+    margin: 0px 0px 30px 0px;
+}
+
+.quiz > form > .ElevenExtraQuestion > main {
+    width: 500px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.quiz > form > .ElevenExtraQuestion > main > input {
+    display: none;
+}
+
+.quiz > form > .ElevenExtraQuestion > main > input:checked + label {
+    border: 5px solid var(--green);
+}
+
+.quiz > form > .ElevenExtraQuestion > main > label {
+    border: 1px solid var(--black);
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .5s all;
+}
+
+.quiz > form > .ElevenExtraQuestion > main > label > h3 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 400;
+    color: var(--black);
+}
+
+.quiz > form > .ElevenExtraQuestion > main > label > p {
+    font-size: 16px;
+    margin: 0;
+    font-weight: 300;
+    color: var(--black);
+}
+
+.quiz > form > .ElevenExtraQuestion > main > label:hover {
+    background-color: var(--black);
+}
+
+.quiz > form > .ElevenExtraQuestion > main > label:hover > p,
+.quiz > form > .ElevenExtraQuestion > main > label:hover > h3 {
+    color: var(--white);
+}
+
+@media screen and (max-width: 850px) {
+
+    .quiz > form > .ElevenExtraQuestion > h2 {
+        font-size: 38px;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    .quiz > form > .ElevenExtraQuestion > h2 {
+        font-size: 34px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .quiz > form > .ElevenExtraQuestion > main {
+        width: 100%;
+    }
+
+}
+
 /* quiz eleven */
 
 .quiz > form > .eleven {

@@ -345,6 +345,61 @@ function QuizPartNine({ nextPart, setResponses, responses }) {
     );
 }
 
+function QuizPartExtraQuestion({ nextPart, setResponses, responses }) {
+    
+    const handleSupplementsChange = (e) => {
+        setResponses({ ...responses, supplement: e.target.value });
+    };
+
+    return (
+        <div className="ElevenExtraQuestion">
+            <h3>Extra Fråga</h3>
+            <h2>Vilken av följande kosttillskott föredrar du?</h2>
+            <main>
+                <input type="radio" name="supplement" value="multivitamin" id="multivitamin" onClick={nextPart} onChange={handleSupplementsChange} checked={responses.supplement === "multivitamin"} />
+                <label htmlFor="multivitamin">
+                    <h3>Multivitamin</h3>
+                </label>
+                
+                <input type="radio" name="supplement" value="omega" id="omega" onClick={nextPart} onChange={handleSupplementsChange} checked={responses.supplement === "omega"} />
+                <label htmlFor="omega">
+                    <h3>Omega-3</h3>
+                </label>
+
+                <input type="radio" name="supplement" value="VitaminD" id="VitaminD" onClick={nextPart} onChange={handleSupplementsChange} checked={responses.supplement === "VitaminD"} />
+                <label htmlFor="VitaminD">
+                    <h3>Vitamin D</h3>
+                </label>
+
+                <input type="radio" name="supplement" value="ProteinPulver" id="ProteinPulver" onClick={nextPart} onChange={handleSupplementsChange} checked={responses.supplement === "ProteinPulver"} />
+                <label htmlFor="ProteinPulver">
+                    <h3>Protein Pulver</h3>
+                </label>
+
+                <input type="radio" name="supplement" value="Creatine" id="Creatine" onClick={nextPart} onChange={handleSupplementsChange} checked={responses.supplement === "Creatine"} />
+                <label htmlFor="Creatine">
+                    <h3>Creatine</h3>
+                </label>
+
+                <input type="radio" name="supplement" value="Magnesium" id="Magnesium" onClick={nextPart} onChange={handleSupplementsChange} checked={responses.supplement === "Magnesium"} />
+                <label htmlFor="Magnesium">
+                    <h3>Magnesium</h3>
+                </label>
+
+                <input type="radio" name="supplement" value="Collagen" id="Collagen" onClick={nextPart} onChange={handleSupplementsChange} checked={responses.supplement === "Collagen"} />
+                <label htmlFor="Collagen">
+                    <h3>Collagen</h3>
+                </label>
+
+                <input type="radio" name="supplement" value="none" id="none" onClick={nextPart} onChange={handleSupplementsChange} checked={responses.supplement === "none"} />
+                <label htmlFor="none">
+                    <h3>Inget av ovanstående</h3>
+                </label>
+            </main>
+        </div>
+    );
+}
+
 function RegisterToGetTrainingPlan({ setResponses, responses, preventEnterSubmit }) {
 
     const handleName = (e) => {
@@ -443,6 +498,7 @@ function TrainingPlanQuiz() {
         trainingFrequency: '',
         healthCondition: '',
         equipment: '',
+        supplement: '',
         name: '',
         email: '',
         phonenumber: '',
@@ -487,6 +543,7 @@ function TrainingPlanQuiz() {
                     trainingFrequency: data.trainingFrequency,
                     healthCondition: data.healthCondition,
                     equipment: data.equipment,
+                    supplement: data.supplement,
                 }));
             }
         };
@@ -500,7 +557,7 @@ function TrainingPlanQuiz() {
     }; 
 
     const nextPart = () => {
-        if (currentPart < 9) {
+        if (currentPart < 10) {
             setCurrentPart(currentPart + 1);
         }
     };
@@ -532,6 +589,8 @@ function TrainingPlanQuiz() {
             case 8:
                 return <QuizPartNine nextPart={nextPart} setResponses={setResponses} responses={responses} />;
             case 9:
+                return <QuizPartExtraQuestion nextPart={nextPart} setResponses={setResponses} responses={responses} />;
+            case 10:
                 return isAuthenticated ? <GetTrainingPlan /> : <RegisterToGetTrainingPlan setResponses={setResponses} responses={responses} preventEnterSubmit={preventEnterSubmit} />;
             default:
                 return null;
@@ -566,11 +625,11 @@ function TrainingPlanQuiz() {
             <section className="quiz">
                 <form onSubmit={handleSubmit} id="form-quiz">
                     {/* bar */}
-                    <h2 id="progress-count">{currentPart}/9</h2>
+                    <h2 id="progress-count">{currentPart}/10</h2>
                     <nav>
                         <img src={LeftArrow} alt="LeftArrow" id="go-backwards" onClick={previousPart} />
                         <div>
-                            <div id="progress-bar" style={{ width: `${currentPart * 11.1111111111}%`}}></div>
+                            <div id="progress-bar" style={{ width: `${currentPart * 10}%`}}></div>
                         </div>
                         <img src={RightArrow} alt="RightArrow" id="go-forward" onClick={nextPart} />
                     </nav>
