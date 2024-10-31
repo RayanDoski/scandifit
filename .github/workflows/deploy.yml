@@ -29,13 +29,18 @@ jobs:
         run: |
           cd frontend
           CI=false npm run build
-          cp .nojekyll build/
+          touch build/.nojekyll
         env:
           CI: false
 
+      - name: Copy root .nojekyll
+        run: |
+          touch .nojekyll
+          cp .nojekyll frontend/build/
+
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          folder: frontend/build
-          branch: gh-pages
-          clean: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./frontend/build
+          enable_jekyll: false
