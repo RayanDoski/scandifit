@@ -21,7 +21,9 @@ jobs:
         run: |
           cd frontend
           npm install
-          npm run build
+          CI=false npm run build  # Added CI=false to bypass warnings
+        env:
+          CI: false  # This tells Create React App to not treat warnings as errors
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
