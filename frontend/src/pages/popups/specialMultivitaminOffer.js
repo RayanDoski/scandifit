@@ -8,13 +8,15 @@ import '../../styles/specialMultivitaminOffer.css';
 // Importing Images
 import ProductOfferPicture from '../../images/product-picture/multivitaminHeroImg.jpg'
 
+const API_BASE_URL = process.env.REACT_APP_API_URL
+
 function SpecialMultivitaminOfferPopup() {
 
     const [showPopup, setShowPopup] = useState(false)
 
     useEffect(() => {
         const checkAuth = async () => {
-            const response = await fetch('/api/protected', {
+            const response = await fetch(`${API_BASE_URL}/api/protected`, {
                 method: 'GET',
                 credentials: 'include'  // Include credentials (cookies)
             });

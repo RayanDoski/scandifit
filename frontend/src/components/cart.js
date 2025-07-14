@@ -11,6 +11,8 @@ import LoadingScreenFullScreen from './loadingScreenFullScreen';
 import wastebasket from '../images/icons/bin.png'; 
 import Postnord from '../images/postnord.png'
 
+const API_BASE_URL = process.env.REACT_APP_API_URL
+
 function CartSlideInMenu({isCartOpen, setIsCartOpen, products, setProducts}) {
 
     const [totalPrice, setTotalPrice] = useState(0);
@@ -35,7 +37,7 @@ function CartSlideInMenu({isCartOpen, setIsCartOpen, products, setProducts}) {
     };
 
     const GetCartInfo = async () => {
-        const response = await fetch('/api/GetCartInfo', {
+        const response = await fetch(`${API_BASE_URL}/api/GetCartInfo`, {
             method: 'POST',
             credentials: 'include'  // Include credentials (cookies)
         });
@@ -75,7 +77,7 @@ function CartSlideInMenu({isCartOpen, setIsCartOpen, products, setProducts}) {
     }, [products]);
 
     const deleteItem = async (index) => {
-        const response = await fetch('/api/deleteFromCart', {
+        const response = await fetch(`${API_BASE_URL}/api/deleteFromCart`, {
             method: 'POST',
             credentials: 'include',  // Include credentials (cookies)
             headers: {
@@ -95,7 +97,7 @@ function CartSlideInMenu({isCartOpen, setIsCartOpen, products, setProducts}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoadingCart(true)
-        const response = await fetch('/api/create_checkout_session', {
+        const response = await fetch(`${API_BASE_URL}/api/create_checkout_session`, {
             method: 'POST',
             credentials: 'include',
             headers: {

@@ -21,6 +21,8 @@ import Koffein from '../../images/icons/koffein.png';
 import GoodSleep from '../../images/icons/good_sleep.png';
 import Insomnia from '../../images/icons/insomnia.png';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL
+
 function QuizPartOne({ nextPart, setResponses, responses, preventEnterSubmit }) {
 
     const handleWakeUpTimeChange = (e) => {
@@ -321,7 +323,7 @@ function SleepPlanQuiz() {
     // If they have a sleepplan get the info 
     useEffect(() => {
         const checkAuth = async () => {
-            const response = await fetch('http://127.0.0.1:8000/api/sleepplan/get/info', {
+            const response = await fetch(`${API_BASE_URL}/api/sleepplan/get/info`, {
                 method: 'POST',
                 credentials: 'include'  // Include credentials (cookies)
             });
@@ -390,7 +392,7 @@ function SleepPlanQuiz() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
-        const response = await fetch('/api/sleepplan/quiz/completed', {
+        const response = await fetch(`${API_BASE_URL}/api/sleepplan/quiz/completed`, {
             method: 'POST',
             credentials: 'include',
             headers: {

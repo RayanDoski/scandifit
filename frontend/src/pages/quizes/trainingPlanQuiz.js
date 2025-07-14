@@ -42,6 +42,8 @@ import HealthStatus from '../../images/quiz/health-status.png';
 import AtHome from '../../images/quiz/home.png';
 import AtGym from '../../images/quiz/gym.png';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL
+
 function QuizPartOne({ nextPart, setResponses, responses, preventEnterSubmit }) {
 
     const handleAgeChange = (e) => {
@@ -509,7 +511,7 @@ function TrainingPlanQuiz() {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const response = await fetch('/api/protected', {
+                const response = await fetch(`${API_BASE_URL}/api/protected`, {
                     method: 'GET',
                     credentials: 'include'  // Include credentials (cookies)
                 });
@@ -525,7 +527,7 @@ function TrainingPlanQuiz() {
     // If they have a Trainingplan get the info 
     useEffect(() => {
         const checkAuth = async () => {
-            const response = await fetch('/api/trainingplan/get/info', {
+            const response = await fetch(`${API_BASE_URL}/api/trainingplan/get/info`, {
                 method: 'POST',
                 credentials: 'include'  // Include credentials (cookies)
             });
@@ -601,7 +603,7 @@ function TrainingPlanQuiz() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
-        const response = await fetch('/api/trainingplan/quiz/completed', {
+        const response = await fetch(`${API_BASE_URL}/api/trainingplan/quiz/completed`, {
             method: 'POST',
             credentials: 'include',
             headers: {

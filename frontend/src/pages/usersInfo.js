@@ -15,6 +15,7 @@ import SecondaryHeader from '../components/secondaryHeader.js';
 // Importing Loading Screen
 import loadingScreenFullScreen from '../components/loadingScreenFullScreen.js';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL
 
 function UserInfo() {
 
@@ -41,7 +42,7 @@ function UserInfo() {
     useEffect(() => {
         setLoading(true)
         const checkAuth = async () => {
-            const response = await fetch('/api/profile/information', {
+            const response = await fetch(`${API_BASE_URL}/api/profile/information`, {
                 method: 'POST',
                 credentials: 'include'  // Include credentials (cookies)
             });
@@ -72,7 +73,7 @@ function UserInfo() {
         // Updating the information
         const updateUserInfo = async () => {
             setLoading(true)
-            const response = await fetch('/api/profile/information/update', {
+            const response = await fetch(`${API_BASE_URL}/api/profile/information/update`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -94,7 +95,7 @@ function UserInfo() {
 
     const handleLogout = async () => {
         setLoading(true)
-        const response = await fetch('/api/logout', {
+        const response = await fetch(`${API_BASE_URL}/api/logout`, {
             method: 'POST',
             credentials: 'include'
         });

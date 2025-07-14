@@ -12,6 +12,8 @@ import NotLiAuthCheck from '../loginSystem/notLiAuthCheck.js';
 
 import SecondaryHeader from '../../components/secondaryHeader.js'
 
+const API_BASE_URL = process.env.REACT_APP_API_URL
+
 function IfScheduleDoesNotExist() {
     return (
         <section className="no-trainingplan">
@@ -36,7 +38,7 @@ function TheTrainingPlan() {
         setLoading(true)
         const checkAuth = async () => {
             try {
-                const response = await fetch('/api/profile/trainingplan', {
+                const response = await fetch(`${API_BASE_URL}/api/profile/trainingplan`, {
                     method: 'GET',
                     credentials: 'include'  // Include credentials (cookies)
                 });

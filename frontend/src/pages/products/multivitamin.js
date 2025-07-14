@@ -41,6 +41,8 @@ import CardBlack from '../../images/payment-alternativ/card-black.png'
 import VisaBlack from '../../images/payment-alternativ/visa-black.png'
 import KlarnaBlack from '../../images/payment-alternativ/klarna.png'
 
+const API_BASE_URL = process.env.REACT_APP_API_URL
+
 function Line() {
     return (
         <div className='HomeLineDesign'></div>
@@ -546,7 +548,7 @@ function ViewproductMultivitaminPopup({ setViewProductPopup }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
-        const response = await fetch('/api/AddCartInfo', {
+        const response = await fetch(`${API_BASE_URL}/api/AddCartInfo`, {
             method: 'POST',
             credentials: 'include',
             headers: {

@@ -10,6 +10,8 @@ import LoadingScreen from '../../components/loadingScreen.js';
 // For Login
 import NotLiAuthCheck from '../loginSystem/notLiAuthCheck.js';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL
+
 function DietPlan() {
 
     const [CalorieIntake, setCalorieIntake] = useState('')
@@ -25,7 +27,7 @@ function DietPlan() {
         setLoading(true)
         const checkAuth = async () => {
             try {
-                const response = await fetch('/api/profile/dietplan', {
+                const response = await fetch(`${API_BASE_URL}/api/profile/dietplan`, {
                     method: 'POST',
                     credentials: 'include'  // Include credentials (cookies)
                 });

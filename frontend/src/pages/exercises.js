@@ -65,6 +65,8 @@ import tricepsDip from '../images/workouts/triceps-dip.jpg';
 import tricepsRopePushdown from '../images/workouts/Triceps-Rope-Pushdown.jpg';
 // Import other images similarly...
 
+const API_BASE_URL = process.env.REACT_APP_API_URL
+
 // Map image filenames to imports
 const workoutImages = {
     "bag-work.jpg": bagWork,
@@ -131,7 +133,7 @@ function Exercises() {
     const fetchWorkouts = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`/api/workouts/${muscle}`, {
+            const response = await fetch(`${API_BASE_URL}/api/workouts/${muscle}`, {
                 method: 'POST',
                 credentials: 'include'  // Include credentials (cookies)
             });

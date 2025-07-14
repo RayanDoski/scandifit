@@ -1,0 +1,5 @@
+Flask
+Flask-CORS
+Flask-Mail
+PyMySQL
+stripe

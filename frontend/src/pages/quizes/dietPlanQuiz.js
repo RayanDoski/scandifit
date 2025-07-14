@@ -33,6 +33,7 @@ import NoneMark from '../../images/icons/none-mark.png';
 import Cake from '../../images/icons/cake.png';
 import Coke from '../../images/icons/coke.png';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL
 
 function QuizPartOne({ nextPart, setResponses, responses }) {
 
@@ -402,7 +403,7 @@ function DietPlanQuiz() {
     // If they have a sleepplan get the info 
     useEffect(() => {
         const checkAuth = async () => {
-            const response = await fetch('/api/dietplan/get/info', {
+            const response = await fetch(`${API_BASE_URL}/api/dietplan/get/info`, {
                 method: 'POST',
                 credentials: 'include'  // Include credentials (cookies)
             });
@@ -478,7 +479,7 @@ function DietPlanQuiz() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
-        const response = await fetch('/api/dietplan/quiz/completed', {
+        const response = await fetch(`${API_BASE_URL}/api/dietplan/quiz/completed`, {
             method: 'POST',
             credentials: 'include',
             headers: {

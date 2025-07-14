@@ -12,6 +12,8 @@ import Loading from '../components/loadingScreenFullScreen.js';
 import postnord from '../images/postnord.png';
 import LoadingScreenFullScreen from '../components/loadingScreenFullScreen.js';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL
+
 function OrderComplete() {
     const { sessionId } = useParams();
     const [stripeSession, setStripeSession] = useState(null);
@@ -20,7 +22,7 @@ function OrderComplete() {
     // Deletes Everything in cart
     useEffect(() => {
         const deleteAllItemsInCart = async () => {
-            const response = await fetch('/api/deleteAllFromCart', {
+            const response = await fetch(`${API_BASE_URL}/api/deleteAllFromCart`, {
                 method: 'POST',  // Ensure the method matches what your Flask route expects
                 credentials: 'include',
                 headers: {
@@ -36,7 +38,7 @@ function OrderComplete() {
     // ferching the customers info from stripe
     useEffect(() => {
         const fetchSession = async () => {
-            const response = await fetch(`/api/stripe-session/${sessionId}`);
+            const response = await fetch(`${API_BASE_URL}/api/stripe-session/${sessionId}`);
             const data = await response.json();
             setStripeSession(data);
             setLoading(false)

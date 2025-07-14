@@ -9,6 +9,8 @@ import '../styles/contactUs.css';
 // Importing Loading Screen
 import LoadingScreen from '../components/loadingScreenFullScreen.js';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL
+
 function ContactUs() {
 
     // communication variables
@@ -25,7 +27,7 @@ function ContactUs() {
         setLoading(true)
         // Updating the information
         const SendThierMessage = async () => {
-            const response = await fetch('/api/send_message', {
+            const response = await fetch(`${API_BASE_URL}/api/send_message`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {

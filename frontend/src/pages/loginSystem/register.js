@@ -10,6 +10,8 @@ import LiAuthCheck from './LiAuthCheck.js';
 // Images
 import logo from '../../images/logo.png';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL
+
 function Register() {
 
     // Declaring Varibales 
@@ -26,7 +28,7 @@ function Register() {
     // Handle Form Submit With Input Info
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('/api/register', {
+        const response = await fetch(`${API_BASE_URL}/api/register`, {
             method: 'POST',
             credentials: 'include',
             headers: {
