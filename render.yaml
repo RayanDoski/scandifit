@@ -4,7 +4,7 @@
 
 services:
   # MySQL Database Service
-  - type: database
+  - type: mysql
     name: scandifit-db
     databaseName: scandifit # Corresponds to MYSQL_DATABASE
     user: scandifit_user # Corresponds to MYSQL_USER
