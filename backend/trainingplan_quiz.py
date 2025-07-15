@@ -7,8 +7,9 @@ trainingplan_quiz = Blueprint('trainingplan_quiz', __name__)
 
 @trainingplan_quiz.route('/api/trainingplan/get/info', methods=['post', 'get'])
 def get_sleepplan_info():
+    db = None
+    cursor = None
     try:
-
         # Make Database Connection
         db = make_db_connection()
         cursor = db.cursor()
@@ -16,10 +17,10 @@ def get_sleepplan_info():
         # Are They Logged in
         if 'user_id' in session:
             
-            cursor.execute('select * from trainingplan where uid = %s', (session['user_id'],))
+            cursor.execute('select * from "trainingplan" where uid = %s', (session['user_id'],))
             result = cursor.fetchone()
 
-            cursor.execute('select * from dietarySupplementPreferences where uid = %s', (session['user_id'],))
+            cursor.execute('select * from "dietarySupplementPreferences" where uid = %s', (session['user_id'],))
             SupplementPreferences = cursor.fetchone()
             if SupplementPreferences:
                 SupplementPreferences = SupplementPreferences[1]
@@ -49,11 +50,19 @@ def get_sleepplan_info():
             return jsonify({
                 'success': False,
             })
-    
+    except Exception as e:
+        # Hantera eventuella fel innan `finally`
+        print(f"Ett fel inträffade: {e}")
+        return jsonify({
+            'success': False,
+            'message': str(e)
+        })
     finally:
         # Closing Database Connection
-        cursor.close()
-        db.close()
+        if cursor:
+            cursor.close()
+        if db:
+            db.close()
     
 @trainingplan_quiz.route("/api/trainingplan/quiz/completed", methods=['GET', 'POST'])
 def tq_completed():
@@ -139,7 +148,7 @@ def tq_completed():
 
     if name and email and password:
 
-        cursor.execute('select * from user where email = %s', (email))
+        cursor.execute('select * from "user" where email = %s', (email))
         DoesEmailExist = cursor.fetchone()
 
         # Mail Check
@@ -155,7 +164,7 @@ def tq_completed():
 
             try:
                 # Inserting User Values Into User Table
-                cursor.execute('INSERT INTO user (namn, email, password) VALUES (%s, %s, %s)', (name, email, password))
+                cursor.execute('INSERT INTO "user" (namn, email, "Password") VALUES (%s, %s, %s)', (name, email, password))
                 db.commit()
                 uid = cursor.lastrowid 
 
@@ -163,16 +172,16 @@ def tq_completed():
                 session['user_id'] = uid
 
                 # Insert their dietary Supplement Preferences
-                cursor.execute('INSERT INTO dietarySupplementPreferences (uid, SupplementPreferences) VALUES (%s, %s)', (uid, supplement))
+                cursor.execute('INSERT INTO "dietarySupplementPreferences" (uid, "SupplementPreferences") VALUES (%s, %s)', (uid, supplement))
                 db.commit()
 
                 # Insert Values Into Trainingplan
-                cursor.execute('INSERT INTO trainingplan (uid, age, goal, body_type, problem_area, height, vikt, malvikt, gng_per_vecka, sjukdom, utrustning) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (uid, age, goal, bodyType, problemArea, height, currentWeight, targetWeight, trainingFrequency, healthCondition, equipment))
+                cursor.execute('INSERT INTO "trainingplan" (uid, age, goal, body_type, problem_area, height, vikt, malvikt, gng_per_vecka, sjukdom, utrustning) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (uid, age, goal, bodyType, problemArea, height, currentWeight, targetWeight, trainingFrequency, healthCondition, equipment))
                 db.commit()
 
                 # Did They Enter a Phone Number Or Did They Leave It Empty
                 if phonenumber:
-                    cursor.execute('INSERT INTO phonenumber (uid, phonenumber) VALUES (%s, %s)', (uid, phonenumber))
+                    cursor.execute('INSERT INTO "phonenumber" (uid, phonenumber) VALUES (%s, %s)', (uid, phonenumber))
                     db.commit()
 
                 return jsonify({'success': True})
@@ -186,30 +195,30 @@ def tq_completed():
         uid = session['user_id']
 
         # We Need To Check If They Already have a Trainingplan
-        cursor.execute('select * from trainingplan where uid = %s', (uid,))
+        cursor.execute('select * from "trainingplan" where uid = %s', (uid,))
         plan = cursor.fetchall()
 
         if plan:
             #insert New Values Into trainingplan table
-            cursor.execute('UPDATE trainingplan SET age = %s, goal = %s, body_type = %s, problem_area = %s, height = %s, vikt = %s, malvikt = %s, gng_per_vecka = %s, sjukdom = %s, utrustning = %s WHERE uid = %s', (age, goal, bodyType, problemArea, height, currentWeight, targetWeight, trainingFrequency, healthCondition, equipment, uid))
+            cursor.execute('UPDATE "trainingplan" SET age = %s, goal = %s, body_type = %s, problem_area = %s, height = %s, vikt = %s, malvikt = %s, gng_per_vecka = %s, sjukdom = %s, utrustning = %s WHERE uid = %s', (age, goal, bodyType, problemArea, height, currentWeight, targetWeight, trainingFrequency, healthCondition, equipment, uid))
             db.commit()
 
             # Check if the user's dietary supplement preferences already exist
-            cursor.execute('SELECT * FROM dietarySupplementPreferences WHERE uid = %s', (uid,))
+            cursor.execute('SELECT * FROM "dietarySupplementPreferences" WHERE uid = %s', (uid,))
             dietarySupplementPreferences = cursor.fetchone()
 
             if dietarySupplementPreferences:
                 # If the record exists, update it
-                cursor.execute('UPDATE dietarySupplementPreferences SET SupplementPreferences = %s WHERE uid = %s', (supplement, uid))
+                cursor.execute('UPDATE "dietarySupplementPreferences" SET "SupplementPreferences" = %s WHERE uid = %s', (supplement, uid))
                 db.commit()
             else:
                 # If the record does not exist, insert a new one
-                cursor.execute('INSERT INTO dietarySupplementPreferences (uid, SupplementPreferences) VALUES (%s, %s)', (uid, supplement))
+                cursor.execute('INSERT INTO "dietarySupplementPreferences" (uid, "SupplementPreferences") VALUES (%s, %s)', (uid, supplement))
                 db.commit()
 
         else:
             # Insert Values Into Trainingplan
-            cursor.execute('insert into trainingplan (uid, age, goal, body_type, problem_area, height, vikt, malvikt, gng_per_vecka, sjukdom, utrustning) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (uid, age, goal, bodyType, problemArea, height, currentWeight, targetWeight, trainingFrequency, healthCondition, equipment))
+            cursor.execute('insert into "trainingplan" (uid, age, goal, body_type, problem_area, height, vikt, malvikt, gng_per_vecka, sjukdom, utrustning) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (uid, age, goal, bodyType, problemArea, height, currentWeight, targetWeight, trainingFrequency, healthCondition, equipment))
             db.commit()
         
         return jsonify(

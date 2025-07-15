@@ -12,7 +12,7 @@ def dietplan_def():
         db = make_db_connection()
         cursor = db.cursor()
         
-        cursor.execute('select * from dietplan where uid = %s', (session['user_id'],))
+        cursor.execute('select * from "dietplan" where uid = %s', (session['user_id'],))
         user_dietplan = cursor.fetchone()
         
         if user_dietplan:
@@ -116,7 +116,7 @@ def dietplanGetInfo():
         # Are They Logged in
         if 'user_id' in session:
             # Do they already have a sleepplan
-            cursor.execute('select * from dietplan where uid = %s', (session['user_id'],))
+            cursor.execute('select * from "dietplan" where uid = %s', (session['user_id'],))
             result = cursor.fetchone()
 
             if result:
@@ -198,16 +198,16 @@ def quiz_dietplan_completed():
         
 
         # Do they already have a sleepplan
-        cursor.execute('select * from dietplan where uid = %s', (session['user_id'],))
+        cursor.execute('select * from "dietplan" where uid = %s', (session['user_id'],))
         result = cursor.fetchone()
 
         if result:
             # Update Values
-            cursor.execute('update dietplan set goal = %s, age = %s, gender = %s, height = %s, weight = %s, target_weight = %s, activity_level = %s, training_session_per_week = %s, dietary_preferences = %s, current_daily_water_intake = %s, sugar_intake = %s where uid = %s', (goal, age, gender, height, currentweight, targetweight, physically_demanding_everyday_life, training_sessions_per_week, dietary_preferences, current_daily_water_intake, sugar_intake, session['user_id']))
+            cursor.execute('update "dietplan" set goal = %s, age = %s, gender = %s, height = %s, weight = %s, target_weight = %s, activity_level = %s, training_session_per_week = %s, dietary_preferences = %s, current_daily_water_intake = %s, sugar_intake = %s where uid = %s', (goal, age, gender, height, currentweight, targetweight, physically_demanding_everyday_life, training_sessions_per_week, dietary_preferences, current_daily_water_intake, sugar_intake, session['user_id']))
             db.commit()
         else:
             # insert new values
-            cursor.execute('insert into dietplan (uid, goal, age, gender, height, weight, target_weight, activity_level, training_session_per_week, dietary_preferences, current_daily_water_intake, sugar_intake) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (session['user_id'], goal, age, gender, height, currentweight, targetweight, physically_demanding_everyday_life, training_sessions_per_week, dietary_preferences, current_daily_water_intake, sugar_intake))
+            cursor.execute('insert into "dietplan" (uid, goal, age, gender, height, weight, target_weight, activity_level, training_session_per_week, dietary_preferences, current_daily_water_intake, sugar_intake) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (session['user_id'], goal, age, gender, height, currentweight, targetweight, physically_demanding_everyday_life, training_sessions_per_week, dietary_preferences, current_daily_water_intake, sugar_intake))
             db.commit()
 
         return jsonify(

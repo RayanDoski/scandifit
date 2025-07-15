@@ -18,7 +18,7 @@ def sleepplan_def():
         db = make_db_connection()
         cursor = db.cursor()
         
-        cursor.execute('select * from sleepplan where uid = %s', (session['user_id'],))
+        cursor.execute('select * from "sleepplan" where uid = %s', (session['user_id'],))
         user_sleepplan = cursor.fetchone()
 
         if user_sleepplan:
@@ -107,7 +107,7 @@ def get_sleepplan_info():
         # Are They Logged in
         if 'user_id' in session:
             # Do they already have a sleepplan
-            cursor.execute('select * from sleepplan where uid = %s', (session['user_id'],))
+            cursor.execute('select * from "sleepplan" where uid = %s', (session['user_id'],))
             result = cursor.fetchone()
 
             if result:
@@ -176,16 +176,16 @@ def sleepplan_quiz_completed():
             return jsonify({'success': False, 'message': f'Ett nödvändigt fält saknas: Sömnstörningar Eller Symtom', 'index': 7})
 
         # Do they already have a sleepplan
-        cursor.execute('select * from sleepplan where uid = %s', (session['user_id'],))
+        cursor.execute('select * from "sleepplan" where uid = %s', (session['user_id'],))
         result = cursor.fetchone()
 
         if result:
             # Update Values
-            cursor.execute('update sleepplan set age = %s, weight = %s, wake_up_time = %s, time_to_sleep = %s, how_much_sleep_do_you_get_on_avg = %s, daily_mood_and_energy = %s, caffeine_in_the_afternoon = %s, sleep_disturbances_or_symptoms = %s where uid = %s', (age, weight, wakeUpTime, timeToSleep, howMuchSleepDoYouGetOnAvg, dailyMoodAndEnergy, caffeineInTheAfternoon, sleepDisturbancesOrSymptoms, session['user_id'],))
+            cursor.execute('update "sleepplan" set age = %s, weight = %s, wake_up_time = %s, time_to_sleep = %s, how_much_sleep_do_you_get_on_avg = %s, daily_mood_and_energy = %s, caffeine_in_the_afternoon = %s, sleep_disturbances_or_symptoms = %s where uid = %s', (age, weight, wakeUpTime, timeToSleep, howMuchSleepDoYouGetOnAvg, dailyMoodAndEnergy, caffeineInTheAfternoon, sleepDisturbancesOrSymptoms, session['user_id'],))
             db.commit()
         else:
             # insert new values
-            cursor.execute('insert into sleepplan (uid, age, weight, wake_up_time, time_to_sleep, how_much_sleep_do_you_get_on_avg, daily_mood_and_energy, caffeine_in_the_afternoon, sleep_disturbances_or_symptoms) values (%s, %s, %s, %s, %s, %s, %s, %s, %s)', (session['user_id'], age, weight, wakeUpTime, timeToSleep, howMuchSleepDoYouGetOnAvg, dailyMoodAndEnergy, caffeineInTheAfternoon, sleepDisturbancesOrSymptoms,))
+            cursor.execute('insert into "sleepplan" (uid, age, weight, wake_up_time, time_to_sleep, how_much_sleep_do_you_get_on_avg, daily_mood_and_energy, caffeine_in_the_afternoon, sleep_disturbances_or_symptoms) values (%s, %s, %s, %s, %s, %s, %s, %s, %s)', (session['user_id'], age, weight, wakeUpTime, timeToSleep, howMuchSleepDoYouGetOnAvg, dailyMoodAndEnergy, caffeineInTheAfternoon, sleepDisturbancesOrSymptoms,))
             db.commit()
 
         return jsonify(

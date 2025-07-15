@@ -20,9 +20,9 @@ def profile_information():
         # Make Database Connection
         db = make_db_connection()
         cursor = db.cursor()
-
+        
         if 'user_id' in session:
-            cursor.execute('select * from user where id = %s', (session['user_id']))
+            cursor.execute('select * from "user" where id = %s', (session['user_id'],))
             userInfo = cursor.fetchone()
 
             uid = userInfo[0]
@@ -31,7 +31,7 @@ def profile_information():
             password = userInfo[3]
 
             #kollar Om Deras Telefonnummr Existerar i Vår Databas
-            cursor.execute('select * from phonenumber where uid = %s', (uid,))
+            cursor.execute('select * from "phonenumber" where uid = %s', (uid,))
             # Vi Tar Emot En Rad Från Databasen Och Sedan Tar Vi Emot Den Tredje Columnen (Telefonnummret)
             telefonnummer = cursor.fetchone()
             if telefonnummer:
@@ -98,19 +98,19 @@ def update_profile_information():
             return jsonify({'success': False, 'message': 'Lösenord Fattas'})
         
         # Updating Info Inside  users
-        cursor.execute("UPDATE user SET namn = %s, email = %s, password = %s WHERE id = %s", (namn, email, password, uid))
+        cursor.execute('UPDATE "user" SET namn = %s, email = %s, "Password" = %s WHERE id = %s', (namn, email, password, uid))
         db.commit()
 
         # Updating Info Inside user_telephonenumber
-        cursor.execute('select * from phonenumber where uid = %s', (uid,))
+        cursor.execute('select * from "phonenumber" where uid = %s', (uid,))
         userPhonenumber = cursor.fetchone()
 
         # Does There Row Exist Or Do We Have To Create It
         if userPhonenumber:
-            cursor.execute("UPDATE phonenumber SET phonenumber = %s WHERE uid = %s", (telefonnummer, uid))
+            cursor.execute('UPDATE "phonenumber" SET phonenumber = %s WHERE uid = %s', (telefonnummer, uid))
             db.commit()
         else:
-            cursor.execute("insert into phonenumber (uid, phonenumber) values (%s, %s)", (uid, telefonnummer))
+            cursor.execute('insert into "phonenumber" (uid, phonenumber) values (%s, %s)', (uid, telefonnummer))
             db.commit()
 
         return jsonify(

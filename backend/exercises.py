@@ -33,7 +33,7 @@ def workout(id):
         cursor = db.cursor()
 
         # Selecting the specific workout 
-        cursor.execute('select * from workout where id = %s', (id,))
+        cursor.execute('select * from "workout" where id = %s', (id,))
         workout = cursor.fetchone()
 
         return jsonify(
@@ -60,10 +60,10 @@ def selectation(muscle):
 
         #om vi anropar funktion utan ett parameter värde
         if muscle == 'alla':
-            cursor.execute('select * from workout')
+            cursor.execute('select * from "workout"')
             specific_workouts = cursor.fetchall()
         else:
-            cursor.execute('select * from workout where target_muscle = %s', (muscle,))
+            cursor.execute('select * from "workout" where target_muscle = %s', (muscle,))
             specific_workouts = cursor.fetchall()
 
         return specific_workouts
