@@ -16,7 +16,7 @@ def schedual():
         cursor = db.cursor()
 
         #getting their quiz values
-        cursor.execute('select * from trainingplan where uid = %s', (session['user_id'],))
+        cursor.execute('select * from "trainingplan" where uid = %s', (session['user_id'],))
         tp = cursor.fetchone()
 
         # Checking If They Have A Schedual Or Not
@@ -688,7 +688,7 @@ def get_exercise_from_database(exercise):
         db = make_db_connection()
         cursor = db.cursor()
 
-        cursor.execute('SELECT * FROM workout WHERE id IN (%s)' % ', '.join(map(str, exercise)))
+        cursor.execute('SELECT * FROM "workout" WHERE id IN (%s)' % ', '.join(map(str, exercise)))
         exercise_data = cursor.fetchall()
 
         return exercise_data

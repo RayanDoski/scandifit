@@ -1,47 +1,44 @@
-version: '3.8' # Specify a recent Docker Compose file format version
+version: '3.8'
 
 services:
   # ---------------------------
-  # MySQL Database Service
+  # PostgreSQL Database Service
   # ---------------------------
   db:
-    image: mysql:8.0 # Use the official MySQL 8.0 Docker image
+    image: postgres:16 # Använder officiella PostgreSQL 16 Docker-imagen
     ports:
-      - "3306:3306" # Maps host port 3306 to container port 3306. Useful for local testing/connecting with a DB client.
+      - "5432:5432" # Mappar host-port 5432 till container-port 5432
     environment:
-      # These environment variables are used by the official MySQL image for initial setup
-      MYSQL_ROOT_PASSWORD: Rayan12345 # Set a strong root password for MySQL
-      MYSQL_DATABASE: scandifit # This must match the database name in your db/init.sql
-      MYSQL_USER: scandifit_user # This must match the user created in your db/init.sql
-      MYSQL_PASSWORD: Rayan12345 # This must match the password for scandifit_user in your db/init.sql
-      # Optional: Set timezone for MySQL
-      TZ: 'Europe/Stockholm' # Current time is 3:18:42 PM CEST (Central European Summer Time) in Malmö, Skåne County, Sweden
+      # Dessa miljövariabler används av den officiella PostgreSQL-imagen för initial inställning
+      POSTGRES_DB: scandifit # Databasnamn
+      POSTGRES_USER: scandifit_user # Användarnamn för databasen
+      POSTGRES_PASSWORD: Rayan12345 # Lösenord för användaren
+      # Optional: Set timezone for PostgreSQL
+      TZ: 'Europe/Stockholm'
     volumes:
-      # Persistent storage for MySQL data to avoid losing data when container restarts
-      - db_data:/var/lib/mysql
-      # Copy your init.sql script into the container to initialize the database on first run
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-    restart: unless-stopped # Automatically restart the service unless explicitly stopped
+      # Beständig lagring för PostgreSQL-data
+      - db_data:/var/lib/postgresql/data
+      # Kopiera din init.sql (om du har en för Postgres)
+      # - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped
 
   # ---------------------------
   # Flask Backend Service
   # ---------------------------
   backend:
-    build: ./backend # Tells Docker Compose to build an image from the Dockerfile in the ./backend directory
+    build: ./backend
     ports:
-      - "8000:5000" # Maps host port 5000 to container port 5000. Useful for direct API testing.
+      - "8000:5000"
     environment:
-      # These variables are passed into the Flask container as environment variables
-      # They should be used by your Flask app to connect to the database
-      MYSQL_HOST: db # The hostname for the database is the service name 'db' within the Docker network
-      MYSQL_USER: scandifit_user
-      MYSQL_PASSWORD: your_db_password
-      MYSQL_DB: scandifit # Must match the database name in db/init.sql and db service
-      FLASK_ENV: production # Set Flask environment (e.g., for production settings)
-      # Add any other environment variables your Flask app needs (e.g., SECRET_KEY, JWT_SECRET)
+      # Dessa variabler skickas till Flask-containern
+      POSTGRES_HOST: db # Hostnamnet för databasen är tjänstenamnet 'db' inom Docker-nätverket
+      POSTGRES_USER: scandifit_user
+      POSTGRES_PASSWORD: Rayan12345 # Uppdaterat för att matcha POSTGRES_PASSWORD ovan
+      POSTGRES_DB: scandifit # Uppdaterat för att matcha POSTGRES_DB ovan
+      FLASK_ENV: production
       # SECRET_KEY: your_flask_secret_key
     depends_on:
-      - db # Ensures the 'db' service starts before the 'backend' service
+      - db
     restart: unless-stopped
 
   # ---------------------------
@@ -49,19 +46,17 @@ services:
   # ---------------------------
   frontend:
     build:
-      context: ./frontend # Tells Docker Compose to build an image from the Dockerfile in the ./frontend directory
-      # Pass build arguments if needed (though .env.production is usually preferred for API_URL)
+      context: ./frontend
       args:
-        # This ARG can be used inside your frontend Dockerfile's build stage if you prefer this over .env.production
-        REACT_APP_API_URL: http://backend:5000 # Points to the backend service within the Docker network
+        REACT_APP_API_URL: http://backend:5000
     ports:
-      - "3000:80" # Maps host port 3000 to container port 80 (Nginx's default). Access frontend via http://localhost:3000
+      - "3000:80"
     depends_on:
-      - backend # Frontend depends on backend being available (for its API calls)
+      - backend
     restart: unless-stopped
 
 # ---------------------------
 # Docker Volumes
 # ---------------------------
 volumes:
-  db_data: # Defines a named volume for persistent MySQL data storage
+  db_data:

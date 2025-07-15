@@ -1,24 +1,23 @@
 import os
-import pymysql
+import psycopg2
 from flask_mail import Mail
 
 # Get database credentials from environment variables
-# These variable names should match those in your docker-compose.yml
-DB_HOST = os.getenv('MYSQL_HOST', 'localhost') # Default to 'localhost' for local dev without Docker Compose
-DB_USER = os.getenv('MYSQL_USER', 'root')
-DB_PASSWORD = os.getenv('MYSQL_PASSWORD', 'your_db_password') # Use a fallback that's easy to spot if missing
-DB_NAME = os.getenv('MYSQL_DB', 'scandifit') # Ensure this matches your init.sql and docker-compose.yml
+DB_HOST = os.getenv('POSTGRES_HOST', 'localhost')
+DB_USER = os.getenv('POSTGRES_USER', 'rayan')
+DB_PASSWORD = os.getenv('POSTGRES_PASSWORD', 'Rayan0412175416')
+DB_NAME = os.getenv('POSTGRES_DB', 'scandifit_db')
 
 def make_db_connection():
-    '''
-    This Function Makes The Connection With The Database
-    '''
-    db = pymysql.connect(
+    print("Connecting to the database...")
+    print(f"Using credentials: {DB_USER}@{DB_HOST}/{DB_NAME}")
+    db = psycopg2.connect(
         host=DB_HOST,
         user=DB_USER,
-        passwd=DB_PASSWORD,
-        database=DB_NAME,
+        password=DB_PASSWORD,
+        dbname=DB_NAME,
     )
+    print("Database connection established")
     return db
 
 mail = Mail()
