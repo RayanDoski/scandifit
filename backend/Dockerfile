@@ -21,9 +21,9 @@ COPY . .
 
 # Expose the port your Flask app runs on (Flask's default port is 5000)
 # This informs Docker that the container listens on the specified network ports at runtime.
-EXPOSE 5000
+EXPOSE 8080
 
 # Command to run the Flask application when the container starts
 # --host=0.0.0.0 makes the Flask app accessible from outside the container
 # --port=5000 ensures it runs on the exposed port
-CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]

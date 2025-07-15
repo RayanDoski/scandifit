@@ -14,3 +14,12 @@ COPY --from=frontend-build /app/build /usr/share/nginx/html
 COPY frontend/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
+
+# Steg 3: Bygg Python-applikationen
+FROM python:3.10-slim-buster as backend
+
+WORKDIR /app
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY backend/ .
+EXPOSE 8080

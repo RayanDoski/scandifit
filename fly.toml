@@ -1,0 +1,33 @@
+app = 'scandifit'
+primary_region = 'arn'
+
+[build]
+  dockerfile = "Dockerfile"
+
+[processes]
+  backend = "gunicorn --bind 0.0.0.0:8080 app:app"
+  frontend = "/usr/sbin/nginx -g 'daemon off;'"
+
+[[services]]
+  http_checks = []
+  internal_port = 8080
+  processes = ["backend"]
+  protocol = "tcp"
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+[[services]]
+  http_checks = []
+  internal_port = 80
+  processes = ["frontend"]
+  protocol = "tcp"
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
